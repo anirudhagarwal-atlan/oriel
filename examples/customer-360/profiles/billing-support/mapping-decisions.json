@@ -1,0 +1,86 @@
+{
+  "bindings": [
+    {
+      "customer_id": "customer_a",
+      "decision_id": "mapping-01",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Stable billing identity; historical IDs remain explicit aliases.",
+      "resource": "customers",
+      "source": "stripe",
+      "source_id": "cus_synthetic_a",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_b",
+      "decision_id": "mapping-02",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Stable billing identity; historical IDs remain explicit aliases.",
+      "resource": "customers",
+      "source": "stripe",
+      "source_id": "cus_synthetic_b",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_c",
+      "decision_id": "mapping-03",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Stable billing identity; historical IDs remain explicit aliases.",
+      "resource": "customers",
+      "source": "stripe",
+      "source_id": "cus_synthetic_c",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_a",
+      "decision_id": "mapping-04",
+      "phases": [
+        "refreshed"
+      ],
+      "reason": "Reviewed synthetic replacement for the billing customer ID.",
+      "resource": "customers",
+      "source": "stripe",
+      "source_id": "cus_synthetic_a_reissued",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_c",
+      "decision_id": "mapping-05",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Explicit reviewed support contact mapping, without CRM or email matching.",
+      "resource": "contacts",
+      "source": "intercom",
+      "source_id": "ic_contact_manual",
+      "status": "approved_example"
+    }
+  ],
+  "customers": [
+    {
+      "customer_id": "customer_a",
+      "label": "Example A"
+    },
+    {
+      "customer_id": "customer_b",
+      "label": "Example B"
+    },
+    {
+      "customer_id": "customer_c",
+      "label": "Example C"
+    }
+  ],
+  "profile": "billing-support",
+  "review_status": "authored_example_not_a_real_review",
+  "spec": "oriel.customer360.fixture-mapping/v1",
+  "synthetic": true
+}

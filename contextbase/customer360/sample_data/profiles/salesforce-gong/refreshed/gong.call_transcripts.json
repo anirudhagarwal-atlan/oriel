@@ -1,0 +1,98 @@
+[
+  {
+    "callId": "100000000000000001",
+    "transcript": [
+      {
+        "sentences": [
+          {
+            "end": 16000,
+            "start": 12000,
+            "text": "SSO rollout is blocked by an identity-provider configuration issue."
+          }
+        ],
+        "speakerId": "speaker-1",
+        "topic": "Implementation"
+      }
+    ]
+  },
+  {
+    "callId": "100000000000000002",
+    "transcript": [
+      {
+        "sentences": [
+          {
+            "end": 16000,
+            "start": 12000,
+            "text": "The pilot is ready; budget approval is pending."
+          }
+        ],
+        "speakerId": "speaker-1",
+        "topic": "Implementation"
+      }
+    ]
+  },
+  {
+    "callId": "100000000000000003",
+    "transcript": [
+      {
+        "sentences": [
+          {
+            "end": 16000,
+            "start": 12000,
+            "text": "This unlinked call must not become a claim about Example Shared."
+          }
+        ],
+        "speakerId": "speaker-1",
+        "topic": "Implementation"
+      }
+    ]
+  },
+  {
+    "callId": "100000000000000004",
+    "transcript": [
+      {
+        "sentences": [
+          {
+            "end": 16000,
+            "start": 12000,
+            "text": "This conflicting call must remain unattributed."
+          }
+        ],
+        "speakerId": "speaker-1",
+        "topic": "Implementation"
+      }
+    ]
+  },
+  {
+    "callId": "100000000000000005",
+    "transcript": [
+      {
+        "sentences": [
+          {
+            "end": 16000,
+            "start": 12000,
+            "text": "The reporting rollout is scheduled for February."
+          }
+        ],
+        "speakerId": "speaker-1",
+        "topic": "Implementation"
+      }
+    ]
+  },
+  {
+    "callId": "100000000000000006",
+    "transcript": [
+      {
+        "sentences": [
+          {
+            "end": 16000,
+            "start": 12000,
+            "text": "SSO rollout is unblocked; procurement approval is now pending."
+          }
+        ],
+        "speakerId": "speaker-1",
+        "topic": "Implementation"
+      }
+    ]
+  }
+]

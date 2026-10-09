@@ -4,6 +4,12 @@ A query can run correctly and still answer the wrong business question. “Activ
 
 Start with one recurring question. Inspect the source data, resolve the business rules, save the SQL and review it as a metric. The next query can use the same definition even when the data changes.
 
+## Customer 360 context
+
+The [customer application](customer-360-app.md) separates three reviews: cross-source customer identity, field mappings, and business definitions. Once mapped records are materialized, context agents inspect bounded committed evidence and propose definitions with units, filters and unresolved meaning. Approval pins the exact artifact. Answers use that context against a named snapshot; a factual refresh can reuse unchanged definitions, while changed mappings or meaning require new review.
+
+The current customer answer contract computes exact sums/counts and selects attributed source passages. It does not turn schema inference into an authoritative business policy or accept arbitrary model-written factual prose. See the [customer CLI](customer-360-cli.md) for its artifact lifecycle. The generic SQL-metric workflow below remains a separate advanced path.
+
 ## What bootstrap does
 
 `context bootstrap` reads your local tables and writes `context/draft.json`. It records schemas, row counts, column profiles, candidate keys and joins, and unresolved policy questions. Successful `source sync` normally performs this step automatically.

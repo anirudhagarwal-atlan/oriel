@@ -5,6 +5,13 @@ import re
 
 _RESERVED_PARAMETER = re.compile(r"token|secret|password|credential|authorization|api.?key", re.I)
 _ROUTING = {"query", "mutation", "script", "code", "path", "url", "endpoint", "base_url", "method", "headers", "auth", "resources"}
+_RESOURCE_NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_]{0,127}\Z")
+_SOURCE_NAME = re.compile(r"[a-z][a-z0-9_]{0,63}\Z")
+_EXECUTION_FAMILIES = {"dlt_rest", "dlt_graphql", "dlt_verified", "dlt_sql", "dlt_filesystem", "file"}
+_PLAN_LIMITATIONS = [
+    "Declaration-derived metadata only; no extraction was executed and no access was authorized.",
+    "This plan does not verify endpoint, principal, field, history, record, pagination or runtime scope.",
+]
 
 
 _VERIFIED = {
@@ -116,6 +123,88 @@ def validate_parameters(entry, params):
     return params
 
 
+def _selection_catalog(entry, resources):
+    if (type(entry) is not dict or type(entry.get("name")) is not str
+            or not _SOURCE_NAME.fullmatch(entry["name"])
+            or type(entry.get("execution_family")) is not str
+            or entry.get("execution_family") not in _EXECUTION_FAMILIES):
+        raise ValueError("Invalid connector selection metadata.")
+    if (type(resources) is not list or len(resources) > 256
+            or any(type(name) is not str or not _RESOURCE_NAME.fullmatch(name) for name in resources)
+            or len(set(resources)) != len(resources)):
+        raise ValueError("Select unique bounded resource names.")
+    listed = entry.get("resources")
+    if type(listed) is not list or len(listed) > 256:
+        raise ValueError("Invalid connector resource declarations.")
+    declared = {}
+    for resource in listed:
+        if (type(resource) is not dict or type(resource.get("name")) is not str
+                or not _RESOURCE_NAME.fullmatch(resource["name"])
+                or resource["name"] in declared
+                or type(resource.get("selected", True)) is not bool):
+            raise ValueError("Invalid connector resource declarations.")
+        declared[resource["name"]] = resource
+    if (declared or entry.get("resource_discovery") == "declared" or entry["execution_family"] == "dlt_rest") and set(resources) - set(declared):
+        raise ValueError("Unknown selected resource.")
+    return declared
+
+
+def _rest_dependencies(declared, selected):
+    needed, visiting, edges = set(), set(), set()
+
+    def include(name):
+        if name not in declared or name in visiting:
+            raise ValueError("Invalid or cyclic resource selection.")
+        if name in needed:
+            return
+        visiting.add(name)
+        definition = declared[name].get("declared")
+        if type(definition) is not dict:
+            raise ValueError("Invalid resource parent declaration.")
+        parent = definition.get("parent")
+        if parent is not None:
+            parent = parent.get("resource") if type(parent) is dict else parent
+            if type(parent) is not str or not _RESOURCE_NAME.fullmatch(parent):
+                raise ValueError("Invalid resource parent declaration.")
+            edges.add((name, parent))
+            include(parent)
+        visiting.remove(name)
+        needed.add(name)
+
+    for name in selected:
+        include(name)
+    return sorted(needed), [{"resource": child, "requires": parent} for child, parent in sorted(edges)]
+
+
+def selection_plan(entry, resources):
+    """Describe declared output/fetch selection without importing any runtime.
+
+    An empty request uses catalog defaults. REST parent closure describes all
+    declared fetch dependencies, including unselected parents. Other families
+    deliberately report unknown fetch scope even when output names are known.
+    Returned metadata is detached and contains no parameters or source values.
+    """
+    declared = _selection_catalog(entry, resources)
+    family = entry["execution_family"]
+    defaults_known = bool(declared) or entry.get("resource_discovery") == "declared" or family == "dlt_rest"
+    selected = sorted(resources) if resources else None
+    if not resources and defaults_known:
+        selected = sorted(name for name, resource in declared.items() if resource.get("selected", True))
+    needed, edges, limitations = None, [], list(_PLAN_LIMITATIONS)
+    if family == "dlt_rest":
+        if not selected:
+            raise ValueError("Select existing read resources.")
+        needed, edges = _rest_dependencies(declared, selected)
+        status = "declaration_derived"
+    else:
+        status = "fetch_scope_unknown"
+        limitations.append("This connector family has no verified static fetch dependency graph; runtime discovery is not performed.")
+    return {"source_type": entry["name"], "execution_family": family,
+            "requested_resources": list(resources), "selected_outputs": selected,
+            "required_fetch_resources": needed, "dependency_edges": edges,
+            "default_selection_used": not resources, "status": status, "limitations": limitations}
+
+
 def validate_selection(entry, resources, params):
     """Check completeness before the worker can resolve credential values."""
     if entry["execution_family"] == "dlt_filesystem":
@@ -126,19 +215,7 @@ def validate_selection(entry, resources, params):
         return
     from .upstream.yaml_source import _apply_parameters
     declared = {resource["name"]: resource for resource in entry["resources"]}
-    selected = resources or [name for name, resource in declared.items() if resource["selected"]]
-    needed = set()
-
-    def include(name, stack):
-        if name not in declared or name in stack:
-            raise ValueError("Invalid or cyclic resource selection.")
-        needed.add(name)
-        parent = declared[name]["declared"].get("parent")
-        parent = parent.get("resource") if isinstance(parent, dict) else parent
-        if parent:
-            include(parent, stack | {name})
-    for name in selected:
-        include(name, set())
+    needed = set(selection_plan(entry, resources)["required_fetch_resources"])
     if set(params) - needed:
         raise ValueError("Parameters must address selected resources or their dependencies.")
     for name in needed:

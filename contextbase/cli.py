@@ -34,6 +34,9 @@ def parser():
     source_list.add_argument("--available", action="store_true")
     source_describe = source_sub.add_parser("describe", help="Inspect credentials, resources and connector limitations")
     source_describe.add_argument("source_type")
+    source_plan = source_sub.add_parser("plan", help="Inspect declared output selection and fetch dependencies without connecting")
+    source_plan.add_argument("source_type")
+    source_plan.add_argument("--resource", action="append", default=[], help="Repeat for specific resources; omit for the connector's default selection")
     source_doctor = source_sub.add_parser("doctor", help="Inspect local dependencies and adapter readiness without connecting")
     source_doctor.add_argument("source_type", nargs="?", help="One source type; omit to inspect all catalog entries")
     source_add = source_sub.add_parser("add", help="Save credential environment references; does not contact a source")
@@ -48,6 +51,8 @@ def parser():
     source_sync.add_argument("name")
     source_sync.add_argument("--timeout", type=int, default=300)
     source_sync.add_argument("--no-bootstrap", action="store_true")
+    source_sync.add_argument("--max-requests", type=int, help="REST/GraphQL: shared maximum HTTP attempts for this sync; requires --request-seconds")
+    source_sync.add_argument("--request-seconds", type=int, help="REST/GraphQL: shared request deadline in seconds; requires --max-requests")
     upstream = sub.add_parser("import-dinobase", help="Copy explicitly selected Dinobase tables read-only")
     upstream.add_argument("database")
     upstream.add_argument("--table", dest="tables", action="append", required=True)
@@ -242,11 +247,22 @@ def parser():
     bench.add_argument("--max-turns", type=int, default=4)
     bench.add_argument("--max-calls", type=int, default=48)
     bench.add_argument("--max-cost-usd", type=float, default=3)
+    from .customer360.cli import add_parser as add_customer_parser
+    add_customer_parser(sub)
     return p
 
 
 def execute(args):
+    if args.command == "source" and args.action == "plan":
+        from .connectors import describe
+        from .connectors.policy import selection_plan
+        return selection_plan(describe(args.source_type), args.resource)
+    if args.command == "customer" and args.customer_action == "app" and Path(args.workspace).expanduser().is_symlink():
+        raise ValueError("Select a real private application workspace directory, not a symbolic link.")
     w = Workspace(args.workspace)
+    if args.command == "customer":
+        from .customer360.cli import execute as execute_customer
+        return execute_customer(args, w)
     if args.command == "demo":
         w = init_demo(args.workspace, accounts=args.accounts, seed=args.seed)
         return {"workspace": str(w.root), "synthetic": True, "tables": w.catalog(),
@@ -271,7 +287,13 @@ def execute(args):
             from .connectors.readiness import inspect
             return inspect(args.source_type)
         if args.action == "sync":
-            return sync(w, args.name, timeout=args.timeout, bootstrap_context=not args.no_bootstrap)
+            budget = None
+            if args.max_requests is not None or args.request_seconds is not None:
+                if args.max_requests is None or args.request_seconds is None:
+                    raise ValueError("Use --max-requests and --request-seconds together.")
+                budget = {"max_requests": args.max_requests, "max_seconds": args.request_seconds}
+            return sync(w, args.name, timeout=args.timeout, bootstrap_context=not args.no_bootstrap,
+                        request_budget=budget)
         def pairs(values, parse_values=False):
             result = {}
             for value in values:

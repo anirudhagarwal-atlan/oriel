@@ -1,5 +1,7 @@
 # Build charter: talk to data across existing tools
 
+The [Customer 360 agent plan](customer-360-plan.md) and [active build goal](customer-360-goal.md) define the next product and its verification gates. It focuses the launch on customer reviews across existing tools while preserving connectors → DuckDB → context agents → answers. The charter below records the earlier generic scope and deferred benchmark requirements.
+
 Updated 9 October 2026. Product direction: **existing-tool analytics is the product; Rystic supplies the first synthetic benchmark environment.** Product name: Oriel. Stripe + Linear is the selected benchmark pair. Comparative evaluations remain deferred. Performance targets below are unverified requirements for a later performance-led launch; the current developer preview makes no such claims.
 
 ## Goal

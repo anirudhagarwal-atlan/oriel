@@ -113,14 +113,15 @@ def install_worker_override(origin):
         requests.sessions.Session.request = guarded_request
         requests.sessions.Session.send = guarded_send
 
-        def restricted_source(source_type, credentials, resource_names=None, params=None):
+        def restricted_source(source_type, credentials, resource_names=None, params=None, *, http_session=None):
             expected = {"intercom": ("token", ["contacts"]), "linear": ("api_key", ["issues"])}
             if source_type not in expected:
                 raise ValueError("Only the two declared fixture connectors are supported.")
             field, resources = expected[source_type]
             if credentials != {field: SYNTHETIC_TOKEN} or resource_names != resources or params:
                 raise ValueError("The fixture worker requires its exact synthetic configuration.")
-            return get_source(source_type, credentials, resource_names=resource_names, params=params)
+            return get_source(source_type, credentials, resource_names=resource_names, params=params,
+                              **({"http_session": http_session} if http_session is not None else {}))
 
         return dlt, duckdb, restricted_source
 

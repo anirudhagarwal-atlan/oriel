@@ -1,0 +1,1019 @@
+{
+  "method": "Python records, explicit reference sets and Decimal; no product SQL or model inference",
+  "profiles": {
+    "billing-support": {
+      "initial": {
+        "attributed_text": [
+          {
+            "customer_id": "customer_a",
+            "file": "profiles/billing-support/initial/intercom.conversations.json",
+            "json_pointer": "/0/source/body",
+            "observed_at": 1767693601,
+            "record_id": "ic_conversation_1",
+            "resource": "intercom.conversations",
+            "text": "Invoice export is failing for the billing team."
+          },
+          {
+            "customer_id": "customer_b",
+            "file": "profiles/billing-support/initial/intercom.conversations.json",
+            "json_pointer": "/1/source/body",
+            "observed_at": 1767693602,
+            "record_id": "ic_conversation_2",
+            "resource": "intercom.conversations",
+            "text": "The renewal invoice needs a purchase-order correction."
+          },
+          {
+            "customer_id": "customer_c",
+            "file": "profiles/billing-support/initial/intercom.conversations.json",
+            "json_pointer": "/4/source/body",
+            "observed_at": 1767693605,
+            "record_id": "ic_conversation_5",
+            "resource": "intercom.conversations",
+            "text": "The billing address change is awaiting confirmation."
+          }
+        ],
+        "capabilities": {
+          "billing": true,
+          "crm": false,
+          "support": true,
+          "transcripts": false
+        },
+        "customer_sets": {
+          "with_attributed_support": [
+            "customer_a",
+            "customer_b",
+            "customer_c"
+          ],
+          "with_open_support": [
+            "customer_a",
+            "customer_b",
+            "customer_c"
+          ],
+          "with_outstanding_invoices": [
+            "customer_a",
+            "customer_b",
+            "customer_c"
+          ]
+        },
+        "customers": [
+          {
+            "amounts_by_currency": {
+              "EUR": 30000,
+              "USD": 125000
+            },
+            "conversations": 1,
+            "customer_id": "customer_a",
+            "open_conversations": 1,
+            "open_invoices": 3
+          },
+          {
+            "amounts_by_currency": {
+              "USD": 80000
+            },
+            "conversations": 1,
+            "customer_id": "customer_b",
+            "open_conversations": 1,
+            "open_invoices": 1
+          },
+          {
+            "amounts_by_currency": {
+              "EUR": 45000
+            },
+            "conversations": 1,
+            "customer_id": "customer_c",
+            "open_conversations": 1,
+            "open_invoices": 1
+          }
+        ],
+        "identity_issues": [
+          {
+            "candidate_customers": [],
+            "issue": "missing_reference",
+            "record_id": "ic_conversation_3",
+            "resource": "intercom.conversations"
+          },
+          {
+            "candidate_customers": [
+              "customer_a",
+              "customer_b"
+            ],
+            "issue": "conflicting_reference",
+            "record_id": "ic_conversation_4",
+            "resource": "intercom.conversations"
+          }
+        ],
+        "latest_attributed_text": {
+          "customer_a": {
+            "customer_id": "customer_a",
+            "file": "profiles/billing-support/initial/intercom.conversations.json",
+            "json_pointer": "/0/source/body",
+            "observed_at": 1767693601,
+            "record_id": "ic_conversation_1",
+            "resource": "intercom.conversations",
+            "text": "Invoice export is failing for the billing team."
+          },
+          "customer_b": {
+            "customer_id": "customer_b",
+            "file": "profiles/billing-support/initial/intercom.conversations.json",
+            "json_pointer": "/1/source/body",
+            "observed_at": 1767693602,
+            "record_id": "ic_conversation_2",
+            "resource": "intercom.conversations",
+            "text": "The renewal invoice needs a purchase-order correction."
+          },
+          "customer_c": {
+            "customer_id": "customer_c",
+            "file": "profiles/billing-support/initial/intercom.conversations.json",
+            "json_pointer": "/4/source/body",
+            "observed_at": 1767693605,
+            "record_id": "ic_conversation_5",
+            "resource": "intercom.conversations",
+            "text": "The billing address change is awaiting confirmation."
+          }
+        },
+        "metric": {
+          "inclusion": "status == open and amount_remaining > 0",
+          "name": "outstanding_open_invoices",
+          "unit": "currency_minor_units"
+        },
+        "phase": "initial",
+        "profile": "billing-support",
+        "resolved_identities": [
+          {
+            "customer_id": "customer_a",
+            "record_id": "ic_conversation_1",
+            "resource": "intercom.conversations"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "ic_conversation_2",
+            "resource": "intercom.conversations"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "ic_conversation_5",
+            "resource": "intercom.conversations"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "cus_synthetic_a",
+            "resource": "stripe.customers"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "cus_synthetic_b",
+            "resource": "stripe.customers"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "cus_synthetic_c",
+            "resource": "stripe.customers"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "in_synthetic_1",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "in_synthetic_2",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "in_synthetic_3",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "in_synthetic_4",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "in_synthetic_5",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "in_synthetic_6",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "in_synthetic_7",
+            "resource": "stripe.invoices"
+          }
+        ],
+        "source_record_counts": {
+          "intercom.companies": 3,
+          "intercom.contacts": 6,
+          "intercom.conversations": 5,
+          "stripe.customers": 3,
+          "stripe.invoices": 7
+        },
+        "synthetic": true,
+        "totals_by_currency": {
+          "EUR": 75000,
+          "USD": 205000
+        }
+      },
+      "refreshed": {
+        "attributed_text": [
+          {
+            "customer_id": "customer_a",
+            "file": "profiles/billing-support/refreshed/intercom.conversations.json",
+            "json_pointer": "/0/source/body",
+            "observed_at": 1767693601,
+            "record_id": "ic_conversation_1",
+            "resource": "intercom.conversations",
+            "text": "Invoice export is failing for the billing team."
+          },
+          {
+            "customer_id": "customer_a",
+            "file": "profiles/billing-support/refreshed/intercom.conversations.json",
+            "json_pointer": "/0/conversation_parts/conversation_parts/0/body",
+            "observed_at": 1768305600,
+            "part_id": "ic_part_resolution_1",
+            "record_id": "ic_conversation_1",
+            "resource": "intercom.conversations",
+            "text": "Invoice export is fixed; CSV export now succeeds."
+          },
+          {
+            "customer_id": "customer_b",
+            "file": "profiles/billing-support/refreshed/intercom.conversations.json",
+            "json_pointer": "/1/source/body",
+            "observed_at": 1767693602,
+            "record_id": "ic_conversation_2",
+            "resource": "intercom.conversations",
+            "text": "The renewal invoice needs a purchase-order correction."
+          },
+          {
+            "customer_id": "customer_c",
+            "file": "profiles/billing-support/refreshed/intercom.conversations.json",
+            "json_pointer": "/4/source/body",
+            "observed_at": 1767693605,
+            "record_id": "ic_conversation_5",
+            "resource": "intercom.conversations",
+            "text": "The billing address change is awaiting confirmation."
+          }
+        ],
+        "capabilities": {
+          "billing": true,
+          "crm": false,
+          "support": true,
+          "transcripts": false
+        },
+        "customer_sets": {
+          "with_attributed_support": [
+            "customer_a",
+            "customer_b",
+            "customer_c"
+          ],
+          "with_open_support": [
+            "customer_b",
+            "customer_c"
+          ],
+          "with_outstanding_invoices": [
+            "customer_a",
+            "customer_b",
+            "customer_c"
+          ]
+        },
+        "customers": [
+          {
+            "amounts_by_currency": {
+              "EUR": 30000,
+              "USD": 10000
+            },
+            "conversations": 1,
+            "customer_id": "customer_a",
+            "open_conversations": 0,
+            "open_invoices": 2
+          },
+          {
+            "amounts_by_currency": {
+              "USD": 80000
+            },
+            "conversations": 1,
+            "customer_id": "customer_b",
+            "open_conversations": 1,
+            "open_invoices": 1
+          },
+          {
+            "amounts_by_currency": {
+              "EUR": 45000
+            },
+            "conversations": 1,
+            "customer_id": "customer_c",
+            "open_conversations": 1,
+            "open_invoices": 1
+          }
+        ],
+        "identity_issues": [
+          {
+            "candidate_customers": [],
+            "issue": "missing_reference",
+            "record_id": "ic_conversation_3",
+            "resource": "intercom.conversations"
+          },
+          {
+            "candidate_customers": [
+              "customer_a",
+              "customer_b"
+            ],
+            "issue": "conflicting_reference",
+            "record_id": "ic_conversation_4",
+            "resource": "intercom.conversations"
+          }
+        ],
+        "latest_attributed_text": {
+          "customer_a": {
+            "customer_id": "customer_a",
+            "file": "profiles/billing-support/refreshed/intercom.conversations.json",
+            "json_pointer": "/0/conversation_parts/conversation_parts/0/body",
+            "observed_at": 1768305600,
+            "part_id": "ic_part_resolution_1",
+            "record_id": "ic_conversation_1",
+            "resource": "intercom.conversations",
+            "text": "Invoice export is fixed; CSV export now succeeds."
+          },
+          "customer_b": {
+            "customer_id": "customer_b",
+            "file": "profiles/billing-support/refreshed/intercom.conversations.json",
+            "json_pointer": "/1/source/body",
+            "observed_at": 1767693602,
+            "record_id": "ic_conversation_2",
+            "resource": "intercom.conversations",
+            "text": "The renewal invoice needs a purchase-order correction."
+          },
+          "customer_c": {
+            "customer_id": "customer_c",
+            "file": "profiles/billing-support/refreshed/intercom.conversations.json",
+            "json_pointer": "/4/source/body",
+            "observed_at": 1767693605,
+            "record_id": "ic_conversation_5",
+            "resource": "intercom.conversations",
+            "text": "The billing address change is awaiting confirmation."
+          }
+        },
+        "metric": {
+          "inclusion": "status == open and amount_remaining > 0",
+          "name": "outstanding_open_invoices",
+          "unit": "currency_minor_units"
+        },
+        "phase": "refreshed",
+        "profile": "billing-support",
+        "resolved_identities": [
+          {
+            "customer_id": "customer_a",
+            "record_id": "ic_conversation_1",
+            "resource": "intercom.conversations"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "ic_conversation_2",
+            "resource": "intercom.conversations"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "ic_conversation_5",
+            "resource": "intercom.conversations"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "cus_synthetic_a_reissued",
+            "resource": "stripe.customers"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "cus_synthetic_b",
+            "resource": "stripe.customers"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "cus_synthetic_c",
+            "resource": "stripe.customers"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "in_synthetic_1",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "in_synthetic_2",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "in_synthetic_3",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "in_synthetic_4",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "in_synthetic_5",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "in_synthetic_6",
+            "resource": "stripe.invoices"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "in_synthetic_7",
+            "resource": "stripe.invoices"
+          }
+        ],
+        "source_record_counts": {
+          "intercom.companies": 3,
+          "intercom.contacts": 6,
+          "intercom.conversations": 5,
+          "stripe.customers": 3,
+          "stripe.invoices": 7
+        },
+        "synthetic": true,
+        "totals_by_currency": {
+          "EUR": 75000,
+          "USD": 90000
+        }
+      }
+    },
+    "salesforce-gong": {
+      "initial": {
+        "attributed_text": [
+          {
+            "customer_id": "customer_a",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/initial/gong.call_transcripts.json",
+            "json_pointer": "/0/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000001",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000001",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "SSO rollout is blocked by an identity-provider configuration issue."
+          },
+          {
+            "customer_id": "customer_b",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/initial/gong.call_transcripts.json",
+            "json_pointer": "/1/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000002",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000002",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "The pilot is ready; budget approval is pending."
+          },
+          {
+            "customer_id": "customer_c",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/initial/gong.call_transcripts.json",
+            "json_pointer": "/4/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000005",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000005",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "The reporting rollout is scheduled for February."
+          }
+        ],
+        "capabilities": {
+          "billing": false,
+          "crm": true,
+          "support": false,
+          "transcripts": true
+        },
+        "customer_sets": {
+          "with_attributed_calls": [
+            "customer_a",
+            "customer_b",
+            "customer_c"
+          ],
+          "with_open_opportunities": [
+            "customer_a",
+            "customer_b",
+            "customer_c",
+            "customer_d"
+          ],
+          "without_attributed_calls": [
+            "customer_d"
+          ]
+        },
+        "customers": [
+          {
+            "amounts_by_currency": {
+              "EUR": "3000.00",
+              "USD": "12500.00"
+            },
+            "calls": 1,
+            "contacts": 2,
+            "customer_id": "customer_a",
+            "open_opportunities": 3
+          },
+          {
+            "amounts_by_currency": {
+              "USD": "8000.00"
+            },
+            "calls": 1,
+            "contacts": 1,
+            "customer_id": "customer_b",
+            "open_opportunities": 1
+          },
+          {
+            "amounts_by_currency": {
+              "EUR": "4000.00"
+            },
+            "calls": 1,
+            "contacts": 1,
+            "customer_id": "customer_c",
+            "open_opportunities": 1
+          },
+          {
+            "amounts_by_currency": {
+              "USD": "6000.00"
+            },
+            "calls": 0,
+            "contacts": 0,
+            "customer_id": "customer_d",
+            "open_opportunities": 1
+          }
+        ],
+        "identity_issues": [
+          {
+            "candidate_customers": [],
+            "issue": "missing_reference",
+            "record_id": "100000000000000003",
+            "resource": "gong.extensive_calls"
+          },
+          {
+            "candidate_customers": [
+              "customer_a",
+              "customer_b"
+            ],
+            "issue": "conflicting_reference",
+            "record_id": "100000000000000004",
+            "resource": "gong.extensive_calls"
+          }
+        ],
+        "latest_attributed_text": {
+          "customer_a": {
+            "customer_id": "customer_a",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/initial/gong.call_transcripts.json",
+            "json_pointer": "/0/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000001",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000001",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "SSO rollout is blocked by an identity-provider configuration issue."
+          },
+          "customer_b": {
+            "customer_id": "customer_b",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/initial/gong.call_transcripts.json",
+            "json_pointer": "/1/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000002",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000002",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "The pilot is ready; budget approval is pending."
+          },
+          "customer_c": {
+            "customer_id": "customer_c",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/initial/gong.call_transcripts.json",
+            "json_pointer": "/4/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000005",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000005",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "The reporting rollout is scheduled for February."
+          }
+        },
+        "metric": {
+          "inclusion": "IsClosed == false",
+          "name": "open_pipeline",
+          "unit": "currency_major_units"
+        },
+        "phase": "initial",
+        "profile": "salesforce-gong",
+        "resolved_identities": [
+          {
+            "customer_id": "customer_a",
+            "record_id": "100000000000000001",
+            "resource": "gong.extensive_calls"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "100000000000000002",
+            "resource": "gong.extensive_calls"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "100000000000000005",
+            "resource": "gong.extensive_calls"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "001SYN000000000001",
+            "resource": "salesforce.account"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "001SYN000000000002",
+            "resource": "salesforce.account"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "001SYN000000000003",
+            "resource": "salesforce.account"
+          },
+          {
+            "customer_id": "customer_d",
+            "record_id": "001SYN000000000004",
+            "resource": "salesforce.account"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "003SYN000000000001",
+            "resource": "salesforce.contact"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "003SYN000000000002",
+            "resource": "salesforce.contact"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "003SYN000000000003",
+            "resource": "salesforce.contact"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "003SYN000000000004",
+            "resource": "salesforce.contact"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "006SYN000000000001",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "006SYN000000000002",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "006SYN000000000003",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "006SYN000000000004",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "006SYN000000000005",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "006SYN000000000006",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_d",
+            "record_id": "006SYN000000000007",
+            "resource": "salesforce.opportunity"
+          }
+        ],
+        "source_record_counts": {
+          "gong.call_transcripts": 5,
+          "gong.extensive_calls": 5,
+          "salesforce.account": 4,
+          "salesforce.contact": 4,
+          "salesforce.opportunity": 7,
+          "salesforce.sf_user": 1
+        },
+        "synthetic": true,
+        "totals_by_currency": {
+          "EUR": "7000.00",
+          "USD": "26500.00"
+        }
+      },
+      "refreshed": {
+        "attributed_text": [
+          {
+            "customer_id": "customer_a",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/refreshed/gong.call_transcripts.json",
+            "json_pointer": "/0/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000001",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000001",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "SSO rollout is blocked by an identity-provider configuration issue."
+          },
+          {
+            "customer_id": "customer_a",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/refreshed/gong.call_transcripts.json",
+            "json_pointer": "/5/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-13T10:00:00Z",
+            "record_id": "100000000000000006",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000006",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "SSO rollout is unblocked; procurement approval is now pending."
+          },
+          {
+            "customer_id": "customer_b",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/refreshed/gong.call_transcripts.json",
+            "json_pointer": "/1/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000002",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000002",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "The pilot is ready; budget approval is pending."
+          },
+          {
+            "customer_id": "customer_c",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/refreshed/gong.call_transcripts.json",
+            "json_pointer": "/4/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000005",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000005",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "The reporting rollout is scheduled for February."
+          }
+        ],
+        "capabilities": {
+          "billing": false,
+          "crm": true,
+          "support": false,
+          "transcripts": true
+        },
+        "customer_sets": {
+          "with_attributed_calls": [
+            "customer_a",
+            "customer_b",
+            "customer_c"
+          ],
+          "with_open_opportunities": [
+            "customer_a",
+            "customer_b",
+            "customer_c",
+            "customer_d"
+          ],
+          "without_attributed_calls": [
+            "customer_d"
+          ]
+        },
+        "customers": [
+          {
+            "amounts_by_currency": {
+              "EUR": "3000.00",
+              "USD": "9000.00"
+            },
+            "calls": 2,
+            "contacts": 2,
+            "customer_id": "customer_a",
+            "open_opportunities": 2
+          },
+          {
+            "amounts_by_currency": {
+              "USD": "8000.00"
+            },
+            "calls": 1,
+            "contacts": 1,
+            "customer_id": "customer_b",
+            "open_opportunities": 1
+          },
+          {
+            "amounts_by_currency": {
+              "EUR": "4000.00"
+            },
+            "calls": 1,
+            "contacts": 1,
+            "customer_id": "customer_c",
+            "open_opportunities": 1
+          },
+          {
+            "amounts_by_currency": {
+              "USD": "6000.00"
+            },
+            "calls": 0,
+            "contacts": 0,
+            "customer_id": "customer_d",
+            "open_opportunities": 1
+          }
+        ],
+        "identity_issues": [
+          {
+            "candidate_customers": [],
+            "issue": "missing_reference",
+            "record_id": "100000000000000003",
+            "resource": "gong.extensive_calls"
+          },
+          {
+            "candidate_customers": [
+              "customer_a",
+              "customer_b"
+            ],
+            "issue": "conflicting_reference",
+            "record_id": "100000000000000004",
+            "resource": "gong.extensive_calls"
+          }
+        ],
+        "latest_attributed_text": {
+          "customer_a": {
+            "customer_id": "customer_a",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/refreshed/gong.call_transcripts.json",
+            "json_pointer": "/5/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-13T10:00:00Z",
+            "record_id": "100000000000000006",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000006",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "SSO rollout is unblocked; procurement approval is now pending."
+          },
+          "customer_b": {
+            "customer_id": "customer_b",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/refreshed/gong.call_transcripts.json",
+            "json_pointer": "/1/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000002",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000002",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "The pilot is ready; budget approval is pending."
+          },
+          "customer_c": {
+            "customer_id": "customer_c",
+            "end_ms": 16000,
+            "file": "profiles/salesforce-gong/refreshed/gong.call_transcripts.json",
+            "json_pointer": "/4/transcript/0/sentences/0/text",
+            "observed_at": "2026-01-06T10:00:00Z",
+            "record_id": "100000000000000005",
+            "resource": "gong.call_transcripts",
+            "source_url": "https://gong.example.invalid/call/100000000000000005",
+            "speaker_id": "speaker-1",
+            "start_ms": 12000,
+            "text": "The reporting rollout is scheduled for February."
+          }
+        },
+        "metric": {
+          "inclusion": "IsClosed == false",
+          "name": "open_pipeline",
+          "unit": "currency_major_units"
+        },
+        "phase": "refreshed",
+        "profile": "salesforce-gong",
+        "resolved_identities": [
+          {
+            "customer_id": "customer_a",
+            "record_id": "100000000000000001",
+            "resource": "gong.extensive_calls"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "100000000000000002",
+            "resource": "gong.extensive_calls"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "100000000000000005",
+            "resource": "gong.extensive_calls"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "100000000000000006",
+            "resource": "gong.extensive_calls"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "001SYN000000000002",
+            "resource": "salesforce.account"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "001SYN000000000003",
+            "resource": "salesforce.account"
+          },
+          {
+            "customer_id": "customer_d",
+            "record_id": "001SYN000000000004",
+            "resource": "salesforce.account"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "001SYN000000000009",
+            "resource": "salesforce.account"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "003SYN000000000001",
+            "resource": "salesforce.contact"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "003SYN000000000002",
+            "resource": "salesforce.contact"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "003SYN000000000003",
+            "resource": "salesforce.contact"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "003SYN000000000004",
+            "resource": "salesforce.contact"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "006SYN000000000001",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "006SYN000000000002",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_a",
+            "record_id": "006SYN000000000003",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "006SYN000000000004",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_b",
+            "record_id": "006SYN000000000005",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_c",
+            "record_id": "006SYN000000000006",
+            "resource": "salesforce.opportunity"
+          },
+          {
+            "customer_id": "customer_d",
+            "record_id": "006SYN000000000007",
+            "resource": "salesforce.opportunity"
+          }
+        ],
+        "source_record_counts": {
+          "gong.call_transcripts": 6,
+          "gong.extensive_calls": 6,
+          "salesforce.account": 4,
+          "salesforce.contact": 4,
+          "salesforce.opportunity": 7,
+          "salesforce.sf_user": 1
+        },
+        "synthetic": true,
+        "totals_by_currency": {
+          "EUR": "7000.00",
+          "USD": "23000.00"
+        }
+      }
+    }
+  },
+  "spec": "oriel.customer360.independent-oracle/v1",
+  "synthetic": true
+}

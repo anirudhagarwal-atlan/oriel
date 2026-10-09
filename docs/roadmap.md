@@ -1,40 +1,38 @@
 # Roadmap
 
-Oriel's direction is simple: help someone answer a question across their existing tools, then make the reviewed definition useful to the next question or agent.
+Oriel's first product is a Customer 360 agent for the customer tools a user already has. The required path stays **off-the-shelf connectors → DuckDB → context agents and reviewed definitions → grounded customer briefs and answers**. The [build goal](customer-360-goal.md) defines completion; the [product plan](customer-360-plan.md) describes the wider experience.
 
-This is a priority sequence for a developer preview, not a dated delivery commitment. [Current evidence](build-status.md) separates implementation from validation.
+This is a priority sequence, not a dated delivery commitment. [Current evidence](build-status.md) distinguishes implementation, model execution and live integrations.
 
-## Available now
+## Local implementation
 
-- File imports, a 101-entry source catalog, source configuration and explicit sync into DuckDB.
-- SQL, schema profiling, draft context, reviewed metric versions and local transformations.
-- A built-in Claude question loop and read-only MCP stdio interface.
-- Portable context bundles and a reproducible separate-consumer example.
-- Real dlt checks using SQLite and selected local REST/GraphQL fixtures, including refresh and failure retention.
+- Customer identities, explicit reviewed source links, capability mappings and committed snapshots.
+- Context proposals and approvals, exact metrics, attributed passages, scoped questions and fixed abstentions.
+- A local application with connections, setup review, briefs, evidence, saved reviews and refreshed comparisons.
+- Billing/support and CRM/conversation samples using actual dlt extraction and shared contracts.
+- Fresh browser verification with a labeled scripted model; a smaller real-model probe is recorded separately.
+- Existing file analytics, read-only MCP tools, local transformations and context export.
 
-Authenticated live vendor compatibility remains unverified. Source catalog coverage is not a promise of live connectivity.
+These are developer-preview capabilities. Sample extraction does not establish authenticated vendor support, and scripted orchestration does not complete the real-model gate.
 
-## Next: a dependable first workflow on your data
+## Next: complete the release evidence
 
-1. Validate selected source authentication and resource coverage with explicitly authorized accounts.
-2. Observe fresh-checkout setup, first query and refresh with technical users on more than one tool combination.
-3. Improve the setup and definition-review steps where those users get stuck.
-4. Verify documented setup in specific agent clients before advertising those integrations as tested.
+1. Reproduce the current candidate from a clean checkout with packaged application assets and sample data.
+2. Complete the bounded configured-model product check on both profiles and refreshed facts.
+3. Validate selected live source resources and an additional connector using separately authorized accounts.
+4. Observe users completing an own-data review and returning with the same definitions.
 
-An export-based workflow can establish value while a live connector is being validated. Contributions should include synthetic reproductions and precise coverage, so others can distinguish a tested resource from an untested source family.
+Keep exact resource coverage, permissions, gaps and assistance visible. Improve relationship mapping where the generic direct-key flow cannot express a user's source schema.
 
-## Then: reuse across people and agents
+## Then: recurring reviews and shared context
 
-- Make recurring definition review easier without treating inference as approval.
-- Verify a real registry create/read/update round trip and a separate consumer using the selected version.
-- Learn when teams need discovery, access controls and coordinated distribution beyond a local bundle.
+- Make recurring refresh and review easier while preserving context versions and historical evidence.
+- Add portfolio questions and narrative interpretation only with independent correctness and attribution checks.
+- Verify a receiving registry and a second consumer when users need shared ownership and updates.
+- Design authentication and source-derived visibility before any hosted or team service.
 
-The free local workflow must remain useful on its own. An external registry's authentication, permissions and publication lifecycle remain its responsibility.
+The local product remains useful without managed distribution. Scheduling, broad OAuth, source writeback and autonomous customer actions are separate additions.
 
 ## Deferred: comparative evaluation
 
-The repository retains the Rystic comparison design and historical exploratory results. New comparative runs are deferred. Before publishing accuracy, cost or latency advantages, measure equivalent data and business context, capable baselines, setup and refresh work, failures and uncertainty. [Evidence policy](gtm.md#scorecard-and-evidence-policy).
-
-## Outside the current scope
-
-Managed hosting, a universal OAuth flow, scheduled synchronization, broad source writeback and production access control are not part of this local preview. Feature requests should start with the user question and the observed limitation. [Contribute a use case](../CONTRIBUTING.md).
+The repository retains the MCP/Rystic study design. Comparative runs remain deferred. Before publishing accuracy, cost or latency advantages, measure the actual customer workflow against capable baselines, including setup, refresh, failures and uncertainty. [Evidence policy](gtm.md#scorecard-and-evidence-policy).

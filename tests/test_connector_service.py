@@ -30,6 +30,26 @@ class ConnectorServiceTests(unittest.TestCase):
     def total(self):
         return self.workspace.query("SELECT SUM(seats) AS seats FROM crm.records")["rows"]
 
+    def test_missing_source_preflight_records_failed_refresh_without_replacing_data(self):
+        from contextbase.customer360.snapshots import capture_snapshot, assert_snapshot_current
+        self.configure_file()
+        before = service.sync(self.workspace, "crm", bootstrap_context=False)
+        snapshot = capture_snapshot(self.workspace, ["crm"])
+        self.csv.unlink()
+        with self.assertRaises(FileNotFoundError):
+            service.sync(self.workspace, "crm", bootstrap_context=False)
+        source = service.configured(self.workspace)["sources"][0]
+        self.assertEqual(source["last_sync"]["status"], "failed")
+        self.assertEqual(source["last_sync"]["error_code"], "preflight_failed")
+        self.assertNotEqual(source["last_sync"]["attempt"], before["attempt"])
+        self.assertEqual(source["last_snapshot"]["attempt"], before["attempt"])
+        self.assertEqual(self.total(), [{"seats": 10}])
+        with self.assertRaisesRegex(ValueError, "failed latest sync"):
+            assert_snapshot_current(self.workspace, snapshot["snapshot_id"])
+        self.csv.write_text("account_id,seats\naccount_001,5\n")
+        service.sync(self.workspace, "crm", bootstrap_context=False)
+        self.assertEqual(capture_snapshot(self.workspace, ["crm"])["coverage"]["total_rows"], 1)
+
     def test_catalog_requires_no_optional_runtime(self):
         self.assertEqual(available()["count"], 101)
         self.assertEqual(describe("sqlite")["parameter_names"], ["chunk_size", "reflection_level", "schema"])

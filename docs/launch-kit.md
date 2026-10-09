@@ -1,101 +1,85 @@
 # Oriel launch kit
 
-Draft assets for a developer preview. The selected public repository is [anirudhagarwal-atlan/oriel](https://github.com/anirudhagarwal-atlan/oriel). Nothing on this page has been posted or sent as an announcement. Complete the [launch-readiness checks](gtm.md#launch-readiness-evidence-and-remaining-gates) and verify the linked instructions before posting. The positioning and measurement plan live in [GTM](gtm.md).
+Draft assets for the Customer 360 developer preview. The selected repository is [anirudhagarwal-atlan/oriel](https://github.com/anirudhagarwal-atlan/oriel). These drafts have not been posted. Local implementation changes are not automatically present on GitHub; inspect and publish the exact release candidate separately. [GTM strategy](gtm.md) · [Release evidence](customer-360-goal.md).
 
 ## Before publication
 
-The README, getting-started guides, agent instructions, contribution templates and launch drafts are prepared for the public repository owned by `anirudhagarwal-atlan`:
-
-- **Public installation checked.** The lockfile uses public PyPI registry and artifact URLs for all 59 external package records, preserving reviewed versions and hashes. Fresh base and connector installs passed on macOS ARM64 / Python 3.12 without registry overrides. Other platforms still need verification.
-- Use `https://github.com/anirudhagarwal-atlan/oriel` as the repository destination and set its About text. Link announcements to the repository's [quickstart](https://github.com/anirudhagarwal-atlan/oriel/blob/main/docs/quickstart.md); a separately hosted docs site is not configured. Do not advertise a PyPI install until that package is actually published and tested.
-- Assign issue triage and establish a private security-reporting channel before inviting public reports. Do not invent a support address or service commitment in the announcement.
-- Reproduce the quickstart from the release candidate, regenerate the HTML guides, check links and confirm that required third-party notices are present.
-- Review exactly what will be published, including example artifacts and repository history. Keep local workspaces, credentials and private data out of the release.
-- Record the actual demo if using video; the talk track below is a script, not an existing recording.
-
-Hosting, package publication and announcements are separate release actions. The current assets position a developer preview; live vendor, managed registry and comparative-performance claims remain outside that announcement.
-
-The source installation is `git clone https://github.com/anirudhagarwal-atlan/oriel.git`, followed by `cd oriel` and `uv sync --frozen`. Use `.venv/bin/oriel` from that checkout. The [quickstart](quickstart.md) is the command reference for the public release.
+- Reproduce the [quickstart](quickstart.md) and complete the current candidate's required acceptance gates. Keep scripted orchestration, configured inference and authenticated vendor evidence separate.
+- Verify the exact documented source installation, UI assets, links, package contents and third-party licenses. Do not advertise a PyPI package or hosted documentation until separately published and checked.
+- Inspect public artifacts and history. Keep private workspaces, credentials, model traces and customer records out of the release.
+- Assign issue triage and establish a real private security-reporting route before inviting reports; do not invent a support commitment.
+- Record the actual demo. The talk track below is not an existing recording. Keep synthetic and authored/scripted/model labels visible.
 
 ## Repository metadata
 
-**Tagline:** Talk to data across the tools you already use.
+**Tagline:** Customer 360 for the tools you already use.
 
-**GitHub About:** Join tool data in DuckDB, work with your agent, and keep reviewed business definitions for the next question. Open source.
+**GitHub About:** An open-source Customer 360 agent. Connect customer tools to DuckDB, review reusable context, and get briefs and answers with evidence.
 
-**Suggested topics:** `duckdb`, `analytics`, `ai-agents`, `mcp`, `semantic-layer`, `data-connectors`, `sql`, `developer-tools`, `open-source`.
+**Suggested topics:** `customer-360`, `customer-success`, `revops`, `duckdb`, `ai-agents`, `data-connectors`, `context-engineering`, `open-source`.
 
-**One-sentence description:** Oriel is an open-source local analytics workspace for bringing tool data together, inspecting answers, and reusing reviewed metrics and context across sessions.
+**One-sentence description:** Oriel brings supported customer data into DuckDB, bootstraps reviewed business context, and helps account owners inspect what is happening and what changed.
 
 ## Repository announcement draft
 
-Oriel helps you talk to data across the tools you already use.
+Your customer story lives across billing, support, product usage, CRM and conversations. Preparing the next account review means joining those records and agreeing on what they mean.
 
-Bring supported tool exports or configure a source adapter, load the data into DuckDB, and work with SQL or your agent. Inspect the identity mappings and query behind an answer, review the business definition, then keep it for the next session or refresh.
+Oriel is an open-source Customer 360 agent for that work. Off-the-shelf connectors load data into DuckDB. Context agents propose business definitions for review. Customer briefs and answers retain the calculations, source passages and context version behind each fact.
 
-The first walkthrough joins CRM entitlements with product activity to find active customers with unused seats. It covers the parts that make this question tricky: different IDs, duplicate activity, time windows and exclusions. A synthetic refresh changes the answer from 51 unused seats to 8 while retaining the same approved definition.
+The local preview includes two synthetic stacks—billing plus support, and CRM plus conversations—in the same interface. Review the customer links, inspect a brief, save it, refresh the data, and compare what changed. No particular CRM or conversation tool is required.
 
-This is a developer preview. Local file workflows and selected SQLite and loopback REST/GraphQL integrations have functional verification. Authenticated vendor compatibility is still unverified. Context candidates need review, and bundle export does not deploy to a hosted registry.
+Source coverage and missing evidence stay visible. This is a developer preview for one local operator; authenticated source coverage and configured-model evidence must be described using the release candidate's [current status](build-status.md). No comparative accuracy, cost or speed claim is part of this launch.
 
-Start with the [repository instructions](../README.md) and [CRM + product walkthrough](tool-exports.md). Then try an authorized export from your own tools. Which recurring question would you use it for, and where did setup or review become difficult? Open an issue in this repository with a sanitized example.
+[Try a customer review](quickstart.md), then connect sources you are authorized to use. Tell us which review step was useful and where setup or business meaning needed help, using a synthetic reproduction in an issue.
 
 ## Short social post draft
 
-Your CRM and product tool often describe the same customer differently. Answering a cross-tool question means resolving those IDs and agreeing on what the metric means.
+A useful customer brief should survive the next data refresh.
 
-Oriel puts tool data in DuckDB and lets you work with SQL or your agent. Review and version the definition, keep its evidence, and reuse it after refresh.
+Oriel connects supported customer tools to DuckDB, bootstraps business context for review, and keeps the evidence behind the account brief. Save a review, refresh, and see what changed using the same definitions.
 
-The developer preview includes a runnable synthetic CRM + product recipe. Try it, then tell us which recurring question you would bring from your own tools.
+Try the local Customer 360 preview with either billing/support or CRM/conversation samples, then bring a customer-review workflow from your own stack.
 
-Attach the verified demo and the actual repository link when publishing. No performance comparison is part of this announcement.
+Attach the actual repository link and a verified recording. Label synthetic data and any scripted or authored steps. The recording must not imply a model or vendor connection that did not run.
 
 ## Technical community post draft
 
-**Title:** A DuckDB workflow for cross-tool questions and reusable reviewed context
+**Title:** An open-source Customer 360 agent with DuckDB and reviewed context
 
-The example starts with three exports: CRM entitlements, product events and an identity map. It checks ambiguous mappings, deduplicates activity and applies an explicit adoption policy. You inspect the SQL and approve a versioned definition, then rerun it on changed data and export it for another consumer.
+The required execution path is off-the-shelf extraction → committed DuckDB snapshots → context agents and reviewed definitions → customer briefs and answers. Customer identity and capability mappings are independent of source brands.
 
-The implementation includes a CLI, a read-only MCP interface and local transformations with reviewed local changes. It can draft schema/key/join context; business rules remain a review decision. The current proof is functional, using synthetic fixtures. It is not a comparative model benchmark or a claim that every source adapter is production-validated.
+The local application separates customer-link, field-mapping and definition approvals. Its answer contract recomputes metrics and validates exact source passages. Saved reviews retain the original snapshot and context; refresh can change facts without changing the reviewed definition. Missing coverage and changed comparison basis remain visible.
 
-The [walkthrough](tool-exports.md) includes commands, expected results and the reuse check. Feedback sought: a synthetic mapping edge case, a definition the draft could not infer, or the first setup step that failed. If the workflow fits a recurring question across your tools, describe the inputs and required business rule in an issue without sharing private data.
+Two contrasting synthetic stacks exercise the same interface. The [acceptance contract](customer-360-goal.md) distinguishes real extractor execution, scripted browser orchestration, actual inference and authorized vendor validation. A connector catalog entry alone does not pass any live-integration gate.
+
+Feedback sought: a synthetic identity edge case, a business definition that needed correction, or the first source/setup step that failed. Keep customer data and credentials out of issues.
 
 ## Ninety-second demo talk track
 
-Use the [generic export walkthrough](tool-exports.md). Keep “Synthetic data · deterministic execution” visible throughout. Record actual commands and outputs; if edited for time, label the cuts. The command reference remains the walkthrough, so the recording does not become a second, drifting setup guide.
+Use the [application walkthrough](quickstart.md). Keep “Synthetic data” visible. For an authored definition demo, say so. Include model bootstrap/questions only when an actual consented model run is recorded and its claims have been independently checked. If edited for time, label the cuts.
 
 | Time | Show | Say |
 | --- | --- | --- |
-| 0–15 seconds | The recurring question and three small input schemas | “Which active customers have unused seats? The CRM and product tool use different IDs, so the mapping is part of the answer.” |
-| 15–35 seconds | Imported tables, draft context and mapping checks | “Oriel brings these exports into DuckDB. The draft surfaces possible keys and joins. We review the mapping and business rules before relying on them.” |
-| 35–55 seconds | Reviewed SQL, approval version and the result of 51 seats across five organizations | “This example counts distinct members who published a report in a declared window, with explicit exclusions. The result comes from this executable definition.” |
-| 55–75 seconds | Refreshed inputs and the result of 8 seats at one organization | “The data changed. The approved definition stayed the same, and the result changed with it.” |
-| 75–90 seconds | Exported bundle and separate-consumer result | “Another consumer can inspect and run the retained definition. Start with this recipe, then bring your own authorized tool exports.” |
-
-The recorded reuse check is a separate program executing exported definitions. Do not narrate it as a second model discovering the right metric. A live agent segment needs its own verified client setup, explicit model-data consent and visible tool trace.
+| 0–15 seconds | A customer brief and one amount/source passage | “What is happening with this customer, and what evidence should I inspect?” |
+| 15–35 seconds | Sources, customer links and mapping review | “These sources reach DuckDB through an existing extractor. Customer identity is explicit, and ambiguous links stay unresolved.” |
+| 35–55 seconds | Definition filters, units, approval and evidence | “The amount uses this reviewed rule. The passage comes from this attributed record. Missing source capabilities stay visible.” |
+| 55–75 seconds | Saved brief, refreshed facts and comparison | “The source facts changed. The definition remains the same. Any changed identity or mapping basis is shown separately.” |
+| 75–90 seconds | The second source profile in the same interface | “Use your existing customer stack. Start with the sample, then connect an authorized source and prepare your next review.” |
 
 ## Issue feedback CTA
 
-**Try one recurring question across your tools, then open an issue in this repository.** Include:
-
-- The question, source types and whether you used exports or an adapter.
-- The setup stage, command shape, runtime versions and sanitized error or result shape.
-- What you expected, what happened and which business rule needed review.
-- A minimal synthetic fixture if it helps reproduce the problem.
-
-Do not attach credentials, source rows, customer identifiers or a private context bundle. A reusable fixture or clear failure report is more useful than a connector-name request alone.
+**Try one customer review, then report the first point of friction.** Include the intended question, source categories, setup stage, expected behavior, needed business decision and a minimal synthetic reproduction. Do not upload customer exports, private context or credentials.
 
 ## Claims guide
 
-“Supported wording” below means supported by the repository's current functional evidence, not approval to publish.
-
-| Supported wording | Unsupported claim to omit |
+| Supported wording | Omit unless separately demonstrated |
 | --- | --- |
-| “Talk to data across existing tools through supported exports and configured adapters.” | “Connect any tool instantly” or “101 verified live connectors.” |
-| “Local DuckDB analysis, with CLI and read-only MCP access.” | “All data stays local” when an agent or configured model receives tool results. |
-| “Draft context, review business definitions, and reuse approved versions.” | “Automatically understands or certifies your business metrics.” |
-| “Synthetic file, SQLite and selected loopback API workflows have functional verification.” | Authenticated SaaS compatibility or customer success not demonstrated by those checks. |
-| “Export an inspectable context and metric bundle for a receiving workflow.” | Managed registry deployment, access control or automatic team distribution. |
-| “Reviewed changes affect the local workspace.” | Source-system writeback or autonomous production changes. |
-| “Comparative evaluations are deferred.” | Better-than-MCP, accuracy lift, cost savings, speed multipliers or equivalent performance claims. |
+| Customer 360 for supported customer sources, with reviewed context | Any tool connects instantly; all catalog entries are verified live integrations |
+| Source output is staged in DuckDB before customer context and answers | All data stays local when a configured model receives evidence |
+| Identity, mappings and definitions have explicit review | Automatic certification of business meaning or authenticated organizational governance |
+| Actual browser workflows with a labeled scripted transport | Scripted responses presented as model reasoning |
+| Grounded metric results and exact source passages | Arbitrary narrative synthesis, churn predictions or autonomous customer actions |
+| Local structural context export | Managed registry deployment, team permissions or automatic distribution |
+| Comparative studies remain deferred | Better-than-MCP claims, cost savings, accuracy lift or speed multipliers |
 
-Keep the [connector limits](connectors.md), [build evidence](build-status.md) and [evidence policy](gtm.md#scorecard-and-evidence-policy) near the technical details. Lead the launch with the useful workflow and the artifact a user can keep.
+Use the [build evidence](build-status.md), [connector limits](connectors.md) and [evidence policy](gtm.md#scorecard-and-evidence-policy) as the factual scope references. Lead with the customer job and make the next step runnable.

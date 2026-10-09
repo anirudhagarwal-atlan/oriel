@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "oriel"
 version = "0.1.0"
-description = "Talk to data across the tools you already use. Turn answers into reusable agent context."
+description = "A Customer 360 agent for the tools you already use, powered by local DuckDB and reviewed context."
 readme = "README.md"
 requires-python = ">=3.10,<3.15"
 license = "MIT"
@@ -32,7 +32,7 @@ contextbase = "contextbase.cli:main"
 include = ["contextbase*"]
 
 [tool.setuptools.package-data]
-contextbase = ["data/*.json", "connectors/*.json", "connectors/**/*.json", "connectors/**/*.yaml", "connectors/**/*.yml", "connectors/**/*.txt", "connectors/**/*.md", "connectors/**/LICENSE", "connectors/**/NOTICE"]
+contextbase = ["data/*.json", "customer360/web/*.html", "customer360/web/*.css", "customer360/web/*.js", "customer360/sample_data/**/*.json", "customer360/sample_data/*.json", "connectors/*.json", "connectors/**/*.json", "connectors/**/*.yaml", "connectors/**/*.yml", "connectors/**/*.txt", "connectors/**/*.md", "connectors/**/LICENSE", "connectors/**/NOTICE"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

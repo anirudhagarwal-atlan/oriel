@@ -1,0 +1,97 @@
+[
+  {
+    "companies": {
+      "data": [
+        {
+          "id": "ic_company_a",
+          "type": "company"
+        }
+      ],
+      "type": "list"
+    },
+    "email": "a1@shared.example.invalid",
+    "external_id": "person_external_a1",
+    "id": "ic_contact_a1",
+    "role": "user",
+    "type": "contact"
+  },
+  {
+    "companies": {
+      "data": [
+        {
+          "id": "ic_company_a",
+          "type": "company"
+        }
+      ],
+      "type": "list"
+    },
+    "email": "a2@shared.example.invalid",
+    "external_id": "person_external_a2",
+    "id": "ic_contact_a2",
+    "role": "user",
+    "type": "contact"
+  },
+  {
+    "companies": {
+      "data": [
+        {
+          "id": "ic_company_b",
+          "type": "company"
+        }
+      ],
+      "type": "list"
+    },
+    "email": "b1@shared.example.invalid",
+    "external_id": "person_external_b1",
+    "id": "ic_contact_b1",
+    "role": "user",
+    "type": "contact"
+  },
+  {
+    "companies": {
+      "data": [
+        {
+          "id": "ic_company_a",
+          "type": "company"
+        },
+        {
+          "id": "ic_company_b",
+          "type": "company"
+        }
+      ],
+      "type": "list"
+    },
+    "email": "shared@shared.example.invalid",
+    "external_id": "person_external_shared",
+    "id": "ic_contact_shared",
+    "role": "user",
+    "type": "contact"
+  },
+  {
+    "companies": {
+      "data": [
+        {
+          "id": "ic_company_unknown",
+          "type": "company"
+        }
+      ],
+      "type": "list"
+    },
+    "email": "unmapped@shared.example.invalid",
+    "external_id": "person_external_unmapped",
+    "id": "ic_contact_unmapped",
+    "role": "user",
+    "type": "contact"
+  },
+  {
+    "companies": {
+      "data": [],
+      "type": "list"
+    },
+    "email": "manual@shared.example.invalid",
+    "external_id": "person_external_manual",
+    "id": "ic_contact_manual",
+    "role": "user",
+    "type": "contact"
+  }
+]

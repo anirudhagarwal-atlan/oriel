@@ -1,0 +1,30 @@
+[
+  {
+    "AccountId": "001SYN000000000001",
+    "Email": "person1@shared.example.invalid",
+    "FirstName": "Example",
+    "Id": "003SYN000000000001",
+    "LastName": "Person 1"
+  },
+  {
+    "AccountId": "001SYN000000000001",
+    "Email": "person2@shared.example.invalid",
+    "FirstName": "Example",
+    "Id": "003SYN000000000002",
+    "LastName": "Person 2"
+  },
+  {
+    "AccountId": "001SYN000000000002",
+    "Email": "person3@shared.example.invalid",
+    "FirstName": "Example",
+    "Id": "003SYN000000000003",
+    "LastName": "Person 3"
+  },
+  {
+    "AccountId": "001SYN000000000003",
+    "Email": "person4@shared.example.invalid",
+    "FirstName": "Example",
+    "Id": "003SYN000000000004",
+    "LastName": "Person 4"
+  }
+]

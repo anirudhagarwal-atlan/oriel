@@ -43,6 +43,7 @@ def _paginate(
     cursor_path: str | None,
     *,
     max_pages: int = MAX_PAGES,
+    http_session: Any = None,
 ) -> Iterable[dict]:
     """Read complete Relay pages, failing closed on malformed continuation."""
     if type(max_pages) is not int or not 1 <= max_pages <= MAX_PAGES:
@@ -58,7 +59,7 @@ def _paginate(
         request_variables = dict(variables)
         if cursor is not None:
             request_variables["cursor"] = cursor
-        body = _request(endpoint, headers, query, request_variables)
+        body = _request(endpoint, headers, query, request_variables, http_session=http_session)
         nodes = _traverse(body, data_path)
         if nodes is None:
             raise RuntimeError("GraphQL source omitted the declared data path.")
@@ -85,11 +86,11 @@ def _paginate(
         cursor = next_cursor
 
 
-def _request(endpoint, headers, query, variables):
+def _request(endpoint, headers, query, variables, *, http_session=None):
     operation = re.sub(r"(?m)^\s*#.*$", "", query).lstrip()
     if not (operation.startswith("{") or re.match(r"query(?:\s|\(|\{)", operation)):
         raise ValueError("Only a declared GraphQL query can be extracted.")
-    response = requests.post(endpoint, json={"query": query, "variables": variables},
+    response = (http_session or requests).post(endpoint, json={"query": query, "variables": variables},
                              headers=headers, timeout=60, allow_redirects=False, stream=True)
     try:
         if not 200 <= response.status_code < 300:
@@ -135,7 +136,7 @@ def _unique_records(nodes, seen):
         seen.add(str(identity))
 
 
-def _paginate_pages(endpoint, headers, query, variables, data_path, *, budget=None):
+def _paginate_pages(endpoint, headers, query, variables, data_path, *, budget=None, http_session=None):
     if "page" in variables or "cursor" in variables:
         raise ValueError("GraphQL pagination owns its page and cursor variables.")
     limit = _page_limit(query, data_path)
@@ -143,7 +144,7 @@ def _paginate_pages(endpoint, headers, query, variables, data_path, *, budget=No
     page = 1
     seen = set()
     while True:
-        body = _bounded_request(endpoint, headers, query, {**variables, "page": page}, remaining)
+        body = _bounded_request(endpoint, headers, query, {**variables, "page": page}, remaining, http_session=http_session)
         nodes = _traverse(body, data_path)
         _records(nodes, limit)
         _unique_records(nodes, seen)
@@ -155,11 +156,11 @@ def _paginate_pages(endpoint, headers, query, variables, data_path, *, budget=No
         page += 1
 
 
-def _bounded_request(endpoint, headers, query, variables, remaining):
+def _bounded_request(endpoint, headers, query, variables, remaining, *, http_session=None):
     if remaining[0] <= 0:
         raise RuntimeError("GraphQL pagination exceeded the completeness bound.")
     remaining[0] -= 1
-    return _request(endpoint, headers, query, variables)
+    return _request(endpoint, headers, query, variables, http_session=http_session)
 
 
 def _item_projection(query):
@@ -180,7 +181,7 @@ def _item_projection(query):
     raise ValueError("Board item projection is not supported.")
 
 
-def _paginate_board_items(endpoint, headers, query, variables, data_path):
+def _paginate_board_items(endpoint, headers, query, variables, data_path, *, http_session=None):
     """Flatten initial board items and consume every per-board next_items_page."""
     if data_path != "data.boards":
         raise ValueError("Board items require the declared board data path.")
@@ -193,7 +194,7 @@ def _paginate_board_items(endpoint, headers, query, variables, data_path):
                 + ", cursor: $cursor) { cursor items {" + projection + "} } }")
     remaining = [MAX_PAGES]
     seen_items = set()
-    for board in _paginate_pages(endpoint, headers, query, variables, data_path, budget=remaining):
+    for board in _paginate_pages(endpoint, headers, query, variables, data_path, budget=remaining, http_session=http_session):
         page = board.get("items_page")
         cursors = set()
         while True:
@@ -214,7 +215,7 @@ def _paginate_board_items(endpoint, headers, query, variables, data_path):
             yield from nodes
             if cursor is None:
                 break
-            body = _bounded_request(endpoint, headers, followup, {"cursor": cursor}, remaining)
+            body = _bounded_request(endpoint, headers, followup, {"cursor": cursor}, remaining, http_session=http_session)
             page = _traverse(body, "data.next_items_page")
 
 
@@ -227,6 +228,7 @@ def _make_resource(
     cursor_path: str | None,
     variables: dict[str, Any],
     primary_key: str,
+    http_session: Any = None,
 ) -> DltResource:
     """Build a dlt resource for a single GraphQL query."""
 
@@ -235,9 +237,9 @@ def _make_resource(
             if cursor_path:
                 raise ValueError("A resource cannot mix Relay and page pagination.")
             paginate = _paginate_board_items if name == "items" and "items_page" in query else _paginate_pages
-            yield from paginate(endpoint, headers, query, variables, data_path)
+            yield from paginate(endpoint, headers, query, variables, data_path, http_session=http_session)
             return
-        yield from _paginate(endpoint, headers, query, variables, data_path, cursor_path)
+        yield from _paginate(endpoint, headers, query, variables, data_path, cursor_path, http_session=http_session)
 
     return dlt.resource(
         _fetch,
@@ -255,6 +257,7 @@ def graphql_source(
     auth_prefix: str = "Bearer ",
     api_key: str | None = None,
     access_token: str | None = None,
+    http_session: Any = None,
 ) -> Iterable[DltResource]:
     """Generic GraphQL dlt source.
 
@@ -288,4 +291,5 @@ def graphql_source(
             cursor_path=res_cfg.get("cursor_path"),
             variables=dict(res_cfg.get("variables", {})),
             primary_key=res_cfg.get("primary_key", "id"),
+            http_session=http_session,
         )

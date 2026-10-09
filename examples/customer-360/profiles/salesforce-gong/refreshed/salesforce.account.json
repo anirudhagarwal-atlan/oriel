@@ -1,0 +1,30 @@
+[
+  {
+    "Id": "001SYN000000000009",
+    "LastModifiedDate": "2026-01-12T09:00:00Z",
+    "Name": "Example Shared",
+    "OwnerId": "005SYN000000000001",
+    "Website": "https://shared.example.invalid"
+  },
+  {
+    "Id": "001SYN000000000002",
+    "LastModifiedDate": "2026-01-05T09:00:00Z",
+    "Name": "Example Shared",
+    "OwnerId": "005SYN000000000001",
+    "Website": "https://shared.example.invalid"
+  },
+  {
+    "Id": "001SYN000000000003",
+    "LastModifiedDate": "2026-01-05T09:00:00Z",
+    "Name": "Example C",
+    "OwnerId": "005SYN000000000001",
+    "Website": "https://c.example.invalid"
+  },
+  {
+    "Id": "001SYN000000000004",
+    "LastModifiedDate": "2026-01-05T09:00:00Z",
+    "Name": "Example D",
+    "OwnerId": "005SYN000000000001",
+    "Website": "https://d.example.invalid"
+  }
+]

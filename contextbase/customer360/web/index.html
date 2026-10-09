@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Oriel · Customer workspace</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to workspace</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Workspace navigation">
+      <a class="brand" href="#sources" aria-label="Oriel home"><span class="brand-mark" aria-hidden="true">o</span> oriel<span class="local-label">LOCAL</span></a>
+      <div class="workspace-label">Customer workspace</div>
+      <nav class="navigation" aria-label="Steps">
+        <button type="button" class="nav-item active" data-view="sources" aria-current="page"><span class="nav-number">01</span><span>Sources<small>Connect &amp; refresh</small></span><span id="source-count" class="nav-count">0</span></button>
+        <button type="button" class="nav-item" data-view="review"><span class="nav-number">02</span><span>Review<small>Identity &amp; definitions</small></span><span id="review-count" class="nav-count">0</span></button>
+        <button type="button" class="nav-item" data-view="customers"><span class="nav-number">03</span><span>Customers<small>Briefs &amp; evidence</small></span><span id="customer-count" class="nav-count">0</span></button>
+      </nav>
+      <div class="sidebar-note"><strong>Your tools. One customer view.</strong><p>Data lands in local DuckDB. You decide which identities and business definitions to trust.</p></div>
+      <div class="sidebar-bottom"><span class="local-indicator" aria-hidden="true"></span><span>Local workspace</span><button id="reload-state" class="icon-button" type="button" aria-label="Reload workspace status" title="Reload status">↻</button></div>
+    </aside>
+    <div class="content-shell">
+      <header class="topbar"><div class="breadcrumb">Workspace <span aria-hidden="true">/</span> <strong id="breadcrumb-current">Sources</strong></div><div id="session-status" class="quiet">Connecting…</div></header>
+      <main id="main" tabindex="-1">
+        <div id="global-error" class="notice error" role="alert" hidden></div>
+        <div id="job-status" class="job-bar" role="status" aria-live="polite" hidden><span class="job-indicator" aria-hidden="true"></span><div><strong id="job-title"></strong><span id="job-detail"></span></div><button id="check-job" class="button small secondary" type="button" hidden>Check job status</button></div>
+        <section id="view-sources" class="view" aria-labelledby="sources-title">
+          <div class="page-heading"><div><p class="eyebrow">The starting point</p><h1 id="sources-title">Bring your customer story together.</h1><p class="lede">Connect the tools you already use, then review what the data means.</p></div><span class="badge neutral">Private local workspace</span></div>
+          <div class="sample-panel">
+            <div class="sample-intro"><span class="badge">Start with a sample</span><h2>A complete review, with no keys.</h2><p>Try real local extraction with synthetic customer records. Keep every identity, mapping, and definition approval in your hands.</p><p class="caption">SQLite connector · Synthetic data · No vendor or model calls</p></div>
+            <form id="sample-form" class="sample-options">
+              <label class="choice"><input type="radio" name="sample-profile" value="billing-support" checked><span><strong>Billing + support</strong><small>Invoices, support threads, and a changed account story. No CRM or transcripts required.</small></span></label>
+              <label class="choice"><input type="radio" name="sample-profile" value="salesforce-gong"><span><strong>CRM + conversations</strong><small>Salesforce- and Gong-shaped records, extracted from local SQLite fixtures.</small></span></label>
+              <div class="actions"><button id="connect-sample" class="button" type="submit">Connect sample data <span aria-hidden="true">↗</span></button><span id="sample-status" class="caption"></span></div>
+            </form>
+          </div>
+          <div class="section-heading"><div><h2>Your sources</h2><p class="quiet">Only committed extractions become evidence.</p></div><button id="toggle-connect" class="button secondary" type="button" aria-expanded="false" aria-controls="connect-panel">+ Connect a tool</button></div>
+          <div id="sources-list" class="source-list"><div class="skeleton" aria-label="Loading sources"></div></div>
+          <details class="advanced"><summary>API sync limits</summary>
+            <label class="check"><input id="sync-budget-enabled" type="checkbox">Set limits for source Sync buttons in this session</label>
+            <div class="form-grid"><label>Maximum HTTP attempts<input id="sync-max-requests" type="number" min="1" max="100000" step="1" value="100" required></label><label>Request deadline (seconds)<input id="sync-request-seconds" type="number" min="1" max="300" step="1" value="120" required></label></div>
+            <p class="caption">Available for REST and GraphQL connectors. Each sync shares its limit across all resources and nested pages, including failed attempts. Reaching a limit stops publication and retains the previous data. Sample and profile refresh actions use their own existing settings.</p>
+          </details>
+          <section id="connect-panel" class="panel" hidden aria-labelledby="connect-title">
+            <div class="section-heading"><div><h3 id="connect-title">Connect your own tool</h3><p class="quiet">Credentials stay in the server environment. Enter variable names, never secret values.</p></div><button id="close-connect" class="icon-button" type="button" aria-label="Close connector form">×</button></div>
+            <form id="source-form">
+              <div class="form-grid"><label>Tool<select id="source-type" required><option value="">Choose a connector</option></select></label><label>Connection name<input id="source-name" required pattern="[a-z][a-z0-9_]*" placeholder="customer_billing" autocomplete="off"><small>Lowercase letters, digits, and underscores.</small></label></div>
+              <div id="connector-detail" class="quiet">Choose a tool to see its requirements.</div>
+              <div id="credential-fields" class="form-grid"></div>
+              <label id="path-field" hidden>Local file path<input id="source-path" placeholder="/absolute/path/customer-export.csv" autocomplete="off"><small>The file is read on this computer. It is not uploaded through the browser.</small></label>
+              <fieldset id="resource-fieldset" hidden><legend>Resources to extract</legend><div id="resource-options" class="resource-grid"></div></fieldset>
+              <div id="resource-plan" class="quiet" aria-live="polite"></div>
+              <div id="parameter-fields" class="form-grid"></div>
+              <details class="advanced"><summary>Advanced connector parameters</summary><label>Additional parameters as JSON<textarea id="source-params" rows="4" spellcheck="false" placeholder="{}"></textarea><small>Only connector-declared parameters are accepted. Do not put credentials here.</small></label></details>
+              <div class="actions"><button id="add-source" class="button" type="submit">Save connection</button><span class="caption">Extraction is a separate action.</span></div>
+            </form>
+          </section>
+          <div class="source-footer"><div><strong>Ready to review?</strong><p class="quiet">Choose the committed sources that belong in this customer view.</p></div><button id="capture-snapshot" type="button" class="button secondary">Capture selected sources</button></div>
+          <div id="snapshot-summary" class="notice" hidden></div>
+        </section>
+
+        <section id="view-review" class="view" hidden aria-labelledby="review-title">
+          <div class="page-heading"><div><p class="eyebrow">Make the meaning explicit</p><h1 id="review-title">A customer view you can stand behind.</h1><p class="lede">Review who is who, map the observed fields, then approve the definitions used in answers.</p></div></div>
+          <div class="review-toolbar"><label>Reviewer name<input id="reviewer" placeholder="Your name" autocomplete="name" required></label><label>Customer profile<select id="profile-select"><option value="customer_review">customer_review</option></select></label><div class="scope-label"><span class="caption">Selected snapshot</span><code id="snapshot-label">Not captured yet</code></div></div>
+          <div class="actions"><button id="prepare-sample" class="button secondary" type="button" hidden>Prepare sample review</button></div>
+          <div id="review-empty" class="empty-state"><span class="empty-glyph" aria-hidden="true">↗</span><h2>Start with committed data.</h2><p>Connect a sample or capture your own sources to prepare a review.</p><button class="button secondary" type="button" data-go="sources">Go to sources</button></div>
+          <div id="review-workspace" hidden>
+            <div class="review-tabs" role="tablist" aria-label="Review stages"><button id="tab-identity" role="tab" aria-selected="true" aria-controls="review-identity" type="button" data-review="identity">1 · Identity</button><button id="tab-mapping" role="tab" aria-selected="false" aria-controls="review-mapping" tabindex="-1" type="button" data-review="mapping">2 · Field mapping</button><button id="tab-context" role="tab" aria-selected="false" aria-controls="review-context" tabindex="-1" type="button" data-review="context">3 · Definitions</button></div>
+            <section id="review-identity" role="tabpanel" aria-labelledby="tab-identity">
+              <div class="section-heading"><div><h2>Keep the right records together.</h2><p class="quiet">Names and domains are clues, not identity. Approve explicit source references.</p></div></div>
+              <div id="identity-proposals"></div>
+              <details class="panel"><summary>Build identity links for your own sources</summary><div class="subsection"><h3>Create a customer</h3><form id="customer-form" class="inline-form"><label>Customer label<input id="customer-label" required placeholder="Customer display name" maxlength="200"></label><button class="button secondary" type="submit">Create customer</button></form></div>
+                <form id="link-form" class="subsection"><h3>Propose one explicit link</h3><div class="form-grid"><label>Connection<select id="link-connection" required></select></label><label>Entity<input id="link-entity" required placeholder="accounts" pattern="[a-z][a-z0-9_]*"></label><label>Source record ID<input id="link-source-id" required placeholder="Exact source ID"></label><label>Customer<select id="link-customer" required></select></label></div><label>Why do these records belong together?<textarea id="link-basis" rows="2" required placeholder="An explicit account reference in the source record"></textarea></label><button class="button secondary" type="submit">Propose link</button></form>
+              </details>
+              <div class="stage-footer"><p class="quiet">Conflicting links stay unresolved and are excluded from customer answers.</p><button type="button" class="button secondary" data-review-go="mapping">Continue to field mapping →</button></div>
+            </section>
+            <section id="review-mapping" role="tabpanel" aria-labelledby="tab-mapping" hidden>
+              <div class="section-heading"><div><h2>Map observed fields to business roles.</h2><p class="quiet">The same customer model can work with different tools and field names.</p></div><button id="inspect-sources" type="button" class="button secondary">Inspect source fields</button></div>
+              <div id="inspection-summary"></div>
+              <div id="mapping-proposals"></div>
+              <div id="sample-mapping" class="panel" hidden></div>
+              <details class="panel" id="mapping-builder"><summary>Build a mapping from observed source fields</summary>
+                <form id="mapping-form"><div class="form-grid"><label>Profile name<input id="mapping-name" value="customer_review" required pattern="[a-z][a-z0-9_]*"></label><label>Description<input id="mapping-description" placeholder="Customer billing and support review" required></label></div>
+                  <p class="hint">Inspect your sources first. Each binding chooses a table, its record ID, a reviewed customer reference, and the fields to expose.</p><div id="binding-list"></div><button id="add-binding" class="button text-button" type="button">+ Add table binding</button><div class="actions"><button class="button" type="submit">Propose field mapping</button></div>
+                </form>
+              </details>
+              <div class="stage-footer"><div><strong>Build the customer view</strong><p class="quiet">Materialization applies the approved mapping to this exact snapshot.</p></div><button id="materialize" class="button" type="button">Materialize approved mapping</button></div><div id="materialization-status" class="notice" hidden></div>
+              <div class="stage-footer"><span></span><button type="button" class="button secondary" data-review-go="context">Continue to definitions →</button></div>
+            </section>
+            <section id="review-context" role="tabpanel" aria-labelledby="tab-context" hidden>
+              <div class="section-heading"><div><h2>Agree on the meaning before asking.</h2><p class="quiet">Definitions are proposals until you review and approve them.</p></div><button id="show-context" class="button secondary" type="button">Show approved context</button></div>
+              <div class="context-paths"><div class="panel"><h3>Let a context agent propose.</h3><p>The configured model reviews bounded source evidence and proposes metrics and gaps. It cannot approve them.</p><label for="bootstrap-intent">Task request (optional)<input id="bootstrap-intent" type="text" maxlength="10000" placeholder="Which billing and support definitions would help prepare a customer review?"><small>This guides the proposal, not policy or approval. Limit: 10,000 encoded JSON bytes; Unicode and escaped characters use more space.</small></label><button id="bootstrap-context" class="button" type="button">Propose with model</button><p class="caption">Uses the explicit consent and budget below.</p></div><div class="panel"><h3>Start with authored definitions.</h3><p>Review the sample’s transparent business rules, or compose your own from mapped fields.</p><button id="sample-context" class="button secondary" type="button">Propose sample definitions</button><button id="toggle-definition" class="button text-button" type="button" aria-expanded="false" aria-controls="definition-builder">Write a definition</button></div></div>
+              <div id="model-settings" class="model-settings"><div><h3>Model permission</h3><p id="model-origin" class="caption">Configured model</p></div><label class="check-label"><input id="model-consent" type="checkbox"><span>I allow selected customer schema, context, and evidence to be sent to the configured model.</span></label><div class="compact-fields"><label>Budget per run (USD)<input id="model-budget" type="number" min="0.01" step="0.01" value="1.00"></label><label>Maximum turns<input id="model-turns" type="number" min="1" max="6" step="1" value="6"></label></div></div>
+              <form id="definition-builder" class="panel" hidden><h3>Add a business definition</h3><div class="form-grid"><label>Definition name<input id="definition-name" required pattern="[a-z][a-z0-9_]*" placeholder="open_tickets"></label><label>Description<input id="definition-description" required placeholder="Unresolved support records"></label><label>Record kind<select id="definition-kind"><option>support</option><option>billing</option><option>commercial</option><option>usage</option><option>customer</option><option>person</option><option>conversation</option></select></label><label>Calculation<select id="definition-operation"><option value="count">Count records</option><option value="sum">Sum a numeric field</option></select></label><label>Logical field<input id="definition-field" placeholder="amount_minor"></label><label>Unit<select id="definition-unit"><option value="records">Records</option><option value="number">Number</option><option value="currency">Currency</option><option value="minor_currency">Minor currency units</option></select></label><label>Currency field<input id="definition-currency" placeholder="currency"></label></div><div class="form-grid"><label>Optional filter field<input id="filter-field" placeholder="status"></label><label>Equals<input id="filter-value" placeholder="open"></label><label>Filter value type<select id="filter-type"><option value="string">Text</option><option value="number">Number</option><option value="boolean">Boolean (true / false)</option></select></label></div><p class="hint">Fields are logical roles from the reviewed mapping. Add each definition to a draft, then propose the full set.</p><button class="button secondary" type="submit">Add to definition draft</button><div id="definition-draft"></div><button id="propose-definitions" class="button" type="button">Propose draft definitions</button></form>
+              <div id="context-proposals"></div><div id="approved-context"></div><div class="stage-footer"><p class="quiet">Answers use only approved definitions and exact attributed source passages.</p><button class="button" type="button" data-go="customers">Open customers →</button></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-customers" class="view" hidden aria-labelledby="customers-title">
+          <div class="page-heading"><div><p class="eyebrow">Know the account, show the evidence</p><h1 id="customers-title">Your customer review.</h1><p class="lede">Exact metrics, attributed passages, and a clear view of what is missing.</p></div><button id="refresh-sample" class="button secondary" type="button">Load sample refresh</button></div>
+          <div class="customer-layout"><aside class="customer-directory" aria-label="Customer selection"><label class="search-label">Find a customer<input id="customer-search" type="search" placeholder="Search customers"></label><div id="customer-list"></div></aside><div class="customer-content"><div id="customer-header" class="customer-header"><div><h2>Select a customer</h2><p class="quiet">Approved customer identities appear on the left.</p></div></div><div class="customer-actions"><button id="load-brief" class="button" type="button">Open current brief</button><button id="save-review" class="button secondary" type="button">Save brief</button><button id="list-reviews" class="button text-button" type="button">Saved reviews</button></div><div id="answer-panel" class="empty-state compact"><h3>The evidence comes first.</h3><p>Choose a customer and open a brief from the current reviewed snapshot.</p></div>
+              <form id="ask-form" class="ask-panel"><label for="question">Ask about this customer</label><textarea id="question" required rows="2" maxlength="10000" placeholder="What changed in their billing and support situation?"></textarea><div class="actions"><button class="button" type="submit">Ask with evidence <span aria-hidden="true">↗</span></button><button id="ask-settings" class="button text-button" type="button">Review model permission &amp; budget</button></div><p id="ask-consent-status" class="caption">Model permission is off. Your question will not be sent until you opt in.</p></form><div id="saved-reviews"></div><div id="comparison-panel"></div>
+          </div></div>
+        </section>
+      </main>
+      <footer class="page-footer"><span>Oriel · Customer context, on your terms.</span><span>Source freshness is checked again when you open an answer.</span></footer>
+    </div>
+  </div>
+  <dialog id="evidence-dialog" aria-labelledby="evidence-title"><div class="dialog-heading"><div><p class="eyebrow">Follow the fact</p><h2 id="evidence-title">Source evidence</h2></div><button id="close-evidence" class="icon-button" type="button" aria-label="Close evidence">×</button></div><div id="evidence-content"></div></dialog>
+  <noscript><p class="notice error">JavaScript is required for this local workspace. No source or model action runs without an explicit request.</p></noscript>
+</body>
+</html>

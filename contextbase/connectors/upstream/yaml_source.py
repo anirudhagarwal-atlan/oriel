@@ -261,12 +261,14 @@ def _translate_config(config, credentials, resource_names=None, params=None):
     return result
 
 
-def _buffer_response(response, max_bytes):
+def _buffer_response(response, max_bytes, *, deadline_check=None):
     """Bound decoded bytes while reading, before requests eagerly buffers them."""
     chunks = []
     size = 0
     try:
         for chunk in response.iter_content(chunk_size=min(64 * 1024, max_bytes + 1)):
+            if deadline_check is not None:
+                deadline_check()
             if not chunk:
                 continue
             size += len(chunk)
@@ -489,11 +491,15 @@ def _runtime_paginator(config, endpoint):
     return BoundedPaginator()
 
 
-def build_dlt_source(source_name, credentials, resource_names=None, params=None):
+def build_dlt_source(source_name, credentials, resource_names=None, params=None, *, http_session=None):
     config = load_yaml_config(source_name)
     if config is None:
         raise ValueError("No packaged source configuration exists.")
     translated = _translate_config(config, credentials, resource_names, params)
+    if http_session is not None:
+        # One explicitly injected transport across all resources/dependencies.
+        # This is never a vendor parameter or a discovered ambient session.
+        translated["client"]["session"] = http_session
     for resource in translated["resources"]:
         endpoint = resource["endpoint"]
         response_format = endpoint.pop("response_format", "json")

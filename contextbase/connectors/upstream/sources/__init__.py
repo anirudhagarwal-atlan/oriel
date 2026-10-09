@@ -26,6 +26,7 @@ def get_source(
     extra_skip_tables: list[str] | None = None,
     params: dict[str, Any] | None = None,
     resource_config: Any = None,
+    http_session: Any = None,
 ) -> Any:
     """Return a dlt source for the given source type.
 
@@ -53,7 +54,8 @@ def get_source(
     yaml_config = load_yaml_config(source_type)
     if yaml_config and "client" in yaml_config:
         print(f"  Using YAML config: configs/{source_type}.yaml", file=sys.stderr)
-        return build_dlt_source(source_type, credentials, resource_names, params=params)
+        return build_dlt_source(source_type, credentials, resource_names, params=params,
+                                **({"http_session": http_session} if http_session is not None else {}))
 
     # 2. Fall back to registry (dlt verified sources / built-in sources)
     entry = get_source_entry(source_type)
@@ -61,6 +63,8 @@ def get_source(
         from contextbase.connectors.upstream.registry import list_available_sources
         available = ", ".join(list_available_sources())
         raise ValueError(f"Unknown source type: {source_type}. Available: {available}")
+    if http_session is not None and not entry.graphql_config:
+        raise ValueError("Request-budget transport supports only REST and GraphQL sources.")
 
     if entry.import_path == "dlt.sources.filesystem.filesystem":
         from contextbase.connectors.filesystem_adapter import build_filesystem_source
@@ -564,6 +568,8 @@ def get_source(
     # GraphQL connectors declare user-facing credential fields in YAML
     # (for example `api_key`), but the shared graphql_source expects `token`.
     if entry.graphql_config:
+        if http_session is not None:
+            kwargs["http_session"] = http_session
         if "token" not in kwargs:
             for key in ("token", "access_token", "api_key", "secret_key"):
                 value = kwargs.get(key) or credentials.get(key)

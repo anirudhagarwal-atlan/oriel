@@ -1,0 +1,62 @@
+{
+  "authenticated_vendor_calls": 0,
+  "evidence_kind": "authored_source_shaped_examples",
+  "model_calls": 0,
+  "native_connector_executed": false,
+  "profiles": {
+    "billing-support": {
+      "capabilities": {
+        "billing": true,
+        "crm": false,
+        "support": true,
+        "transcripts": false
+      },
+      "mapping_decisions": "profiles/billing-support/mapping-decisions.json",
+      "phases": {
+        "initial": {
+          "intercom.companies": "profiles/billing-support/initial/intercom.companies.json",
+          "intercom.contacts": "profiles/billing-support/initial/intercom.contacts.json",
+          "intercom.conversations": "profiles/billing-support/initial/intercom.conversations.json",
+          "stripe.customers": "profiles/billing-support/initial/stripe.customers.json",
+          "stripe.invoices": "profiles/billing-support/initial/stripe.invoices.json"
+        },
+        "refreshed": {
+          "intercom.companies": "profiles/billing-support/refreshed/intercom.companies.json",
+          "intercom.contacts": "profiles/billing-support/refreshed/intercom.contacts.json",
+          "intercom.conversations": "profiles/billing-support/refreshed/intercom.conversations.json",
+          "stripe.customers": "profiles/billing-support/refreshed/stripe.customers.json",
+          "stripe.invoices": "profiles/billing-support/refreshed/stripe.invoices.json"
+        }
+      }
+    },
+    "salesforce-gong": {
+      "capabilities": {
+        "billing": false,
+        "crm": true,
+        "support": false,
+        "transcripts": true
+      },
+      "mapping_decisions": "profiles/salesforce-gong/mapping-decisions.json",
+      "phases": {
+        "initial": {
+          "gong.call_transcripts": "profiles/salesforce-gong/initial/gong.call_transcripts.json",
+          "gong.extensive_calls": "profiles/salesforce-gong/initial/gong.extensive_calls.json",
+          "salesforce.account": "profiles/salesforce-gong/initial/salesforce.account.json",
+          "salesforce.contact": "profiles/salesforce-gong/initial/salesforce.contact.json",
+          "salesforce.opportunity": "profiles/salesforce-gong/initial/salesforce.opportunity.json",
+          "salesforce.sf_user": "profiles/salesforce-gong/initial/salesforce.sf_user.json"
+        },
+        "refreshed": {
+          "gong.call_transcripts": "profiles/salesforce-gong/refreshed/gong.call_transcripts.json",
+          "gong.extensive_calls": "profiles/salesforce-gong/refreshed/gong.extensive_calls.json",
+          "salesforce.account": "profiles/salesforce-gong/refreshed/salesforce.account.json",
+          "salesforce.contact": "profiles/salesforce-gong/refreshed/salesforce.contact.json",
+          "salesforce.opportunity": "profiles/salesforce-gong/refreshed/salesforce.opportunity.json",
+          "salesforce.sf_user": "profiles/salesforce-gong/refreshed/salesforce.sf_user.json"
+        }
+      }
+    }
+  },
+  "spec": "oriel.customer360.synthetic-fixtures/v1",
+  "synthetic": true
+}

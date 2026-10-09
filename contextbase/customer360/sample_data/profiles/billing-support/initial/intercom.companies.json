@@ -1,0 +1,30 @@
+[
+  {
+    "company_id": "org_external_a",
+    "custom_attributes": {
+      "billing_customer_id": "cus_synthetic_a"
+    },
+    "id": "ic_company_a",
+    "name": "Example Shared",
+    "type": "company",
+    "website": "https://shared.example.invalid"
+  },
+  {
+    "company_id": "org_external_b",
+    "custom_attributes": {
+      "billing_customer_id": "cus_synthetic_b"
+    },
+    "id": "ic_company_b",
+    "name": "Example Shared",
+    "type": "company",
+    "website": "https://shared.example.invalid"
+  },
+  {
+    "company_id": "org_unmapped",
+    "custom_attributes": {},
+    "id": "ic_company_unknown",
+    "name": "Example Shared",
+    "type": "company",
+    "website": "https://shared.example.invalid"
+  }
+]

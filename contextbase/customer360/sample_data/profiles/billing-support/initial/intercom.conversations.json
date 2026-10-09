@@ -1,0 +1,151 @@
+[
+  {
+    "contacts": {
+      "contacts": [
+        {
+          "id": "ic_contact_a1",
+          "type": "contact"
+        },
+        {
+          "id": "ic_contact_a2",
+          "type": "contact"
+        }
+      ],
+      "type": "contact.list"
+    },
+    "conversation_parts": {
+      "conversation_parts": [],
+      "type": "conversation_part.list"
+    },
+    "created_at": 1767693601,
+    "id": "ic_conversation_1",
+    "source": {
+      "author": {
+        "id": "ic_contact_a1",
+        "type": "contact"
+      },
+      "body": "Invoice export is failing for the billing team.",
+      "id": "ic_source_1",
+      "type": "email"
+    },
+    "state": "open",
+    "type": "conversation",
+    "updated_at": 1767693601
+  },
+  {
+    "contacts": {
+      "contacts": [
+        {
+          "id": "ic_contact_b1",
+          "type": "contact"
+        }
+      ],
+      "type": "contact.list"
+    },
+    "conversation_parts": {
+      "conversation_parts": [],
+      "type": "conversation_part.list"
+    },
+    "created_at": 1767693602,
+    "id": "ic_conversation_2",
+    "source": {
+      "author": {
+        "id": "ic_contact_b1",
+        "type": "contact"
+      },
+      "body": "The renewal invoice needs a purchase-order correction.",
+      "id": "ic_source_2",
+      "type": "email"
+    },
+    "state": "open",
+    "type": "conversation",
+    "updated_at": 1767693602
+  },
+  {
+    "contacts": {
+      "contacts": [
+        {
+          "id": "ic_contact_unmapped",
+          "type": "contact"
+        }
+      ],
+      "type": "contact.list"
+    },
+    "conversation_parts": {
+      "conversation_parts": [],
+      "type": "conversation_part.list"
+    },
+    "created_at": 1767693603,
+    "id": "ic_conversation_3",
+    "source": {
+      "author": {
+        "id": "ic_contact_unmapped",
+        "type": "contact"
+      },
+      "body": "This unmatched request must remain unattributed.",
+      "id": "ic_source_3",
+      "type": "email"
+    },
+    "state": "open",
+    "type": "conversation",
+    "updated_at": 1767693603
+  },
+  {
+    "contacts": {
+      "contacts": [
+        {
+          "id": "ic_contact_shared",
+          "type": "contact"
+        }
+      ],
+      "type": "contact.list"
+    },
+    "conversation_parts": {
+      "conversation_parts": [],
+      "type": "conversation_part.list"
+    },
+    "created_at": 1767693604,
+    "id": "ic_conversation_4",
+    "source": {
+      "author": {
+        "id": "ic_contact_shared",
+        "type": "contact"
+      },
+      "body": "This contact belongs to two companies; attribution is ambiguous.",
+      "id": "ic_source_4",
+      "type": "email"
+    },
+    "state": "open",
+    "type": "conversation",
+    "updated_at": 1767693604
+  },
+  {
+    "contacts": {
+      "contacts": [
+        {
+          "id": "ic_contact_manual",
+          "type": "contact"
+        }
+      ],
+      "type": "contact.list"
+    },
+    "conversation_parts": {
+      "conversation_parts": [],
+      "type": "conversation_part.list"
+    },
+    "created_at": 1767693605,
+    "id": "ic_conversation_5",
+    "source": {
+      "author": {
+        "id": "ic_contact_manual",
+        "type": "contact"
+      },
+      "body": "The billing address change is awaiting confirmation.",
+      "id": "ic_source_5",
+      "type": "email"
+    },
+    "state": "open",
+    "type": "conversation",
+    "updated_at": 1767693605
+  }
+]

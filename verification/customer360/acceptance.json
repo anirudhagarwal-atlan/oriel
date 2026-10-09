@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "goal_id": "customer360-v1",
+  "gates": [
+    {
+      "id": "source_pipeline",
+      "mode": "local",
+      "suite": "tests/customer360/test_source_pipeline.py",
+      "description": "Pinned off-the-shelf connector runtimes publish observed records into staged DuckDB before context generation. Controlled sources prove runtime integration, not vendor compatibility.",
+      "required_cases": [
+        "test_real_connector_runtime_extracts_both_profiles",
+        "test_pagination_nested_records_and_resource_bounds",
+        "test_partial_extraction_is_not_published",
+        "test_context_only_reads_committed_duckdb_snapshot",
+        "test_answer_path_works_with_vendor_network_unavailable"
+      ]
+    },
+    {
+      "id": "customer_identity",
+      "mode": "local",
+      "suite": "tests/customer360/test_customer_identity.py",
+      "description": "Workspace customer identity is independent of vendors; explicit links and reviewed mappings preserve grain and expose ambiguous or missing matches.",
+      "required_cases": [
+        "test_canonical_identity_is_not_a_vendor_primary_key",
+        "test_explicit_links_and_reviewed_mapping_resolve",
+        "test_duplicate_names_and_shared_domains_do_not_auto_merge",
+        "test_missing_and_conflicting_links_remain_unresolved",
+        "test_one_to_many_evidence_does_not_multiply_value",
+        "test_changed_source_identifier_preserves_reviewed_customer_identity"
+      ]
+    },
+    {
+      "id": "context_lifecycle",
+      "mode": "local",
+      "suite": "tests/customer360/test_context_lifecycle.py",
+      "description": "Context stages propose evidence-backed business meaning, record explicit review and support versioned reuse; deterministic orchestration tests do not substitute for actual model execution.",
+      "required_cases": [
+        "test_context_stages_derive_profile_appropriate_candidates",
+        "test_unreviewed_definitions_cannot_become_authoritative",
+        "test_conflicting_evidence_and_unknown_meaning_are_retained",
+        "test_approved_context_reused_in_fresh_process",
+        "test_definition_revision_invalidates_dependents",
+        "test_exported_pack_excludes_customer_rows_and_text"
+      ]
+    },
+    {
+      "id": "grounded_answers",
+      "mode": "local",
+      "suite": "tests/customer360/test_grounded_answers.py",
+      "description": "The answer boundary checks independent numeric and account-set oracles, cited evidence, uncertainty and exact snapshot/context identity.",
+      "required_cases": [
+        "test_numeric_results_match_independent_oracle",
+        "test_customer_sets_match_independent_oracle",
+        "test_factual_claims_resolve_to_supporting_evidence",
+        "test_fabricated_citation_and_unsupported_claim_are_rejected",
+        "test_missing_capability_yields_gap_or_abstention",
+        "test_answer_receipt_pins_snapshot_context_queries_and_evidence",
+        "test_latest_passage_matches_reviewed_source_time_across_profiles"
+      ]
+    },
+    {
+      "id": "refresh_and_history",
+      "mode": "local",
+      "suite": "tests/customer360/test_refresh_and_history.py",
+      "description": "Changed source facts update answers without changing reviewed meaning; failed refreshes, age, skew, schema drift and retractions are handled explicitly.",
+      "required_cases": [
+        "test_changed_event_updates_brief_and_preserves_definition",
+        "test_repeated_refresh_does_not_duplicate_evidence",
+        "test_failed_refresh_preserves_snapshot_and_exposes_staleness",
+        "test_current_question_refused_when_required_coverage_is_stale",
+        "test_schema_drift_invalidates_affected_context",
+        "test_deleted_or_retracted_evidence_updates_current_answer",
+        "test_changed_facts_compare_against_retained_review"
+      ]
+    },
+    {
+      "id": "source_portability",
+      "mode": "local",
+      "suite": "tests/customer360/test_source_portability.py",
+      "description": "CRM/conversation and billing/support-or-usage profiles use shared customer/context/answer contracts; the second has no CRM or transcripts. Source replacement changes adapters and mappings only.",
+      "required_cases": [
+        "test_materially_different_profiles_share_core_contracts",
+        "test_no_crm_or_transcripts_required_for_second_profile",
+        "test_single_source_then_enrichment_reports_coverage",
+        "test_source_replacement_preserves_customer_identity_and_context",
+        "test_core_answer_logic_has_no_required_vendor_branch"
+      ]
+    },
+    {
+      "id": "access_and_actions",
+      "mode": "local",
+      "suite": "tests/customer360/test_access_and_actions.py",
+      "description": "The initial local product isolates workspaces, respects evidence scope and model consent, and keeps answering read-only despite untrusted source instructions.",
+      "required_cases": [
+        "test_cross_workspace_evidence_access_is_rejected",
+        "test_source_prompt_injection_cannot_change_tool_authority",
+        "test_answering_cannot_write_to_vendor_or_local_source_tables",
+        "test_model_data_consent_and_retrieval_bounds_are_enforced",
+        "test_unauthorized_or_removed_evidence_is_unavailable"
+      ]
+    },
+    {
+      "id": "product_onboarding",
+      "mode": "local",
+      "suite": "tests/customer360/test_product_onboarding.py",
+      "description": "A clean install and actual application exercise connect, sync, review, brief, ask, evidence and refresh. Static screenshots and documentation alone cannot pass.",
+      "required_cases": [
+        "test_clean_checkout_documented_sample_workflow",
+        "test_interface_connect_review_ask_evidence_refresh",
+        "test_both_profiles_use_same_customer_interface",
+        "test_setup_failure_and_missing_capability_are_visible"
+      ]
+    },
+    {
+      "id": "configured_model_smoke",
+      "mode": "model",
+      "suite": "tests/customer360/test_configured_model_smoke.py",
+      "description": "A small explicitly enabled run uses the configured model for context and answering through the real product path, with independent expected facts, substantive citation checks, tool traces and bounded total spend.",
+      "required_cases": [
+        "test_real_model_bootstraps_and_answers_crm_conversation_profile",
+        "test_real_model_bootstraps_and_answers_non_crm_profile",
+        "test_real_model_refresh_answer_matches_changed_evidence",
+        "test_real_usage_and_all_stage_costs_respect_declared_budget"
+      ]
+    },
+    {
+      "id": "authorized_live_connectors",
+      "mode": "live",
+      "suite": "tests/customer360/test_authorized_live_connectors.py",
+      "description": "Separately authorized live runs reconcile selected source records and capabilities for the initial combination and an additional connector. Every advertised live integration has scope-specific evidence; no fixture is relabeled as live.",
+      "required_cases": [
+        "test_authorized_initial_source_combination_reconciles_to_vendor",
+        "test_additional_connector_works_through_existing_contract",
+        "test_each_advertised_live_integration_has_current_scoped_receipt",
+        "test_permissions_exclusions_and_freshness_are_recorded"
+      ]
+    }
+  ]
+}

@@ -21,6 +21,7 @@ import shutil
 import stat
 import sys
 import tempfile
+import threading
 
 
 MAX_REQUEST_BYTES = 128 * 1024
@@ -100,8 +101,14 @@ def _validate_request(request_path: Path, result_path: Path) -> dict:
     try:
         request = json.loads(_private_file(request_path), object_pairs_hook=_json_object,
                              parse_constant=lambda _: (_ for _ in ()).throw(WorkerError("invalid_request")))
-        if not isinstance(request, dict) or set(request) != _FIELDS:
+        if not isinstance(request, dict) or set(request) not in (_FIELDS, _FIELDS | {"request_budget"}):
             raise WorkerError("invalid_request")
+        if "request_budget" in request:
+            from .budget import validate_limits
+            request["request_budget"] = validate_limits(request["request_budget"])
+            from . import describe
+            if describe(request.get("source_type"))["execution_family"] not in {"dlt_rest", "dlt_graphql"}:
+                raise WorkerError("request_budget_unsupported")
         for key in ("source_type", "name"):
             if not isinstance(request[key], str) or not _IDENTIFIER.fullmatch(request[key]):
                 raise WorkerError("invalid_request")
@@ -295,11 +302,86 @@ def _as_source(dlt, source, source_type, resource_names):
     return source, selected
 
 
-def _extract(request: dict, credentials: dict) -> dict:
+def _budgeted_session(budget, *, max_response_bytes=None):
+    """One shared transport; no hidden urllib3 retries or automatic redirects.
+
+    Counting occurs after request preparation and immediately before the sole
+    transport attempt. Explicit subsequent attempts would reserve again. Static
+    supported auth makes no separate token-fetch requests. dlt copies source
+    config, so deepcopy must retain this same counter and deadline.
+    """
+    import requests
+    from .upstream.yaml_source import _buffer_response, MAX_RESPONSE_BYTES
+    response_limit = MAX_RESPONSE_BYTES if max_response_bytes is None else max_response_bytes
+
+    class BudgetSession(requests.Session):
+        def __init__(self):
+            super().__init__()
+            self.trust_env = False
+            self._send_lock = threading.RLock()
+            self.mount("http://", requests.adapters.HTTPAdapter(max_retries=0))
+            self.mount("https://", requests.adapters.HTTPAdapter(max_retries=0))
+
+        def __deepcopy__(self, memo):
+            return self
+
+        def send(self, prepared, **kwargs):
+            with self._send_lock:
+                reservation = budget.reserve_request()
+                request_id = reservation["request_id"]
+                try:
+                    def buffer_body(response, *args, **options):
+                        # Keep the durable reservation pending through body
+                        # consumption even when GraphQL requests stream=True.
+                        # Parent hard termination covers a blocked next chunk.
+                        _buffer_response(response, response_limit, deadline_check=budget.remaining_seconds)
+                        budget.remaining_seconds()
+                        return response
+
+                    prepared.hooks["response"] = [buffer_body, *prepared.hooks.get("response", [])]
+                    remaining = budget.remaining_seconds()
+                    timeout = kwargs.get("timeout")
+                    if isinstance(timeout, tuple):
+                        kwargs["timeout"] = tuple(min(value, remaining) if isinstance(value, (int, float))
+                                                  and not isinstance(value, bool) and value > 0 else remaining for value in timeout)
+                    else:
+                        kwargs["timeout"] = min(timeout, remaining) if isinstance(timeout, (int, float)) \
+                            and not isinstance(timeout, bool) and timeout > 0 else remaining
+                    kwargs["allow_redirects"] = False
+                    response = super().send(prepared, **kwargs)
+                except requests.exceptions.Timeout:
+                    budget.complete_request(request_id, outcome="timeout")
+                    raise
+                except BaseException:
+                    budget.complete_request(request_id, outcome="failed")
+                    raise
+                summary = budget.complete_request(request_id, outcome="succeeded" if 200 <= response.status_code < 300 else "failed",
+                                                  status_code=response.status_code)
+                if summary["status"] != "active":
+                    response.close()
+                    raise WorkerError("request_budget_failed")
+                return response
+
+    return BudgetSession()
+
+
+def _extract(request: dict, credentials: dict, *, budget=None) -> dict:
     dlt, duckdb, get_source = _runtime(request["work_dir"])
+    session = None
+    if budget is not None:
+        from . import describe
+        family = describe(request["source_type"])["execution_family"]
+        if family not in {"dlt_rest", "dlt_graphql"}:
+            raise WorkerError("request_budget_unsupported")
+        response_limit = None
+        if family == "dlt_graphql":
+            from .upstream.sources.graphql import MAX_RESPONSE_BYTES
+            response_limit = MAX_RESPONSE_BYTES
+        session = _budgeted_session(budget, max_response_bytes=response_limit)
     try:
+        extra = {"http_session": session} if session is not None else {}
         source = get_source(request["source_type"], credentials,
-                            resource_names=request["resources"] or None, params=request["params"])
+                            resource_names=request["resources"] or None, params=request["params"], **extra)
     except ImportError:
         raise WorkerError("connector_dependency_missing") from None
     source, selected = _as_source(dlt, source, request["source_type"], request["resources"])
@@ -334,6 +416,9 @@ def _extract(request: dict, credentials: dict) -> dict:
         raise WorkerError("invalid_output_schema")
     if not tables:
         raise WorkerError("extraction_empty_schema")
+    if budget is not None:
+        if budget.finish()["status"] != "completed":
+            raise WorkerError("request_budget_failed")
     return {"status": "success", "source_type": request["source_type"], "name": request["name"],
             "resources": selected, "tables": tables}
 
@@ -344,9 +429,13 @@ def run_request(request_path: str | Path, result_path: str | Path) -> dict:
     fd = os.open(request["result_path"], os.O_WRONLY | os.O_CREAT | os.O_EXCL
                  | getattr(os, "O_NOFOLLOW", 0), 0o600)
     result = {"status": "error", "error_code": "extraction_failed"}
+    budget = None
     try:
         with _silenced():
             try:
+                if "request_budget" in request:
+                    from .budget import ExtractionBudget
+                    budget = ExtractionBudget(request["work_dir"] / "request-budget.json", request["request_budget"])
                 credentials = {}
                 for field, env_name in request["credential_env"].items():
                     value = os.environ.get(env_name)
@@ -355,7 +444,7 @@ def run_request(request_path: str | Path, result_path: str | Path) -> dict:
                     credentials[field] = value
                 with _isolated_environment(request["work_dir"]):
                     try:
-                        result = _extract(request, credentials)
+                        result = _extract(request, credentials, **({"budget": budget} if budget is not None else {}))
                     finally:
                         # dlt failure packages can contain exception details.
                         # Retain only the staging database and sanitized result.
@@ -368,6 +457,20 @@ def run_request(request_path: str | Path, result_path: str | Path) -> dict:
                 # KeyboardInterrupt/SystemExit from a source are failed attempts,
                 # never reasons to print an upstream traceback or retry a call.
                 result = {"status": "error", "error_code": "extraction_failed"}
+            if budget is not None:
+                try:
+                    from .budget import compact_summary
+                    summary = budget.finish() if result["status"] == "success" else budget.fail("worker_failed")
+                    if result["status"] == "success" and summary["status"] != "completed":
+                        result = {"status": "error", "error_code": "request_budget_failed"}
+                    result["request_budget"] = compact_summary(summary)
+                except BaseException:
+                    result = {"status": "error", "error_code": "request_budget_failed"}
+                    from .budget import compact_summary, read_budget
+                    try:
+                        result["request_budget"] = compact_summary(read_budget(request["work_dir"] / "request-budget.json"))
+                    except (OSError, ValueError):
+                        pass
         result["observed_finished_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
         payload = json.dumps(result, sort_keys=True, allow_nan=False).encode("utf-8")
         if len(payload) > MAX_RESULT_BYTES:

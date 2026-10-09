@@ -217,6 +217,7 @@ def _publish(workspace, config, database, receipt=None):
     """Copy only staged base tables into the connector's owned schema atomically."""
     from ..context import _identifier
     from ..refresh_state import require_readable_snapshot
+    from .evidence import observe_table
     database = Path(database).resolve(strict=True)
     if not database.is_file() or database == workspace.db_path:
         raise ValueError("Expected a separate completed connector snapshot.")
@@ -254,7 +255,7 @@ def _publish(workspace, config, database, receipt=None):
                 if previous - set(tables):
                     raise ValueError("The new snapshot is missing previously loaded tables; previous data was retained.")
             conn.execute(f"CREATE SCHEMA IF NOT EXISTS {schema}")
-            copied = []
+            copied, table_evidence = [], []
             for table in tables:
                 quoted = _identifier(table)
                 target = f"{schema}.{quoted}"
@@ -263,9 +264,11 @@ def _publish(workspace, config, database, receipt=None):
                 conn.execute("INSERT INTO _contextbase.imports VALUES (?,?,current_timestamp,?,?)",
                              ["connector:" + name, name + "." + table, count, snapshot_hash.hexdigest()])
                 copied.append({"table": name + "." + table, "rows": count})
+                table_evidence.append(observe_table(conn, name, table))
             conn.execute("INSERT OR REPLACE INTO _contextbase.connector_ownership VALUES (?,?,?)",
                          [name, config["source_type"], json.dumps(tables)])
-            published = {"tables": copied, "snapshot_sha256": snapshot_hash.hexdigest(), "scope": "local_snapshot"}
+            published = {"tables": copied, "table_evidence": table_evidence,
+                         "snapshot_sha256": snapshot_hash.hexdigest(), "scope": "local_snapshot"}
             conn.execute("CREATE TABLE IF NOT EXISTS _contextbase.connector_receipts (name VARCHAR PRIMARY KEY,payload JSON)")
             conn.execute("INSERT OR REPLACE INTO _contextbase.connector_receipts VALUES (?,?)",
                          [name, json.dumps({**(receipt or {}), **published, "status": "synced", "finished_at": _now()})])
@@ -276,19 +279,45 @@ def _publish(workspace, config, database, receipt=None):
     return published
 
 
-def sync(workspace, name, *, timeout=300, bootstrap_context=True):
+def sync(workspace, name, *, timeout=300, bootstrap_context=True, request_budget=None):
     if type(timeout) is not int or not 1 <= timeout <= 3600:
         raise ValueError("Sync timeout must be between 1 and 3600 seconds.")
+    if request_budget is not None:
+        from .budget import validate_limits
+        request_budget = validate_limits(request_budget)
     directory = _source_root(workspace, name)
     with _lock(directory):
-        config, entry, directory = _load(workspace, name)
-        _check_resources(entry, config["resources"], config["params"])
         attempt = _directory(directory / ("attempt-" + uuid.uuid4().hex))
-        status = {"name": name, "source_type": config["source_type"], "status": "running",
+        status = {"name": name, "source_type": None, "status": "running",
                   "started_at": _now(), "attempt": attempt.name, "refresh_mode": "new_extraction",
-                  "configuration_sha256": digest(config)}
+                  "configuration_sha256": None}
         _write(directory / "status.json", status)
+        preflight = True
+
+        def retain_budget(*, required=False):
+            if request_budget is None:
+                return None
+            from .budget import compact_summary, read_budget
+            try:
+                observed = compact_summary(read_budget(attempt / "request-budget.json"))
+            except (OSError, ValueError):
+                observed = {"limits": request_budget, "status": "unavailable",
+                            "reason": "budget_ledger_unavailable"}
+                status["request_budget"] = observed
+                if required:
+                    raise RuntimeError("Connector request budget evidence is unavailable; previous data was retained.") from None
+                return observed
+            status["request_budget"] = observed
+            return observed
+
         try:
+            config, entry, directory = _load(workspace, name)
+            status.update(source_type=config["source_type"], configuration_sha256=digest(config))
+            if request_budget is not None and entry["execution_family"] not in {"dlt_rest", "dlt_graphql"}:
+                raise ValueError("Request budgets currently support only REST and GraphQL connectors.")
+            _check_resources(entry, config["resources"], config["params"])
+            preflight = False
+            _write(directory / "status.json", status)
             database = attempt / "snapshot.duckdb"
             if entry["execution_family"] == "file":
                 from ..workspace import Workspace
@@ -298,12 +327,16 @@ def sync(workspace, name, *, timeout=300, bootstrap_context=True):
             else:
                 request = {key: config[key] for key in ("source_type", "name", "credential_env", "params", "resources")}
                 request.update(staging_database=str(database), work_dir=str(attempt))
+                if request_budget is not None:
+                    request["request_budget"] = request_budget
                 _write(attempt / "request.json", request, exclusive=True)
                 command = [sys.executable, "-m", "contextbase.connectors.worker", "--request", str(attempt / "request.json"),
                            "--result", str(attempt / "result.json")]
                 try:
                     completed = subprocess.run(command, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
-                                               stderr=subprocess.DEVNULL, timeout=timeout, check=False)
+                                               stderr=subprocess.DEVNULL,
+                                               timeout=min(timeout, request_budget["max_seconds"]) if request_budget else timeout,
+                                               check=False)
                 finally:
                     # A killed worker cannot run its own finally block. The
                     # parent owns cleanup once subprocess.run has reaped it.
@@ -313,11 +346,20 @@ def sync(workspace, name, *, timeout=300, bootstrap_context=True):
                     except OSError:
                         raise RuntimeError("Connector scratch cleanup failed; inspect this private attempt before retrying.") from None
                 result = _read(attempt / "result.json") if (attempt / "result.json").exists() else {}
+                observed_budget = retain_budget(required=True)
+                if request_budget is not None and result.get("request_budget") != observed_budget:
+                    raise RuntimeError("Connector request budget evidence did not reconcile; previous data was retained.")
+                if request_budget is not None and result.get("status") == "success" and (
+                        observed_budget.get("limits") != request_budget or observed_budget.get("status") != "completed"
+                        or observed_budget.get("stop_reason") is not None
+                        or any(observed_budget.get("counts", {}).get(key) != 0 for key in ("pending", "failed", "timeout", "unknown"))
+                        or observed_budget.get("limits_exceeded") != {"requests": False, "seconds": False}):
+                    raise RuntimeError("Connector request budget did not complete; previous data was retained.")
                 if completed.returncode or result.get("status") != "success":
                     allowed = {"runtime_dependency_missing", "connector_dependency_missing", "credential_unavailable", "extraction_failed",
                                "runtime_isolation_unavailable", "invalid_request", "runtime_version_unsupported", "resource_selection_mismatch",
                                "extraction_incomplete", "extraction_empty_schema", "invalid_output_schema", "output_exists", "result_too_large",
-                               "invalid_source_factory"}
+                               "invalid_source_factory", "request_budget_failed", "request_budget_unsupported"}
                     code = result.get("error_code")
                     raise RuntimeError("Connector sync failed (" + (code if code in allowed else "worker_failed") +
                                        "). Inspect source configuration and installed connector dependencies; previous data was retained.")
@@ -325,10 +367,14 @@ def sync(workspace, name, *, timeout=300, bootstrap_context=True):
             status.update(status="synced", finished_at=_now(), **published)
         except subprocess.TimeoutExpired:
             status.update(status="failed", error_code="timeout", finished_at=_now())
+            retain_budget()
+            _write(attempt / "receipt.json", status, exclusive=True)
             _write(directory / "status.json", status)
             raise RuntimeError("Connector sync exceeded its timeout; previous data was retained.") from None
         except Exception:
-            status.update(status="failed", error_code="sync_failed", finished_at=_now())
+            status.update(status="failed", error_code="preflight_failed" if preflight else "sync_failed", finished_at=_now())
+            retain_budget()
+            _write(attempt / "receipt.json", status, exclusive=True)
             _write(directory / "status.json", status)
             raise
         # The database receipt commits with its tables. File bookkeeping cannot

@@ -16,7 +16,7 @@
       "upstream_path": "dinobase/sync/yaml_source.py",
       "vendored_path": "yaml_source.py",
       "upstream_sha256": "d56bfacdb20eea5295bfc8d8d03a71b08934fe727313f744a631a2b0bd702a60",
-      "vendored_sha256": "654df8fdbaf410d033d484190de732fe17fd6234168f1822fd4541d379b760dc",
+      "vendored_sha256": "5f0d949c69ecd45db4f5350ef1db8f999be3196553515696d60c3f808b945d03",
       "modified": true
     },
     {
@@ -30,14 +30,14 @@
       "upstream_path": "dinobase/sync/sources/__init__.py",
       "vendored_path": "sources/__init__.py",
       "upstream_sha256": "2db67fa28d1d50f52afe6b8502d62ba679132f1ec82d3a10603b070e34da6a56",
-      "vendored_sha256": "a0dfca6b70203edb17107aefff8f7915398e9a7a6241c080c7d161a25c51880d",
+      "vendored_sha256": "7fc505fb7c5abe1307f4bc2bab829d9f52fa8901acb71d1a0f14b5fd66097bbe",
       "modified": true
     },
     {
       "upstream_path": "dinobase/sync/sources/graphql.py",
       "vendored_path": "sources/graphql.py",
       "upstream_sha256": "ee1b7746f895d0b76f473d13356531d080065195d06e26162a4602ee6574ccae",
-      "vendored_sha256": "e32d4629b67e8aefe90a28e2354394fbe8c77669a94eebc7f0c35ea1647e2191",
+      "vendored_sha256": "86f893b0295e8c8294d241d87eafd2ed2dadfd705485d1c6499bdc98c8712605",
       "modified": true
     },
     {

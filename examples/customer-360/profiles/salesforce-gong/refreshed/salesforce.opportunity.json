@@ -1,0 +1,79 @@
+[
+  {
+    "AccountId": "001SYN000000000009",
+    "Amount": 9000,
+    "CloseDate": "2026-02-28",
+    "CurrencyIsoCode": "USD",
+    "Id": "006SYN000000000001",
+    "IsClosed": false,
+    "LastModifiedDate": "2026-01-12T09:00:00Z",
+    "Name": "Example opportunity 1",
+    "StageName": "Proposal"
+  },
+  {
+    "AccountId": "001SYN000000000009",
+    "Amount": 2500,
+    "CloseDate": "2026-02-28",
+    "CurrencyIsoCode": "USD",
+    "Id": "006SYN000000000002",
+    "IsClosed": true,
+    "LastModifiedDate": "2026-01-12T09:00:00Z",
+    "Name": "Example opportunity 2",
+    "StageName": "Closed Won"
+  },
+  {
+    "AccountId": "001SYN000000000009",
+    "Amount": 3000,
+    "CloseDate": "2026-02-28",
+    "CurrencyIsoCode": "EUR",
+    "Id": "006SYN000000000003",
+    "IsClosed": false,
+    "LastModifiedDate": "2026-01-05T09:00:00Z",
+    "Name": "Example opportunity 3",
+    "StageName": "Proposal"
+  },
+  {
+    "AccountId": "001SYN000000000002",
+    "Amount": 8000,
+    "CloseDate": "2026-02-28",
+    "CurrencyIsoCode": "USD",
+    "Id": "006SYN000000000004",
+    "IsClosed": false,
+    "LastModifiedDate": "2026-01-05T09:00:00Z",
+    "Name": "Example opportunity 4",
+    "StageName": "Proposal"
+  },
+  {
+    "AccountId": "001SYN000000000002",
+    "Amount": 2000,
+    "CloseDate": "2026-02-28",
+    "CurrencyIsoCode": "USD",
+    "Id": "006SYN000000000005",
+    "IsClosed": true,
+    "LastModifiedDate": "2026-01-05T09:00:00Z",
+    "Name": "Example opportunity 5",
+    "StageName": "Closed Won"
+  },
+  {
+    "AccountId": "001SYN000000000003",
+    "Amount": 4000,
+    "CloseDate": "2026-02-28",
+    "CurrencyIsoCode": "EUR",
+    "Id": "006SYN000000000006",
+    "IsClosed": false,
+    "LastModifiedDate": "2026-01-05T09:00:00Z",
+    "Name": "Example opportunity 6",
+    "StageName": "Proposal"
+  },
+  {
+    "AccountId": "001SYN000000000004",
+    "Amount": 6000,
+    "CloseDate": "2026-02-28",
+    "CurrencyIsoCode": "USD",
+    "Id": "006SYN000000000007",
+    "IsClosed": false,
+    "LastModifiedDate": "2026-01-05T09:00:00Z",
+    "Name": "Example opportunity 7",
+    "StageName": "Proposal"
+  }
+]

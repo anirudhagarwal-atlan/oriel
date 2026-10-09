@@ -2,7 +2,11 @@
 
 DuckDB `DECIMAL` query values are returned as exact strings with a `decimal_columns` type map. This preserves amounts beyond floating-point precision in results, execution hashes, and approval checks.
 
-Oriel lets users talk to data across their existing tools: import operational exports or source snapshots, query and transform them in DuckDB, make business definitions explicit, and export reusable context with evaluation evidence. The analysis and context lifecycle are independent of source brands. Rystic's Stripe + Linear pair supplies the first synthetic benchmark environment.
+Oriel's Customer 360 path is **off-the-shelf extraction → committed DuckDB snapshots → reviewed customer mappings → context agents and definition review → scoped briefs and answers**. The local application consumes the same domain contracts as the customer CLI. It serializes jobs and retains their receipts; source publication, identity, context and historical review integrity remain enforced in the domain.
+
+The [Customer 360 foundation](customer-360-foundation.md), [CLI](customer-360-cli.md) and [application guide](customer-360-app.md) describe the implementation and its local-operator boundary. Both synthetic profiles exercise the same contracts; no vendor name is required in core answer logic. Actual model and authenticated vendor verification are separate gates.
+
+The diagram and data-plane description below cover the existing generic analytics foundation and earlier research infrastructure. Those generic CLI/MCP artifacts are not substitutes for Customer 360 identity, context or freshness checks. Rystic comparisons remain deferred.
 
 ```mermaid
 flowchart LR

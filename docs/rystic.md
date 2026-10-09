@@ -2,7 +2,7 @@
 
 This recipe runs a cross-tool analytics workflow against local [Rystic simulators](https://www.rystic.ai/simulators), saves their data in DuckDB, and turns a reviewed answer into reusable context. It uses synthetic customers, payments and issues. It needs no Stripe or Linear credentials.
 
-Rystic is the first benchmark environment for Oriel's broader existing-tool analytics workflow. Stripe + Linear is the selected synthetic fixture; users can bring data from other tools through the [generic import path](../README.md#bring-your-own-tools). A Rystic runtime is not required for that path.
+Rystic is the earlier benchmark environment for Oriel's broader existing-tool analytics workflow. Stripe + Linear is the selected synthetic fixture; users can bring data from other tools through the [generic import path](tool-exports.md). A Rystic runtime is not required for that path or the [Customer 360 application](customer-360-app.md).
 
 The question is:
 

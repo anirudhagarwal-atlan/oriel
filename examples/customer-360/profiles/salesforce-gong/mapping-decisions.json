@@ -1,0 +1,129 @@
+{
+  "bindings": [
+    {
+      "customer_id": "customer_a",
+      "decision_id": "mapping-01",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Stable identity; retain the old source ID as a historical alias.",
+      "resource": "account",
+      "source": "salesforce",
+      "source_id": "001SYN000000000001",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_b",
+      "decision_id": "mapping-02",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Stable identity; retain the old source ID as a historical alias.",
+      "resource": "account",
+      "source": "salesforce",
+      "source_id": "001SYN000000000002",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_c",
+      "decision_id": "mapping-03",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Stable identity; retain the old source ID as a historical alias.",
+      "resource": "account",
+      "source": "salesforce",
+      "source_id": "001SYN000000000003",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_d",
+      "decision_id": "mapping-04",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Stable identity; retain the old source ID as a historical alias.",
+      "resource": "account",
+      "source": "salesforce",
+      "source_id": "001SYN000000000004",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_a",
+      "decision_id": "mapping-05",
+      "phases": [
+        "refreshed"
+      ],
+      "reason": "Reviewed synthetic source-ID replacement for customer_a.",
+      "resource": "account",
+      "source": "salesforce",
+      "source_id": "001SYN000000000009",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_c",
+      "decision_id": "mapping-06",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Explicit reviewed call association; no domain or name inference.",
+      "resource": "extensive_calls",
+      "source": "gong",
+      "source_id": "100000000000000005",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_a",
+      "decision_id": "mapping-07",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Deliberately conflicting authored mapping; must be refused.",
+      "resource": "extensive_calls",
+      "source": "gong",
+      "source_id": "100000000000000004",
+      "status": "approved_example"
+    },
+    {
+      "customer_id": "customer_b",
+      "decision_id": "mapping-08",
+      "phases": [
+        "initial",
+        "refreshed"
+      ],
+      "reason": "Deliberately conflicting authored mapping; must be refused.",
+      "resource": "extensive_calls",
+      "source": "gong",
+      "source_id": "100000000000000004",
+      "status": "approved_example"
+    }
+  ],
+  "customers": [
+    {
+      "customer_id": "customer_a",
+      "label": "Example A"
+    },
+    {
+      "customer_id": "customer_b",
+      "label": "Example B"
+    },
+    {
+      "customer_id": "customer_c",
+      "label": "Example C"
+    },
+    {
+      "customer_id": "customer_d",
+      "label": "Example D"
+    }
+  ],
+  "profile": "salesforce-gong",
+  "review_status": "authored_example_not_a_real_review",
+  "spec": "oriel.customer360.fixture-mapping/v1",
+  "synthetic": true
+}

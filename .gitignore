@@ -29,3 +29,5 @@ connected-data/
 # Oriel default and quickstart workspaces
 .oriel/
 .oriel-quickstart/
+# Private Customer 360 workspaces used by the app quickstart
+.oriel-customer*/

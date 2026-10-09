@@ -1,0 +1,212 @@
+[
+  {
+    "context": [
+      {
+        "objects": [
+          {
+            "fields": [],
+            "objectId": "001SYN000000000001",
+            "objectType": "Account",
+            "timing": "TimeOfCall"
+          },
+          {
+            "fields": [],
+            "objectId": "006SYN000000000001",
+            "objectType": "Opportunity",
+            "timing": "TimeOfCall"
+          }
+        ],
+        "system": "Salesforce"
+      }
+    ],
+    "metaData": {
+      "duration": 900,
+      "id": "100000000000000001",
+      "isPrivate": false,
+      "started": "2026-01-06T10:00:00Z",
+      "title": "Example call 1",
+      "url": "https://gong.example.invalid/call/100000000000000001"
+    },
+    "parties": [
+      {
+        "affiliation": "External",
+        "emailAddress": "attendee@shared.example.invalid",
+        "id": "party-1-1",
+        "speakerId": "speaker-1"
+      },
+      {
+        "affiliation": "Internal",
+        "emailAddress": "operator@example.invalid",
+        "id": "party-1-2",
+        "speakerId": "speaker-2"
+      }
+    ]
+  },
+  {
+    "context": [
+      {
+        "objects": [
+          {
+            "fields": [],
+            "objectId": "006SYN000000000004",
+            "objectType": "Opportunity",
+            "timing": "TimeOfCall"
+          }
+        ],
+        "system": "Salesforce"
+      }
+    ],
+    "metaData": {
+      "duration": 900,
+      "id": "100000000000000002",
+      "isPrivate": false,
+      "started": "2026-01-06T10:00:00Z",
+      "title": "Example call 2",
+      "url": "https://gong.example.invalid/call/100000000000000002"
+    },
+    "parties": [
+      {
+        "affiliation": "External",
+        "emailAddress": "attendee@shared.example.invalid",
+        "id": "party-2-1",
+        "speakerId": "speaker-1"
+      },
+      {
+        "affiliation": "Internal",
+        "emailAddress": "operator@example.invalid",
+        "id": "party-2-2",
+        "speakerId": "speaker-2"
+      }
+    ]
+  },
+  {
+    "context": [],
+    "metaData": {
+      "duration": 900,
+      "id": "100000000000000003",
+      "isPrivate": false,
+      "started": "2026-01-06T10:00:00Z",
+      "title": "Example call 3",
+      "url": "https://gong.example.invalid/call/100000000000000003"
+    },
+    "parties": [
+      {
+        "affiliation": "External",
+        "emailAddress": "attendee@shared.example.invalid",
+        "id": "party-3-1",
+        "speakerId": "speaker-1"
+      },
+      {
+        "affiliation": "Internal",
+        "emailAddress": "operator@example.invalid",
+        "id": "party-3-2",
+        "speakerId": "speaker-2"
+      }
+    ]
+  },
+  {
+    "context": [
+      {
+        "objects": [
+          {
+            "fields": [],
+            "objectId": "001SYN000000000001",
+            "objectType": "Account",
+            "timing": "TimeOfCall"
+          },
+          {
+            "fields": [],
+            "objectId": "006SYN000000000004",
+            "objectType": "Opportunity",
+            "timing": "TimeOfCall"
+          }
+        ],
+        "system": "Salesforce"
+      }
+    ],
+    "metaData": {
+      "duration": 900,
+      "id": "100000000000000004",
+      "isPrivate": false,
+      "started": "2026-01-06T10:00:00Z",
+      "title": "Example call 4",
+      "url": "https://gong.example.invalid/call/100000000000000004"
+    },
+    "parties": [
+      {
+        "affiliation": "External",
+        "emailAddress": "attendee@shared.example.invalid",
+        "id": "party-4-1",
+        "speakerId": "speaker-1"
+      },
+      {
+        "affiliation": "Internal",
+        "emailAddress": "operator@example.invalid",
+        "id": "party-4-2",
+        "speakerId": "speaker-2"
+      }
+    ]
+  },
+  {
+    "context": [],
+    "metaData": {
+      "duration": 900,
+      "id": "100000000000000005",
+      "isPrivate": false,
+      "started": "2026-01-06T10:00:00Z",
+      "title": "Example call 5",
+      "url": "https://gong.example.invalid/call/100000000000000005"
+    },
+    "parties": [
+      {
+        "affiliation": "External",
+        "emailAddress": "attendee@shared.example.invalid",
+        "id": "party-5-1",
+        "speakerId": "speaker-1"
+      },
+      {
+        "affiliation": "Internal",
+        "emailAddress": "operator@example.invalid",
+        "id": "party-5-2",
+        "speakerId": "speaker-2"
+      }
+    ]
+  },
+  {
+    "context": [
+      {
+        "objects": [
+          {
+            "fields": [],
+            "objectId": "001SYN000000000009",
+            "objectType": "Account",
+            "timing": "TimeOfCall"
+          }
+        ],
+        "system": "Salesforce"
+      }
+    ],
+    "metaData": {
+      "duration": 900,
+      "id": "100000000000000006",
+      "isPrivate": false,
+      "started": "2026-01-13T10:00:00Z",
+      "title": "Example call 6",
+      "url": "https://gong.example.invalid/call/100000000000000006"
+    },
+    "parties": [
+      {
+        "affiliation": "External",
+        "emailAddress": "attendee@shared.example.invalid",
+        "id": "party-6-1",
+        "speakerId": "speaker-1"
+      },
+      {
+        "affiliation": "Internal",
+        "emailAddress": "operator@example.invalid",
+        "id": "party-6-2",
+        "speakerId": "speaker-2"
+      }
+    ]
+  }
+]

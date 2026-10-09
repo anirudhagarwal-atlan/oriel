@@ -1,0 +1,23 @@
+[
+  {
+    "email": "billing-a@shared.example.invalid",
+    "id": "cus_synthetic_a",
+    "metadata": {},
+    "name": "Example Shared",
+    "object": "customer"
+  },
+  {
+    "email": "billing-b@shared.example.invalid",
+    "id": "cus_synthetic_b",
+    "metadata": {},
+    "name": "Example Shared",
+    "object": "customer"
+  },
+  {
+    "email": "billing-c@shared.example.invalid",
+    "id": "cus_synthetic_c",
+    "metadata": {},
+    "name": "Example C",
+    "object": "customer"
+  }
+]

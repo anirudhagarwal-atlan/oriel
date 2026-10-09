@@ -1,4 +1,8 @@
-# Start with a question across tools
+# Start with a customer review
+
+The primary workflow is now the [Customer 360 application](quickstart.md): bring supported customer sources together, review identity and definitions, inspect a brief, and compare the next review after refresh. Billing/support and CRM/conversation samples use the same interface. Your own stack can include support, product usage, billing, conversations, CRM or internal customer sources; the available evidence determines what can be answered.
+
+The analytical recipes below remain useful advanced examples and extensions. They do not establish that every question or source category is implemented in the current customer answer contract.
 
 Oriel is most useful when a question needs records from more than one source and a business definition that you expect to use again. Start with a bounded time period, data you are authorized to use, and one result you can independently check.
 

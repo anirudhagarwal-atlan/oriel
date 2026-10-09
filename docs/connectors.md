@@ -2,6 +2,8 @@
 
 Oriel's source workflow is **configure → sync into DuckDB → bootstrap draft context → query**. A connection has its own name and schema, so you can combine billing, CRM, product and internal-tool data in one workspace. The source catalog contains 101 source types; that is definition coverage, not a claim that 101 live connections have been tested.
 
+For Customer 360, use the [application](customer-360-app.md) to configure and sync these adapters, capture committed snapshots, review customer links and field mappings, then bootstrap and approve business definitions. Source setup is shared; the customer workflow adds its own identity, freshness, context and evidence boundaries. The low-level generic source commands below remain available independently.
+
 Start from a [local checkout](quickstart.md#install-from-your-checkout). The committed lockfile uses public PyPI artifacts and preserves reviewed dependency versions and hashes.
 
 Python 3.10–3.14 is supported. Install the base package for local CSV/Parquet, or include the connector runtime for APIs, databases and filesystem sources:
@@ -21,6 +23,7 @@ With the repository's base dependencies installed:
 .venv/bin/oriel source describe linear
 .venv/bin/oriel source describe salesforce
 .venv/bin/oriel source describe mixpanel
+.venv/bin/oriel source plan discord --resource messages
 .venv/bin/oriel source doctor sqlite
 ```
 
@@ -80,7 +83,20 @@ The field names differ by source: Stripe uses `stripe_secret_key`, Salesforce de
 
 ## Choose resources and parameters
 
-Repeat `--resource NAME` to limit extraction. With no explicit selection, declared YAML resources marked selected are used; dynamically discovered sources use their source factory's defaults. Those defaults can include many tables, so choose explicit resources for a bounded first connection. The worker rejects an empty or mismatched explicit selection.
+Repeat `--resource NAME` to select output resources. Fetching a selected child may also require reading parent resources. With no explicit selection, declared YAML resources marked selected are used; dynamically discovered sources use their source factory's defaults. Those defaults can include many tables, so inspect the selection before configuring a connection. Duplicate names and selections outside a declared resource list are refused.
+
+Inspect the declared selection without a workspace, credentials or a source call:
+
+```sh
+.venv/bin/oriel source plan discord --resource messages
+.venv/bin/oriel source plan github
+```
+
+The Discord example reports `selected_outputs: ["messages"]` and `required_fetch_resources: ["channels", "guilds", "messages"]`: messages depend on channels, and channels depend on guilds. Parent fetches are not additional selected output tables. Repeat `--resource` to inspect several outputs; omit it to inspect defaults. The result records `requested_resources`, `default_selection_used` and the dependency edges.
+
+For REST declarations, `status: declaration_derived` means the plan follows the packaged parent dependencies. Other connector families report `status: fetch_scope_unknown` and `required_fetch_resources: null`; their output names may still be known. Unknown fetch scope does not mean no additional resources are read. The plan neither executes extraction nor verifies permissions, actual requests, field/history scope or source completeness.
+
+The [application](customer-360-app.md#connect-your-own-sources) previews this same plan as you change resource checkboxes and exposes parameters required by declared parent dependencies. With a declared resource list, unchecking every resource refuses saving; it does not restore defaults. The read-only HTTP equivalent is the application's authenticated `GET /api/source-plan?type=discord&resource=messages`, with repeated `resource` parameters for several outputs. It accepts only the source type and resource names, never credentials, URLs or vendor parameters.
 
 Parameters use repeatable `--param NAME=JSON_VALUE` arguments. `source describe` lists `parameter_names`; REST entries also list each resource's allowed and required query/body fields under `resource_parameters`. Values must be JSON. Credentials, authentication and endpoint overrides cannot be supplied as parameters. GraphQL queries and endpoints remain fixed by their packaged definitions.
 
@@ -139,6 +155,19 @@ Catalog inspection and configuration work without dlt or PyYAML. Network extract
 Each sync performs a new extraction into a separate private staging database; it does not promise incremental checkpoints or continuous freshness. Oriel publishes completed tables into the connection's dedicated schema in one transaction. It refuses schema ownership conflicts and snapshots missing previously published tables, including when a new resource selection would omit an old table. Use a new connection name for that narrower snapshot. A failed extraction or rejected publication leaves the previous tables available, so inspect `source list` before treating them as current. Approved business definitions are preserved across refresh. There is no automatic retry or resume.
 
 `--timeout` bounds a network extraction worker to 1–3600 seconds; it does not include local publication or context bootstrap. `--no-bootstrap` skips draft generation. If extraction and publication succeed but bootstrap fails, the sync result identifies that separate failure; inspect the catalog and run `context bootstrap` explicitly. Source snapshot hashes and row counts are recorded with publication.
+
+## Bound an API sync
+
+REST and GraphQL sources can share an explicit HTTP-attempt limit and deadline across one entire extraction, including selected resources, parent dependencies and nested pages:
+
+```sh
+.venv/bin/oriel --workspace ./my-data source sync work_tracker \
+  --max-requests 100 --request-seconds 120 --timeout 180 --no-bootstrap
+```
+
+Use both request-limit flags together. Each attempt is recorded before dispatch, including attempts that fail; an interrupted in-flight attempt remains unknown. Reaching a limit stops extraction and prevents publication of a partial snapshot. Private attempt receipts retain sanitized budget counters. With these options, the parent also bounds the worker's wall-clock lifetime by the shorter of `--timeout` and `--request-seconds`, including startup. That hard bound can terminate a stalled response that would otherwise keep a socket open.
+
+These options apply only to this invocation, and remain separate from vendor query parameters. They do not grant access, limit which fields or customer records a vendor may return, or certify pagination completeness. They are refused for SDK, database, filesystem and local-file sources instead of implying controls those adapters do not implement. A future live validation still needs its exact authorized scope, supported selection controls and independent reconciliation.
 
 ## What has been verified
 
