@@ -324,8 +324,9 @@ class Application:
             return lambda **kwargs: function(self.workspace, **kwargs), fields
         return {
             "source.add": bound(service.add, ("replace_config",)),
-            "source.sync": (lambda name, request_budget=None: service.sync(self.workspace, name, bootstrap_context=False,
-                                                                         request_budget=request_budget), {"name", "request_budget"}),
+            "source.sync": (lambda name, request_budget=None, fetch_scope=None: service.sync(
+                self.workspace, name, bootstrap_context=False, request_budget=request_budget, fetch_scope=fetch_scope),
+                {"name", "request_budget", "fetch_scope"}),
             "source.inspect": bound(onboarding.inspect_sources),
             "snapshot": bound(snapshots.capture_snapshot),
             "customer.create": bound(identity.create_customer),

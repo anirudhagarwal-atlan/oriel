@@ -53,6 +53,10 @@ def parser():
     source_sync.add_argument("--no-bootstrap", action="store_true")
     source_sync.add_argument("--max-requests", type=int, help="REST/GraphQL: shared maximum HTTP attempts for this sync; requires --request-seconds")
     source_sync.add_argument("--request-seconds", type=int, help="REST/GraphQL: shared request deadline in seconds; requires --max-requests")
+    source_sync.add_argument("--scope-origin", help="Exact HTTP origin for a supported fetch scope; requires all fetch-scope and request-budget options")
+    source_sync.add_argument("--fetch-resource", action="append", help="Allowed fetched resource, including required parents; repeat for multiple resources")
+    source_sync.add_argument("--max-pages", type=int, help="Fetch scope: shared maximum page requests")
+    source_sync.add_argument("--max-rows", type=int, help="Fetch scope: shared maximum observed source rows")
     upstream = sub.add_parser("import-dinobase", help="Copy explicitly selected Dinobase tables read-only")
     upstream.add_argument("database")
     upstream.add_argument("--table", dest="tables", action="append", required=True)
@@ -292,8 +296,15 @@ def execute(args):
                 if args.max_requests is None or args.request_seconds is None:
                     raise ValueError("Use --max-requests and --request-seconds together.")
                 budget = {"max_requests": args.max_requests, "max_seconds": args.request_seconds}
+            fetch_scope = None
+            scope_values = (args.scope_origin, args.fetch_resource, args.max_pages, args.max_rows)
+            if any(value is not None for value in scope_values):
+                if any(value is None for value in scope_values) or budget is None:
+                    raise ValueError("Use --scope-origin, --fetch-resource, --max-pages and --max-rows together with --max-requests and --request-seconds.")
+                fetch_scope = {"origin": args.scope_origin, "fetch_resources": args.fetch_resource,
+                               "max_pages": args.max_pages, "max_rows": args.max_rows}
             return sync(w, args.name, timeout=args.timeout, bootstrap_context=not args.no_bootstrap,
-                        request_budget=budget)
+                        request_budget=budget, fetch_scope=fetch_scope)
         def pairs(values, parse_values=False):
             result = {}
             for value in values:

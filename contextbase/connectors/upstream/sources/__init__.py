@@ -27,6 +27,7 @@ def get_source(
     params: dict[str, Any] | None = None,
     resource_config: Any = None,
     http_session: Any = None,
+    fetch_scope: Any = None,
 ) -> Any:
     """Return a dlt source for the given source type.
 
@@ -55,7 +56,11 @@ def get_source(
     if yaml_config and "client" in yaml_config:
         print(f"  Using YAML config: configs/{source_type}.yaml", file=sys.stderr)
         return build_dlt_source(source_type, credentials, resource_names, params=params,
-                                **({"http_session": http_session} if http_session is not None else {}))
+                                **({"http_session": http_session} if http_session is not None else {}),
+                                **({"fetch_scope": fetch_scope} if fetch_scope is not None else {}))
+
+    if fetch_scope is not None:
+        raise ValueError("Fetch scope supports only packaged REST sources.")
 
     # 2. Fall back to registry (dlt verified sources / built-in sources)
     entry = get_source_entry(source_type)

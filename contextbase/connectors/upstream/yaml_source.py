@@ -323,7 +323,7 @@ def _response_hook(response_format="json", selector=None, *, empty_query_respons
     return inspect
 
 
-def _runtime_paginator(config, endpoint):
+def _runtime_paginator(config, endpoint, *, fetch_scope=None, resource_name=None):
     """Wrap native dlt pagination; bounded adapters cover header/session variants."""
     from dlt.sources.helpers.rest_client.paginators import BasePaginator
     from dlt.sources.rest_api.config_setup import create_paginator
@@ -389,6 +389,8 @@ def _runtime_paginator(config, endpoint):
             elif special:
                 self._set_page(request)
             self._remember(request)
+            if fetch_scope is not None:
+                fetch_scope.begin_chain(resource_name, request)
         def _set_page(self, request):
             if query_offset:
                 request.data = query_body + f" STARTPOSITION {self.next_page} MAXRESULTS {settings['limit']}"
@@ -482,6 +484,8 @@ def _runtime_paginator(config, endpoint):
                 raise ValueError("Pagination exceeded the completeness bound.")
             if special and self._has_next_page and not data:
                 raise ValueError("Pagination omitted rows before its declared end.")
+            if fetch_scope is not None:
+                fetch_scope.observe_page(resource_name, response, data, self.has_next_page)
         def update_request(self, request):
             if not self.has_next_page:
                 return
@@ -491,11 +495,15 @@ def _runtime_paginator(config, endpoint):
     return BoundedPaginator()
 
 
-def build_dlt_source(source_name, credentials, resource_names=None, params=None, *, http_session=None):
+def build_dlt_source(source_name, credentials, resource_names=None, params=None, *, http_session=None, fetch_scope=None):
     config = load_yaml_config(source_name)
     if config is None:
         raise ValueError("No packaged source configuration exists.")
+    if fetch_scope is not None:
+        fetch_scope.verify_declaration(source_name, config, resource_names, params)
     translated = _translate_config(config, credentials, resource_names, params)
+    if fetch_scope is not None and http_session is None:
+        raise ValueError("Fetch scope requires the guarded extraction transport.")
     if http_session is not None:
         # One explicitly injected transport across all resources/dependencies.
         # This is never a vendor parameter or a discovered ambient session.
@@ -510,7 +518,8 @@ def build_dlt_source(source_name, credentials, resource_names=None, params=None,
             endpoint["paginator"] = {"type": "single_page"}
         endpoint["response_actions"] = [_response_hook(response_format, endpoint.get("data_selector"),
             empty_query_response=source_name == "quickbooks" and str(endpoint.get("data_selector", "")).startswith("QueryResponse."))]
-        endpoint["paginator"] = _runtime_paginator(endpoint["paginator"], endpoint)
+        endpoint["paginator"] = _runtime_paginator(endpoint["paginator"], endpoint,
+                                                  fetch_scope=fetch_scope, resource_name=resource["name"])
     from dlt.sources.rest_api import rest_api_source
     return rest_api_source(translated, name=source_name)
 

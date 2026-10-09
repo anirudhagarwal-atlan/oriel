@@ -167,7 +167,35 @@ REST and GraphQL sources can share an explicit HTTP-attempt limit and deadline a
 
 Use both request-limit flags together. Each attempt is recorded before dispatch, including attempts that fail; an interrupted in-flight attempt remains unknown. Reaching a limit stops extraction and prevents publication of a partial snapshot. Private attempt receipts retain sanitized budget counters. With these options, the parent also bounds the worker's wall-clock lifetime by the shorter of `--timeout` and `--request-seconds`, including startup. That hard bound can terminate a stalled response that would otherwise keep a socket open.
 
-These options apply only to this invocation, and remain separate from vendor query parameters. They do not grant access, limit which fields or customer records a vendor may return, or certify pagination completeness. They are refused for SDK, database, filesystem and local-file sources instead of implying controls those adapters do not implement. A future live validation still needs its exact authorized scope, supported selection controls and independent reconciliation.
+Request budgets apply only to this invocation, separately from vendor query parameters. They do not grant access, limit which fields or customer records a vendor may return, or certify pagination completeness. SDK, database, filesystem and local-file sources refuse these request-budget options. Live validation still needs its exact authorized scope, supported selection controls and independent reconciliation.
+
+### Restrict a REST fetch graph
+
+Supported REST declarations also accept an explicit origin, complete fetch-resource list and shared page/row limits. For an existing connection configured to select only Intercom `contacts`, the form is:
+
+```sh
+.venv/bin/oriel --workspace ./my-data source sync customer_support \
+  --scope-origin https://api.intercom.io --fetch-resource contacts \
+  --max-pages 20 --max-rows 1000 \
+  --max-requests 20 --request-seconds 120 --timeout 180 --no-bootstrap
+```
+
+This command performs extraction when run; use it only with the intended authorized connection. It is an example of the compiled request contract, not a claim that Intercom authentication has been validated here. All four scope options and both request-budget options are required together. Repeat `--fetch-resource` for every parent returned by `source plan`, including parents whose tables are not selected for output. Omitting a parent or adding an unrelated resource fails before credential resolution.
+
+The worker recompiles the packaged declaration and selected configuration, then checks the actual declaration again before constructing the source. Every prepared request must match its declared resource, exact origin, method, parent-derived path and static query/body values. Only the declared pagination value may change, according to the preceding response or offset/page step. Redirects and automatic retries remain disabled. Pages and rows are counted before dlt yields records, across all resources and parent chains. The parent independently reconciles scope and request-budget receipts before publishing DuckDB tables.
+
+Page slots are reserved before dispatch. Rows are counted when a bounded response is decoded: a response can exceed the row limit, in which case its observed count is retained and publication is refused. The row limit does not guarantee that a remote server never returns excess data. Missing terminal pages, missing child fetches, unknown attribution or any guard failure preserve the previous published snapshot. Private `fetch-scope.json` receipts retain request/data hashes and coverage, not record contents or credential values.
+
+The first implementation supports explicit single-page, cursor, page-number and offset declarations with static origins and compatible GET/JSON POST shapes. It refuses automatic/link pagination, JSONL, incremental declarations, unresolved routing credentials, parallelized resources and unsupported shapes. A literal HTTP loopback origin is available for local controlled sources; other origins require HTTPS. GraphQL and non-REST extractors do not support this additional scope mode yet. Ordinary unscoped sync behavior is unchanged.
+
+These are **request-shape and extraction-completeness controls**. They do not authenticate a principal, pin resolved DNS destinations, prove that a declared POST is read-only, or establish field/history/record-ID authorization. A static filter is kept unchanged; its vendor meaning still needs an independently reviewed adapter capability. This mode cannot pass the [live-vendor gate](customer-360-live-validation.md) by itself. The application API accepts the same optional `fetch_scope` object on `source.sync`; the browser setup form currently exposes only the request/time budget.
+
+Reproduce focused scope verification with the following command. The native HTTP cases also run as part of the Customer 360 source-pipeline acceptance gate:
+
+```sh
+.venv/bin/python -m unittest tests.test_connector_fetch_scope \
+  tests.test_connector_fetch_scope_runtime tests.test_connector_fetch_scope_service
+```
 
 ## What has been verified
 

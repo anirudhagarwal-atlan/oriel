@@ -279,12 +279,14 @@ def _publish(workspace, config, database, receipt=None):
     return published
 
 
-def sync(workspace, name, *, timeout=300, bootstrap_context=True, request_budget=None):
+def sync(workspace, name, *, timeout=300, bootstrap_context=True, request_budget=None, fetch_scope=None):
     if type(timeout) is not int or not 1 <= timeout <= 3600:
         raise ValueError("Sync timeout must be between 1 and 3600 seconds.")
     if request_budget is not None:
         from .budget import validate_limits
         request_budget = validate_limits(request_budget)
+    if fetch_scope is not None and request_budget is None:
+        raise ValueError("A fetch scope requires an explicit request budget.")
     directory = _source_root(workspace, name)
     with _lock(directory):
         attempt = _directory(directory / ("attempt-" + uuid.uuid4().hex))
@@ -293,6 +295,8 @@ def sync(workspace, name, *, timeout=300, bootstrap_context=True, request_budget
                   "configuration_sha256": None}
         _write(directory / "status.json", status)
         preflight = True
+        scope_plan = None
+        scope_hash = None
 
         def retain_budget(*, required=False):
             if request_budget is None:
@@ -310,12 +314,34 @@ def sync(workspace, name, *, timeout=300, bootstrap_context=True, request_budget
             status["request_budget"] = observed
             return observed
 
+        def retain_scope(*, required=False):
+            if fetch_scope is None:
+                return None
+            from .fetch_scope import compact_summary, read_scope
+            try:
+                observed = compact_summary(read_scope(attempt / "fetch-scope.json"))
+            except (OSError, ValueError):
+                observed = {"plan_sha256": scope_hash, "status": "unavailable",
+                            "reason": "scope_ledger_unavailable"}
+                status["fetch_scope"] = observed
+                if required:
+                    raise RuntimeError("Connector fetch scope evidence is unavailable; previous data was retained.") from None
+                return observed
+            status["fetch_scope"] = observed
+            return observed
+
         try:
             config, entry, directory = _load(workspace, name)
             status.update(source_type=config["source_type"], configuration_sha256=digest(config))
             if request_budget is not None and entry["execution_family"] not in {"dlt_rest", "dlt_graphql"}:
                 raise ValueError("Request budgets currently support only REST and GraphQL connectors.")
             _check_resources(entry, config["resources"], config["params"])
+            if fetch_scope is not None:
+                from .fetch_scope import compile_scope, plan_hash
+                scope_plan = compile_scope(config["source_type"], config["resources"], config["params"], fetch_scope)
+                scope_hash = plan_hash(scope_plan)
+                fetch_scope = scope_plan["scope"]
+                status["fetch_scope_sha256"] = scope_hash
             preflight = False
             _write(directory / "status.json", status)
             database = attempt / "snapshot.duckdb"
@@ -329,6 +355,8 @@ def sync(workspace, name, *, timeout=300, bootstrap_context=True, request_budget
                 request.update(staging_database=str(database), work_dir=str(attempt))
                 if request_budget is not None:
                     request["request_budget"] = request_budget
+                if scope_plan is not None:
+                    request.update(fetch_scope=fetch_scope, fetch_scope_sha256=scope_hash)
                 _write(attempt / "request.json", request, exclusive=True)
                 command = [sys.executable, "-m", "contextbase.connectors.worker", "--request", str(attempt / "request.json"),
                            "--result", str(attempt / "result.json")]
@@ -346,6 +374,28 @@ def sync(workspace, name, *, timeout=300, bootstrap_context=True, request_budget
                     except OSError:
                         raise RuntimeError("Connector scratch cleanup failed; inspect this private attempt before retrying.") from None
                 result = _read(attempt / "result.json") if (attempt / "result.json").exists() else {}
+                observed_scope = retain_scope(required=True)
+                if scope_plan is not None:
+                    # Strict JSON equality preserves boolean/integer distinctions
+                    # and rejects nonfinite worker values before publication.
+                    if (json.dumps(result.get("fetch_scope"), sort_keys=True, allow_nan=False)
+                            != json.dumps(observed_scope, sort_keys=True, allow_nan=False)):
+                        raise RuntimeError("Connector fetch scope evidence did not reconcile; previous data was retained.")
+                    coverage = observed_scope.get("coverage", {})
+                    counts = observed_scope.get("counts", {})
+                    if (observed_scope.get("plan_sha256") != scope_hash
+                            or observed_scope.get("source_type") != config["source_type"]
+                            or observed_scope.get("limits") != scope_plan["limits"]
+                            or set(coverage) != set(scope_plan["fetch_resources"])):
+                        raise RuntimeError("Connector fetch scope does not match its compiled plan; previous data was retained.")
+                    if result.get("status") == "success" and (
+                            observed_scope.get("status") != "completed" or observed_scope.get("stop_reason") is not None
+                            or counts.get("pending") != 0
+                            or type(counts.get("pages")) is not int or type(counts.get("rows")) is not int
+                            or not 0 <= counts["pages"] <= scope_plan["limits"]["max_pages"]
+                            or not 0 <= counts["rows"] <= scope_plan["limits"]["max_rows"]
+                            or any(value.get("status") != "complete" for value in coverage.values())):
+                        raise RuntimeError("Connector fetch scope did not complete; previous data was retained.")
                 observed_budget = retain_budget(required=True)
                 if request_budget is not None and result.get("request_budget") != observed_budget:
                     raise RuntimeError("Connector request budget evidence did not reconcile; previous data was retained.")
@@ -355,11 +405,15 @@ def sync(workspace, name, *, timeout=300, bootstrap_context=True, request_budget
                         or any(observed_budget.get("counts", {}).get(key) != 0 for key in ("pending", "failed", "timeout", "unknown"))
                         or observed_budget.get("limits_exceeded") != {"requests": False, "seconds": False}):
                     raise RuntimeError("Connector request budget did not complete; previous data was retained.")
+                if scope_plan is not None and result.get("status") == "success" and (
+                        counts["requests"] != observed_budget["counts"]["reserved"]
+                        or counts["pages"] != counts["requests"]):
+                    raise RuntimeError("Connector fetch scope and request budget counts did not reconcile; previous data was retained.")
                 if completed.returncode or result.get("status") != "success":
                     allowed = {"runtime_dependency_missing", "connector_dependency_missing", "credential_unavailable", "extraction_failed",
                                "runtime_isolation_unavailable", "invalid_request", "runtime_version_unsupported", "resource_selection_mismatch",
                                "extraction_incomplete", "extraction_empty_schema", "invalid_output_schema", "output_exists", "result_too_large",
-                               "invalid_source_factory", "request_budget_failed", "request_budget_unsupported"}
+                               "invalid_source_factory", "request_budget_failed", "request_budget_unsupported", "fetch_scope_failed"}
                     code = result.get("error_code")
                     raise RuntimeError("Connector sync failed (" + (code if code in allowed else "worker_failed") +
                                        "). Inspect source configuration and installed connector dependencies; previous data was retained.")
@@ -368,12 +422,14 @@ def sync(workspace, name, *, timeout=300, bootstrap_context=True, request_budget
         except subprocess.TimeoutExpired:
             status.update(status="failed", error_code="timeout", finished_at=_now())
             retain_budget()
+            retain_scope()
             _write(attempt / "receipt.json", status, exclusive=True)
             _write(directory / "status.json", status)
             raise RuntimeError("Connector sync exceeded its timeout; previous data was retained.") from None
         except Exception:
             status.update(status="failed", error_code="preflight_failed" if preflight else "sync_failed", finished_at=_now())
             retain_budget()
+            retain_scope()
             _write(attempt / "receipt.json", status, exclusive=True)
             _write(directory / "status.json", status)
             raise

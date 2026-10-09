@@ -101,7 +101,9 @@ def _validate_request(request_path: Path, result_path: Path) -> dict:
     try:
         request = json.loads(_private_file(request_path), object_pairs_hook=_json_object,
                              parse_constant=lambda _: (_ for _ in ()).throw(WorkerError("invalid_request")))
-        if not isinstance(request, dict) or set(request) not in (_FIELDS, _FIELDS | {"request_budget"}):
+        if not isinstance(request, dict) or set(request) not in (
+                _FIELDS, _FIELDS | {"request_budget"},
+                _FIELDS | {"request_budget", "fetch_scope", "fetch_scope_sha256"}):
             raise WorkerError("invalid_request")
         if "request_budget" in request:
             from .budget import validate_limits
@@ -144,6 +146,15 @@ def _validate_request(request_path: Path, result_path: Path) -> dict:
         if not isinstance(request["params"], dict):
             raise WorkerError("invalid_request")
         _plain_json(request["params"])
+        if "fetch_scope" in request:
+            from .fetch_scope import FetchScopeError, compile_scope, plan_hash
+            try:
+                plan = compile_scope(request["source_type"], resources, request["params"], request["fetch_scope"])
+                if request["fetch_scope_sha256"] != plan_hash(plan):
+                    raise WorkerError("fetch_scope_failed")
+            except FetchScopeError:
+                raise WorkerError("fetch_scope_failed") from None
+            request["compiled_fetch_scope"] = plan
         return {**request, "work_dir": root, "staging_database": database,
                 "request_path": request_file, "result_path": result_file}
     except WorkerError:
@@ -302,7 +313,7 @@ def _as_source(dlt, source, source_type, resource_names):
     return source, selected
 
 
-def _budgeted_session(budget, *, max_response_bytes=None):
+def _budgeted_session(budget, *, max_response_bytes=None, fetch_scope=None):
     """One shared transport; no hidden urllib3 retries or automatic redirects.
 
     Counting occurs after request preparation and immediately before the sole
@@ -325,8 +336,16 @@ def _budgeted_session(budget, *, max_response_bytes=None):
         def __deepcopy__(self, memo):
             return self
 
+        def prepare_request(self, request):
+            prepared = super().prepare_request(request)
+            if fetch_scope is not None:
+                fetch_scope.prepare_request(request, prepared)
+            return prepared
+
         def send(self, prepared, **kwargs):
             with self._send_lock:
+                if fetch_scope is not None:
+                    fetch_scope.before_dispatch(prepared)
                 reservation = budget.reserve_request()
                 request_id = reservation["request_id"]
                 try:
@@ -365,7 +384,7 @@ def _budgeted_session(budget, *, max_response_bytes=None):
     return BudgetSession()
 
 
-def _extract(request: dict, credentials: dict, *, budget=None) -> dict:
+def _extract(request: dict, credentials: dict, *, budget=None, fetch_scope=None) -> dict:
     dlt, duckdb, get_source = _runtime(request["work_dir"])
     session = None
     if budget is not None:
@@ -373,13 +392,19 @@ def _extract(request: dict, credentials: dict, *, budget=None) -> dict:
         family = describe(request["source_type"])["execution_family"]
         if family not in {"dlt_rest", "dlt_graphql"}:
             raise WorkerError("request_budget_unsupported")
+        if fetch_scope is not None and family != "dlt_rest":
+            raise WorkerError("fetch_scope_failed")
         response_limit = None
         if family == "dlt_graphql":
             from .upstream.sources.graphql import MAX_RESPONSE_BYTES
             response_limit = MAX_RESPONSE_BYTES
-        session = _budgeted_session(budget, max_response_bytes=response_limit)
+        session = _budgeted_session(budget, max_response_bytes=response_limit, fetch_scope=fetch_scope)
+    elif fetch_scope is not None:
+        raise WorkerError("fetch_scope_failed")
     try:
         extra = {"http_session": session} if session is not None else {}
+        if fetch_scope is not None:
+            extra["fetch_scope"] = fetch_scope
         source = get_source(request["source_type"], credentials,
                             resource_names=request["resources"] or None, params=request["params"], **extra)
     except ImportError:
@@ -416,11 +441,19 @@ def _extract(request: dict, credentials: dict, *, budget=None) -> dict:
         raise WorkerError("invalid_output_schema")
     if not tables:
         raise WorkerError("extraction_empty_schema")
+    scope_summary = None
+    if fetch_scope is not None:
+        from .fetch_scope import compact_summary
+        observed = fetch_scope.finish()
+        if observed["status"] != "completed":
+            raise WorkerError("fetch_scope_failed")
+        scope_summary = compact_summary(observed)
     if budget is not None:
         if budget.finish()["status"] != "completed":
             raise WorkerError("request_budget_failed")
     return {"status": "success", "source_type": request["source_type"], "name": request["name"],
-            "resources": selected, "tables": tables}
+            "resources": selected, "tables": tables,
+            **({"fetch_scope": scope_summary} if scope_summary is not None else {})}
 
 
 def run_request(request_path: str | Path, result_path: str | Path) -> dict:
@@ -429,13 +462,18 @@ def run_request(request_path: str | Path, result_path: str | Path) -> dict:
     fd = os.open(request["result_path"], os.O_WRONLY | os.O_CREAT | os.O_EXCL
                  | getattr(os, "O_NOFOLLOW", 0), 0o600)
     result = {"status": "error", "error_code": "extraction_failed"}
-    budget = None
+    budget, fetch_scope = None, None
+    scope_errors = ()
     try:
         with _silenced():
             try:
                 if "request_budget" in request:
                     from .budget import ExtractionBudget
                     budget = ExtractionBudget(request["work_dir"] / "request-budget.json", request["request_budget"])
+                if "fetch_scope" in request:
+                    from .fetch_scope import FetchScope, FetchScopeError
+                    scope_errors = (FetchScopeError,)
+                    fetch_scope = FetchScope(request["work_dir"] / "fetch-scope.json", request["compiled_fetch_scope"])
                 credentials = {}
                 for field, env_name in request["credential_env"].items():
                     value = os.environ.get(env_name)
@@ -444,19 +482,33 @@ def run_request(request_path: str | Path, result_path: str | Path) -> dict:
                     credentials[field] = value
                 with _isolated_environment(request["work_dir"]):
                     try:
-                        result = _extract(request, credentials, **({"budget": budget} if budget is not None else {}))
+                        options = {"budget": budget} if budget is not None else {}
+                        if fetch_scope is not None:
+                            options["fetch_scope"] = fetch_scope
+                        result = _extract(request, credentials, **options)
                     finally:
                         # dlt failure packages can contain exception details.
                         # Retain only the staging database and sanitized result.
                         cleanup_scratch(request["work_dir"])
             except WorkerError as exc:
                 result = {"status": "error", "error_code": exc.code}
+            except scope_errors:
+                result = {"status": "error", "error_code": "fetch_scope_failed"}
             except ImportError:
                 result = {"status": "error", "error_code": "runtime_dependency_missing"}
-            except BaseException:
+            except BaseException as exc:
                 # KeyboardInterrupt/SystemExit from a source are failed attempts,
                 # never reasons to print an upstream traceback or retry a call.
                 result = {"status": "error", "error_code": "extraction_failed"}
+                # dlt can wrap a guard exception in a pipeline-step error. Only
+                # inspect exception types, never expose their source messages.
+                for _ in range(16):
+                    if isinstance(exc, scope_errors):
+                        result["error_code"] = "fetch_scope_failed"
+                        break
+                    exc = exc.__cause__ or exc.__context__
+                    if exc is None:
+                        break
             if budget is not None:
                 try:
                     from .budget import compact_summary
@@ -469,6 +521,20 @@ def run_request(request_path: str | Path, result_path: str | Path) -> dict:
                     from .budget import compact_summary, read_budget
                     try:
                         result["request_budget"] = compact_summary(read_budget(request["work_dir"] / "request-budget.json"))
+                    except (OSError, ValueError):
+                        pass
+            if fetch_scope is not None:
+                try:
+                    from .fetch_scope import compact_summary
+                    summary = fetch_scope.finish() if result["status"] == "success" else fetch_scope.fail("worker_failed")
+                    if result["status"] == "success" and summary["status"] != "completed":
+                        result.update(status="error", error_code="fetch_scope_failed")
+                    result["fetch_scope"] = compact_summary(summary)
+                except BaseException:
+                    result.update(status="error", error_code="fetch_scope_failed")
+                    from .fetch_scope import compact_summary, read_scope
+                    try:
+                        result["fetch_scope"] = compact_summary(read_scope(request["work_dir"] / "fetch-scope.json"))
                     except (OSError, ValueError):
                         pass
         result["observed_finished_at"] = dt.datetime.now(dt.timezone.utc).isoformat()

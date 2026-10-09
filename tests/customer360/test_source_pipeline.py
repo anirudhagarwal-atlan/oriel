@@ -42,6 +42,15 @@ api = module("source_pipeline_api_fixture", ROOT / "examples" / "connectors" / "
 LAUNCHER = ROOT / "examples" / "connectors" / "api_fixture_worker.py"
 
 
+def load_tests(loader, tests, pattern):
+    # Scope enforcement is part of source-pipeline acceptance, not merely an
+    # optional unit-test command. Reuse the independently runnable native HTTP
+    # cases so required parent reads and refusal-before-publication stay tested.
+    from tests.test_connector_fetch_scope_runtime import ScopedRESTExtractionTests
+    tests.addTests(loader.loadTestsFromTestCase(ScopedRESTExtractionTests))
+    return tests
+
+
 def api_command(workspace, fixture, *arguments, expect_failure=False):
     # Only the two generated fixture tokens and allowlisted process settings
     # enter the launcher; ambient vendor credentials are never copied.
