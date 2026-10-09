@@ -1,0 +1,23 @@
+{
+  "context": "context.json",
+  "metrics": [
+    "metrics/eligible_pipeline.json",
+    "metrics/active_arr.json",
+    "metrics/active_accounts.json",
+    "metrics/at_risk_arr.json"
+  ],
+  "models": [
+    "models/billing_subscriptions-be1e2319.json",
+    "models/crm_accounts-850f78a9.json",
+    "models/crm_opportunities-9f59eee6.json",
+    "models/product_usage-2ab0549b.json",
+    "models/support_tickets-0a670b78.json"
+  ],
+  "skills": [
+    {
+      "name": "contextbase-talk-to-data",
+      "path": "skills/talk-to-data/SKILL.md"
+    }
+  ],
+  "spec_version": "contextbase.skill-index/v1"
+}

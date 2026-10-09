@@ -1,0 +1,71 @@
+{
+  "bundle_sha256": "90c2f2cb846250182495da0f6ed98494dba6469e82d25c7e97fb67cb9768f502",
+  "contains_source_rows": false,
+  "context_version": "synthetic-gtm-v1",
+  "files": [
+    {
+      "bytes": 15757,
+      "path": "context.json",
+      "sha256": "191b9216fba79612449fec8dda71726c2cbccf9088ee9ecb4f3eef7332ec5948"
+    },
+    {
+      "bytes": 2560,
+      "path": "metrics/active_accounts.json",
+      "sha256": "0e34401b16178639e3e75ff1dee34d65aa9f13aa5e8e51ff76aaf34d86f3c119"
+    },
+    {
+      "bytes": 2493,
+      "path": "metrics/active_arr.json",
+      "sha256": "756221abf80ad529897372b6b6e5257caaa4c8fbe44c37447fcfdebb69e17cbe"
+    },
+    {
+      "bytes": 4758,
+      "path": "metrics/at_risk_arr.json",
+      "sha256": "f89a678a4366e18324f121e868ccc658dad3f99615874bb5f71025ab8ff48e3a"
+    },
+    {
+      "bytes": 2777,
+      "path": "metrics/eligible_pipeline.json",
+      "sha256": "25bb996c13b1e77059d823e3c0620b13d046c4f5a104467fce09d1f60a40226f"
+    },
+    {
+      "bytes": 432,
+      "path": "models/billing_subscriptions-be1e2319.json",
+      "sha256": "544d312d907b221265e8775e7ad511dcca7dd474f4b21310bdf4a3e0d7a77dcb"
+    },
+    {
+      "bytes": 417,
+      "path": "models/crm_accounts-850f78a9.json",
+      "sha256": "9b798440a7e29ff0d42d7430305364d5713f63888baa0ed13d6691c0ff97720e"
+    },
+    {
+      "bytes": 545,
+      "path": "models/crm_opportunities-9f59eee6.json",
+      "sha256": "a1022d451fe589889d281e7a2ce1f8fe0825d6132c9028f97627b21f8ead8e4f"
+    },
+    {
+      "bytes": 363,
+      "path": "models/product_usage-2ab0549b.json",
+      "sha256": "e05be9452b2897feec354a294479b4b33c501270ac3db17a4fae7afd2d476ad0"
+    },
+    {
+      "bytes": 426,
+      "path": "models/support_tickets-0a670b78.json",
+      "sha256": "375c22a2c3029fb19f2b437279e692dbe110a3198dd5eb79b354481620e680a1"
+    },
+    {
+      "bytes": 595,
+      "path": "skill_index.json",
+      "sha256": "d0f37fd5b371a5ca41fda3ef54e65d6bb9f05f0ec1bf7aa77db62e81197bb57c"
+    },
+    {
+      "bytes": 719,
+      "path": "skills/talk-to-data/SKILL.md",
+      "sha256": "822d0d39b407cdfbd77bede43236af41d0110c03beee7a484d899eaad9e386b5"
+    }
+  ],
+  "network_upload": "not_performed",
+  "registry_spec_version": "1.0-draft.1",
+  "spec_version": "contextbase.bundle/v1",
+  "synthetic": true
+}

@@ -1,0 +1,109 @@
+{
+  "kind": "native_metric_structure_verification",
+  "synthetic": true,
+  "observed_at": "2026-10-09T09:26:27.106525+00:00",
+  "gateway_revision": "50524000a4b16884044c3120a5c3a85b955f2407",
+  "validator_binary_sha256": "49453cf4f841474d4c6d8fe25146063bfebf9a4f9b4a23f13224bb66ba1d4b0a",
+  "validation_profile": "metric-1.0-draft.1-structural-1",
+  "native_sql_validation": "not_performed",
+  "remote_registry_roundtrip": "not_performed",
+  "model_calls": 0,
+  "native_rystic_calls": 0,
+  "network_calls": 0,
+  "structural_checks": [
+    {
+      "input": "curated/active_accounts",
+      "exit_code": 0,
+      "input_sha256": "307cb751eb73b99c11cff755f55ec52b65f70761e3e5dcd78dbee5d4c920dd8c",
+      "native_definition_sha256": "88376ce9697ec6b7503763e90d33c1270fbf5602ded20f0a8abca77946dd5b56",
+      "native_execution_definition_sha256": "e50689b382589dc00a3e8f5b5594cca5da58b30851e1b47fb9906e9692927eb5",
+      "warning_rules": [
+        "pilot_spec",
+        "experimental_fields"
+      ]
+    },
+    {
+      "input": "curated/active_arr",
+      "exit_code": 0,
+      "input_sha256": "3be4905650fed7207de8a91c206ba534e86100ddb127708dcbfec9e6c519e721",
+      "native_definition_sha256": "a5f42af0e518b349a50b88f394eb600534baad388378b1bea5b6e38550eabccd",
+      "native_execution_definition_sha256": "7ac06e5f3690a32f14e64bda2d817e2cc9a8906965c5eeb5965cf577c586f55f",
+      "warning_rules": [
+        "pilot_spec",
+        "experimental_fields"
+      ]
+    },
+    {
+      "input": "curated/at_risk_arr",
+      "exit_code": 0,
+      "input_sha256": "e41c04adccd587f7f83a16d43ded1541b881bdc4a63e3e0fe565fb5b85677e43",
+      "native_definition_sha256": "def6df24355708899aa5fc4e9fa669610c92000e75aee5a5444162eb2ec7ca29",
+      "native_execution_definition_sha256": "c0ece51cf7aa0e44eb125f8e1d712499470e47cfeaa981482b9835f2b520e562",
+      "warning_rules": [
+        "pilot_spec",
+        "experimental_fields"
+      ]
+    },
+    {
+      "input": "curated/eligible_pipeline",
+      "exit_code": 0,
+      "input_sha256": "5ada61259021da2e7b77c9bb2b8cbf33989b4a8922a394f423da5804adb697c8",
+      "native_definition_sha256": "111fc4479fe734a736da7d87472d97fba1d01bb18268f9bdfdb5cee8c51837bc",
+      "native_execution_definition_sha256": "b2fb17463aac00888239ba05779791e892b75791149dcdb3f79407d9752a32e5",
+      "warning_rules": [
+        "pilot_spec",
+        "experimental_fields"
+      ]
+    },
+    {
+      "input": "generic_v1/unused_seats_at_low_activation",
+      "exit_code": 0,
+      "input_sha256": "b9dab1f8f4518118211d540e66cc7b9300dc794d085c30e7e154b4e18d304cdc",
+      "native_definition_sha256": "7c0a1f2f1548794386c902387075b58266528f054b30a4ad474290e6bcb694fd",
+      "native_execution_definition_sha256": "27a1ee18efcca4355347acd2fe73db55b87786a4025184c4d1f333bb29d58186",
+      "warning_rules": [
+        "pilot_spec",
+        "experimental_fields"
+      ]
+    },
+    {
+      "input": "generic_v2/unused_seats_at_low_activation",
+      "exit_code": 0,
+      "input_sha256": "6e2db5fcf8a197a118e5ff9d3584ba8a9a8e86ccf5944af69b039b300e367b7c",
+      "native_definition_sha256": "208a037e25e9bf0342ae95b0e653368b9257efb6f80e897124e2c08995295597",
+      "native_execution_definition_sha256": "18b492fb6251018906d00cc787bcd24c0314b6494f70d5f45d469e91db371587",
+      "warning_rules": [
+        "pilot_spec",
+        "experimental_fields"
+      ]
+    }
+  ],
+  "semantic_revision": {
+    "metric": "unused_seats_at_low_activation",
+    "versions": [
+      1,
+      2
+    ],
+    "local_values": [
+      51,
+      56
+    ],
+    "source_data_changed": false,
+    "stable_source_identity": true,
+    "change": "Eligibility changes from strictly below 50% activation to at or below 50%; checked with a separate Python oracle."
+  },
+  "scope": "Native CLI validation of six unchanged create envelopes. Standard artifact fields, authorization, remote storage, append acceptance and SQL correctness are not established by this CLI.",
+  "fingerprint_note": "Native fingerprints use the Registry canonicalization profile; they are not the raw input-file or ContextBase JSON hashes.",
+  "receipts_sha256": {
+    "preparation-receipt.json": "259aaccca15aa154dfdb51102cd686ddc834ae6f42b28fa50be2afde5992d767",
+    "native-validation-receipt.json": "2fd7fa6fdd525f8c8b6cbe534714098ec9098e71738828c0192b3d8e0be604af",
+    "negative-validation-receipt.json": "dd7419f7cb4905d135df5f997f5a60381edd86febf5ca008b1004355b8345d22"
+  },
+  "negative_control": {
+    "mutation": "Unsupported definition.spec_version in a separate copied synthetic fixture",
+    "exit_code": 1,
+    "expected_rejection_observed": true,
+    "original_exports_unchanged": true,
+    "input_sha256": "d8dd0ff0a8324e47849f1807d715dcacaa56ce3221a04c0d65aad98c349b62ef"
+  }
+}

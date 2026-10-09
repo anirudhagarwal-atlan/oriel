@@ -1,0 +1,83 @@
+{
+  "definition": {
+    "aggregation": {
+      "null_handling": "ignore",
+      "reaggregation": "sum",
+      "type": "sum"
+    },
+    "depends_on": [],
+    "dialect": "duckdb",
+    "domain": "Synthetic go-to-market",
+    "examples": [
+      {
+        "question": "Qualified open pipeline ARR for the demo fiscal quarter.",
+        "source": "curated_synthetic_demo",
+        "sql": "SELECT COALESCE(SUM(arr), 0) AS eligible_pipeline\nFROM crm.opportunities\nWHERE stage IN ('S2', 'S3', 'S4')\n  AND close_date >= DATE '2026-08-01'\n  AND close_date < DATE '2026-11-01'"
+      }
+    ],
+    "exclusions": [
+      "Exclude S1 and stages outside S2/S3/S4.",
+      "Use ARR, not TCV.",
+      "Only close dates in [2026-08-01, 2026-11-01)."
+    ],
+    "extensions": {
+      "contextbase": {
+        "local_approval_kind": "curated_synthetic_demo",
+        "local_execution_evidence": {
+          "business_certification": "not_performed",
+          "engine": "duckdb",
+          "executed_at": "2026-10-08T23:00:30.310964+00:00",
+          "result_sha256": "72bbce6616bbb472e016ad4c88d6e063ac93f74fb7503df1f0e662496324300e",
+          "row_count": 1,
+          "sql_sha256": "77cbf086f429db019e4b234d7eb5d8a3ad01480e733b9441b8e819f301935faa",
+          "truncated": false
+        },
+        "requires_business_owner_review": true,
+        "synthetic": true
+      }
+    },
+    "formula": "COALESCE(SUM(s.arr), 0)",
+    "grain": "One opportunity, identified by opportunity_id.",
+    "mandatory_filters": [
+      "s.stage IN ('S2', 'S3', 'S4')",
+      "s.close_date >= DATE '2026-08-01'",
+      "s.close_date < DATE '2026-11-01'"
+    ],
+    "output": {
+      "alias": "eligible_pipeline",
+      "datatype": "decimal",
+      "unit": "USD/year"
+    },
+    "owner": "demo_policy_owner",
+    "population": "Qualified open pipeline ARR for the demo fiscal quarter.",
+    "provenance": {
+      "derived_from": [
+        "embedded demo business policy"
+      ],
+      "proposed_by": "Contextbase demo fixture",
+      "source": "curated_synthetic_demo"
+    },
+    "source": {
+      "alias": "s",
+      "entity": "crm.opportunities",
+      "table": "crm.opportunities",
+      "timeframe_column": "close_date"
+    },
+    "spec_version": "1.0-draft.1",
+    "status": "candidate",
+    "version": 1
+  },
+  "description": "Qualified open pipeline ARR for the demo fiscal quarter.",
+  "display_name": "Eligible pipeline",
+  "name": "eligible_pipeline",
+  "source_id": "contextbase.metrics/eligible_pipeline",
+  "source_metadata": {
+    "context_spec": "contextbase.context/v1",
+    "network_upload": "not_performed",
+    "synthetic": true
+  },
+  "source_type": "local",
+  "source_uri": "metrics/eligible_pipeline.json",
+  "source_version": "synthetic-gtm-v1",
+  "workspace_id": "example-workspace"
+}

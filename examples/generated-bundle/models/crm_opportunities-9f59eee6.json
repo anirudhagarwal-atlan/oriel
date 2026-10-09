@@ -1,0 +1,33 @@
+{
+  "columns": [
+    {
+      "name": "opportunity_id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "account_id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "stage",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "arr",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "tcv",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "close_date",
+      "type": "DATE"
+    }
+  ],
+  "row_count": 80,
+  "schema": "crm",
+  "semantic_status": "observed_schema_only",
+  "spec_version": "contextbase.model/v1",
+  "table": "opportunities"
+}

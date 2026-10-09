@@ -1,0 +1,37 @@
+{
+  "kind": "functional_integration_verification",
+  "benchmark_status": "deferred",
+  "model_calls": 0,
+  "simulators": {
+    "stripe": {
+      "product": "stripe-twin",
+      "version": "0.0.8",
+      "model_hash": "sha256:cfeb0ea0dc5d6ae503c8533bbaec3f9da92c62cca8bb1d29fc5ffa757f1924d7",
+      "initial_clock": "2026-01-01T00:00:00Z",
+      "edition": "metered"
+    },
+    "linear": {
+      "product": "linear-twin",
+      "version": "0.0.1",
+      "model_hash": "sha256:17bb74ad2c0165052bfd14b0ce485a453fdbe884d0118a5eed59fd8e8c2d1ce0",
+      "initial_clock": "2026-01-01T00:00:00Z",
+      "edition": "metered"
+    }
+  },
+  "initial_account_count": 5,
+  "initial_net_collected_usd": "1857.69",
+  "independent_oracle_matches": true,
+  "unchanged_refresh_preserves_data_hash": true,
+  "source_change": "Resolved both urgent/high synthetic issues for customer_001 through the Linear simulator API.",
+  "changed_issue_ids": [
+    "00000001-0000-4000-8001-000000000001",
+    "00000002-0000-4000-8002-000000000002"
+  ],
+  "refreshed_account_count": 4,
+  "refreshed_net_collected_usd": "1490.61",
+  "context_version_preserved": true,
+  "initial_snapshot": "rystic-947c5a5838b3fec8",
+  "refreshed_snapshot": "rystic-5efa03bbc12e80a6",
+  "pre_refresh_snapshot_retained_old_value": true,
+  "freshness_limit": "Snapshot time is explicit. This version does not automatically detect unsynced source changes."
+}

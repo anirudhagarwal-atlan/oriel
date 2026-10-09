@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oriel"
+version = "0.1.0"
+description = "Talk to data across the tools you already use. Turn answers into reusable agent context."
+readme = "README.md"
+requires-python = ">=3.10,<3.15"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["duckdb==1.4.5"]
+
+[project.optional-dependencies]
+connectors = [
+  "dlt[duckdb,sql_database,filesystem]==1.24.0",
+  "PyYAML==6.0.3",
+]
+
+[project.urls]
+Repository = "https://github.com/anirudhagarwal-atlan/oriel"
+Documentation = "https://github.com/anirudhagarwal-atlan/oriel/blob/main/docs/README.md"
+Issues = "https://github.com/anirudhagarwal-atlan/oriel/issues"
+
+[project.scripts]
+oriel = "contextbase.cli:main"
+# Compatibility alias for existing local workflows and archived examples.
+contextbase = "contextbase.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["contextbase*"]
+
+[tool.setuptools.package-data]
+contextbase = ["data/*.json", "connectors/*.json", "connectors/**/*.json", "connectors/**/*.yaml", "connectors/**/*.yml", "connectors/**/*.txt", "connectors/**/*.md", "connectors/**/LICENSE", "connectors/**/NOTICE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.uv]
+exclude-newer = "2026-10-01T00:00:00Z"

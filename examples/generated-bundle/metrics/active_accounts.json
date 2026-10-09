@@ -1,0 +1,80 @@
+{
+  "definition": {
+    "aggregation": {
+      "null_handling": "ignore",
+      "reaggregation": "none",
+      "type": "count_distinct"
+    },
+    "depends_on": [],
+    "dialect": "duckdb",
+    "domain": "Synthetic go-to-market",
+    "examples": [
+      {
+        "question": "Distinct accounts with at least one paid active subscription.",
+        "source": "curated_synthetic_demo",
+        "sql": "SELECT COUNT(DISTINCT account_id) AS active_accounts\nFROM billing.subscriptions\nWHERE status = 'active' AND mrr > 0"
+      }
+    ],
+    "exclusions": [
+      "Exclude inactive and non-paying subscriptions.",
+      "Count an account only once."
+    ],
+    "extensions": {
+      "contextbase": {
+        "local_approval_kind": "curated_synthetic_demo",
+        "local_execution_evidence": {
+          "business_certification": "not_performed",
+          "engine": "duckdb",
+          "executed_at": "2026-10-08T23:00:30.322242+00:00",
+          "result_sha256": "5ad9823e5499223c0aa99f140027455c0b6f4855b9019063454410e62297364a",
+          "row_count": 1,
+          "sql_sha256": "875a5f861937dba358b98c74ff2d1e7ababa45ed450b47b36598008fd31739c0",
+          "truncated": false
+        },
+        "requires_business_owner_review": true,
+        "synthetic": true
+      }
+    },
+    "formula": "COUNT(DISTINCT s.account_id)",
+    "grain": "One eligible account.",
+    "mandatory_filters": [
+      "s.status = 'active'",
+      "s.mrr > 0"
+    ],
+    "output": {
+      "alias": "active_accounts",
+      "datatype": "integer",
+      "unit": "accounts"
+    },
+    "owner": "demo_policy_owner",
+    "population": "Distinct accounts with at least one paid active subscription.",
+    "provenance": {
+      "derived_from": [
+        "embedded demo business policy"
+      ],
+      "proposed_by": "Contextbase demo fixture",
+      "source": "curated_synthetic_demo"
+    },
+    "source": {
+      "alias": "s",
+      "entity": "billing.subscriptions",
+      "table": "billing.subscriptions"
+    },
+    "spec_version": "1.0-draft.1",
+    "status": "candidate",
+    "version": 1
+  },
+  "description": "Distinct accounts with at least one paid active subscription.",
+  "display_name": "Active accounts",
+  "name": "active_accounts",
+  "source_id": "contextbase.metrics/active_accounts",
+  "source_metadata": {
+    "context_spec": "contextbase.context/v1",
+    "network_upload": "not_performed",
+    "synthetic": true
+  },
+  "source_type": "local",
+  "source_uri": "metrics/active_accounts.json",
+  "source_version": "synthetic-gtm-v1",
+  "workspace_id": "example-workspace"
+}

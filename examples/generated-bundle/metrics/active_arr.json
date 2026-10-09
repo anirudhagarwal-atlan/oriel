@@ -1,0 +1,79 @@
+{
+  "definition": {
+    "aggregation": {
+      "null_handling": "ignore",
+      "reaggregation": "sum",
+      "type": "sum"
+    },
+    "depends_on": [],
+    "dialect": "duckdb",
+    "domain": "Synthetic go-to-market",
+    "examples": [
+      {
+        "question": "Annual recurring revenue from paid active subscriptions.",
+        "source": "curated_synthetic_demo",
+        "sql": "SELECT COALESCE(SUM(mrr), 0) * 12 AS active_arr\nFROM billing.subscriptions\nWHERE status = 'active' AND mrr > 0"
+      }
+    ],
+    "exclusions": [
+      "Exclude inactive and non-paying subscriptions."
+    ],
+    "extensions": {
+      "contextbase": {
+        "local_approval_kind": "curated_synthetic_demo",
+        "local_execution_evidence": {
+          "business_certification": "not_performed",
+          "engine": "duckdb",
+          "executed_at": "2026-10-08T23:00:30.316764+00:00",
+          "result_sha256": "453970d2c1600e5767750e8fe23e201312db2d6c49414cbb8f82f6cbdf76b785",
+          "row_count": 1,
+          "sql_sha256": "29d89bbf7f27a4884963affb61690aead561ac15958129da0f69c09fc59bbc15",
+          "truncated": false
+        },
+        "requires_business_owner_review": true,
+        "synthetic": true
+      }
+    },
+    "formula": "COALESCE(SUM(s.mrr), 0) * 12",
+    "grain": "One subscription, identified by subscription_id.",
+    "mandatory_filters": [
+      "s.status = 'active'",
+      "s.mrr > 0"
+    ],
+    "output": {
+      "alias": "active_arr",
+      "datatype": "decimal",
+      "unit": "USD/year"
+    },
+    "owner": "demo_policy_owner",
+    "population": "Annual recurring revenue from paid active subscriptions.",
+    "provenance": {
+      "derived_from": [
+        "embedded demo business policy"
+      ],
+      "proposed_by": "Contextbase demo fixture",
+      "source": "curated_synthetic_demo"
+    },
+    "source": {
+      "alias": "s",
+      "entity": "billing.subscriptions",
+      "table": "billing.subscriptions"
+    },
+    "spec_version": "1.0-draft.1",
+    "status": "candidate",
+    "version": 1
+  },
+  "description": "Annual recurring revenue from paid active subscriptions.",
+  "display_name": "Active arr",
+  "name": "active_arr",
+  "source_id": "contextbase.metrics/active_arr",
+  "source_metadata": {
+    "context_spec": "contextbase.context/v1",
+    "network_upload": "not_performed",
+    "synthetic": true
+  },
+  "source_type": "local",
+  "source_uri": "metrics/active_arr.json",
+  "source_version": "synthetic-gtm-v1",
+  "workspace_id": "example-workspace"
+}

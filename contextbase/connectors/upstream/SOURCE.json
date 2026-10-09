@@ -1,0 +1,475 @@
+{
+  "spec": "contextbase.upstream-connectors/v1",
+  "project": "Dinobase",
+  "repository": "https://github.com/kappa90/dinobase",
+  "revision": "2dd06369fc333cd51663c27b7d47a21a7946757b",
+  "license": "MIT Expat (full upstream LICENSE retained)",
+  "files": [
+    {
+      "upstream_path": "dinobase/sync/registry.py",
+      "vendored_path": "registry.py",
+      "upstream_sha256": "fefa92898a18da02cacf96c89121cc87658944cc0bcd1e7b9d233c466620b94f",
+      "vendored_sha256": "3f0c3497af04868c9513447d0a9ead81913e7444f4442cf5b2c9b40e9bc213fa",
+      "modified": true
+    },
+    {
+      "upstream_path": "dinobase/sync/yaml_source.py",
+      "vendored_path": "yaml_source.py",
+      "upstream_sha256": "d56bfacdb20eea5295bfc8d8d03a71b08934fe727313f744a631a2b0bd702a60",
+      "vendored_sha256": "654df8fdbaf410d033d484190de732fe17fd6234168f1822fd4541d379b760dc",
+      "modified": true
+    },
+    {
+      "upstream_path": "dinobase/sync/source_config.py",
+      "vendored_path": "source_config.py",
+      "upstream_sha256": "b70344fe27e7c3cd98a2dfa5ad6337128f7c64e43d3df28e7e10bf59b4842186",
+      "vendored_sha256": "8d6ca1c66cf53e759a76c9f15d362d421ee2af5c4810b402421672643e82e657",
+      "modified": true
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/__init__.py",
+      "vendored_path": "sources/__init__.py",
+      "upstream_sha256": "2db67fa28d1d50f52afe6b8502d62ba679132f1ec82d3a10603b070e34da6a56",
+      "vendored_sha256": "a0dfca6b70203edb17107aefff8f7915398e9a7a6241c080c7d161a25c51880d",
+      "modified": true
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/graphql.py",
+      "vendored_path": "sources/graphql.py",
+      "upstream_sha256": "ee1b7746f895d0b76f473d13356531d080065195d06e26162a4602ee6574ccae",
+      "vendored_sha256": "e32d4629b67e8aefe90a28e2354394fbe8c77669a94eebc7f0c35ea1647e2191",
+      "modified": true
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/__init__.py",
+      "vendored_path": "sources/configs/__init__.py",
+      "upstream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "vendored_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/amplitude.yaml",
+      "vendored_path": "sources/configs/amplitude.yaml",
+      "upstream_sha256": "6d41c383365e028791c960351bbd539815c1b3f6ff9d11ffd2cf68cbe286e512",
+      "vendored_sha256": "6d41c383365e028791c960351bbd539815c1b3f6ff9d11ffd2cf68cbe286e512",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/attio.yaml",
+      "vendored_path": "sources/configs/attio.yaml",
+      "upstream_sha256": "9b9f855fa3c0cb83c2f660f5e3e514ad50515e4d2857e925bd9a285d77d9bb81",
+      "vendored_sha256": "9b9f855fa3c0cb83c2f660f5e3e514ad50515e4d2857e925bd9a285d77d9bb81",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/bamboohr.yaml",
+      "vendored_path": "sources/configs/bamboohr.yaml",
+      "upstream_sha256": "3a102f9608b22d115b7f3d042b1fc026aff194cce1d66f81e0858166a313a130",
+      "vendored_sha256": "3a102f9608b22d115b7f3d042b1fc026aff194cce1d66f81e0858166a313a130",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/bigcommerce.yaml",
+      "vendored_path": "sources/configs/bigcommerce.yaml",
+      "upstream_sha256": "ffcb36db63bb9152e5091dddb9181b70f3312f4f1bec6f53d5aa5b4b062b8e31",
+      "vendored_sha256": "ffcb36db63bb9152e5091dddb9181b70f3312f4f1bec6f53d5aa5b4b062b8e31",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/bitbucket.yaml",
+      "vendored_path": "sources/configs/bitbucket.yaml",
+      "upstream_sha256": "4fb2f1bd64eee8ab8bed4c575fb76d98c164f9ef3c40f98349151d1c9440e345",
+      "vendored_sha256": "4fb2f1bd64eee8ab8bed4c575fb76d98c164f9ef3c40f98349151d1c9440e345",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/brex.yaml",
+      "vendored_path": "sources/configs/brex.yaml",
+      "upstream_sha256": "d62577e7c6202b4f850b52e70ed02d2456f49eed848fc675aa7470209a954e14",
+      "vendored_sha256": "d62577e7c6202b4f850b52e70ed02d2456f49eed848fc675aa7470209a954e14",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/chargebee.yaml",
+      "vendored_path": "sources/configs/chargebee.yaml",
+      "upstream_sha256": "5bc8539ef1b9367dd86aa843f3a23af6cc8ea13da2de613debe3e7fbbc3c3b1e",
+      "vendored_sha256": "5bc8539ef1b9367dd86aa843f3a23af6cc8ea13da2de613debe3e7fbbc3c3b1e",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/clickup.yaml",
+      "vendored_path": "sources/configs/clickup.yaml",
+      "upstream_sha256": "743e5429dfad809c08f52f7ed39486629a9d6bf61c239f6df0cfec62c90b28aa",
+      "vendored_sha256": "743e5429dfad809c08f52f7ed39486629a9d6bf61c239f6df0cfec62c90b28aa",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/close.yaml",
+      "vendored_path": "sources/configs/close.yaml",
+      "upstream_sha256": "74bad89d5c0cd6c61911b0b81747bb894f496403b1eb3ca8deb79e453cc942ed",
+      "vendored_sha256": "74bad89d5c0cd6c61911b0b81747bb894f496403b1eb3ca8deb79e453cc942ed",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/cloudflare.yaml",
+      "vendored_path": "sources/configs/cloudflare.yaml",
+      "upstream_sha256": "4cf1c3226d881a296b1e4f43667329e3d60998b6d8960b0efa0c5ec262805bd1",
+      "vendored_sha256": "4cf1c3226d881a296b1e4f43667329e3d60998b6d8960b0efa0c5ec262805bd1",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/contentful.yaml",
+      "vendored_path": "sources/configs/contentful.yaml",
+      "upstream_sha256": "a9b1cb6973ae92f57eea6be8673d966854be7dfda4d2c125e0b8caa7838b07ba",
+      "vendored_sha256": "a9b1cb6973ae92f57eea6be8673d966854be7dfda4d2c125e0b8caa7838b07ba",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/copper.yaml",
+      "vendored_path": "sources/configs/copper.yaml",
+      "upstream_sha256": "ba5fceffcdffff7a4193d757a19ef0e59a71e63f52ee6118d38637aaff299bb7",
+      "vendored_sha256": "ba5fceffcdffff7a4193d757a19ef0e59a71e63f52ee6118d38637aaff299bb7",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/customerio.yaml",
+      "vendored_path": "sources/configs/customerio.yaml",
+      "upstream_sha256": "896d7bcad5dcfbb7c48eba6ed293e390c43dc7b8b1d4e2fbc11227d9b64e617d",
+      "vendored_sha256": "896d7bcad5dcfbb7c48eba6ed293e390c43dc7b8b1d4e2fbc11227d9b64e617d",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/datadog.yaml",
+      "vendored_path": "sources/configs/datadog.yaml",
+      "upstream_sha256": "9aee0790b117f455e926f562ff636dbb36822cc3b83b576bf11face0bb1ecaae",
+      "vendored_sha256": "9aee0790b117f455e926f562ff636dbb36822cc3b83b576bf11face0bb1ecaae",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/deel.yaml",
+      "vendored_path": "sources/configs/deel.yaml",
+      "upstream_sha256": "c939ada5330ecac95175b13d97d75593ef1c48f9c12d1217706f6864c91a971a",
+      "vendored_sha256": "c939ada5330ecac95175b13d97d75593ef1c48f9c12d1217706f6864c91a971a",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/discord.yaml",
+      "vendored_path": "sources/configs/discord.yaml",
+      "upstream_sha256": "f29991944b57499d468cd2e92256679ab947683c0d20cf165e1d31201f070a10",
+      "vendored_sha256": "f29991944b57499d468cd2e92256679ab947683c0d20cf165e1d31201f070a10",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/figma.yaml",
+      "vendored_path": "sources/configs/figma.yaml",
+      "upstream_sha256": "0675d1ed930000ed9f79f650aa835a15f7a15a67ed3fbef5dbe4653f04773abf",
+      "vendored_sha256": "0675d1ed930000ed9f79f650aa835a15f7a15a67ed3fbef5dbe4653f04773abf",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/front.yaml",
+      "vendored_path": "sources/configs/front.yaml",
+      "upstream_sha256": "abaae867c3c3115b74c531618f916dd3075b35f62ffd2be0ff70abf3925b7f31",
+      "vendored_sha256": "abaae867c3c3115b74c531618f916dd3075b35f62ffd2be0ff70abf3925b7f31",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/gainsight.yaml",
+      "vendored_path": "sources/configs/gainsight.yaml",
+      "upstream_sha256": "1cb78c24ee0eaea25497ded1b147a5e2b21b76e3789e9408305082689ac468d1",
+      "vendored_sha256": "1cb78c24ee0eaea25497ded1b147a5e2b21b76e3789e9408305082689ac468d1",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/github.yaml",
+      "vendored_path": "sources/configs/github.yaml",
+      "upstream_sha256": "ba5d441e5f852582525c26ebc35c754fcb5cdc6d3c7197d9471fe4b3156a4475",
+      "vendored_sha256": "ba5d441e5f852582525c26ebc35c754fcb5cdc6d3c7197d9471fe4b3156a4475",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/gitlab.yaml",
+      "vendored_path": "sources/configs/gitlab.yaml",
+      "upstream_sha256": "1152dbec0c75dc965c90e6d797d6cb0adbdcb427e670842b0e34dd0bd9976593",
+      "vendored_sha256": "1152dbec0c75dc965c90e6d797d6cb0adbdcb427e670842b0e34dd0bd9976593",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/greenhouse.yaml",
+      "vendored_path": "sources/configs/greenhouse.yaml",
+      "upstream_sha256": "18ec3dcacc8a797bb150b97fc7122053b9cae6c459dab43a647666ca805a13c0",
+      "vendored_sha256": "18ec3dcacc8a797bb150b97fc7122053b9cae6c459dab43a647666ca805a13c0",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/gusto.yaml",
+      "vendored_path": "sources/configs/gusto.yaml",
+      "upstream_sha256": "da93c1123f7c001ac86c29201b87d507463b105720ddf2cdc05bafed9b568a05",
+      "vendored_sha256": "da93c1123f7c001ac86c29201b87d507463b105720ddf2cdc05bafed9b568a05",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/helpscout.yaml",
+      "vendored_path": "sources/configs/helpscout.yaml",
+      "upstream_sha256": "73988472673b098849513962f054a967fe2a1ad83fe641f8fec413d272f43f57",
+      "vendored_sha256": "73988472673b098849513962f054a967fe2a1ad83fe641f8fec413d272f43f57",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/hubspot_marketing.yaml",
+      "vendored_path": "sources/configs/hubspot_marketing.yaml",
+      "upstream_sha256": "b8c77b824dcf454021cbb2005d7945272506cfb2c0959c21abb2011c7dd54473",
+      "vendored_sha256": "b8c77b824dcf454021cbb2005d7945272506cfb2c0959c21abb2011c7dd54473",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/intercom.yaml",
+      "vendored_path": "sources/configs/intercom.yaml",
+      "upstream_sha256": "21ab18775004d3294a7e4ae6d7a1d850800d0d853bccacd81ba8d6613688ad2f",
+      "vendored_sha256": "21ab18775004d3294a7e4ae6d7a1d850800d0d853bccacd81ba8d6613688ad2f",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/lemon_squeezy.yaml",
+      "vendored_path": "sources/configs/lemon_squeezy.yaml",
+      "upstream_sha256": "208f235bb4a9d172c84bb7948cb2c33b71ee3cdfbcc309ab7f6b0730d486d4ae",
+      "vendored_sha256": "208f235bb4a9d172c84bb7948cb2c33b71ee3cdfbcc309ab7f6b0730d486d4ae",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/lever.yaml",
+      "vendored_path": "sources/configs/lever.yaml",
+      "upstream_sha256": "a768e88174ab4dfb6ca21d78f4067c6b811470f1e5b413dad388e35c75815094",
+      "vendored_sha256": "a768e88174ab4dfb6ca21d78f4067c6b811470f1e5b413dad388e35c75815094",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/linear.yaml",
+      "vendored_path": "sources/configs/linear.yaml",
+      "upstream_sha256": "d9b72bd5bf1c3e4848aa1c28f163af4c89f9a6ac7ba6436edd88cfb67f091a5a",
+      "vendored_sha256": "d9b72bd5bf1c3e4848aa1c28f163af4c89f9a6ac7ba6436edd88cfb67f091a5a",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/mailchimp.yaml",
+      "vendored_path": "sources/configs/mailchimp.yaml",
+      "upstream_sha256": "7340b3a3dbb16e3dab086e2b6155605676d7f42c94a52b7eeed2fefa0fa605e2",
+      "vendored_sha256": "7340b3a3dbb16e3dab086e2b6155605676d7f42c94a52b7eeed2fefa0fa605e2",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/mercury.yaml",
+      "vendored_path": "sources/configs/mercury.yaml",
+      "upstream_sha256": "9a7b106b9b1649bfb9a9366ca63124706383b991cffe823d0a837eda96ce3e91",
+      "vendored_sha256": "9a7b106b9b1649bfb9a9366ca63124706383b991cffe823d0a837eda96ce3e91",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/mixpanel.yaml",
+      "vendored_path": "sources/configs/mixpanel.yaml",
+      "upstream_sha256": "2dfa943e58e95ca213dbe0cf64a117f357b72d67a27ee4a8a05b8cc3a0c9e4b8",
+      "vendored_sha256": "2dfa943e58e95ca213dbe0cf64a117f357b72d67a27ee4a8a05b8cc3a0c9e4b8",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/monday.yaml",
+      "vendored_path": "sources/configs/monday.yaml",
+      "upstream_sha256": "3efffcaacdc824bad46c9e8bd5526927ebcc7ab1ac9368bbc8900a4a9b66b6fa",
+      "vendored_sha256": "3efffcaacdc824bad46c9e8bd5526927ebcc7ab1ac9368bbc8900a4a9b66b6fa",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/netlify.yaml",
+      "vendored_path": "sources/configs/netlify.yaml",
+      "upstream_sha256": "9626d27ddd0321f8f43787842bd5e0586229f8fa2750cc21bd2b996be0a68caf",
+      "vendored_sha256": "9626d27ddd0321f8f43787842bd5e0586229f8fa2750cc21bd2b996be0a68caf",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/newrelic.yaml",
+      "vendored_path": "sources/configs/newrelic.yaml",
+      "upstream_sha256": "791baf5ca22077125f448488e66eba9ed903ab80c45b054b507a0722cd08bdb9",
+      "vendored_sha256": "791baf5ca22077125f448488e66eba9ed903ab80c45b054b507a0722cd08bdb9",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/opsgenie.yaml",
+      "vendored_path": "sources/configs/opsgenie.yaml",
+      "upstream_sha256": "0ae68527822f9466c5d5847c8248055a40a969b4050df549fa08ffb9fb55aa25",
+      "vendored_sha256": "0ae68527822f9466c5d5847c8248055a40a969b4050df549fa08ffb9fb55aa25",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/paddle.yaml",
+      "vendored_path": "sources/configs/paddle.yaml",
+      "upstream_sha256": "85fffbaedfacb90b9b2074d88f95e9b887d986551b14d7dc5572e05d20277ec9",
+      "vendored_sha256": "85fffbaedfacb90b9b2074d88f95e9b887d986551b14d7dc5572e05d20277ec9",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/pagerduty.yaml",
+      "vendored_path": "sources/configs/pagerduty.yaml",
+      "upstream_sha256": "0ee7f3727cda6f3f424405a27bc38474574ecc0b1395afb405f158b80ddf6ef7",
+      "vendored_sha256": "0ee7f3727cda6f3f424405a27bc38474574ecc0b1395afb405f158b80ddf6ef7",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/plausible.yaml",
+      "vendored_path": "sources/configs/plausible.yaml",
+      "upstream_sha256": "9ef5c487dd8754d9dc4c2ec6c50487f16164bd883c45e970f1fdd6653f45282c",
+      "vendored_sha256": "9ef5c487dd8754d9dc4c2ec6c50487f16164bd883c45e970f1fdd6653f45282c",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/posthog.yaml",
+      "vendored_path": "sources/configs/posthog.yaml",
+      "upstream_sha256": "a1d4a057b6c1f9978da478c32681d495ef1df73a455d85afef39c90cb53d0ee3",
+      "vendored_sha256": "a1d4a057b6c1f9978da478c32681d495ef1df73a455d85afef39c90cb53d0ee3",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/quickbooks.yaml",
+      "vendored_path": "sources/configs/quickbooks.yaml",
+      "upstream_sha256": "1d216ad18722c69d33da16d2657ddfd61025a0ea8e94a500bb923fb9ea5bf03a",
+      "vendored_sha256": "1d216ad18722c69d33da16d2657ddfd61025a0ea8e94a500bb923fb9ea5bf03a",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/recurly.yaml",
+      "vendored_path": "sources/configs/recurly.yaml",
+      "upstream_sha256": "06d1d8698271a2cab2ac629a0ccbc333a57389397afdad99865cc34d91c1506f",
+      "vendored_sha256": "06d1d8698271a2cab2ac629a0ccbc333a57389397afdad99865cc34d91c1506f",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/sanity.yaml",
+      "vendored_path": "sources/configs/sanity.yaml",
+      "upstream_sha256": "f399b7bab38c10519538a3890b39b25e3866d17cc938aae69fc7eb301b55272c",
+      "vendored_sha256": "f399b7bab38c10519538a3890b39b25e3866d17cc938aae69fc7eb301b55272c",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/segment.yaml",
+      "vendored_path": "sources/configs/segment.yaml",
+      "upstream_sha256": "cba54e90eebbe1b780b653739542885e78a3d0ac0a2bbec28380d647361a2b6d",
+      "vendored_sha256": "cba54e90eebbe1b780b653739542885e78a3d0ac0a2bbec28380d647361a2b6d",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/sendgrid.yaml",
+      "vendored_path": "sources/configs/sendgrid.yaml",
+      "upstream_sha256": "472ef98ac7c6a4bad2b087cad462c7fd2bc3e749ed57e534e448e833314180a8",
+      "vendored_sha256": "472ef98ac7c6a4bad2b087cad462c7fd2bc3e749ed57e534e448e833314180a8",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/sentry.yaml",
+      "vendored_path": "sources/configs/sentry.yaml",
+      "upstream_sha256": "09ab279fa608a83fd1e047d18c3b22449f3ff31993ebb76a9dffde8b84a9c242",
+      "vendored_sha256": "09ab279fa608a83fd1e047d18c3b22449f3ff31993ebb76a9dffde8b84a9c242",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/square.yaml",
+      "vendored_path": "sources/configs/square.yaml",
+      "upstream_sha256": "2af10cbbae86cd1a7c898b2e6f51608b704b6820c0c54c90681fc3d2e9f15d18",
+      "vendored_sha256": "2af10cbbae86cd1a7c898b2e6f51608b704b6820c0c54c90681fc3d2e9f15d18",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/statuspage.yaml",
+      "vendored_path": "sources/configs/statuspage.yaml",
+      "upstream_sha256": "6ea8a4976d80655ddbdaed5f9f9a53487732482bcc23ad3505ccb694ba6d1e9d",
+      "vendored_sha256": "6ea8a4976d80655ddbdaed5f9f9a53487732482bcc23ad3505ccb694ba6d1e9d",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/todoist.yaml",
+      "vendored_path": "sources/configs/todoist.yaml",
+      "upstream_sha256": "9f575244e0590a534c120ea6e49e68afce29d4fe29c0bda85291cfe28a310a43",
+      "vendored_sha256": "9f575244e0590a534c120ea6e49e68afce29d4fe29c0bda85291cfe28a310a43",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/trello.yaml",
+      "vendored_path": "sources/configs/trello.yaml",
+      "upstream_sha256": "51b5e854fd4e314b8754a6313863d20aa92cb4f4ac993c129e24146a018619d0",
+      "vendored_sha256": "51b5e854fd4e314b8754a6313863d20aa92cb4f4ac993c129e24146a018619d0",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/twilio.yaml",
+      "vendored_path": "sources/configs/twilio.yaml",
+      "upstream_sha256": "748ef7d016b0af991ccb41e7762d5b51da60f849b9464fc945db5841ff15da18",
+      "vendored_sha256": "748ef7d016b0af991ccb41e7762d5b51da60f849b9464fc945db5841ff15da18",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/vercel.yaml",
+      "vendored_path": "sources/configs/vercel.yaml",
+      "upstream_sha256": "dbdc63728dbe54785e096709400363934a49cefa9f1f5257d6f0dc607897b9ee",
+      "vendored_sha256": "dbdc63728dbe54785e096709400363934a49cefa9f1f5257d6f0dc607897b9ee",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/vitally.yaml",
+      "vendored_path": "sources/configs/vitally.yaml",
+      "upstream_sha256": "b6a53cbeab5bc549fee0a97dedbf3cd487a8cf712a7d7b52296407541bfa4d3e",
+      "vendored_sha256": "b6a53cbeab5bc549fee0a97dedbf3cd487a8cf712a7d7b52296407541bfa4d3e",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/woocommerce.yaml",
+      "vendored_path": "sources/configs/woocommerce.yaml",
+      "upstream_sha256": "c49813d4f065dd64bbf90c0d6e041ad9e1d8223895125090fca03aa5d365425b",
+      "vendored_sha256": "c49813d4f065dd64bbf90c0d6e041ad9e1d8223895125090fca03aa5d365425b",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/wordpress.yaml",
+      "vendored_path": "sources/configs/wordpress.yaml",
+      "upstream_sha256": "956be18a4f9144a078bb895f506d486f7540d0a451ecc477ef7c677afc02a893",
+      "vendored_sha256": "956be18a4f9144a078bb895f506d486f7540d0a451ecc477ef7c677afc02a893",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/sources/configs/xero.yaml",
+      "vendored_path": "sources/configs/xero.yaml",
+      "upstream_sha256": "9e8a7f8f352acf85776479d43c8540567274a07bc0e525a90e3a16131c249389",
+      "vendored_sha256": "9e8a7f8f352acf85776479d43c8540567274a07bc0e525a90e3a16131c249389",
+      "modified": false
+    },
+    {
+      "upstream_path": "dinobase/sync/source_fetch.py",
+      "vendored_path": "source_fetch.py",
+      "upstream_sha256": "11d0f60bc2f2a4597a4a3dcc8b6e4d4066f4d26e9769fed87c8eceeea787415c",
+      "vendored_sha256": "349059e02f4ae76d9368036ca45b5e765367d94f88a60c4d9e7d9e41e2b53009",
+      "modified": true
+    }
+  ],
+  "adaptations": [
+    "Internal imports use contextbase.connectors.upstream.",
+    "Only packaged YAML definitions are loaded; no home or local override discovery.",
+    "Verified source resolution requires an explicit pinned local bundle; no fetch or installation.",
+    "Source metadata enrichment is unavailable; ContextBase bootstrap uses observed schemas.",
+    "REST endpoint/auth/body/parent/selection/JSONL and bounded pagination adapters have controlled contract tests; configured null parameters are required before sync.",
+    "GraphQL Relay and declared Monday page/item pagination have controlled tests; finite Linear nested projections remain explicitly nonexhaustive.",
+    "Local verified credential adapters and the worker resource wrapper repair inherited factory contracts without modifying bundled verified-source templates; native runtime and SDK integration remains pending.",
+    "SQL schema, chunk_size and reflection_level parameters are validated and forwarded before factory construction.",
+    "Filesystem adapters require explicit clients and selected content readers with provenance; controlled contracts do not establish actual dlt or vendor compatibility.",
+    "The static catalog exposes required/optional credential references, configuration requirements, test scopes and implementation/test paths; live validation remains false for every entry."
+  ],
+  "license_file": "LICENSE",
+  "license_sha256": "245a0452c3e22cfe3596e76662b0047214319a65d638ff0f0807cdd7fb1c755d",
+  "contextbase_files": [
+    {
+      "path": "__init__.py",
+      "sha256": "94372ca25c6054823eeca8c27fe099f851db9765ad0f004da5ad8cd52b8e7d73"
+    },
+    {
+      "path": "catalog_builder.py",
+      "sha256": "8c3f710b57c9fab564ee0dbf33d3dfaa002477c977fdfb782261b5cb93e0406c"
+    }
+  ],
+  "source_metadata_policy": "No source metadata API/spec request is made by this adaptation; observed schema bootstrap remains available."
+}

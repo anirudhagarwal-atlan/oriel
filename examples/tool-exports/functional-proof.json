@@ -1,0 +1,680 @@
+{
+  "spec_version": "contextbase.tool-export-proof/v1",
+  "synthetic": true,
+  "observed_at": "2026-10-09T00:31:58.085326+00:00",
+  "verification": "passed",
+  "model_calls": 0,
+  "network_calls": 0,
+  "rystic_commands": 0,
+  "scope": "Functional CLI/import/context portability check; no performance or adoption evidence.",
+  "fixture_sha256": {
+    "crm-seats.csv": "cdda3e441346ebdd4151fa6e21e459a673045d38c3f1919939323514f621e0b8",
+    "product-events-initial.jsonl": "daf8a37fc147aa4186dfc757d280472156b6cc159ce753ab97ed77932af745a8",
+    "product-events-refreshed.jsonl": "c5f945a66e4856cdcadbaf0cac18438fb6f6c80919e0a89efc127dac8f814036",
+    "workspace-map-reviewed.csv": "c0ed8bb34493fddbfb368a4a41aa92e2e46e9ece94b4a426aba10dabe7555746",
+    "workspace-map-unresolved.csv": "0a272cea66edde622e0d45ed2b10e716ed35997e0d171398dc8908fc50bbb347"
+  },
+  "tables": [
+    {
+      "table": "sales.seats",
+      "rows": 8,
+      "sha256": "cdda3e441346ebdd4151fa6e21e459a673045d38c3f1919939323514f621e0b8"
+    },
+    {
+      "table": "directory.workspace_map",
+      "rows": 10,
+      "sha256": "0a272cea66edde622e0d45ed2b10e716ed35997e0d171398dc8908fc50bbb347"
+    },
+    {
+      "table": "telemetry.events",
+      "rows": 33,
+      "sha256": "daf8a37fc147aa4186dfc757d280472156b6cc159ce753ab97ed77932af745a8"
+    }
+  ],
+  "unresolved_mapping": [
+    {
+      "issue": "ambiguous_workspace",
+      "source_key": "ws_alpha"
+    },
+    {
+      "issue": "missing_workspace",
+      "source_key": "ws_theta"
+    },
+    {
+      "issue": "unmapped_customer",
+      "source_key": "org_008"
+    }
+  ],
+  "unresolved_metric_rejected": true,
+  "reviewed_local_changes": [
+    {
+      "mapping_id": "map_10",
+      "before": {
+        "mapping_id": "map_10",
+        "workspace_ref": "ws_alpha",
+        "customer_key": "org_002",
+        "enabled": true
+      },
+      "after": {
+        "mapping_id": "map_10",
+        "workspace_ref": "ws_alpha",
+        "customer_key": "org_002",
+        "enabled": false
+      },
+      "scope": "local_only",
+      "approval_sha256": "6798c9fed3a11e00ea631ea992c92d4c098ee8325f30ca871aa36a318e5d1e3e"
+    },
+    {
+      "mapping_id": "map_08",
+      "before": {
+        "mapping_id": "map_08",
+        "workspace_ref": "ws_theta",
+        "customer_key": "org_008",
+        "enabled": false
+      },
+      "after": {
+        "mapping_id": "map_08",
+        "workspace_ref": "ws_theta",
+        "customer_key": "org_008",
+        "enabled": true
+      },
+      "scope": "local_only",
+      "approval_sha256": "f510a255036683670ae24bcdf6170a147af45c8f6298d7a6b434a6616437ddcb"
+    }
+  ],
+  "source_files_unchanged": true,
+  "bootstrap": {
+    "status": "draft",
+    "business_metrics_inferred": 0,
+    "different_name_identity_mapping_inferred": false
+  },
+  "initial": {
+    "accounts": [
+      {
+        "organization_id": "org_001",
+        "licensed_seats": 20,
+        "activated_members": 4,
+        "unused_seats": 16
+      },
+      {
+        "organization_id": "org_003",
+        "licensed_seats": 15,
+        "activated_members": 0,
+        "unused_seats": 15
+      },
+      {
+        "organization_id": "org_006",
+        "licensed_seats": 12,
+        "activated_members": 5,
+        "unused_seats": 7
+      },
+      {
+        "organization_id": "org_007",
+        "licensed_seats": 8,
+        "activated_members": 0,
+        "unused_seats": 8
+      },
+      {
+        "organization_id": "org_008",
+        "licensed_seats": 6,
+        "activated_members": 1,
+        "unused_seats": 5
+      }
+    ],
+    "unused_seats_at_low_activation": 51
+  },
+  "refreshed": {
+    "accounts": [
+      {
+        "organization_id": "org_007",
+        "licensed_seats": 8,
+        "activated_members": 0,
+        "unused_seats": 8
+      }
+    ],
+    "unused_seats_at_low_activation": 8
+  },
+  "context": {
+    "version": "local-e3a6ee3911a9664a",
+    "metric_version": 1,
+    "approval_kind": "local_operator_review",
+    "approved_context_unchanged_after_refresh": true,
+    "exported_registry_status": "candidate"
+  },
+  "second_consumer_initial": {
+    "synthetic": true,
+    "context_version": "local-e3a6ee3911a9664a",
+    "metric_version": 1,
+    "rows": [
+      {
+        "unused_seats_at_low_activation": 51
+      }
+    ],
+    "portable_rows": [
+      {
+        "portable_value": 51
+      }
+    ],
+    "verified_bundle_files": 8,
+    "imports": [
+      {
+        "table": "sales.seats",
+        "rows": 8,
+        "sha256": "cdda3e441346ebdd4151fa6e21e459a673045d38c3f1919939323514f621e0b8"
+      },
+      {
+        "table": "directory.workspace_map",
+        "rows": 10,
+        "sha256": "c0ed8bb34493fddbfb368a4a41aa92e2e46e9ece94b4a426aba10dabe7555746"
+      },
+      {
+        "table": "telemetry.events",
+        "rows": 33,
+        "sha256": "daf8a37fc147aa4186dfc757d280472156b6cc159ce753ab97ed77932af745a8"
+      }
+    ],
+    "has_local_approved_context": false,
+    "model_calls": 0,
+    "registry_upload": "not_performed"
+  },
+  "second_consumer_refreshed": {
+    "synthetic": true,
+    "context_version": "local-e3a6ee3911a9664a",
+    "metric_version": 1,
+    "rows": [
+      {
+        "unused_seats_at_low_activation": 8
+      }
+    ],
+    "portable_rows": [
+      {
+        "portable_value": 8
+      }
+    ],
+    "verified_bundle_files": 8,
+    "imports": [
+      {
+        "table": "sales.seats",
+        "rows": 8,
+        "sha256": "cdda3e441346ebdd4151fa6e21e459a673045d38c3f1919939323514f621e0b8"
+      },
+      {
+        "table": "directory.workspace_map",
+        "rows": 10,
+        "sha256": "c0ed8bb34493fddbfb368a4a41aa92e2e46e9ece94b4a426aba10dabe7555746"
+      },
+      {
+        "table": "telemetry.events",
+        "rows": 55,
+        "sha256": "c5f945a66e4856cdcadbaf0cac18438fb6f6c80919e0a89efc127dac8f814036"
+      }
+    ],
+    "has_local_approved_context": false,
+    "model_calls": 0,
+    "registry_upload": "not_performed"
+  },
+  "refresh": {
+    "unchanged_export_sha256": "daf8a37fc147aa4186dfc757d280472156b6cc159ce753ab97ed77932af745a8",
+    "changed_export_sha256": "c5f945a66e4856cdcadbaf0cac18438fb6f6c80919e0a89efc127dac8f814036",
+    "unchanged_answer_verified": true,
+    "changed_answer_verified": true,
+    "prior_materialized_transform_stays_at_initial_value": true,
+    "mode": "Explicit replacement of the selected local table; no automatic source polling or multi-table atomic refresh."
+  },
+  "commands": [
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "ingest",
+        "examples/tool-exports/fixtures/crm-seats.csv",
+        "--schema",
+        "sales",
+        "--table",
+        "seats"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "ingest",
+        "examples/tool-exports/fixtures/workspace-map-unresolved.csv",
+        "--schema",
+        "directory",
+        "--table",
+        "workspace_map"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "ingest",
+        "examples/tool-exports/fixtures/product-events-initial.jsonl",
+        "--schema",
+        "telemetry",
+        "--table",
+        "events"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "context",
+        "bootstrap"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "query",
+        "WITH enabled_links AS (\n  SELECT * FROM directory.workspace_map WHERE enabled\n), mapping_issues AS (\n  SELECT 'ambiguous_workspace' AS issue, workspace_ref AS source_key\n  FROM enabled_links GROUP BY workspace_ref HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT DISTINCT 'missing_workspace', e.workspace_ref\n  FROM telemetry.events e\n  WHERE NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.workspace_ref = e.workspace_ref)\n  UNION ALL\n  SELECT DISTINCT 'unknown_customer', m.customer_key\n  FROM enabled_links m\n  WHERE NOT EXISTS (SELECT 1 FROM sales.seats c WHERE c.organization_id = m.customer_key)\n  UNION ALL\n  SELECT 'duplicate_customer', organization_id\n  FROM sales.seats GROUP BY organization_id HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT 'unmapped_customer', c.organization_id\n  FROM sales.seats c\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer'\n    AND NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.customer_key = c.organization_id)\n)\nSELECT issue, source_key FROM mapping_issues ORDER BY issue, source_key\n"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "query",
+        "SELECT COALESCE(SUM(unused_seats), 0) AS unused_seats_at_low_activation\nFROM (\nWITH enabled_links AS (\n  SELECT * FROM directory.workspace_map WHERE enabled\n), mapping_issues AS (\n  SELECT workspace_ref AS source_key\n  FROM enabled_links GROUP BY workspace_ref HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT DISTINCT e.workspace_ref FROM telemetry.events e\n  WHERE NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.workspace_ref = e.workspace_ref)\n  UNION ALL\n  SELECT DISTINCT m.customer_key FROM enabled_links m\n  WHERE NOT EXISTS (SELECT 1 FROM sales.seats c WHERE c.organization_id = m.customer_key)\n  UNION ALL\n  SELECT organization_id FROM sales.seats GROUP BY organization_id HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT c.organization_id FROM sales.seats c\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer'\n    AND NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.customer_key = c.organization_id)\n), activators AS (\n  SELECT m.customer_key, COUNT(DISTINCT e.member_ref) AS activated_members\n  FROM telemetry.events e JOIN enabled_links m ON m.workspace_ref = e.workspace_ref\n  WHERE e.feature_key = 'publish_report' AND e.member_ref IS NOT NULL\n    AND e.occurred_at >= TIMESTAMP '2026-09-24 00:00:00'\n    AND e.occurred_at < TIMESTAMP '2026-10-08 00:00:00'\n  GROUP BY m.customer_key\n), account_activation AS (\n  SELECT c.organization_id, c.licensed_seats,\n    COALESCE(a.activated_members, 0) AS activated_members,\n    c.licensed_seats - COALESCE(a.activated_members, 0) AS unused_seats\n  FROM sales.seats c LEFT JOIN activators a ON a.customer_key = c.organization_id\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer' AND c.licensed_seats > 0\n)\nSELECT organization_id, licensed_seats, activated_members, unused_seats\nFROM account_activation\nWHERE CASE WHEN EXISTS (SELECT 1 FROM mapping_issues)\n           THEN error('Resolve identity mapping before computing activation.')\n           ELSE activated_members * 2 < licensed_seats END\nORDER BY organization_id\n) AS account_activation\n"
+      ],
+      "expected_failure": true,
+      "exit_code": 1,
+      "error": "Operation failed. Check SQL, file format, identifiers, and workspace state."
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "changes",
+        "plan",
+        "--table",
+        "directory.workspace_map",
+        "--key",
+        "mapping_id",
+        "--value",
+        "map_10",
+        "--set",
+        "{\"enabled\": false}"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "changes",
+        "apply",
+        "b366cb6f-1868-4159-bb35-0d12b99a50e5",
+        "--approve",
+        "0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "expected_failure": true,
+      "exit_code": 1,
+      "error": "Approval must match the exact preview SHA-256."
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "changes",
+        "apply",
+        "b366cb6f-1868-4159-bb35-0d12b99a50e5",
+        "--approve",
+        "6798c9fed3a11e00ea631ea992c92d4c098ee8325f30ca871aa36a318e5d1e3e"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "changes",
+        "apply",
+        "b366cb6f-1868-4159-bb35-0d12b99a50e5",
+        "--approve",
+        "6798c9fed3a11e00ea631ea992c92d4c098ee8325f30ca871aa36a318e5d1e3e"
+      ],
+      "expected_failure": true,
+      "exit_code": 1,
+      "error": "This change was already applied."
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "changes",
+        "plan",
+        "--table",
+        "directory.workspace_map",
+        "--key",
+        "mapping_id",
+        "--value",
+        "map_08",
+        "--set",
+        "{\"enabled\": true}"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "changes",
+        "apply",
+        "29e96f1e-4344-4495-8389-9540a83b8aab",
+        "--approve",
+        "0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "expected_failure": true,
+      "exit_code": 1,
+      "error": "Approval must match the exact preview SHA-256."
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "changes",
+        "apply",
+        "29e96f1e-4344-4495-8389-9540a83b8aab",
+        "--approve",
+        "f510a255036683670ae24bcdf6170a147af45c8f6298d7a6b434a6616437ddcb"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "changes",
+        "apply",
+        "29e96f1e-4344-4495-8389-9540a83b8aab",
+        "--approve",
+        "f510a255036683670ae24bcdf6170a147af45c8f6298d7a6b434a6616437ddcb"
+      ],
+      "expected_failure": true,
+      "exit_code": 1,
+      "error": "This change was already applied."
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "query",
+        "WITH enabled_links AS (\n  SELECT * FROM directory.workspace_map WHERE enabled\n), mapping_issues AS (\n  SELECT 'ambiguous_workspace' AS issue, workspace_ref AS source_key\n  FROM enabled_links GROUP BY workspace_ref HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT DISTINCT 'missing_workspace', e.workspace_ref\n  FROM telemetry.events e\n  WHERE NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.workspace_ref = e.workspace_ref)\n  UNION ALL\n  SELECT DISTINCT 'unknown_customer', m.customer_key\n  FROM enabled_links m\n  WHERE NOT EXISTS (SELECT 1 FROM sales.seats c WHERE c.organization_id = m.customer_key)\n  UNION ALL\n  SELECT 'duplicate_customer', organization_id\n  FROM sales.seats GROUP BY organization_id HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT 'unmapped_customer', c.organization_id\n  FROM sales.seats c\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer'\n    AND NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.customer_key = c.organization_id)\n)\nSELECT issue, source_key FROM mapping_issues ORDER BY issue, source_key\n"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "query",
+        "WITH enabled_links AS (\n  SELECT * FROM directory.workspace_map WHERE enabled\n), mapping_issues AS (\n  SELECT workspace_ref AS source_key\n  FROM enabled_links GROUP BY workspace_ref HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT DISTINCT e.workspace_ref FROM telemetry.events e\n  WHERE NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.workspace_ref = e.workspace_ref)\n  UNION ALL\n  SELECT DISTINCT m.customer_key FROM enabled_links m\n  WHERE NOT EXISTS (SELECT 1 FROM sales.seats c WHERE c.organization_id = m.customer_key)\n  UNION ALL\n  SELECT organization_id FROM sales.seats GROUP BY organization_id HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT c.organization_id FROM sales.seats c\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer'\n    AND NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.customer_key = c.organization_id)\n), activators AS (\n  SELECT m.customer_key, COUNT(DISTINCT e.member_ref) AS activated_members\n  FROM telemetry.events e JOIN enabled_links m ON m.workspace_ref = e.workspace_ref\n  WHERE e.feature_key = 'publish_report' AND e.member_ref IS NOT NULL\n    AND e.occurred_at >= TIMESTAMP '2026-09-24 00:00:00'\n    AND e.occurred_at < TIMESTAMP '2026-10-08 00:00:00'\n  GROUP BY m.customer_key\n), account_activation AS (\n  SELECT c.organization_id, c.licensed_seats,\n    COALESCE(a.activated_members, 0) AS activated_members,\n    c.licensed_seats - COALESCE(a.activated_members, 0) AS unused_seats\n  FROM sales.seats c LEFT JOIN activators a ON a.customer_key = c.organization_id\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer' AND c.licensed_seats > 0\n)\nSELECT organization_id, licensed_seats, activated_members, unused_seats\nFROM account_activation\nWHERE CASE WHEN EXISTS (SELECT 1 FROM mapping_issues)\n           THEN error('Resolve identity mapping before computing activation.')\n           ELSE activated_members * 2 < licensed_seats END\nORDER BY organization_id\n"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "transform",
+        "activation_initial",
+        "--sql",
+        "WITH enabled_links AS (\n  SELECT * FROM directory.workspace_map WHERE enabled\n), mapping_issues AS (\n  SELECT workspace_ref AS source_key\n  FROM enabled_links GROUP BY workspace_ref HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT DISTINCT e.workspace_ref FROM telemetry.events e\n  WHERE NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.workspace_ref = e.workspace_ref)\n  UNION ALL\n  SELECT DISTINCT m.customer_key FROM enabled_links m\n  WHERE NOT EXISTS (SELECT 1 FROM sales.seats c WHERE c.organization_id = m.customer_key)\n  UNION ALL\n  SELECT organization_id FROM sales.seats GROUP BY organization_id HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT c.organization_id FROM sales.seats c\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer'\n    AND NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.customer_key = c.organization_id)\n), activators AS (\n  SELECT m.customer_key, COUNT(DISTINCT e.member_ref) AS activated_members\n  FROM telemetry.events e JOIN enabled_links m ON m.workspace_ref = e.workspace_ref\n  WHERE e.feature_key = 'publish_report' AND e.member_ref IS NOT NULL\n    AND e.occurred_at >= TIMESTAMP '2026-09-24 00:00:00'\n    AND e.occurred_at < TIMESTAMP '2026-10-08 00:00:00'\n  GROUP BY m.customer_key\n), account_activation AS (\n  SELECT c.organization_id, c.licensed_seats,\n    COALESCE(a.activated_members, 0) AS activated_members,\n    c.licensed_seats - COALESCE(a.activated_members, 0) AS unused_seats\n  FROM sales.seats c LEFT JOIN activators a ON a.customer_key = c.organization_id\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer' AND c.licensed_seats > 0\n)\nSELECT organization_id, licensed_seats, activated_members, unused_seats\nFROM account_activation\nWHERE CASE WHEN EXISTS (SELECT 1 FROM mapping_issues)\n           THEN error('Resolve identity mapping before computing activation.')\n           ELSE activated_members * 2 < licensed_seats END\nORDER BY organization_id\n"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "metric",
+        "propose",
+        "--name",
+        "unused_seats_at_low_activation",
+        "--sql-file",
+        "examples/tool-exports/sql/unused-seats.sql",
+        "--description",
+        "Unused licensed seats at active external organizations below 50% report activation in the synthetic period.",
+        "--grain",
+        "One CRM organization, aggregated across mapped product workspaces.",
+        "--unit",
+        "seats",
+        "--owner",
+        "synthetic_activation_owner",
+        "--synthetic-example",
+        "--rule",
+        "Synthetic complete-period fixture; only active external customer contracts with positive licensed seats.",
+        "--rule",
+        "Identity requires exactly one enabled workspace mapping and an existing unique CRM organization; unresolved mappings block the answer.",
+        "--rule",
+        "Activation is distinct non-null member_ref per organization publishing a report in [2026-09-24, 2026-10-08) UTC, across all mapped workspaces.",
+        "--rule",
+        "The export covers the full period; no qualifying event means zero activators. Missing or incomplete exports require a separate completeness review.",
+        "--rule",
+        "Select organizations with strictly fewer than half of licensed seats activated; sum licensed seats minus activators once per selected organization."
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "metric",
+        "run",
+        "unused_seats_at_low_activation"
+      ],
+      "expected_failure": true,
+      "exit_code": 1,
+      "error": "No approved context is installed."
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "metric",
+        "approve",
+        "unused_seats_at_low_activation",
+        "--approve",
+        "0000000000000000000000000000000000000000000000000000000000000000",
+        "--reviewer",
+        "synthetic_example_reviewer"
+      ],
+      "expected_failure": true,
+      "exit_code": 1,
+      "error": "The proposal changed; review it and approve its current SHA-256."
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "metric",
+        "approve",
+        "unused_seats_at_low_activation",
+        "--approve",
+        "b5235d79d611a7f211292a8c846b38e40e8d78f10072594245195eca01adc877",
+        "--reviewer",
+        "synthetic_example_reviewer"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "metric",
+        "run",
+        "unused_seats_at_low_activation"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "bundle",
+        "export",
+        "--output",
+        "$OUTPUT/bundle",
+        "--workspace-id",
+        "synthetic-tool-exports"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "ingest",
+        "examples/tool-exports/fixtures/product-events-initial.jsonl",
+        "--schema",
+        "telemetry",
+        "--table",
+        "events",
+        "--replace"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "metric",
+        "run",
+        "unused_seats_at_low_activation"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "ingest",
+        "examples/tool-exports/fixtures/product-events-refreshed.jsonl",
+        "--schema",
+        "telemetry",
+        "--table",
+        "events",
+        "--replace"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "metric",
+        "run",
+        "unused_seats_at_low_activation"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "query",
+        "WITH enabled_links AS (\n  SELECT * FROM directory.workspace_map WHERE enabled\n), mapping_issues AS (\n  SELECT workspace_ref AS source_key\n  FROM enabled_links GROUP BY workspace_ref HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT DISTINCT e.workspace_ref FROM telemetry.events e\n  WHERE NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.workspace_ref = e.workspace_ref)\n  UNION ALL\n  SELECT DISTINCT m.customer_key FROM enabled_links m\n  WHERE NOT EXISTS (SELECT 1 FROM sales.seats c WHERE c.organization_id = m.customer_key)\n  UNION ALL\n  SELECT organization_id FROM sales.seats GROUP BY organization_id HAVING COUNT(*) > 1\n  UNION ALL\n  SELECT c.organization_id FROM sales.seats c\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer'\n    AND NOT EXISTS (SELECT 1 FROM enabled_links m WHERE m.customer_key = c.organization_id)\n), activators AS (\n  SELECT m.customer_key, COUNT(DISTINCT e.member_ref) AS activated_members\n  FROM telemetry.events e JOIN enabled_links m ON m.workspace_ref = e.workspace_ref\n  WHERE e.feature_key = 'publish_report' AND e.member_ref IS NOT NULL\n    AND e.occurred_at >= TIMESTAMP '2026-09-24 00:00:00'\n    AND e.occurred_at < TIMESTAMP '2026-10-08 00:00:00'\n  GROUP BY m.customer_key\n), account_activation AS (\n  SELECT c.organization_id, c.licensed_seats,\n    COALESCE(a.activated_members, 0) AS activated_members,\n    c.licensed_seats - COALESCE(a.activated_members, 0) AS unused_seats\n  FROM sales.seats c LEFT JOIN activators a ON a.customer_key = c.organization_id\n  WHERE c.contract_state = 'active' AND c.entity_kind = 'customer' AND c.licensed_seats > 0\n)\nSELECT organization_id, licensed_seats, activated_members, unused_seats\nFROM account_activation\nWHERE CASE WHEN EXISTS (SELECT 1 FROM mapping_issues)\n           THEN error('Resolve identity mapping before computing activation.')\n           ELSE activated_members * 2 < licensed_seats END\nORDER BY organization_id\n"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "-m",
+        "contextbase",
+        "--workspace",
+        "$OUTPUT/workspace",
+        "query",
+        "SELECT * FROM models.activation_initial ORDER BY organization_id"
+      ],
+      "expected_failure": false,
+      "exit_code": 0
+    }
+  ]
+}

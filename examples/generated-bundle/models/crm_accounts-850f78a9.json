@@ -1,0 +1,25 @@
+{
+  "columns": [
+    {
+      "name": "account_id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "segment",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "health",
+      "type": "VARCHAR"
+    }
+  ],
+  "row_count": 40,
+  "schema": "crm",
+  "semantic_status": "observed_schema_only",
+  "spec_version": "contextbase.model/v1",
+  "table": "accounts"
+}

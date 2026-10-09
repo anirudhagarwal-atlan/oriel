@@ -1,0 +1,25 @@
+{
+  "columns": [
+    {
+      "name": "ticket_id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "account_id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "priority",
+      "type": "VARCHAR"
+    }
+  ],
+  "row_count": 50,
+  "schema": "support",
+  "semantic_status": "observed_schema_only",
+  "spec_version": "contextbase.model/v1",
+  "table": "tickets"
+}

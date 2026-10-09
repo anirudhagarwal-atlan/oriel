@@ -1,0 +1,9 @@
+organization_id,licensed_seats,contract_state,entity_kind
+org_001,20,active,customer
+org_002,10,active,customer
+org_003,15,active,customer
+org_004,50,paused,customer
+org_005,30,active,internal
+org_006,12,active,customer
+org_007,8,active,customer
+org_008,6,active,customer

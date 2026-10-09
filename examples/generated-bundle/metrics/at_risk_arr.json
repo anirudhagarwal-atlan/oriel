@@ -1,0 +1,81 @@
+{
+  "definition": {
+    "aggregation": {
+      "null_handling": "ignore",
+      "reaggregation": "sum",
+      "type": "sum"
+    },
+    "depends_on": [
+      "active_arr"
+    ],
+    "dialect": "duckdb",
+    "domain": "Synthetic go-to-market",
+    "examples": [
+      {
+        "question": "Paid active ARR for accounts with usage down at least 30% and an open high/urgent ticket.",
+        "source": "curated_synthetic_demo",
+        "sql": "SELECT COALESCE(SUM(arr), 0) AS at_risk_arr\nFROM (\nWITH paid_accounts AS (\n  SELECT account_id, SUM(mrr) * 12 AS arr\n  FROM billing.subscriptions\n  WHERE status = 'active' AND mrr > 0\n  GROUP BY account_id\n), usage_by_account AS (\n  SELECT account_id,\n    SUM(CASE WHEN period = 'previous' THEN active_users ELSE 0 END) AS previous_users,\n    SUM(CASE WHEN period = 'current' THEN active_users ELSE 0 END) AS current_users,\n    COUNT(CASE WHEN period = 'previous' THEN active_users END) AS previous_observations,\n    COUNT(CASE WHEN period = 'current' THEN active_users END) AS current_observations\n  FROM product.usage\n  GROUP BY account_id\n)\nSELECT p.account_id, p.arr\nFROM paid_accounts p\nJOIN usage_by_account u ON u.account_id = p.account_id\nWHERE u.previous_users > 0\n  AND u.previous_observations > 0 AND u.current_observations > 0\n  AND u.current_users <= u.previous_users * 0.7\n  AND EXISTS (\n    SELECT 1 FROM support.tickets t\n    WHERE t.account_id = p.account_id\n      AND t.status = 'open' AND t.priority IN ('high', 'urgent')\n  )\n) AS risk_accounts"
+      }
+    ],
+    "exclusions": [
+      "Exclude inactive or unpaid subscriptions.",
+      "Exclude missing usage periods or non-positive previous usage.",
+      "Exclude declines below 30% or accounts without an open high/urgent ticket.",
+      "Do not multiply ARR by ticket or usage row counts."
+    ],
+    "extensions": {
+      "contextbase": {
+        "local_approval_kind": "curated_synthetic_demo",
+        "local_execution_evidence": {
+          "business_certification": "not_performed",
+          "engine": "duckdb",
+          "executed_at": "2026-10-08T23:00:30.329504+00:00",
+          "result_sha256": "4de8be9cc86329d9665eb1d8ba68535de55d32a3ce5944bd626c3549386d084d",
+          "row_count": 1,
+          "sql_sha256": "4840c6c36db7301c7900350755712e261efc189d728a5eb8cad48288badd8fc8",
+          "truncated": false
+        },
+        "requires_business_owner_review": true,
+        "synthetic": true
+      }
+    },
+    "formula": "COALESCE(SUM(s.arr), 0)",
+    "grain": "One account after subscription and usage aggregation.",
+    "mandatory_filters": [],
+    "output": {
+      "alias": "at_risk_arr",
+      "datatype": "decimal",
+      "unit": "USD/year"
+    },
+    "owner": "demo_policy_owner",
+    "population": "Paid active ARR for accounts with usage down at least 30% and an open high/urgent ticket.",
+    "provenance": {
+      "derived_from": [
+        "embedded demo business policy"
+      ],
+      "proposed_by": "Contextbase demo fixture",
+      "source": "curated_synthetic_demo"
+    },
+    "source": {
+      "alias": "s",
+      "entity": "contextbase.at_risk_accounts",
+      "sql": "WITH paid_accounts AS (\n  SELECT account_id, SUM(mrr) * 12 AS arr\n  FROM billing.subscriptions\n  WHERE status = 'active' AND mrr > 0\n  GROUP BY account_id\n), usage_by_account AS (\n  SELECT account_id,\n    SUM(CASE WHEN period = 'previous' THEN active_users ELSE 0 END) AS previous_users,\n    SUM(CASE WHEN period = 'current' THEN active_users ELSE 0 END) AS current_users,\n    COUNT(CASE WHEN period = 'previous' THEN active_users END) AS previous_observations,\n    COUNT(CASE WHEN period = 'current' THEN active_users END) AS current_observations\n  FROM product.usage\n  GROUP BY account_id\n)\nSELECT p.account_id, p.arr\nFROM paid_accounts p\nJOIN usage_by_account u ON u.account_id = p.account_id\nWHERE u.previous_users > 0\n  AND u.previous_observations > 0 AND u.current_observations > 0\n  AND u.current_users <= u.previous_users * 0.7\n  AND EXISTS (\n    SELECT 1 FROM support.tickets t\n    WHERE t.account_id = p.account_id\n      AND t.status = 'open' AND t.priority IN ('high', 'urgent')\n  )"
+    },
+    "spec_version": "1.0-draft.1",
+    "status": "candidate",
+    "version": 1
+  },
+  "description": "Paid active ARR for accounts with usage down at least 30% and an open high/urgent ticket.",
+  "display_name": "At risk arr",
+  "name": "at_risk_arr",
+  "source_id": "contextbase.metrics/at_risk_arr",
+  "source_metadata": {
+    "context_spec": "contextbase.context/v1",
+    "network_upload": "not_performed",
+    "synthetic": true
+  },
+  "source_type": "local",
+  "source_uri": "metrics/at_risk_arr.json",
+  "source_version": "synthetic-gtm-v1",
+  "workspace_id": "example-workspace"
+}

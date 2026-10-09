@@ -1,0 +1,4945 @@
+{
+  "bundle_sha256": "6ee2b260e0a0864f92230db6af4c345be7b3be5d3d8ec468c250cddf4402cece",
+  "files": [
+    {
+      "bytes": 11346,
+      "git_blob_sha1": "1ab7adc919a9a227d7d303ebb76ff3cac3913a1e",
+      "origin": "upstream",
+      "path": "LICENSE.txt",
+      "sha256": "fe710c45b334e838e803f1d86f16c6d681e74a85aa87475b9c133ce9b41aab29",
+      "upstream_path": "LICENSE.txt"
+    },
+    {
+      "bytes": 1772,
+      "origin": "contextbase",
+      "path": "NOTICE.md",
+      "sha256": "f920bab97279aceb94afd1ea449dd683d01fd1320b3b29f92e7fe7ab8d0a456c",
+      "upstream_path": null
+    },
+    {
+      "bytes": 242,
+      "origin": "contextbase",
+      "path": "sources/__init__.py",
+      "sha256": "427a7028c621c3142d4623ed9d219994e6b05480bac54296d169d73bab29a7e4",
+      "upstream_path": null
+    },
+    {
+      "bytes": 2988,
+      "git_blob_sha1": "02a7d0710b45e7ef26e8c0ca1d15c77949a19012",
+      "origin": "upstream",
+      "path": "sources/airtable/README.md",
+      "sha256": "736e74c8a9c2873de3482adc829575786420c80a4788d8138e5f675c26ac00f9",
+      "upstream_path": "sources/airtable/README.md"
+    },
+    {
+      "bytes": 2774,
+      "git_blob_sha1": "971c96c7b244aff354632b74c58aae106955b742",
+      "origin": "upstream",
+      "path": "sources/airtable/__init__.py",
+      "sha256": "2fe98eddfcd384f71c59d38ee90cc276363347b0b66c99e54180c85542c8cefa",
+      "upstream_path": "sources/airtable/__init__.py"
+    },
+    {
+      "bytes": 27,
+      "git_blob_sha1": "c69c52c639569934109fbdcd563c4d224dbc0520",
+      "origin": "upstream",
+      "path": "sources/airtable/requirements.txt",
+      "sha256": "e8eeb77cb9f42011206bd9cb0643982998dbe5cdb9994e6b31e127af6e48d936",
+      "upstream_path": "sources/airtable/requirements.txt"
+    },
+    {
+      "bytes": 2772,
+      "git_blob_sha1": "8b9993278ba7d06909e02bd2e1fc63f965529427",
+      "origin": "upstream",
+      "path": "sources/asana_dlt/README.md",
+      "sha256": "056bbb900d8470deacb3a0a0681cbdbf5ee04863783b1ccce0ba911e178866be",
+      "upstream_path": "sources/asana_dlt/README.md"
+    },
+    {
+      "bytes": 8116,
+      "git_blob_sha1": "ebf9d10a603473f16e895d55408eb77ff30c77b9",
+      "origin": "upstream",
+      "path": "sources/asana_dlt/__init__.py",
+      "sha256": "6384e2ffcefa6289e0e36d1f436a3803ded3760ad9365655c654cc2f25dd4a30",
+      "upstream_path": "sources/asana_dlt/__init__.py"
+    },
+    {
+      "bytes": 393,
+      "git_blob_sha1": "dc877493aa8d19b3cd081e072fae8d6fef6118ac",
+      "origin": "upstream",
+      "path": "sources/asana_dlt/helpers.py",
+      "sha256": "2b241f9d8671f4a3ea01aaee49780753b6f9a4c0166769a21890a701ce8ad503",
+      "upstream_path": "sources/asana_dlt/helpers.py"
+    },
+    {
+      "bytes": 23,
+      "git_blob_sha1": "f54305984a1f05d986a573d95ff703a889ae6511",
+      "origin": "upstream",
+      "path": "sources/asana_dlt/requirements.txt",
+      "sha256": "f7d965d11c3c0e1002c0a23ed1d4655415ecef7bf5c0c244690fd438a152af0a",
+      "upstream_path": "sources/asana_dlt/requirements.txt"
+    },
+    {
+      "bytes": 2829,
+      "git_blob_sha1": "b091e79d46e24741ab9dac5dfbeca72ee387c67a",
+      "origin": "upstream",
+      "path": "sources/asana_dlt/settings.py",
+      "sha256": "fb6b69764c21d3846f2ca16fc10a1d9c52d89fd31ac4e3b586c79b1a70d03135",
+      "upstream_path": "sources/asana_dlt/settings.py"
+    },
+    {
+      "bytes": 3523,
+      "git_blob_sha1": "2451580ae6f2437d6e9e2bfd9b431a7f00713d78",
+      "origin": "upstream",
+      "path": "sources/bing_webmaster/README.md",
+      "sha256": "d7c486e50fd68a592b1e00e1a78658b38985853d0cec40568aa50ab3e629de45",
+      "upstream_path": "sources/bing_webmaster/README.md"
+    },
+    {
+      "bytes": 4145,
+      "git_blob_sha1": "8025e6fba1735b9ccefe1c55cd16739508c9e425",
+      "origin": "upstream",
+      "path": "sources/bing_webmaster/__init__.py",
+      "sha256": "5eb675c50908382b04380b475ea7f1f99713018cce31e3a9981acf54c9579441",
+      "upstream_path": "sources/bing_webmaster/__init__.py"
+    },
+    {
+      "bytes": 2117,
+      "git_blob_sha1": "73ab42a5bb2ea2e6ef4f942eb75e3332045a45fa",
+      "origin": "upstream",
+      "path": "sources/bing_webmaster/helpers.py",
+      "sha256": "8e38ec4e6c2363fb92d5d85208681ffd65964d0f350d7ddb10986549dc4ce70b",
+      "upstream_path": "sources/bing_webmaster/helpers.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/bing_webmaster/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/bing_webmaster/requirements.txt"
+    },
+    {
+      "bytes": 177,
+      "git_blob_sha1": "6c18e85ae4e63734c6dd59361d0cb49cc706a7d3",
+      "origin": "upstream",
+      "path": "sources/bing_webmaster/settings.py",
+      "sha256": "a76556d759ce0d59e8d92686b346788621c30e5df4661edc001e0ebb1613703c",
+      "upstream_path": "sources/bing_webmaster/settings.py"
+    },
+    {
+      "bytes": 3077,
+      "git_blob_sha1": "520b6068f8d735c674a676e82979464354e34871",
+      "origin": "upstream",
+      "path": "sources/facebook_ads/README.md",
+      "sha256": "3218db82cb8913ac2f06f201baa32a0e7c2bdee92c877b43976fe0ac7c5af88e",
+      "upstream_path": "sources/facebook_ads/README.md"
+    },
+    {
+      "bytes": 9741,
+      "git_blob_sha1": "0d65e3de38587ee2aaffac9a57d179b132382c6b",
+      "origin": "upstream",
+      "path": "sources/facebook_ads/__init__.py",
+      "sha256": "b57edb1d37fad55b7d36aa25f1e7eb4f4b14d53090ba95aaf4654caefc9ce0cb",
+      "upstream_path": "sources/facebook_ads/__init__.py"
+    },
+    {
+      "bytes": 115,
+      "git_blob_sha1": "b04d0f2e8957791de079bb8418c9bc77e1e9b0d0",
+      "origin": "upstream",
+      "path": "sources/facebook_ads/exceptions.py",
+      "sha256": "e0d95b73432fde2e60fbd028c93fa7d4f21af080e2dd50937c4033868971e167",
+      "upstream_path": "sources/facebook_ads/exceptions.py"
+    },
+    {
+      "bytes": 8976,
+      "git_blob_sha1": "e43cd2be48ac32854912b99b7527e755239aceba",
+      "origin": "upstream",
+      "path": "sources/facebook_ads/helpers.py",
+      "sha256": "baa3cd974cd5811586529c81b79733050ff857e4c3e7c29fda881355cf0a2d83",
+      "upstream_path": "sources/facebook_ads/helpers.py"
+    },
+    {
+      "bytes": 37,
+      "git_blob_sha1": "d6b94f22daad517b68c72bc30de6325f5e6ae489",
+      "origin": "upstream",
+      "path": "sources/facebook_ads/requirements.txt",
+      "sha256": "3d78f86e39182acbf40d1dc6d780d7eafa3b53388f75baa63a868062d1bcab2b",
+      "upstream_path": "sources/facebook_ads/requirements.txt"
+    },
+    {
+      "bytes": 4583,
+      "git_blob_sha1": "8e71cfb6968aea63e1287cf34788cce187230f42",
+      "origin": "upstream",
+      "path": "sources/facebook_ads/settings.py",
+      "sha256": "095e4e6695ccab2159b2e51cbffab6cbd43659cd5be05bf39546d24d31c2c9ea",
+      "upstream_path": "sources/facebook_ads/settings.py"
+    },
+    {
+      "bytes": 2092,
+      "git_blob_sha1": "9f962c67ca49fcabd0e2f2abf2e42b2f5c7c09a0",
+      "origin": "upstream",
+      "path": "sources/facebook_ads/utils.py",
+      "sha256": "436b07a7c54e3dab360a0c41b244c988d9ab5dd7a49bcbc688170933df7c89af",
+      "upstream_path": "sources/facebook_ads/utils.py"
+    },
+    {
+      "bytes": 3047,
+      "git_blob_sha1": "bb37c73e36fe220dc5d7c0175bfb303607297ec6",
+      "origin": "upstream",
+      "path": "sources/freshdesk/README.md",
+      "sha256": "17e85b74d2f5ada0c3ad9ec057ae4a32ed1c4452cbd2a59eb41fb9a109bc8594",
+      "upstream_path": "sources/freshdesk/README.md"
+    },
+    {
+      "bytes": 2755,
+      "git_blob_sha1": "a9e792acd2e67638574cc134c30f190fb8e8f248",
+      "origin": "upstream",
+      "path": "sources/freshdesk/__init__.py",
+      "sha256": "30483b42c5d7a0cb506d825f8a03c76c4952b2d1d984681159793e919e1b1cd5",
+      "upstream_path": "sources/freshdesk/__init__.py"
+    },
+    {
+      "bytes": 4088,
+      "git_blob_sha1": "fdc6c68cb2035e3e0f41007eb3e6bef3209f58cc",
+      "origin": "upstream",
+      "path": "sources/freshdesk/freshdesk_client.py",
+      "sha256": "df3e58734d3c003cd17095ad35cd343f08e42f31be44c23c8d520e3b2600f91c",
+      "upstream_path": "sources/freshdesk/freshdesk_client.py"
+    },
+    {
+      "bytes": 10,
+      "git_blob_sha1": "fa3936b98258ddeb976a34810a896c01ba74e5a7",
+      "origin": "upstream",
+      "path": "sources/freshdesk/requirements.txt",
+      "sha256": "374ccbc14f033bfcfe0bf4c513363324c235970c57fb7fc40bfceb3a85990256",
+      "upstream_path": "sources/freshdesk/requirements.txt"
+    },
+    {
+      "bytes": 409,
+      "git_blob_sha1": "a9c4d335e3f53c074d236b9cc997cc501aa71cff",
+      "origin": "upstream",
+      "path": "sources/freshdesk/settings.py",
+      "sha256": "d16aff38c9d465c4e5af2ec19802ecb0bc43db287af3a256e26a0b36fd76267c",
+      "upstream_path": "sources/freshdesk/settings.py"
+    },
+    {
+      "bytes": 4078,
+      "git_blob_sha1": "b2baa96d1adda06fdf9ecdd990c0945c4f59c904",
+      "origin": "upstream",
+      "path": "sources/google_ads/README.md",
+      "sha256": "84c7c576d01d779935326c8d344993e5221f841833d69e35f987f913c7cf56a7",
+      "upstream_path": "sources/google_ads/README.md"
+    },
+    {
+      "bytes": 5165,
+      "git_blob_sha1": "16ceeee4bdbf448149edbeeef30f56279065ece5",
+      "origin": "upstream",
+      "path": "sources/google_ads/__init__.py",
+      "sha256": "04c84a621ffe5591ed1fe262ede7d3dff9c5854181254108f6ef5501c325c46b",
+      "upstream_path": "sources/google_ads/__init__.py"
+    },
+    {
+      "bytes": 0,
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "origin": "upstream",
+      "path": "sources/google_ads/helpers/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_path": "sources/google_ads/helpers/__init__.py"
+    },
+    {
+      "bytes": 492,
+      "git_blob_sha1": "92ad4eb6727610cf54271b797da39e6c28110a30",
+      "origin": "upstream",
+      "path": "sources/google_ads/helpers/data_processing.py",
+      "sha256": "e911c1535e54cc893a90220703d685eb0ac68d1d2dca962dad2a244f5b0dddea",
+      "upstream_path": "sources/google_ads/helpers/data_processing.py"
+    },
+    {
+      "bytes": 46,
+      "git_blob_sha1": "5600df4da580112ffe4c25de3762aa48a0fc8166",
+      "origin": "upstream",
+      "path": "sources/google_ads/requirements.txt",
+      "sha256": "12ce2fb42132efda9b548e9e852f3a8f7bf21ef4b56de375841babace642d4d6",
+      "upstream_path": "sources/google_ads/requirements.txt"
+    },
+    {
+      "bytes": 2898,
+      "git_blob_sha1": "206483f3b2513eab411dd0d9ad5be00a07b90a40",
+      "origin": "upstream",
+      "path": "sources/google_ads/setup_script_gcp_oauth.py",
+      "sha256": "aa1ba4aefddc0f561e4f8b79bedb849b9d4143541edab81fb457a5190373b212",
+      "upstream_path": "sources/google_ads/setup_script_gcp_oauth.py"
+    },
+    {
+      "bytes": 2920,
+      "git_blob_sha1": "5973c59f6160b9fee3862efd6191f83818d35bf9",
+      "origin": "upstream",
+      "path": "sources/google_analytics/README.md",
+      "sha256": "3ffb039feaa8b3edd3486d86df54584ce15340125f67913e0533559e8c582cfc",
+      "upstream_path": "sources/google_analytics/README.md"
+    },
+    {
+      "bytes": 6100,
+      "git_blob_sha1": "d62917cfcd9dc2dc61866eb3c06b5d62ca69c357",
+      "origin": "upstream",
+      "path": "sources/google_analytics/__init__.py",
+      "sha256": "138ef9494807ba42eb6633e220be7f3a02c4848db5b21b26b0be66f6348c7bee",
+      "upstream_path": "sources/google_analytics/__init__.py"
+    },
+    {
+      "bytes": 2877,
+      "git_blob_sha1": "62fd7b0f72ec6bbfa789d845dae4796dfb13a135",
+      "origin": "upstream",
+      "path": "sources/google_analytics/helpers/__init__.py",
+      "sha256": "dd106d953365131803141c999cd76ce95abb1c916dd5518d518d6a0da24dfdc9",
+      "upstream_path": "sources/google_analytics/helpers/__init__.py"
+    },
+    {
+      "bytes": 6764,
+      "git_blob_sha1": "63ad1dc6eb01f49332bb7b1c74d9ff66648a12ad",
+      "origin": "upstream",
+      "path": "sources/google_analytics/helpers/data_processing.py",
+      "sha256": "11823a9fc31c74aad52ebbe9451b327351ee59a444aef158a27fef2f86442aec",
+      "upstream_path": "sources/google_analytics/helpers/data_processing.py"
+    },
+    {
+      "bytes": 96,
+      "git_blob_sha1": "bc6759950b2453226f5df52b8051111fd523d5c7",
+      "origin": "upstream",
+      "path": "sources/google_analytics/requirements.txt",
+      "sha256": "b962fe65e3646d0c5561e2ebe12da8db54ac7d37c9a00b067c168656d5e9fe2b",
+      "upstream_path": "sources/google_analytics/requirements.txt"
+    },
+    {
+      "bytes": 80,
+      "git_blob_sha1": "a16de4e54d698a21ffb6d6e0432d8f05f3e3fb10",
+      "origin": "upstream",
+      "path": "sources/google_analytics/settings.py",
+      "sha256": "f5008926cece702845d37bdbb03c729829457c380fcbd683b0e6055b747d2b6f",
+      "upstream_path": "sources/google_analytics/settings.py"
+    },
+    {
+      "bytes": 2926,
+      "git_blob_sha1": "bab642d93f9268124cbc9b8a871cead28f6e2d32",
+      "origin": "upstream",
+      "path": "sources/google_analytics/setup_script_gcp_oauth.py",
+      "sha256": "44ad91e697833885094da226bedee182545accd633ec203f43c7f739136a7b17",
+      "upstream_path": "sources/google_analytics/setup_script_gcp_oauth.py"
+    },
+    {
+      "bytes": 5601,
+      "git_blob_sha1": "4dd6e2f97fc7fb3a7ecf57efdbfcc9f2b14a2d79",
+      "origin": "upstream",
+      "path": "sources/google_sheets/README.md",
+      "sha256": "08a2ba16e324f69d7238506577b9dfa2073f7d3794d407f05a1bd33d216a6625",
+      "upstream_path": "sources/google_sheets/README.md"
+    },
+    {
+      "bytes": 6619,
+      "git_blob_sha1": "5bdb623c1f20deeba705af47146fafecd4868360",
+      "origin": "upstream",
+      "path": "sources/google_sheets/__init__.py",
+      "sha256": "bcfb9774a9466b1095cdc0ebe9cb3157a84da7e6e0b192219c2d9fe349ad8f18",
+      "upstream_path": "sources/google_sheets/__init__.py"
+    },
+    {
+      "bytes": 35,
+      "git_blob_sha1": "c573d76f7cdd50a51400466c01d736943a7defb2",
+      "origin": "upstream",
+      "path": "sources/google_sheets/helpers/__init__.py",
+      "sha256": "e615d9ad92bc70c3b750eb8bface0e28ea5d0027628500f4858625484bbe890f",
+      "upstream_path": "sources/google_sheets/helpers/__init__.py"
+    },
+    {
+      "bytes": 5405,
+      "git_blob_sha1": "06e7564822ecd5abf9b708288e8920572898c46b",
+      "origin": "upstream",
+      "path": "sources/google_sheets/helpers/api_calls.py",
+      "sha256": "affbac24064f3bbad3f23c786f6633e6c268863dc43b42291fafce9e863870f6",
+      "upstream_path": "sources/google_sheets/helpers/api_calls.py"
+    },
+    {
+      "bytes": 13003,
+      "git_blob_sha1": "77874929746c7155edad0da8af033efa77173a5d",
+      "origin": "upstream",
+      "path": "sources/google_sheets/helpers/data_processing.py",
+      "sha256": "92400b6cc1173c7277b01ccae083b4bd24a7be906c9c940164043c8c6098229c",
+      "upstream_path": "sources/google_sheets/helpers/data_processing.py"
+    },
+    {
+      "bytes": 36,
+      "git_blob_sha1": "29d5c99f519b4baf18bc6e5b67afe08c99501d36",
+      "origin": "upstream",
+      "path": "sources/google_sheets/requirements.txt",
+      "sha256": "3f3009a5ebc37cd4c6896e8f55a2bca1db21e71187d3550791233ed91f5e2c97",
+      "upstream_path": "sources/google_sheets/requirements.txt"
+    },
+    {
+      "bytes": 3038,
+      "git_blob_sha1": "92f887b95431d8b859261b3bef14c2eea4cec54c",
+      "origin": "upstream",
+      "path": "sources/google_sheets/setup_script_gcp_oauth.py",
+      "sha256": "a72b86942f21b1b956cac615344f78a3eb2a853a5c4fca61d291edb4b531a4cc",
+      "upstream_path": "sources/google_sheets/setup_script_gcp_oauth.py"
+    },
+    {
+      "bytes": 4251,
+      "git_blob_sha1": "18139da46c5407cc3fcb7d775206bf8a1c9ee422",
+      "origin": "upstream",
+      "path": "sources/hubspot/README.md",
+      "sha256": "54f7bddf1b49a4494629b663bf1cbd3cded73ed04a3baa6a6e3f88f8e49d3ca7",
+      "upstream_path": "sources/hubspot/README.md"
+    },
+    {
+      "bytes": 18973,
+      "git_blob_sha1": "621bb561be4634dc6970158648a5ee92c92115ce",
+      "origin": "upstream",
+      "path": "sources/hubspot/__init__.py",
+      "sha256": "62eb1d0e21c911848fcf4c75fb428e68e35e61159483c67914a3c9bb538b4b65",
+      "upstream_path": "sources/hubspot/__init__.py"
+    },
+    {
+      "bytes": 8627,
+      "git_blob_sha1": "5f66afbab2622629c604133ac39629967522b1eb",
+      "origin": "upstream",
+      "path": "sources/hubspot/helpers.py",
+      "sha256": "9f8161bb1e9fea453ccbaa8103d7529fc378254199ee4808c5b701c8909ba2a5",
+      "upstream_path": "sources/hubspot/helpers.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/hubspot/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/hubspot/requirements.txt"
+    },
+    {
+      "bytes": 3168,
+      "git_blob_sha1": "213a3be0a6a1bb7bc0e14e3448ff3cf90b6256e5",
+      "origin": "upstream",
+      "path": "sources/hubspot/settings.py",
+      "sha256": "eb7ddf03e1989c0384b8fa390688554368149830614d62e2a45f8f6462be3f16",
+      "upstream_path": "sources/hubspot/settings.py"
+    },
+    {
+      "bytes": 939,
+      "git_blob_sha1": "ad8e81794aa9c60d9c28d53ac2dd33a72cfa43bd",
+      "origin": "upstream",
+      "path": "sources/hubspot/utils.py",
+      "sha256": "085e227d7d194038e84885fd4036bccea34e9c892120a0d95df2c2a77c055a2e",
+      "upstream_path": "sources/hubspot/utils.py"
+    },
+    {
+      "bytes": 3190,
+      "git_blob_sha1": "50c3cb68730e82627451f090272bfeaf1fb545d4",
+      "origin": "upstream",
+      "path": "sources/jira/README.md",
+      "sha256": "7b6ae60cda1ba13c8535e18fbde1aded82fec56a7691743888ea38d74a69e3e0",
+      "upstream_path": "sources/jira/README.md"
+    },
+    {
+      "bytes": 4878,
+      "git_blob_sha1": "889801189c77f40759129553a904448a9175fae9",
+      "origin": "upstream",
+      "path": "sources/jira/__init__.py",
+      "sha256": "e26c12401744efc06db3c3e4e5ecbfb8903bdae0992c781d1738924bf2eeb96b",
+      "upstream_path": "sources/jira/__init__.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/jira/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/jira/requirements.txt"
+    },
+    {
+      "bytes": 909,
+      "git_blob_sha1": "669a092d8fb694325b76b11e53203b5ba6998d10",
+      "origin": "upstream",
+      "path": "sources/jira/settings.py",
+      "sha256": "87ddd0fb20f3d0dab4e5ffdd652ee75508e72f0f54bc1ad6e8037046b408ac3b",
+      "upstream_path": "sources/jira/settings.py"
+    },
+    {
+      "bytes": 3065,
+      "git_blob_sha1": "152a3f94afca06c6d2cd77b32e115b3a566b65ab",
+      "origin": "upstream",
+      "path": "sources/kafka/README.md",
+      "sha256": "716af33f2f4beb59c8bcfece3fcff609ecbe7cf44744ccfaa77055c7f7865473",
+      "upstream_path": "sources/kafka/README.md"
+    },
+    {
+      "bytes": 4769,
+      "git_blob_sha1": "2a02977d206cda83e02bd1dd7f1cdd6da5c31730",
+      "origin": "upstream",
+      "path": "sources/kafka/__init__.py",
+      "sha256": "da453c5c39db0682cd0d272869934664b60e6052a9bd61a96a8577f1654b57b5",
+      "upstream_path": "sources/kafka/__init__.py"
+    },
+    {
+      "bytes": 8983,
+      "git_blob_sha1": "64fff3cd2d770ba6abc2514c364db34af777d82e",
+      "origin": "upstream",
+      "path": "sources/kafka/helpers.py",
+      "sha256": "d01c58dcb418d420b1909446b0bedc6ae0b32eae471d99205982e1a3649bc987",
+      "upstream_path": "sources/kafka/helpers.py"
+    },
+    {
+      "bytes": 34,
+      "git_blob_sha1": "a3378afb33f1ae3a458eb1ac0d821799b006e11e",
+      "origin": "upstream",
+      "path": "sources/kafka/requirements.txt",
+      "sha256": "2366ab0f3994dd56170d527247bc5f64f42b3dc55925733c58c38467d7960466",
+      "upstream_path": "sources/kafka/requirements.txt"
+    },
+    {
+      "bytes": 0,
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "origin": "upstream",
+      "path": "sources/kafka/sources/kafka/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_path": "sources/kafka/sources/kafka/__init__.py"
+    },
+    {
+      "bytes": 3068,
+      "git_blob_sha1": "b47c297fd7783a3b3811d002383f322827332a86",
+      "origin": "upstream",
+      "path": "sources/kinesis/README.md",
+      "sha256": "3eadc11d2395fc4ef46d4f23da97aadf1c428b5e43dadf98215c6454bcacea38",
+      "upstream_path": "sources/kinesis/README.md"
+    },
+    {
+      "bytes": 6122,
+      "git_blob_sha1": "09173720e2534eb0113a3c7bb09946937ede2ada",
+      "origin": "upstream",
+      "path": "sources/kinesis/__init__.py",
+      "sha256": "b243469a992ddd7079310fc3c829a62bfd468554056d0e9bc19001f4fb067973",
+      "upstream_path": "sources/kinesis/__init__.py"
+    },
+    {
+      "bytes": 2379,
+      "git_blob_sha1": "990dd3771d9b60394ee30fb045e39753f577810f",
+      "origin": "upstream",
+      "path": "sources/kinesis/helpers.py",
+      "sha256": "a2c1bb77490e8eb8dc6501c0e105201e85f8c97326cfdf6b32cb829ff3975aeb",
+      "upstream_path": "sources/kinesis/helpers.py"
+    },
+    {
+      "bytes": 26,
+      "git_blob_sha1": "02b12ea57a8dd4f72d8c7fbed30a5b965623be4e",
+      "origin": "upstream",
+      "path": "sources/kinesis/requirements.txt",
+      "sha256": "1543643d92a90ffc994dc6dead33cf565acda53527d92c377b95c7d8ec7ba9f7",
+      "upstream_path": "sources/kinesis/requirements.txt"
+    },
+    {
+      "bytes": 3615,
+      "git_blob_sha1": "099092c42fd1dc33a7a5cf233c08881a0fbfb16f",
+      "origin": "upstream",
+      "path": "sources/matomo/README.md",
+      "sha256": "6710c1e5858a2a388a7452670ed6e8cbb33b5bcf93d9c8c85d88cb702f7800d9",
+      "upstream_path": "sources/matomo/README.md"
+    },
+    {
+      "bytes": 9123,
+      "git_blob_sha1": "4d1a9c304b6bf0cc99a185fddb48aa573d2873b6",
+      "origin": "upstream",
+      "path": "sources/matomo/__init__.py",
+      "sha256": "2b1e6677ee076795555540700facce86104b95149baf1b122dcd90a26ba0a4f2",
+      "upstream_path": "sources/matomo/__init__.py"
+    },
+    {
+      "bytes": 28,
+      "git_blob_sha1": "72730cd0ed2545527ba05dccbb6587f51db88c18",
+      "origin": "upstream",
+      "path": "sources/matomo/helpers/__init__.py",
+      "sha256": "9b63c2ed42fd03be1db20a9e4e056efd60c916e64045445deabbe2d2c28eddd0",
+      "upstream_path": "sources/matomo/helpers/__init__.py"
+    },
+    {
+      "bytes": 3852,
+      "git_blob_sha1": "6ce274037a39ed1b361ddbfc7eb1a96105f17757",
+      "origin": "upstream",
+      "path": "sources/matomo/helpers/data_processing.py",
+      "sha256": "1439f62cf8261db41fdbd1f68fe8570a3569084aa3d418b1f33bd8d6287c5932",
+      "upstream_path": "sources/matomo/helpers/data_processing.py"
+    },
+    {
+      "bytes": 5975,
+      "git_blob_sha1": "214e49383d663ff3e19feecd9aca45ec7c45e956",
+      "origin": "upstream",
+      "path": "sources/matomo/helpers/matomo_client.py",
+      "sha256": "f032adfb08908722c1a7f261b46b587e5da30b3f3de2cc9ccda29597f648de9d",
+      "upstream_path": "sources/matomo/helpers/matomo_client.py"
+    },
+    {
+      "bytes": 12,
+      "git_blob_sha1": "67711518d738f857169cb75bf43a60f02b273da4",
+      "origin": "upstream",
+      "path": "sources/matomo/requirements.txt",
+      "sha256": "108fd39e13d2e699b75284c4be82abe2848d667c777b5b1cfb0fd0412046837e",
+      "upstream_path": "sources/matomo/requirements.txt"
+    },
+    {
+      "bytes": 78,
+      "git_blob_sha1": "ae741444c4e615cc79fff5d87f8bd975a6a3bd67",
+      "origin": "upstream",
+      "path": "sources/matomo/settings.py",
+      "sha256": "9adf6f0887a02c51a1cb78bf60c192eb5286ad64bb7194f2eb381fc6b55fea75",
+      "upstream_path": "sources/matomo/settings.py"
+    },
+    {
+      "bytes": 2913,
+      "git_blob_sha1": "b82785fa42f24f8a37ba1040782f0dcb283937bd",
+      "origin": "upstream",
+      "path": "sources/mongodb/README.md",
+      "sha256": "780965e7294ff69e904b58660bea8add1dd5c9729eb74dc86b65a6d927474486",
+      "upstream_path": "sources/mongodb/README.md"
+    },
+    {
+      "bytes": 7308,
+      "git_blob_sha1": "7b17fe0d9ed90e6796115079f2341e7366247573",
+      "origin": "upstream",
+      "path": "sources/mongodb/__init__.py",
+      "sha256": "6fcc02fdb48ed60d3d0526e5ee6bf7e6045638740ef42fd694bb4c754906f243",
+      "upstream_path": "sources/mongodb/__init__.py"
+    },
+    {
+      "bytes": 24138,
+      "git_blob_sha1": "f6601f81a1a9b8e29035b427185ef4fce01d2fdd",
+      "origin": "upstream",
+      "path": "sources/mongodb/helpers.py",
+      "sha256": "1f3e9183f87e4b80647e3a6433b1dd7e5f609abfbcb0fa85f7ebf7fa532a08f3",
+      "upstream_path": "sources/mongodb/helpers.py"
+    },
+    {
+      "bytes": 22,
+      "git_blob_sha1": "5240a44e2b9e2067449e43fc43a799574edff874",
+      "origin": "upstream",
+      "path": "sources/mongodb/requirements.txt",
+      "sha256": "900bc13160e09e9422a06d11d6433842832e0074e4ce4e11572c5331ad6dbe8a",
+      "upstream_path": "sources/mongodb/requirements.txt"
+    },
+    {
+      "bytes": 2591,
+      "git_blob_sha1": "1cd694226c203e10acf62a2b2a92634738b740ae",
+      "origin": "upstream",
+      "path": "sources/mux/README.md",
+      "sha256": "da7d5bcfd08669696f01b13b51061cec1c55ce4475dfd20d6c14a6bd8a8d9914",
+      "upstream_path": "sources/mux/README.md"
+    },
+    {
+      "bytes": 2750,
+      "git_blob_sha1": "7dd4635780bb35c3c36b7db7c679cf705e0be5a9",
+      "origin": "upstream",
+      "path": "sources/mux/__init__.py",
+      "sha256": "9373256c1e851138612ea5f324dd2d2aecec5b10bf50870dd510503696924fb4",
+      "upstream_path": "sources/mux/__init__.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/mux/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/mux/requirements.txt"
+    },
+    {
+      "bytes": 98,
+      "git_blob_sha1": "8920de48f0662caabca66fb9ac89f323fa2d5f4e",
+      "origin": "upstream",
+      "path": "sources/mux/settings.py",
+      "sha256": "b310313087ba375f3d897ead738fbe1d0c78befe12fb7ea96043cf3ef4d0926c",
+      "upstream_path": "sources/mux/settings.py"
+    },
+    {
+      "bytes": 2435,
+      "git_blob_sha1": "6739772d216548cd6ddb38fabb9f570138211dc3",
+      "origin": "upstream",
+      "path": "sources/notion/README.md",
+      "sha256": "1f8c9e86c8ce26a3bfdd692a3c0f926f70df93deced48ccc86de2e2fa48dd8fc",
+      "upstream_path": "sources/notion/README.md"
+    },
+    {
+      "bytes": 2711,
+      "git_blob_sha1": "6a6771a4106829c1077a86c78830fd80737857f6",
+      "origin": "upstream",
+      "path": "sources/notion/__init__.py",
+      "sha256": "665573c0109e08e6c29123ab83d1dd2a6a5efdde16db61c61ab6e769cf36bfe8",
+      "upstream_path": "sources/notion/__init__.py"
+    },
+    {
+      "bytes": 0,
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "origin": "upstream",
+      "path": "sources/notion/helpers/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_path": "sources/notion/helpers/__init__.py"
+    },
+    {
+      "bytes": 5500,
+      "git_blob_sha1": "72a9fbbb60ef4432c5f047834ae36080e325bb81",
+      "origin": "upstream",
+      "path": "sources/notion/helpers/client.py",
+      "sha256": "417bae7647f96737dff7c1d1b02a80d60d4465622b9df9f57da94fae72a0ff2e",
+      "upstream_path": "sources/notion/helpers/client.py"
+    },
+    {
+      "bytes": 2737,
+      "git_blob_sha1": "29212850ca3cde0450c8bdcc247b08671d2f721e",
+      "origin": "upstream",
+      "path": "sources/notion/helpers/database.py",
+      "sha256": "82280f89b4de55e7cfde503ef30e1a3b05faee98fb4657223e4e64a03b35af2f",
+      "upstream_path": "sources/notion/helpers/database.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/notion/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/notion/requirements.txt"
+    },
+    {
+      "bytes": 82,
+      "git_blob_sha1": "fe4ecbb1ee2ba1907246f141db7af0b214ebfb5f",
+      "origin": "upstream",
+      "path": "sources/notion/settings.py",
+      "sha256": "330415655889b67bce7a07e35d873fa49e74a146204913e0c2abbb4efa5e30e0",
+      "upstream_path": "sources/notion/settings.py"
+    },
+    {
+      "bytes": 4569,
+      "git_blob_sha1": "b77d1b8b5dd5c7903f7c9096b381b00441e578d4",
+      "origin": "upstream",
+      "path": "sources/personio/README.md",
+      "sha256": "6b45ee66163a82444179e4c8d957d7f18b88409b4e7d30a73dff2d40eded748e",
+      "upstream_path": "sources/personio/README.md"
+    },
+    {
+      "bytes": 11493,
+      "git_blob_sha1": "3e5549a82c318ec4d08832232e230d5d4b1958a6",
+      "origin": "upstream",
+      "path": "sources/personio/__init__.py",
+      "sha256": "f2e8bdc89350b09823fe112347fd23314c8e69eeca24dcc1c0218b24ddad893e",
+      "upstream_path": "sources/personio/__init__.py"
+    },
+    {
+      "bytes": 2900,
+      "git_blob_sha1": "8a29bbc10654c2ad1d883645ded392b8a24c218e",
+      "origin": "upstream",
+      "path": "sources/personio/helpers.py",
+      "sha256": "3a678ccdf838315b6923b7fbe43dfef4e1996fc483b0acb3d2cbcd9b5cc92d3c",
+      "upstream_path": "sources/personio/helpers.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/personio/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/personio/requirements.txt"
+    },
+    {
+      "bytes": 68,
+      "git_blob_sha1": "4f80dd7bed9f0f05a36e45a8b9b5eebebb3900c2",
+      "origin": "upstream",
+      "path": "sources/personio/settings.py",
+      "sha256": "dff1d3ebd0da1a40f79e78874f94c5b1e904794c60d1cf34b1c985a70ed2cb94",
+      "upstream_path": "sources/personio/settings.py"
+    },
+    {
+      "bytes": 4992,
+      "git_blob_sha1": "866cfa475c5559196841b100e89938963694f5c4",
+      "origin": "upstream",
+      "path": "sources/pipedrive/README.md",
+      "sha256": "501d74a5f69aa101a51626c9c57c0383112297f4c953b9ea5eb5a226ff98ecee",
+      "upstream_path": "sources/pipedrive/README.md"
+    },
+    {
+      "bytes": 7227,
+      "git_blob_sha1": "9f4e765822186e19315d09df6449574b0853f165",
+      "origin": "upstream",
+      "path": "sources/pipedrive/__init__.py",
+      "sha256": "0bc235bd2834f6792e8d409f81e6377cad3fb562139bd7a2344ebc1e10022fee",
+      "upstream_path": "sources/pipedrive/__init__.py"
+    },
+    {
+      "bytes": 623,
+      "git_blob_sha1": "f5af5028804f018311504846d5dd618f3838dcb0",
+      "origin": "upstream",
+      "path": "sources/pipedrive/helpers/__init__.py",
+      "sha256": "dec3fb7dedfaa5264dd13bd49e1f6bf952ea93673914c99acb0d2790fc531990",
+      "upstream_path": "sources/pipedrive/helpers/__init__.py"
+    },
+    {
+      "bytes": 4488,
+      "git_blob_sha1": "b65a4e30ecd04be6cf0c369dd5ece5c8647fbec8",
+      "origin": "upstream",
+      "path": "sources/pipedrive/helpers/custom_fields_munger.py",
+      "sha256": "317ce9c74a0311374d54709e9fd1ba79096a683270d6d7d5b1a916128ff97458",
+      "upstream_path": "sources/pipedrive/helpers/custom_fields_munger.py"
+    },
+    {
+      "bytes": 3358,
+      "git_blob_sha1": "1fa82be52bfff569308412a3f1df3aa91243f4b8",
+      "origin": "upstream",
+      "path": "sources/pipedrive/helpers/pages.py",
+      "sha256": "09c33693f33e80450d8c05c057530781f067f81d65da8eee7c3d8c5eede28cec",
+      "upstream_path": "sources/pipedrive/helpers/pages.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "698edbae51ffa5eee638a8ec56691bda21ede0b3",
+      "origin": "upstream",
+      "path": "sources/pipedrive/requirements.txt",
+      "sha256": "3bb74e82b4c981d073317c55e351671a3382e1ba35a534756adc772090725790",
+      "upstream_path": "sources/pipedrive/requirements.txt"
+    },
+    {
+      "bytes": 5601,
+      "git_blob_sha1": "37c6c44720279e1e73bf19ee01d14809f22be95e",
+      "origin": "upstream",
+      "path": "sources/pipedrive/rest_v2/__init__.py",
+      "sha256": "d2d04ec581ae762acd714d080ff14b5d32bb0833d15d91f40ade489b5484edc8",
+      "upstream_path": "sources/pipedrive/rest_v2/__init__.py"
+    },
+    {
+      "bytes": 3820,
+      "git_blob_sha1": "5f960f0fd36408dcf24f3e0d342e3623c7daf264",
+      "origin": "upstream",
+      "path": "sources/pipedrive/settings.py",
+      "sha256": "1c33286ca5ccd256d55b978fac9628dd5e5f5827f060d1b58646ac104de741a0",
+      "upstream_path": "sources/pipedrive/settings.py"
+    },
+    {
+      "bytes": 70,
+      "git_blob_sha1": "54d18332f4982373285a4bdd81d2bf67e5711bb2",
+      "origin": "upstream",
+      "path": "sources/pipedrive/typing.py",
+      "sha256": "39b4bf054138be19cd9e202b866e385ee0b3ca0a726e1127ece70f25c12ba91f",
+      "upstream_path": "sources/pipedrive/typing.py"
+    },
+    {
+      "bytes": 6309,
+      "git_blob_sha1": "344c0f8ad14056e97368bf034744e5ea3ef8ade5",
+      "origin": "upstream",
+      "path": "sources/salesforce/README.md",
+      "sha256": "326a4106c2bb82689e14c70cd76bf4dfbdced567ebce4539dd74b2300ab16d09",
+      "upstream_path": "sources/salesforce/README.md"
+    },
+    {
+      "bytes": 4817,
+      "git_blob_sha1": "7752777da9e366052e91a19a5fb75a8e6e9e7350",
+      "origin": "upstream",
+      "path": "sources/salesforce/__init__.py",
+      "sha256": "c39d31db6d831f9c2fa0c4b73737556958adabb223dfb2a1e988a28edf73d6c9",
+      "upstream_path": "sources/salesforce/__init__.py"
+    },
+    {
+      "bytes": 0,
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "origin": "upstream",
+      "path": "sources/salesforce/helpers/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_path": "sources/salesforce/helpers/__init__.py"
+    },
+    {
+      "bytes": 6820,
+      "git_blob_sha1": "2049af08935c8681c2a853c06d1576acc7d9d836",
+      "origin": "upstream",
+      "path": "sources/salesforce/helpers/client.py",
+      "sha256": "da63cc97e06a61a50fcbf76d4fb223d13c5ee8c62913853481e85cbd6434dc24",
+      "upstream_path": "sources/salesforce/helpers/client.py"
+    },
+    {
+      "bytes": 4562,
+      "git_blob_sha1": "9bb2dcad67d6be7438fb7a838696ed8bf34eb58e",
+      "origin": "upstream",
+      "path": "sources/salesforce/helpers/records.py",
+      "sha256": "1a0a07192000a6f3f65f93e98190fa84f9ac2cd877f2bac17ab89408dac1d15a",
+      "upstream_path": "sources/salesforce/helpers/records.py"
+    },
+    {
+      "bytes": 37,
+      "git_blob_sha1": "a3f88298acc3222b80587fcb3cd340df262b84dd",
+      "origin": "upstream",
+      "path": "sources/salesforce/requirements.txt",
+      "sha256": "172366019f69d954164929760a6bed631a2f1813b5cb81c30e6e34a8e7431a96",
+      "upstream_path": "sources/salesforce/requirements.txt"
+    },
+    {
+      "bytes": 126,
+      "git_blob_sha1": "a6e23b3d9ccf3742160f3a2ee458f490a907bd9e",
+      "origin": "upstream",
+      "path": "sources/salesforce/settings.py",
+      "sha256": "624cf3d605f271afe160262c0b9f224359cfa3a453ffe90a5015afcbd5099d06",
+      "upstream_path": "sources/salesforce/settings.py"
+    },
+    {
+      "bytes": 2559,
+      "git_blob_sha1": "67e95e660cf9018cc3cac5defcc3a6d24590c8ab",
+      "origin": "upstream",
+      "path": "sources/shopify_dlt/README.md",
+      "sha256": "502863899f43c72406286748fd250afb6d04df5d53e62c05c1a1b25346dcdd36",
+      "upstream_path": "sources/shopify_dlt/README.md"
+    },
+    {
+      "bytes": 9163,
+      "git_blob_sha1": "788d8fdd227d87bf4cdad3e258e4de1f390efc10",
+      "origin": "upstream",
+      "path": "sources/shopify_dlt/__init__.py",
+      "sha256": "4f284f1efebe18b6504653e43a893ef458e8fef6b61fd487baf2cc35c6ca43fb",
+      "upstream_path": "sources/shopify_dlt/__init__.py"
+    },
+    {
+      "bytes": 50,
+      "git_blob_sha1": "c3acfb9c6f4100d7b7a5cf34f1308a4b6d3efe0f",
+      "origin": "upstream",
+      "path": "sources/shopify_dlt/exceptions.py",
+      "sha256": "061577948556781b7c121e025865bf444149a460b3bd6ebeeb6c99ac159ade74",
+      "upstream_path": "sources/shopify_dlt/exceptions.py"
+    },
+    {
+      "bytes": 4982,
+      "git_blob_sha1": "f4775eee97b448c81d1db739d54853ad4d07ff39",
+      "origin": "upstream",
+      "path": "sources/shopify_dlt/helpers.py",
+      "sha256": "2a16c1a5c29c1e73073ee2d4c7911fe86934d6220bcf3797dc0211c7e86106a8",
+      "upstream_path": "sources/shopify_dlt/helpers.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/shopify_dlt/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/shopify_dlt/requirements.txt"
+    },
+    {
+      "bytes": 141,
+      "git_blob_sha1": "0d4cef7e5723f7515c90098358f980d5b4ea4877",
+      "origin": "upstream",
+      "path": "sources/shopify_dlt/settings.py",
+      "sha256": "4ad63410fafbc0527b2b34510cde132b1574fe09084b5c0f8f6791e00612b039",
+      "upstream_path": "sources/shopify_dlt/settings.py"
+    },
+    {
+      "bytes": 3321,
+      "git_blob_sha1": "5ddc904547e5564ff55e99e8b0ee5a7df0b84e56",
+      "origin": "upstream",
+      "path": "sources/slack/README.md",
+      "sha256": "d4e5f24086e6af351d7821f85cbf8cb1a90d3977d244c12adf9926e114f18a4b",
+      "upstream_path": "sources/slack/README.md"
+    },
+    {
+      "bytes": 10723,
+      "git_blob_sha1": "688eb18c29e4d8828f860a36964ac70bae9d0fa2",
+      "origin": "upstream",
+      "path": "sources/slack/__init__.py",
+      "sha256": "eef9dcb763ae1102374bc2788bfc5468e626ba16f543e03f7b2429e0eb271481",
+      "upstream_path": "sources/slack/__init__.py"
+    },
+    {
+      "bytes": 6560,
+      "git_blob_sha1": "d7f14bb8161cefea8e766ea39e1937401edfb419",
+      "origin": "upstream",
+      "path": "sources/slack/helpers.py",
+      "sha256": "61baacae406c3d77ed303b3ea47ea36b7bcfa4e223908c27816d1dcacc31f129",
+      "upstream_path": "sources/slack/helpers.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/slack/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/slack/requirements.txt"
+    },
+    {
+      "bytes": 457,
+      "git_blob_sha1": "34040a9d7fae083db14f4f14201d844531a77678",
+      "origin": "upstream",
+      "path": "sources/slack/settings.py",
+      "sha256": "3612a7e32d73a2411ae44988674e70b63ffe23418e0125d9e55f35335cd70ad6",
+      "upstream_path": "sources/slack/settings.py"
+    },
+    {
+      "bytes": 2676,
+      "git_blob_sha1": "9e3875d08c09de599b46888120a105c6dff96f81",
+      "origin": "upstream",
+      "path": "sources/strapi/README.md",
+      "sha256": "dc50cb44091b7e2c43fae0158946aa6c8541020befea1dff3216290e12b8f723",
+      "upstream_path": "sources/strapi/README.md"
+    },
+    {
+      "bytes": 982,
+      "git_blob_sha1": "c1eee4e9cb87be1ae15fc4734b8d0a7fdeba8984",
+      "origin": "upstream",
+      "path": "sources/strapi/__init__.py",
+      "sha256": "4189ae884c2bf68097c499b46513e29ad0ad407c32dc6db7d95e19fb62c8dc57",
+      "upstream_path": "sources/strapi/__init__.py"
+    },
+    {
+      "bytes": 1379,
+      "git_blob_sha1": "fc30c548e57843b42aa0c2e2fa9838f5acb9a8a0",
+      "origin": "upstream",
+      "path": "sources/strapi/helpers.py",
+      "sha256": "878a40f5e2eff895b047f80ab0d345a35e533db27f5022f1ab53d7aae58cc016",
+      "upstream_path": "sources/strapi/helpers.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/strapi/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/strapi/requirements.txt"
+    },
+    {
+      "bytes": 43,
+      "git_blob_sha1": "eab35dfdf03f0680989bfc3bb7478c815fb2b7a0",
+      "origin": "upstream",
+      "path": "sources/strapi/settings.py",
+      "sha256": "a099393db01134a33fe1e06679440bde9a92304272cba019b82bf5ba32e3b3be",
+      "upstream_path": "sources/strapi/settings.py"
+    },
+    {
+      "bytes": 3672,
+      "git_blob_sha1": "10d51a0acee4f87b5d683bf82ff66e930281f31d",
+      "origin": "upstream",
+      "path": "sources/stripe_analytics/README.md",
+      "sha256": "bffc4be6f9a5d252cc32fc836e94476026733c1fa6beef5223907059f78dae8c",
+      "upstream_path": "sources/stripe_analytics/README.md"
+    },
+    {
+      "bytes": 4495,
+      "git_blob_sha1": "853e58efd6228f5e54872a7bfa0b5c7f5e6e929e",
+      "origin": "upstream",
+      "path": "sources/stripe_analytics/__init__.py",
+      "sha256": "d8ca3162dd141602c612f2e8e976d7973db3a6540189ad3360991518cc9a3d0c",
+      "upstream_path": "sources/stripe_analytics/__init__.py"
+    },
+    {
+      "bytes": 1976,
+      "git_blob_sha1": "aceb3da7d038cfcc507d34aaf8316b919d5b14cf",
+      "origin": "upstream",
+      "path": "sources/stripe_analytics/helpers.py",
+      "sha256": "8aa64eca21883a13808555d7535e833f486491329c4eb0eeebdbc02684f1804a",
+      "upstream_path": "sources/stripe_analytics/helpers.py"
+    },
+    {
+      "bytes": 3216,
+      "git_blob_sha1": "9829ad232aaf1beb70d36f36f818ced5e11160b9",
+      "origin": "upstream",
+      "path": "sources/stripe_analytics/metrics.py",
+      "sha256": "cfd584c459f92b87f3746a0c150c1c6fdc73a1bdd7027da8bfab35ee0737cef9",
+      "upstream_path": "sources/stripe_analytics/metrics.py"
+    },
+    {
+      "bytes": 39,
+      "git_blob_sha1": "ef5939eb7c7d5b1499a3886a0f137754145278c9",
+      "origin": "upstream",
+      "path": "sources/stripe_analytics/requirements.txt",
+      "sha256": "b18f2f0d77eb56fa42082dccd7d57d33720b8f3240f7a803a8d45f21a41e2cd3",
+      "upstream_path": "sources/stripe_analytics/requirements.txt"
+    },
+    {
+      "bytes": 384,
+      "git_blob_sha1": "d7c3b9d38b3629c03eab097a73532f4f4ce29a66",
+      "origin": "upstream",
+      "path": "sources/stripe_analytics/settings.py",
+      "sha256": "f3c870e014628d47abe2f02e561e85ed709bc1d107606a29f1c4a0afd0b7ce9a",
+      "upstream_path": "sources/stripe_analytics/settings.py"
+    },
+    {
+      "bytes": 5213,
+      "git_blob_sha1": "e13841e91992b65df4c38c0e37dd0e3bef14fd5c",
+      "origin": "upstream",
+      "path": "sources/workable/README.md",
+      "sha256": "aab383c4d30f3a6a672280c11c3f9e639bf64df5acbfc748be643e809c3167f0",
+      "upstream_path": "sources/workable/README.md"
+    },
+    {
+      "bytes": 5345,
+      "git_blob_sha1": "7a6d745f8f49b50c3225f601a48078a08d817742",
+      "origin": "upstream",
+      "path": "sources/workable/__init__.py",
+      "sha256": "a2ae0de364cbe95f5a7549825b72490fd9060e1c299fb5a58c6290d77355f5be",
+      "upstream_path": "sources/workable/__init__.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "1f680047f16dccd4afbf7412e83bc3b3fa228f70",
+      "origin": "upstream",
+      "path": "sources/workable/requirements.txt",
+      "sha256": "5735d7ee02c881c572b14507b088e4e2ec2649d4b90f1b821e3b54310632971c",
+      "upstream_path": "sources/workable/requirements.txt"
+    },
+    {
+      "bytes": 577,
+      "git_blob_sha1": "7357fee8f4d9d77aa250edb5cd503561e6110d86",
+      "origin": "upstream",
+      "path": "sources/workable/settings.py",
+      "sha256": "e6ac8d787e21b1edbfb47e8daa031931a8abf344cf3f82ee9c67713ec6afe2b0",
+      "upstream_path": "sources/workable/settings.py"
+    },
+    {
+      "bytes": 3549,
+      "git_blob_sha1": "b334a656144ffd2c5014ae0f56b356513a41c6cc",
+      "origin": "upstream",
+      "path": "sources/workable/workable_client.py",
+      "sha256": "84e67e36c7ab27c630a6465d30330edf7cbfeb6dd308a6c0c755b9e6a10f98ce",
+      "upstream_path": "sources/workable/workable_client.py"
+    },
+    {
+      "bytes": 3813,
+      "git_blob_sha1": "99ff31085377cc45ed988ea5392ca64792a462cc",
+      "origin": "upstream",
+      "path": "sources/zendesk/README.md",
+      "sha256": "c4eac17c313be73f2a6b61a590f0491d10bdf0c593c81e4bd638f5193ab1828b",
+      "upstream_path": "sources/zendesk/README.md"
+    },
+    {
+      "bytes": 17643,
+      "git_blob_sha1": "2c2a625a606bba266125eb75b2c4521a5c48c3fc",
+      "origin": "upstream",
+      "path": "sources/zendesk/__init__.py",
+      "sha256": "086f34e3d779af85421e0cef88ef5389e51f878850898770036efdd70ae8b071",
+      "upstream_path": "sources/zendesk/__init__.py"
+    },
+    {
+      "bytes": 888,
+      "git_blob_sha1": "a2bd29eee9602e06865a99748c7bc77973026392",
+      "origin": "upstream",
+      "path": "sources/zendesk/helpers/__init__.py",
+      "sha256": "61325e8c28948df21cb23f45ae463497e24660323b451b5ed5876ae450c7ff47",
+      "upstream_path": "sources/zendesk/helpers/__init__.py"
+    },
+    {
+      "bytes": 4236,
+      "git_blob_sha1": "d2adec12203ca6c80fe8972f626114a7d1ef073a",
+      "origin": "upstream",
+      "path": "sources/zendesk/helpers/api_helpers.py",
+      "sha256": "debb306241b533395f6354406f2a072bf688765300eca2f47a037641b8d0a855",
+      "upstream_path": "sources/zendesk/helpers/api_helpers.py"
+    },
+    {
+      "bytes": 1330,
+      "git_blob_sha1": "c44aa84ccaad85a8fa92528ecf78399d2a4119f7",
+      "origin": "upstream",
+      "path": "sources/zendesk/helpers/credentials.py",
+      "sha256": "c59df8b6719d026d05feb98f81d3b002a91014ad87a48908edb77c0bbf6c50a4",
+      "upstream_path": "sources/zendesk/helpers/credentials.py"
+    },
+    {
+      "bytes": 4716,
+      "git_blob_sha1": "209dca896ab5125729eecfe8bb83fdc854ff0fa4",
+      "origin": "upstream",
+      "path": "sources/zendesk/helpers/talk_api.py",
+      "sha256": "961f0a5fbf8f7b169600ed19dffbbe2297fd5061ffdbfa695f757ff2057eb7a5",
+      "upstream_path": "sources/zendesk/helpers/talk_api.py"
+    },
+    {
+      "bytes": 11,
+      "git_blob_sha1": "698edbae51ffa5eee638a8ec56691bda21ede0b3",
+      "origin": "upstream",
+      "path": "sources/zendesk/requirements.txt",
+      "sha256": "3bb74e82b4c981d073317c55e351671a3382e1ba35a534756adc772090725790",
+      "upstream_path": "sources/zendesk/requirements.txt"
+    },
+    {
+      "bytes": 3276,
+      "git_blob_sha1": "9abbcab7db304700fc39c55cb5eacd7aafb0fce2",
+      "origin": "upstream",
+      "path": "sources/zendesk/settings.py",
+      "sha256": "63181a345040d3a451aa4d3d4e1c167001fb7395757ab562aec015db05712667",
+      "upstream_path": "sources/zendesk/settings.py"
+    }
+  ],
+  "license": {
+    "metadata_inconsistency_recorded": true,
+    "path": "LICENSE.txt",
+    "spdx": "Apache-2.0",
+    "upstream_metadata_spdx": "MIT"
+  },
+  "provenance": {
+    "publisher_signature_verified": false,
+    "retrieval": "git fetch --depth 1 origin <exact ref>; detached checkout",
+    "selection_registry_sha256": "fefa92898a18da02cacf96c89121cc87658944cc0bcd1e7b9d233c466620b94f",
+    "upstream_files_modified": false
+  },
+  "ref": "75b3ec17eab99d0079d9f61b7f47fc8b899a5738",
+  "repository": "https://github.com/dlt-hub/verified-sources",
+  "shared_source_directories": [],
+  "source_count": 25,
+  "sources": {
+    "airtable": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 6,
+          "module": "dlt",
+          "path": "sources/airtable/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "pyairtable",
+          "path": "sources/airtable/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.sources",
+          "path": "sources/airtable/__init__.py"
+        }
+      ],
+      "external_imports": [
+        "dlt",
+        "pyairtable"
+      ],
+      "factory_arguments": [
+        {
+          "name": "base_id",
+          "required": false
+        },
+        {
+          "name": "table_names",
+          "required": false
+        },
+        {
+          "name": "access_token",
+          "required": false
+        }
+      ],
+      "factory_name": "airtable_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "pyairtable"
+          ],
+          "import": "pyairtable",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.airtable.airtable_source",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "pyairtable~=2.1",
+          "dlt>=0.3.25"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": "pyairtable",
+        "requirements_files": [
+          "sources/airtable/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [],
+      "requirements": [
+        "pyairtable~=2.1",
+        "dlt>=0.3.25"
+      ],
+      "requirements_files": [
+        "sources/airtable/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/airtable"
+    },
+    "asana": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 12,
+          "module": "dlt",
+          "path": "sources/asana_dlt/__init__.py"
+        },
+        {
+          "line": 13,
+          "module": "dlt.common.typing",
+          "path": "sources/asana_dlt/__init__.py"
+        },
+        {
+          "line": 3,
+          "module": "asana",
+          "path": "sources/asana_dlt/helpers.py"
+        }
+      ],
+      "external_imports": [
+        "asana",
+        "dlt"
+      ],
+      "factory_arguments": [],
+      "factory_name": "asana_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "asana"
+          ],
+          "import": "asana",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.asana_dlt.asana_source",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "asana<5.0.0",
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": "asana",
+        "requirements_files": [
+          "sources/asana_dlt/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 15,
+          "module": "sources.asana_dlt.helpers",
+          "path": "sources/asana_dlt/__init__.py"
+        },
+        {
+          "line": 16,
+          "module": "sources.asana_dlt.settings",
+          "path": "sources/asana_dlt/__init__.py"
+        }
+      ],
+      "requirements": [
+        "asana<5.0.0",
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/asana_dlt/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/asana_dlt"
+    },
+    "bing_webmaster": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 11,
+          "module": "dlt",
+          "path": "sources/bing_webmaster/__init__.py"
+        },
+        {
+          "line": 12,
+          "module": "dlt.common",
+          "path": "sources/bing_webmaster/__init__.py"
+        },
+        {
+          "line": 13,
+          "module": "dlt.common.typing",
+          "path": "sources/bing_webmaster/__init__.py"
+        },
+        {
+          "line": 14,
+          "module": "dlt.sources",
+          "path": "sources/bing_webmaster/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common",
+          "path": "sources/bing_webmaster/helpers.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.typing",
+          "path": "sources/bing_webmaster/helpers.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.sources.helpers",
+          "path": "sources/bing_webmaster/helpers.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "site_urls",
+          "required": true
+        },
+        {
+          "name": "api_key",
+          "required": false
+        }
+      ],
+      "factory_name": "page_stats",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.bing_webmaster.page_stats",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/bing_webmaster/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 16,
+          "module": "sources.bing_webmaster.helpers",
+          "path": "sources/bing_webmaster/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "sources.bing_webmaster.settings",
+          "path": "sources/bing_webmaster/helpers.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/bing_webmaster/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/bing_webmaster"
+    },
+    "facebook_ads": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 5,
+          "module": "facebook_business",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "facebook_business.api",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.common.typing",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "dlt.sources",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 1,
+          "module": "dlt.extract.exceptions",
+          "path": "sources/facebook_ads/exceptions.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 9,
+          "module": "humanize",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 10,
+          "module": "pendulum",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 12,
+          "module": "dlt.common",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 13,
+          "module": "dlt.common.configuration.inject",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 14,
+          "module": "dlt.common.time",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 15,
+          "module": "dlt.common.typing",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 16,
+          "module": "dlt.sources.helpers",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 17,
+          "module": "dlt.sources.helpers.requests",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 19,
+          "module": "facebook_business",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 20,
+          "module": "facebook_business.adobjects.adaccount",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 21,
+          "module": "facebook_business.adobjects.user",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 22,
+          "module": "facebook_business.api",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 4,
+          "module": "dlt.common.schema.typing",
+          "path": "sources/facebook_ads/settings.py"
+        },
+        {
+          "line": 5,
+          "module": "facebook_business.adobjects.abstractobject",
+          "path": "sources/facebook_ads/settings.py"
+        },
+        {
+          "line": 3,
+          "module": "facebook_business",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 4,
+          "module": "facebook_business.adobjects.abstractobject",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 5,
+          "module": "facebook_business.adobjects.abstractcrudobject",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 6,
+          "module": "facebook_business.adobjects.adcreative",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 7,
+          "module": "facebook_business.adobjects.ad",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 8,
+          "module": "facebook_business.adobjects.adset",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 9,
+          "module": "facebook_business.adobjects.campaign",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 10,
+          "module": "facebook_business.adobjects.lead",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 12,
+          "module": "dlt",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 13,
+          "module": "dlt.common",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 14,
+          "module": "dlt.common.configuration.inject",
+          "path": "sources/facebook_ads/utils.py"
+        },
+        {
+          "line": 15,
+          "module": "dlt.sources.helpers",
+          "path": "sources/facebook_ads/utils.py"
+        }
+      ],
+      "external_imports": [
+        "dlt",
+        "facebook_business",
+        "humanize",
+        "pendulum"
+      ],
+      "factory_arguments": [
+        {
+          "name": "account_id",
+          "required": false
+        },
+        {
+          "name": "access_token",
+          "required": false
+        },
+        {
+          "name": "chunk_size",
+          "required": false
+        },
+        {
+          "name": "request_timeout",
+          "required": false
+        },
+        {
+          "name": "app_api_version",
+          "required": false
+        }
+      ],
+      "factory_name": "facebook_ads_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "facebook-business"
+          ],
+          "import": "facebook_business",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "humanize"
+          ],
+          "import": "humanize",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "pendulum"
+          ],
+          "import": "pendulum",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.facebook_ads.facebook_ads_source",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "humanize",
+          "pendulum"
+        ],
+        "declared_requirements": [
+          "dlt>=0.5.1",
+          "facebook-business>=16.0.2"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": "facebook_business",
+        "requirements_files": [
+          "sources/facebook_ads/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 13,
+          "module": "sources.facebook_ads.helpers",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 21,
+          "module": "sources.facebook_ads.utils",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 30,
+          "module": "sources.facebook_ads.utils",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 31,
+          "module": "sources.facebook_ads.settings",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 40,
+          "module": "sources.facebook_ads.settings",
+          "path": "sources/facebook_ads/__init__.py"
+        },
+        {
+          "line": 24,
+          "module": "sources.facebook_ads.exceptions",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 25,
+          "module": "sources.facebook_ads.settings",
+          "path": "sources/facebook_ads/helpers.py"
+        },
+        {
+          "line": 30,
+          "module": "sources.facebook_ads.utils",
+          "path": "sources/facebook_ads/helpers.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1",
+        "facebook-business>=16.0.2"
+      ],
+      "requirements_files": [
+        "sources/facebook_ads/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/facebook_ads"
+    },
+    "freshdesk": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 6,
+          "module": "dlt",
+          "path": "sources/freshdesk/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources",
+          "path": "sources/freshdesk/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.typing",
+          "path": "sources/freshdesk/freshdesk_client.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.sources.helpers",
+          "path": "sources/freshdesk/freshdesk_client.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "endpoints",
+          "required": false
+        },
+        {
+          "name": "per_page",
+          "required": false
+        },
+        {
+          "name": "domain",
+          "required": false
+        },
+        {
+          "name": "api_secret_key",
+          "required": false
+        }
+      ],
+      "factory_name": "freshdesk_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.freshdesk.freshdesk_source",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/freshdesk/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 9,
+          "module": "sources.freshdesk.freshdesk_client",
+          "path": "sources/freshdesk/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "sources.freshdesk.settings",
+          "path": "sources/freshdesk/__init__.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/freshdesk/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/freshdesk"
+    },
+    "google_ads": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 6,
+          "module": "dlt",
+          "path": "sources/google_ads/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.exceptions",
+          "path": "sources/google_ads/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common.typing",
+          "path": "sources/google_ads/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.sources",
+          "path": "sources/google_ads/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "dlt.sources.credentials",
+          "path": "sources/google_ads/__init__.py"
+        },
+        {
+          "line": 15,
+          "module": "apiclient.discovery",
+          "path": "sources/google_ads/__init__.py"
+        },
+        {
+          "line": 18,
+          "module": "google.ads.googleads.client",
+          "path": "sources/google_ads/__init__.py"
+        },
+        {
+          "line": 2,
+          "module": "dlt.common.typing",
+          "path": "sources/google_ads/helpers/data_processing.py"
+        },
+        {
+          "line": 3,
+          "module": "proto",
+          "path": "sources/google_ads/helpers/data_processing.py"
+        },
+        {
+          "line": 17,
+          "module": "dlt",
+          "path": "sources/google_ads/setup_script_gcp_oauth.py"
+        },
+        {
+          "line": 18,
+          "module": "dlt.common.configuration.inject",
+          "path": "sources/google_ads/setup_script_gcp_oauth.py"
+        },
+        {
+          "line": 19,
+          "module": "dlt.common.configuration.exceptions",
+          "path": "sources/google_ads/setup_script_gcp_oauth.py"
+        },
+        {
+          "line": 20,
+          "module": "dlt.sources.credentials",
+          "path": "sources/google_ads/setup_script_gcp_oauth.py"
+        }
+      ],
+      "external_imports": [
+        "apiclient",
+        "dlt",
+        "google",
+        "proto"
+      ],
+      "factory_arguments": [
+        {
+          "name": "credentials",
+          "required": false
+        },
+        {
+          "name": "impersonated_email",
+          "required": false
+        },
+        {
+          "name": "dev_token",
+          "required": false
+        }
+      ],
+      "factory_name": "google_ads",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "google-api-python-client"
+          ],
+          "import": "apiclient",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "google-ads"
+          ],
+          "import": "google",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "proto-plus"
+          ],
+          "import": "proto",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.google_ads.google_ads",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "proto-plus"
+        ],
+        "declared_requirements": [
+          "dlt>=0.5.1",
+          "google-ads",
+          "google-api-python-client"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": "google-ads",
+        "requirements_files": [
+          "sources/google_ads/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 13,
+          "module": "sources.google_ads.helpers.data_processing",
+          "path": "sources/google_ads/__init__.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1",
+        "google-ads",
+        "google-api-python-client"
+      ],
+      "requirements_files": [
+        "sources/google_ads/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/google_ads"
+    },
+    "google_analytics": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 6,
+          "module": "dlt",
+          "path": "sources/google_analytics/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.typing",
+          "path": "sources/google_analytics/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.sources",
+          "path": "sources/google_analytics/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.sources.credentials",
+          "path": "sources/google_analytics/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "google.analytics.data_v1beta",
+          "path": "sources/google_analytics/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "google.analytics.data_v1beta.types",
+          "path": "sources/google_analytics/__init__.py"
+        },
+        {
+          "line": 4,
+          "module": "pendulum.datetime",
+          "path": "sources/google_analytics/helpers/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt",
+          "path": "sources/google_analytics/helpers/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common",
+          "path": "sources/google_analytics/helpers/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.typing",
+          "path": "sources/google_analytics/helpers/__init__.py"
+        },
+        {
+          "line": 12,
+          "module": "google.analytics.data_v1beta.types",
+          "path": "sources/google_analytics/helpers/__init__.py"
+        },
+        {
+          "line": 16,
+          "module": "google.analytics.data_v1beta",
+          "path": "sources/google_analytics/helpers/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.pendulum",
+          "path": "sources/google_analytics/helpers/data_processing.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.exceptions",
+          "path": "sources/google_analytics/helpers/data_processing.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.typing",
+          "path": "sources/google_analytics/helpers/data_processing.py"
+        },
+        {
+          "line": 9,
+          "module": "proto",
+          "path": "sources/google_analytics/helpers/data_processing.py"
+        },
+        {
+          "line": 13,
+          "module": "google.analytics.data_v1beta",
+          "path": "sources/google_analytics/helpers/data_processing.py"
+        },
+        {
+          "line": 14,
+          "module": "google.analytics.data_v1beta.types",
+          "path": "sources/google_analytics/helpers/data_processing.py"
+        },
+        {
+          "line": 32,
+          "module": "apiclient.discovery",
+          "path": "sources/google_analytics/helpers/data_processing.py"
+        },
+        {
+          "line": 17,
+          "module": "dlt",
+          "path": "sources/google_analytics/setup_script_gcp_oauth.py"
+        },
+        {
+          "line": 18,
+          "module": "dlt.common.configuration.exceptions",
+          "path": "sources/google_analytics/setup_script_gcp_oauth.py"
+        },
+        {
+          "line": 19,
+          "module": "dlt.common.configuration.inject",
+          "path": "sources/google_analytics/setup_script_gcp_oauth.py"
+        },
+        {
+          "line": 20,
+          "module": "dlt.sources.credentials",
+          "path": "sources/google_analytics/setup_script_gcp_oauth.py"
+        }
+      ],
+      "external_imports": [
+        "apiclient",
+        "dlt",
+        "google",
+        "pendulum",
+        "proto"
+      ],
+      "factory_arguments": [
+        {
+          "name": "credentials",
+          "required": false
+        },
+        {
+          "name": "property_id",
+          "required": false
+        },
+        {
+          "name": "queries",
+          "required": false
+        },
+        {
+          "name": "start_date",
+          "required": false
+        },
+        {
+          "name": "rows_per_page",
+          "required": false
+        }
+      ],
+      "factory_name": "google_analytics",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "google-api-python-client"
+          ],
+          "import": "apiclient",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "google-analytics-data"
+          ],
+          "import": "google",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "pendulum"
+          ],
+          "import": "pendulum",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "proto-plus"
+          ],
+          "import": "proto",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.google_analytics.google_analytics",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "pendulum",
+          "proto-plus"
+        ],
+        "declared_requirements": [
+          "google-analytics-data",
+          "google-api-python-client",
+          "google-auth-oauthlib",
+          "requests_oauthlib",
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": "google-analytics-data",
+        "requirements_files": [
+          "sources/google_analytics/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 13,
+          "module": "sources.google_analytics.helpers",
+          "path": "sources/google_analytics/__init__.py"
+        },
+        {
+          "line": 14,
+          "module": "sources.google_analytics.helpers.data_processing",
+          "path": "sources/google_analytics/__init__.py"
+        },
+        {
+          "line": 15,
+          "module": "sources.google_analytics.settings",
+          "path": "sources/google_analytics/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "sources.google_analytics.settings",
+          "path": "sources/google_analytics/helpers/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "sources.google_analytics.helpers.data_processing",
+          "path": "sources/google_analytics/helpers/__init__.py"
+        }
+      ],
+      "requirements": [
+        "google-analytics-data",
+        "google-api-python-client",
+        "google-auth-oauthlib",
+        "requests_oauthlib",
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/google_analytics/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/google_analytics"
+    },
+    "google_sheets": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 5,
+          "module": "dlt",
+          "path": "sources/google_sheets/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common",
+          "path": "sources/google_sheets/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources",
+          "path": "sources/google_sheets/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.sources.credentials",
+          "path": "sources/google_sheets/__init__.py"
+        },
+        {
+          "line": 4,
+          "module": "tenacity",
+          "path": "sources/google_sheets/helpers/api_calls.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.exceptions",
+          "path": "sources/google_sheets/helpers/api_calls.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.typing",
+          "path": "sources/google_sheets/helpers/api_calls.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.sources.credentials",
+          "path": "sources/google_sheets/helpers/api_calls.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.sources.helpers.requests.retry",
+          "path": "sources/google_sheets/helpers/api_calls.py"
+        },
+        {
+          "line": 15,
+          "module": "apiclient.discovery",
+          "path": "sources/google_sheets/helpers/api_calls.py"
+        },
+        {
+          "line": 22,
+          "module": "googleapiclient.errors",
+          "path": "sources/google_sheets/helpers/api_calls.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt",
+          "path": "sources/google_sheets/helpers/data_processing.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common",
+          "path": "sources/google_sheets/helpers/data_processing.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.typing",
+          "path": "sources/google_sheets/helpers/data_processing.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common.data_types",
+          "path": "sources/google_sheets/helpers/data_processing.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.common.schema.typing",
+          "path": "sources/google_sheets/helpers/data_processing.py"
+        },
+        {
+          "line": 17,
+          "module": "dlt",
+          "path": "sources/google_sheets/setup_script_gcp_oauth.py"
+        },
+        {
+          "line": 18,
+          "module": "dlt.common.configuration.exceptions",
+          "path": "sources/google_sheets/setup_script_gcp_oauth.py"
+        },
+        {
+          "line": 19,
+          "module": "dlt.common.configuration.inject",
+          "path": "sources/google_sheets/setup_script_gcp_oauth.py"
+        },
+        {
+          "line": 20,
+          "module": "dlt.sources.credentials",
+          "path": "sources/google_sheets/setup_script_gcp_oauth.py"
+        }
+      ],
+      "external_imports": [
+        "apiclient",
+        "dlt",
+        "googleapiclient",
+        "tenacity"
+      ],
+      "factory_arguments": [
+        {
+          "name": "spreadsheet_url_or_id",
+          "required": false
+        },
+        {
+          "name": "range_names",
+          "required": false
+        },
+        {
+          "name": "credentials",
+          "required": false
+        },
+        {
+          "name": "get_sheets",
+          "required": false
+        },
+        {
+          "name": "get_named_ranges",
+          "required": false
+        },
+        {
+          "name": "max_api_retries",
+          "required": false
+        }
+      ],
+      "factory_name": "google_spreadsheet",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "google-api-python-client"
+          ],
+          "import": "apiclient",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "google-api-python-client"
+          ],
+          "import": "googleapiclient",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "tenacity"
+          ],
+          "import": "tenacity",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.google_sheets.google_spreadsheet",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "tenacity"
+        ],
+        "declared_requirements": [
+          "google-api-python-client",
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": "google-api-python-client",
+        "requirements_files": [
+          "sources/google_sheets/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 10,
+          "module": "sources.google_sheets.helpers",
+          "path": "sources/google_sheets/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "sources.google_sheets.helpers.api_calls",
+          "path": "sources/google_sheets/__init__.py"
+        },
+        {
+          "line": 12,
+          "module": "sources.google_sheets.helpers.data_processing",
+          "path": "sources/google_sheets/__init__.py"
+        },
+        {
+          "line": 12,
+          "module": "sources.google_sheets.helpers.data_processing",
+          "path": "sources/google_sheets/helpers/api_calls.py"
+        }
+      ],
+      "requirements": [
+        "google-api-python-client",
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/google_sheets/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/google_sheets"
+    },
+    "hubspot": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 37,
+          "module": "dlt",
+          "path": "sources/hubspot/__init__.py"
+        },
+        {
+          "line": 38,
+          "module": "dlt.common",
+          "path": "sources/hubspot/__init__.py"
+        },
+        {
+          "line": 39,
+          "module": "dlt.common.typing",
+          "path": "sources/hubspot/__init__.py"
+        },
+        {
+          "line": 40,
+          "module": "dlt.sources",
+          "path": "sources/hubspot/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.schema.typing",
+          "path": "sources/hubspot/helpers.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.sources.helpers",
+          "path": "sources/hubspot/helpers.py"
+        },
+        {
+          "line": 3,
+          "module": "dlt.common",
+          "path": "sources/hubspot/settings.py"
+        },
+        {
+          "line": 4,
+          "module": "dlt.common.data_types",
+          "path": "sources/hubspot/settings.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "api_key",
+          "required": false
+        },
+        {
+          "name": "include_history",
+          "required": false
+        },
+        {
+          "name": "soft_delete",
+          "required": false
+        },
+        {
+          "name": "include_custom_props",
+          "required": false
+        },
+        {
+          "name": "properties",
+          "required": false
+        }
+      ],
+      "factory_name": "hubspot",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.hubspot.hubspot",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/hubspot/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 42,
+          "module": "sources.hubspot.helpers",
+          "path": "sources/hubspot/__init__.py"
+        },
+        {
+          "line": 49,
+          "module": "sources.hubspot.settings",
+          "path": "sources/hubspot/__init__.py"
+        },
+        {
+          "line": 66,
+          "module": "sources.hubspot.utils",
+          "path": "sources/hubspot/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "sources.hubspot.settings",
+          "path": "sources/hubspot/helpers.py"
+        },
+        {
+          "line": 3,
+          "module": "sources.hubspot.settings",
+          "path": "sources/hubspot/utils.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/hubspot/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/hubspot"
+    },
+    "jira": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 5,
+          "module": "dlt",
+          "path": "sources/jira/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.typing",
+          "path": "sources/jira/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources",
+          "path": "sources/jira/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.sources.helpers",
+          "path": "sources/jira/__init__.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "subdomain",
+          "required": false
+        },
+        {
+          "name": "email",
+          "required": false
+        },
+        {
+          "name": "api_token",
+          "required": false
+        },
+        {
+          "name": "page_size",
+          "required": false
+        }
+      ],
+      "factory_name": "jira",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.jira.jira",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/jira/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 10,
+          "module": "sources.jira.settings",
+          "path": "sources/jira/__init__.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/jira/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/jira"
+    },
+    "kafka": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 11,
+          "module": "confluent_kafka",
+          "path": "sources/kafka/__init__.py"
+        },
+        {
+          "line": 13,
+          "module": "dlt",
+          "path": "sources/kafka/__init__.py"
+        },
+        {
+          "line": 14,
+          "module": "dlt.common",
+          "path": "sources/kafka/__init__.py"
+        },
+        {
+          "line": 15,
+          "module": "dlt.common.time",
+          "path": "sources/kafka/__init__.py"
+        },
+        {
+          "line": 16,
+          "module": "dlt.common.typing",
+          "path": "sources/kafka/__init__.py"
+        },
+        {
+          "line": 3,
+          "module": "confluent_kafka",
+          "path": "sources/kafka/helpers.py"
+        },
+        {
+          "line": 4,
+          "module": "confluent_kafka.admin",
+          "path": "sources/kafka/helpers.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt",
+          "path": "sources/kafka/helpers.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common",
+          "path": "sources/kafka/helpers.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.configuration",
+          "path": "sources/kafka/helpers.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common.configuration.specs",
+          "path": "sources/kafka/helpers.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.common.time",
+          "path": "sources/kafka/helpers.py"
+        },
+        {
+          "line": 11,
+          "module": "dlt.common.typing",
+          "path": "sources/kafka/helpers.py"
+        },
+        {
+          "line": 12,
+          "module": "dlt.common.utils",
+          "path": "sources/kafka/helpers.py"
+        }
+      ],
+      "external_imports": [
+        "confluent_kafka",
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "topics",
+          "required": true
+        },
+        {
+          "name": "credentials",
+          "required": false
+        },
+        {
+          "name": "msg_processor",
+          "required": false
+        },
+        {
+          "name": "batch_size",
+          "required": false
+        },
+        {
+          "name": "batch_timeout",
+          "required": false
+        },
+        {
+          "name": "start_from",
+          "required": false
+        },
+        {
+          "name": "end_time",
+          "required": false
+        }
+      ],
+      "factory_name": "kafka_consumer",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "confluent-kafka"
+          ],
+          "import": "confluent_kafka",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.kafka.kafka_consumer",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "confluent-kafka>=2.3.0",
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": "confluent_kafka",
+        "requirements_files": [
+          "sources/kafka/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 17,
+          "module": "sources.kafka.helpers",
+          "path": "sources/kafka/__init__.py"
+        }
+      ],
+      "requirements": [
+        "confluent-kafka>=2.3.0",
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/kafka/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/kafka"
+    },
+    "kinesis": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 4,
+          "module": "dlt",
+          "path": "sources/kinesis/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.common",
+          "path": "sources/kinesis/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.configuration.specs",
+          "path": "sources/kinesis/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.time",
+          "path": "sources/kinesis/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.typing",
+          "path": "sources/kinesis/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common.utils",
+          "path": "sources/kinesis/__init__.py"
+        },
+        {
+          "line": 3,
+          "module": "dlt",
+          "path": "sources/kinesis/helpers.py"
+        },
+        {
+          "line": 4,
+          "module": "dlt.common",
+          "path": "sources/kinesis/helpers.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.common.typing",
+          "path": "sources/kinesis/helpers.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "stream_name",
+          "required": false
+        },
+        {
+          "name": "credentials",
+          "required": false
+        },
+        {
+          "name": "last_msg",
+          "required": false
+        },
+        {
+          "name": "initial_at_timestamp",
+          "required": false
+        },
+        {
+          "name": "max_number_of_messages",
+          "required": false
+        },
+        {
+          "name": "milliseconds_behind_latest",
+          "required": false
+        },
+        {
+          "name": "parse_json",
+          "required": false
+        },
+        {
+          "name": "chunk_size",
+          "required": false
+        }
+      ],
+      "factory_name": "kinesis_stream",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.kinesis.kinesis_stream",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=0.5.1",
+          "botocore>=1.28"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/kinesis/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 11,
+          "module": "sources.kinesis.helpers",
+          "path": "sources/kinesis/__init__.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1",
+        "botocore>=1.28"
+      ],
+      "requirements_files": [
+        "sources/kinesis/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/kinesis"
+    },
+    "matomo": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 3,
+          "module": "dlt",
+          "path": "sources/matomo/__init__.py"
+        },
+        {
+          "line": 4,
+          "module": "pendulum",
+          "path": "sources/matomo/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.common.typing",
+          "path": "sources/matomo/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.sources",
+          "path": "sources/matomo/__init__.py"
+        },
+        {
+          "line": 4,
+          "module": "dlt",
+          "path": "sources/matomo/helpers/data_processing.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.common",
+          "path": "sources/matomo/helpers/data_processing.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.pendulum",
+          "path": "sources/matomo/helpers/data_processing.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.typing",
+          "path": "sources/matomo/helpers/data_processing.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.common.typing",
+          "path": "sources/matomo/helpers/matomo_client.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.sources.helpers.requests",
+          "path": "sources/matomo/helpers/matomo_client.py"
+        }
+      ],
+      "external_imports": [
+        "dlt",
+        "pendulum"
+      ],
+      "factory_arguments": [
+        {
+          "name": "api_token",
+          "required": false
+        },
+        {
+          "name": "url",
+          "required": false
+        },
+        {
+          "name": "live_events_site_id",
+          "required": false
+        },
+        {
+          "name": "initial_load_past_days",
+          "required": false
+        },
+        {
+          "name": "visit_timeout_seconds",
+          "required": false
+        },
+        {
+          "name": "visit_max_duration_seconds",
+          "required": false
+        },
+        {
+          "name": "get_live_event_visitors",
+          "required": false
+        }
+      ],
+      "factory_name": "matomo_visits",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "pendulum"
+          ],
+          "import": "pendulum",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.matomo.matomo_visits",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "pendulum"
+        ],
+        "declared_requirements": [
+          "dlt >= 0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/matomo/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 7,
+          "module": "sources.matomo.helpers.matomo_client",
+          "path": "sources/matomo/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "sources.matomo.helpers.data_processing",
+          "path": "sources/matomo/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "sources.matomo.settings",
+          "path": "sources/matomo/helpers/data_processing.py"
+        }
+      ],
+      "requirements": [
+        "dlt >= 0.5.1"
+      ],
+      "requirements_files": [
+        "sources/matomo/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/matomo"
+    },
+    "mongodb": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 5,
+          "module": "dlt",
+          "path": "sources/mongodb/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.data_writers",
+          "path": "sources/mongodb/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources",
+          "path": "sources/mongodb/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.configuration.specs.config_section_context",
+          "path": "sources/mongodb/__init__.py"
+        },
+        {
+          "line": 17,
+          "module": "dlt",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 18,
+          "module": "bson.decimal128",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 19,
+          "module": "bson.objectid",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 20,
+          "module": "bson.regex",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 21,
+          "module": "bson.timestamp",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 22,
+          "module": "dlt.common",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 23,
+          "module": "dlt.common.configuration.specs",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 24,
+          "module": "dlt.common.data_writers",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 25,
+          "module": "dlt.common.time",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 26,
+          "module": "dlt.common.typing",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 27,
+          "module": "dlt.common.utils",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 28,
+          "module": "pendulum",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 29,
+          "module": "pymongo",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 30,
+          "module": "pymongo.collection",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 31,
+          "module": "pymongo.cursor",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 32,
+          "module": "pymongo.helpers_shared",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 45,
+          "module": "pymongoarrow",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 334,
+          "module": "pymongoarrow.context",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 335,
+          "module": "pymongoarrow.lib",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 454,
+          "module": "pymongoarrow.context",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 455,
+          "module": "pymongoarrow.lib",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 593,
+          "module": "pymongoarrow.types",
+          "path": "sources/mongodb/helpers.py"
+        },
+        {
+          "line": 594,
+          "module": "dlt.common.libs.pyarrow",
+          "path": "sources/mongodb/helpers.py"
+        }
+      ],
+      "external_imports": [
+        "bson",
+        "dlt",
+        "pendulum",
+        "pymongo",
+        "pymongoarrow"
+      ],
+      "factory_arguments": [
+        {
+          "name": "connection_url",
+          "required": false
+        },
+        {
+          "name": "database",
+          "required": false
+        },
+        {
+          "name": "collection_names",
+          "required": false
+        },
+        {
+          "name": "incremental",
+          "required": false
+        },
+        {
+          "name": "write_disposition",
+          "required": false
+        },
+        {
+          "name": "parallel",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "required": false
+        },
+        {
+          "name": "filter_",
+          "required": false
+        },
+        {
+          "name": "projection",
+          "required": false
+        },
+        {
+          "name": "pymongoarrow_schema",
+          "required": false
+        }
+      ],
+      "factory_name": "mongodb",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "pymongo"
+          ],
+          "import": "bson",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "pendulum"
+          ],
+          "import": "pendulum",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "pymongo"
+          ],
+          "import": "pymongo",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "pymongoarrow"
+          ],
+          "import": "pymongoarrow",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.mongodb.mongodb",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "pendulum"
+        ],
+        "declared_requirements": [
+          "pymongo>=3",
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation. pymongoarrow is feature-specific for optional Mongo Arrow paths.",
+        "optional_distributions": [
+          "pymongoarrow"
+        ],
+        "registry_pip_extra": "pymongo",
+        "requirements_files": [
+          "sources/mongodb/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 10,
+          "module": "sources.mongodb.helpers",
+          "path": "sources/mongodb/__init__.py"
+        }
+      ],
+      "requirements": [
+        "pymongo>=3",
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/mongodb/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/mongodb"
+    },
+    "mux": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 5,
+          "module": "dlt",
+          "path": "sources/mux/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common",
+          "path": "sources/mux/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources.helpers",
+          "path": "sources/mux/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "requests.auth",
+          "path": "sources/mux/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common.typing",
+          "path": "sources/mux/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.sources",
+          "path": "sources/mux/__init__.py"
+        }
+      ],
+      "external_imports": [
+        "dlt",
+        "requests"
+      ],
+      "factory_arguments": [
+        {
+          "name": "mux_api_access_token",
+          "required": false
+        },
+        {
+          "name": "mux_api_secret_key",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "required": false
+        }
+      ],
+      "factory_name": "assets_resource",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "requests"
+          ],
+          "import": "requests",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.mux.assets_resource",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "requests"
+        ],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/mux/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 12,
+          "module": "sources.mux.settings",
+          "path": "sources/mux/__init__.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/mux/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/mux"
+    },
+    "notion": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 5,
+          "module": "dlt",
+          "path": "sources/notion/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.typing",
+          "path": "sources/notion/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources",
+          "path": "sources/notion/__init__.py"
+        },
+        {
+          "line": 3,
+          "module": "dlt.sources.helpers",
+          "path": "sources/notion/helpers/client.py"
+        },
+        {
+          "line": 3,
+          "module": "dlt.common.typing",
+          "path": "sources/notion/helpers/database.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "database_ids",
+          "required": false
+        },
+        {
+          "name": "api_key",
+          "required": false
+        }
+      ],
+      "factory_name": "notion_databases",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.notion.notion_databases",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/notion/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 9,
+          "module": "sources.notion.helpers.client",
+          "path": "sources/notion/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "sources.notion.helpers.database",
+          "path": "sources/notion/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "sources.notion.settings",
+          "path": "sources/notion/helpers/client.py"
+        },
+        {
+          "line": 5,
+          "module": "sources.notion.helpers.client",
+          "path": "sources/notion/helpers/database.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/notion/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/notion"
+    },
+    "personio": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 5,
+          "module": "dlt",
+          "path": "sources/personio/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common",
+          "path": "sources/personio/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.time",
+          "path": "sources/personio/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.typing",
+          "path": "sources/personio/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.sources",
+          "path": "sources/personio/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.common.typing",
+          "path": "sources/personio/helpers.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.sources.helpers",
+          "path": "sources/personio/helpers.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "client_id",
+          "required": false
+        },
+        {
+          "name": "client_secret",
+          "required": false
+        },
+        {
+          "name": "items_per_page",
+          "required": false
+        }
+      ],
+      "factory_name": "personio_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.personio.personio_source",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/personio/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 11,
+          "module": "sources.personio.helpers",
+          "path": "sources/personio/__init__.py"
+        },
+        {
+          "line": 12,
+          "module": "sources.personio.settings",
+          "path": "sources/personio/__init__.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/personio/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/personio"
+    },
+    "pipedrive": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 14,
+          "module": "dlt",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 15,
+          "module": "dlt.common",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 16,
+          "module": "dlt.common.time",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 17,
+          "module": "dlt.common.typing",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 18,
+          "module": "dlt.sources",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 3,
+          "module": "dlt",
+          "path": "sources/pipedrive/helpers/custom_fields_munger.py"
+        },
+        {
+          "line": 12,
+          "module": "dlt",
+          "path": "sources/pipedrive/helpers/pages.py"
+        },
+        {
+          "line": 13,
+          "module": "dlt.sources.helpers",
+          "path": "sources/pipedrive/helpers/pages.py"
+        },
+        {
+          "line": 4,
+          "module": "dlt",
+          "path": "sources/pipedrive/rest_v2/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.common",
+          "path": "sources/pipedrive/rest_v2/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.time",
+          "path": "sources/pipedrive/rest_v2/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources",
+          "path": "sources/pipedrive/rest_v2/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.sources.rest_api",
+          "path": "sources/pipedrive/rest_v2/__init__.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "pipedrive_api_key",
+          "required": false
+        },
+        {
+          "name": "since_timestamp",
+          "required": false
+        }
+      ],
+      "factory_name": "pipedrive_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.pipedrive.pipedrive_source",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=1.0.0"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/pipedrive/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 20,
+          "module": "sources.pipedrive.helpers.custom_fields_munger",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 21,
+          "module": "sources.pipedrive.helpers.pages",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 22,
+          "module": "sources.pipedrive.helpers",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 23,
+          "module": "sources.pipedrive.typing",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 24,
+          "module": "sources.pipedrive.settings",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 27,
+          "module": "sources.pipedrive.rest_v2",
+          "path": "sources/pipedrive/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "sources.pipedrive.typing",
+          "path": "sources/pipedrive/helpers/custom_fields_munger.py"
+        },
+        {
+          "line": 15,
+          "module": "sources.pipedrive.helpers.custom_fields_munger",
+          "path": "sources/pipedrive/helpers/pages.py"
+        },
+        {
+          "line": 16,
+          "module": "sources.pipedrive.typing",
+          "path": "sources/pipedrive/helpers/pages.py"
+        },
+        {
+          "line": 10,
+          "module": "sources.pipedrive.settings",
+          "path": "sources/pipedrive/rest_v2/__init__.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=1.0.0"
+      ],
+      "requirements_files": [
+        "sources/pipedrive/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/pipedrive"
+    },
+    "salesforce": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 10,
+          "module": "dlt.sources",
+          "path": "sources/salesforce/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "dlt.sources",
+          "path": "sources/salesforce/__init__.py"
+        },
+        {
+          "line": 15,
+          "module": "dlt",
+          "path": "sources/salesforce/__init__.py"
+        },
+        {
+          "line": 16,
+          "module": "dlt.sources.helpers.requests",
+          "path": "sources/salesforce/__init__.py"
+        },
+        {
+          "line": 17,
+          "module": "dlt.common.typing",
+          "path": "sources/salesforce/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.sources.helpers.requests",
+          "path": "sources/salesforce/helpers/client.py"
+        },
+        {
+          "line": 6,
+          "module": "simple_salesforce",
+          "path": "sources/salesforce/helpers/client.py"
+        },
+        {
+          "line": 7,
+          "module": "simple_salesforce.util",
+          "path": "sources/salesforce/helpers/client.py"
+        },
+        {
+          "line": 8,
+          "module": "simple_salesforce.api",
+          "path": "sources/salesforce/helpers/client.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common.typing",
+          "path": "sources/salesforce/helpers/client.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.common.configuration.specs",
+          "path": "sources/salesforce/helpers/client.py"
+        },
+        {
+          "line": 15,
+          "module": "dlt.common.configuration",
+          "path": "sources/salesforce/helpers/client.py"
+        },
+        {
+          "line": 16,
+          "module": "dlt.common.configuration.exceptions",
+          "path": "sources/salesforce/helpers/client.py"
+        },
+        {
+          "line": 3,
+          "module": "pendulum",
+          "path": "sources/salesforce/helpers/records.py"
+        },
+        {
+          "line": 7,
+          "module": "simple_salesforce.exceptions",
+          "path": "sources/salesforce/helpers/records.py"
+        },
+        {
+          "line": 8,
+          "module": "simple_salesforce",
+          "path": "sources/salesforce/helpers/records.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common.typing",
+          "path": "sources/salesforce/helpers/records.py"
+        }
+      ],
+      "external_imports": [
+        "dlt",
+        "pendulum",
+        "simple_salesforce"
+      ],
+      "factory_arguments": [
+        {
+          "name": "credentials",
+          "required": false
+        },
+        {
+          "name": "session",
+          "required": false
+        }
+      ],
+      "factory_name": "salesforce_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "pendulum"
+          ],
+          "import": "pendulum",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "simple-salesforce"
+          ],
+          "import": "simple_salesforce",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.salesforce.salesforce_source",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "pendulum"
+        ],
+        "declared_requirements": [
+          "simple-salesforce>=1.12.4",
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": "simple_salesforce",
+        "requirements_files": [
+          "sources/salesforce/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 19,
+          "module": "sources.salesforce.helpers.records",
+          "path": "sources/salesforce/__init__.py"
+        },
+        {
+          "line": 20,
+          "module": "sources.salesforce.helpers.client",
+          "path": "sources/salesforce/__init__.py"
+        },
+        {
+          "line": 12,
+          "module": "sources.salesforce.settings",
+          "path": "sources/salesforce/helpers/records.py"
+        }
+      ],
+      "requirements": [
+        "simple-salesforce>=1.12.4",
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/salesforce/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/salesforce"
+    },
+    "shopify": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 5,
+          "module": "dlt",
+          "path": "sources/shopify_dlt/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources",
+          "path": "sources/shopify_dlt/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.typing",
+          "path": "sources/shopify_dlt/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common.time",
+          "path": "sources/shopify_dlt/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.common",
+          "path": "sources/shopify_dlt/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "dlt.common",
+          "path": "sources/shopify_dlt/__init__.py"
+        },
+        {
+          "line": 4,
+          "module": "dlt.common.time",
+          "path": "sources/shopify_dlt/helpers.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.sources.helpers",
+          "path": "sources/shopify_dlt/helpers.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.typing",
+          "path": "sources/shopify_dlt/helpers.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common",
+          "path": "sources/shopify_dlt/helpers.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "private_app_password",
+          "required": false
+        },
+        {
+          "name": "api_version",
+          "required": false
+        },
+        {
+          "name": "shop_url",
+          "required": false
+        },
+        {
+          "name": "start_date",
+          "required": false
+        },
+        {
+          "name": "end_date",
+          "required": false
+        },
+        {
+          "name": "created_at_min",
+          "required": false
+        },
+        {
+          "name": "items_per_page",
+          "required": false
+        },
+        {
+          "name": "order_status",
+          "required": false
+        }
+      ],
+      "factory_name": "shopify_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.shopify_dlt.shopify_source",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/shopify_dlt/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 13,
+          "module": "sources.shopify_dlt.settings",
+          "path": "sources/shopify_dlt/__init__.py"
+        },
+        {
+          "line": 19,
+          "module": "sources.shopify_dlt.helpers",
+          "path": "sources/shopify_dlt/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "sources.shopify_dlt.settings",
+          "path": "sources/shopify_dlt/helpers.py"
+        },
+        {
+          "line": 11,
+          "module": "sources.shopify_dlt.exceptions",
+          "path": "sources/shopify_dlt/helpers.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/shopify_dlt/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/shopify_dlt"
+    },
+    "slack": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 6,
+          "module": "dlt",
+          "path": "sources/slack/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.typing",
+          "path": "sources/slack/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.sources",
+          "path": "sources/slack/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "pendulum",
+          "path": "sources/slack/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "pendulum",
+          "path": "sources/slack/helpers.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.time",
+          "path": "sources/slack/helpers.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common.typing",
+          "path": "sources/slack/helpers.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.sources.helpers",
+          "path": "sources/slack/helpers.py"
+        },
+        {
+          "line": 11,
+          "module": "jsonpath_ng.ext",
+          "path": "sources/slack/helpers.py"
+        },
+        {
+          "line": 3,
+          "module": "dlt.common",
+          "path": "sources/slack/settings.py"
+        }
+      ],
+      "external_imports": [
+        "dlt",
+        "jsonpath_ng",
+        "pendulum"
+      ],
+      "factory_arguments": [
+        {
+          "name": "page_size",
+          "required": false
+        },
+        {
+          "name": "access_token",
+          "required": false
+        },
+        {
+          "name": "start_date",
+          "required": false
+        },
+        {
+          "name": "end_date",
+          "required": false
+        },
+        {
+          "name": "selected_channels",
+          "required": false
+        },
+        {
+          "name": "table_per_channel",
+          "required": false
+        },
+        {
+          "name": "replies",
+          "required": false
+        },
+        {
+          "name": "include_private_channels",
+          "required": false
+        }
+      ],
+      "factory_name": "slack_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "jsonpath-ng"
+          ],
+          "import": "jsonpath_ng",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "pendulum"
+          ],
+          "import": "pendulum",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.slack.slack_source",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "jsonpath-ng",
+          "pendulum"
+        ],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/slack/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 11,
+          "module": "sources.slack.helpers",
+          "path": "sources/slack/__init__.py"
+        },
+        {
+          "line": 12,
+          "module": "sources.slack.settings",
+          "path": "sources/slack/__init__.py"
+        },
+        {
+          "line": 13,
+          "module": "sources.slack.settings",
+          "path": "sources/slack/helpers.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/slack/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/slack"
+    },
+    "strapi": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 4,
+          "module": "dlt",
+          "path": "sources/strapi/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.sources",
+          "path": "sources/strapi/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.typing",
+          "path": "sources/strapi/helpers.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources.helpers",
+          "path": "sources/strapi/helpers.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "endpoints",
+          "required": true
+        },
+        {
+          "name": "api_secret_key",
+          "required": false
+        },
+        {
+          "name": "domain",
+          "required": false
+        }
+      ],
+      "factory_name": "strapi_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.strapi.strapi_source",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/strapi/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 8,
+          "module": "sources.strapi.helpers",
+          "path": "sources/strapi/__init__.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/strapi/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/strapi"
+    },
+    "stripe": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 5,
+          "module": "dlt",
+          "path": "sources/stripe_analytics/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "stripe",
+          "path": "sources/stripe_analytics/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources",
+          "path": "sources/stripe_analytics/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "pendulum",
+          "path": "sources/stripe_analytics/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "stripe",
+          "path": "sources/stripe_analytics/helpers.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common",
+          "path": "sources/stripe_analytics/helpers.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.typing",
+          "path": "sources/stripe_analytics/helpers.py"
+        },
+        {
+          "line": 8,
+          "module": "pendulum",
+          "path": "sources/stripe_analytics/helpers.py"
+        },
+        {
+          "line": 3,
+          "module": "numpy",
+          "path": "sources/stripe_analytics/metrics.py"
+        },
+        {
+          "line": 4,
+          "module": "pandas",
+          "path": "sources/stripe_analytics/metrics.py"
+        },
+        {
+          "line": 5,
+          "module": "pendulum",
+          "path": "sources/stripe_analytics/metrics.py"
+        },
+        {
+          "line": 6,
+          "module": "pendulum",
+          "path": "sources/stripe_analytics/metrics.py"
+        }
+      ],
+      "external_imports": [
+        "dlt",
+        "numpy",
+        "pandas",
+        "pendulum",
+        "stripe"
+      ],
+      "factory_arguments": [
+        {
+          "name": "endpoints",
+          "required": false
+        },
+        {
+          "name": "stripe_secret_key",
+          "required": false
+        },
+        {
+          "name": "start_date",
+          "required": false
+        },
+        {
+          "name": "end_date",
+          "required": false
+        }
+      ],
+      "factory_name": "stripe_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "numpy"
+          ],
+          "import": "numpy",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "pandas"
+          ],
+          "import": "pandas",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "pendulum"
+          ],
+          "import": "pendulum",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "stripe"
+          ],
+          "import": "stripe",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.stripe_analytics.stripe_source",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "numpy",
+          "pendulum"
+        ],
+        "declared_requirements": [
+          "pandas>=2.0.0",
+          "stripe>=5.0.0",
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/stripe_analytics/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 10,
+          "module": "sources.stripe_analytics.helpers",
+          "path": "sources/stripe_analytics/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "sources.stripe_analytics.settings",
+          "path": "sources/stripe_analytics/__init__.py"
+        }
+      ],
+      "requirements": [
+        "pandas>=2.0.0",
+        "stripe>=5.0.0",
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/stripe_analytics/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/stripe_analytics"
+    },
+    "workable": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 6,
+          "module": "dlt",
+          "path": "sources/workable/__init__.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources",
+          "path": "sources/workable/__init__.py"
+        },
+        {
+          "line": 8,
+          "module": "pendulum",
+          "path": "sources/workable/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "pendulum",
+          "path": "sources/workable/workable_client.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.typing",
+          "path": "sources/workable/workable_client.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.sources.helpers",
+          "path": "sources/workable/workable_client.py"
+        }
+      ],
+      "external_imports": [
+        "dlt",
+        "pendulum"
+      ],
+      "factory_arguments": [
+        {
+          "name": "access_token",
+          "required": false
+        },
+        {
+          "name": "subdomain",
+          "required": false
+        },
+        {
+          "name": "start_date",
+          "required": false
+        },
+        {
+          "name": "load_details",
+          "required": false
+        }
+      ],
+      "factory_name": "workable_source",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        },
+        {
+          "declared_by_source": false,
+          "distributions": [
+            "pendulum"
+          ],
+          "import": "pendulum",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.workable.workable_source",
+      "install_hints": {
+        "additional_runtime_distributions": [
+          "pendulum"
+        ],
+        "declared_requirements": [
+          "dlt>=0.5.1"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/workable/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 10,
+          "module": "sources.workable.workable_client",
+          "path": "sources/workable/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "sources.workable.settings",
+          "path": "sources/workable/__init__.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=0.5.1"
+      ],
+      "requirements_files": [
+        "sources/workable/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/workable"
+    },
+    "zendesk": {
+      "accepts_extra_kwargs": false,
+      "availability": "bundled_static",
+      "external_import_evidence": [
+        {
+          "line": 8,
+          "module": "dlt",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 9,
+          "module": "dlt.common",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 10,
+          "module": "dlt.common.time",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 11,
+          "module": "dlt.common.typing",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 12,
+          "module": "dlt.sources",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.common",
+          "path": "sources/zendesk/helpers/__init__.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.time",
+          "path": "sources/zendesk/helpers/__init__.py"
+        },
+        {
+          "line": 3,
+          "module": "dlt.common",
+          "path": "sources/zendesk/helpers/api_helpers.py"
+        },
+        {
+          "line": 4,
+          "module": "dlt.common.time",
+          "path": "sources/zendesk/helpers/api_helpers.py"
+        },
+        {
+          "line": 5,
+          "module": "dlt.common.typing",
+          "path": "sources/zendesk/helpers/api_helpers.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.time",
+          "path": "sources/zendesk/helpers/api_helpers.py"
+        },
+        {
+          "line": 4,
+          "module": "dlt",
+          "path": "sources/zendesk/helpers/credentials.py"
+        },
+        {
+          "line": 6,
+          "module": "dlt.common.configuration",
+          "path": "sources/zendesk/helpers/credentials.py"
+        },
+        {
+          "line": 7,
+          "module": "dlt.common.configuration.specs",
+          "path": "sources/zendesk/helpers/credentials.py"
+        },
+        {
+          "line": 8,
+          "module": "dlt.common.typing",
+          "path": "sources/zendesk/helpers/credentials.py"
+        },
+        {
+          "line": 3,
+          "module": "dlt.common.typing",
+          "path": "sources/zendesk/helpers/talk_api.py"
+        },
+        {
+          "line": 4,
+          "module": "dlt.sources.helpers.requests",
+          "path": "sources/zendesk/helpers/talk_api.py"
+        },
+        {
+          "line": 3,
+          "module": "dlt.common",
+          "path": "sources/zendesk/settings.py"
+        }
+      ],
+      "external_imports": [
+        "dlt"
+      ],
+      "factory_arguments": [
+        {
+          "name": "credentials",
+          "required": false
+        },
+        {
+          "name": "load_all",
+          "required": false
+        },
+        {
+          "name": "pivot_ticket_fields",
+          "required": false
+        },
+        {
+          "name": "start_date",
+          "required": false
+        },
+        {
+          "name": "end_date",
+          "required": false
+        }
+      ],
+      "factory_name": "zendesk_support",
+      "factory_present": true,
+      "import_distribution_hints": [
+        {
+          "declared_by_source": true,
+          "distributions": [
+            "dlt"
+          ],
+          "import": "dlt",
+          "mapping_status": "known_mapping"
+        }
+      ],
+      "import_path": "sources.zendesk.zendesk_support",
+      "install_hints": {
+        "additional_runtime_distributions": [],
+        "declared_requirements": [
+          "dlt>=1.0.0"
+        ],
+        "note": "Static unpinned hints, not a dependency lock or security audit. Review source requirements and transitive dependencies before explicit installation.",
+        "optional_distributions": [],
+        "registry_pip_extra": null,
+        "requirements_files": [
+          "sources/zendesk/requirements.txt"
+        ]
+      },
+      "internal_import_evidence": [
+        {
+          "line": 14,
+          "module": "sources.zendesk.helpers.api_helpers",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 15,
+          "module": "sources.zendesk.helpers.talk_api",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 16,
+          "module": "sources.zendesk.helpers.credentials",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 17,
+          "module": "sources.zendesk.helpers",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 19,
+          "module": "sources.zendesk.settings",
+          "path": "sources/zendesk/__init__.py"
+        },
+        {
+          "line": 5,
+          "module": "sources.zendesk",
+          "path": "sources/zendesk/helpers/talk_api.py"
+        },
+        {
+          "line": 6,
+          "module": "sources.zendesk.helpers.credentials",
+          "path": "sources/zendesk/helpers/talk_api.py"
+        }
+      ],
+      "requirements": [
+        "dlt>=1.0.0"
+      ],
+      "requirements_files": [
+        "sources/zendesk/requirements.txt"
+      ],
+      "runtime_validation": "not_performed",
+      "source_directory": "sources/zendesk"
+    }
+  },
+  "spec": "contextbase.verified-connectors/v1",
+  "upstream_commit_time": "2026-03-30T21:43:02+02:00",
+  "validation": {
+    "credential_access": false,
+    "dependency_installations": false,
+    "factory_checks": "Python AST only",
+    "limitations": [
+      "Static imports do not prove dependency version compatibility or live API behavior.",
+      "Optional dynamic imports and remote API changes require an explicitly authorized connector smoke test.",
+      "Upstream requirement constraints are retained verbatim; no automatic installation is authorized."
+    ],
+    "live_api_calls": false,
+    "source_imports_executed": false,
+    "static_internal_imports_resolved": true
+  }
+}

@@ -1,0 +1,31 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.contextbase/
+.benchmark*/
+.rystic-tools/
+.rystic-workspace*/
+.rystic-runtime/
+*.duckdb*
+.env
+.env.*
+bundle/
+benchmark-runs/
+.DS_Store
+
+# Local workspaces created by the public examples
+.contextbase-quickstart/
+.quickstart-data/
+.connector-demo/
+.local-actions-demo/
+.connected-data/
+my-data/
+connected-data/
+
+# Oriel default and quickstart workspaces
+.oriel/
+.oriel-quickstart/

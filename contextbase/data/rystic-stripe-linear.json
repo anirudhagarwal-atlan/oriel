@@ -1,0 +1,601 @@
+{
+  "spec": "contextbase.rystic-capture/v1",
+  "provenance": "Captured from actual pinned Rystic simulators; only explicitly created synthetic fixture rows.",
+  "tables": {
+    "stripe.customers": [
+      {
+        "customer_id": "cus_lllllllllllllc",
+        "account_id": "customer_001",
+        "name": "Example Company 001",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_llllllllllllld",
+        "account_id": "customer_002",
+        "name": "Example Company 002",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_llllllllllllle",
+        "account_id": "customer_003",
+        "name": "Example Company 003",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_lllllllllllllf",
+        "account_id": "customer_004",
+        "name": "Example Company 004",
+        "is_internal": true
+      },
+      {
+        "customer_id": "cus_lllllllllllllg",
+        "account_id": "customer_005",
+        "name": "Example Company 005",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_lllllllllllllh",
+        "account_id": "customer_006",
+        "name": "Example Company 006",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_llllllllllllli",
+        "account_id": "customer_007",
+        "name": "Example Company 007",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_lllllllllllllj",
+        "account_id": "customer_008",
+        "name": "Example Company 008",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_lllllllllllllk",
+        "account_id": "customer_009",
+        "name": "Example Company 009",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_llllllllllllll",
+        "account_id": "customer_010",
+        "name": "Example Company 010",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_lllllllllllllm",
+        "account_id": "customer_011",
+        "name": "Example Company 011",
+        "is_internal": false
+      },
+      {
+        "customer_id": "cus_llllllllllllln",
+        "account_id": "customer_012",
+        "name": "Example Company 012",
+        "is_internal": false
+      }
+    ],
+    "stripe.charges": [
+      {
+        "charge_id": "ch_000000000000000000000001",
+        "customer_id": "cus_lllllllllllllc",
+        "amount_cents": 20519,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000002",
+        "customer_id": "cus_lllllllllllllc",
+        "amount_cents": 24283,
+        "amount_refunded_cents": 8094,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000003",
+        "customer_id": "cus_llllllllllllld",
+        "amount_cents": 6409,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000004",
+        "customer_id": "cus_llllllllllllld",
+        "amount_cents": 46068,
+        "amount_refunded_cents": 0,
+        "currency": "eur",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000005",
+        "customer_id": "cus_llllllllllllle",
+        "amount_cents": 8846,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000006",
+        "customer_id": "cus_llllllllllllle",
+        "amount_cents": 33807,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000007",
+        "customer_id": "cus_lllllllllllllf",
+        "amount_cents": 29927,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000008",
+        "customer_id": "cus_lllllllllllllf",
+        "amount_cents": 5911,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000009",
+        "customer_id": "cus_lllllllllllllg",
+        "amount_cents": 26253,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000010",
+        "customer_id": "cus_lllllllllllllg",
+        "amount_cents": 7530,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000011",
+        "customer_id": "cus_lllllllllllllh",
+        "amount_cents": 8670,
+        "amount_refunded_cents": 8670,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000012",
+        "customer_id": "cus_lllllllllllllh",
+        "amount_cents": 25707,
+        "amount_refunded_cents": 25707,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000013",
+        "customer_id": "cus_llllllllllllli",
+        "amount_cents": 46372,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000014",
+        "customer_id": "cus_llllllllllllli",
+        "amount_cents": 10328,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000015",
+        "customer_id": "cus_lllllllllllllj",
+        "amount_cents": 36280,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000016",
+        "customer_id": "cus_lllllllllllllj",
+        "amount_cents": 33807,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000017",
+        "customer_id": "cus_lllllllllllllk",
+        "amount_cents": 33574,
+        "amount_refunded_cents": 0,
+        "currency": "eur",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000018",
+        "customer_id": "cus_lllllllllllllk",
+        "amount_cents": 24306,
+        "amount_refunded_cents": 0,
+        "currency": "eur",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000019",
+        "customer_id": "cus_llllllllllllll",
+        "amount_cents": 15305,
+        "amount_refunded_cents": 5101,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000020",
+        "customer_id": "cus_llllllllllllll",
+        "amount_cents": 32517,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000021",
+        "customer_id": "cus_lllllllllllllm",
+        "amount_cents": 18853,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000022",
+        "customer_id": "cus_lllllllllllllm",
+        "amount_cents": 11369,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000023",
+        "customer_id": "cus_llllllllllllln",
+        "amount_cents": 10073,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      },
+      {
+        "charge_id": "ch_000000000000000000000024",
+        "customer_id": "cus_llllllllllllln",
+        "amount_cents": 19771,
+        "amount_refunded_cents": 0,
+        "currency": "usd",
+        "paid": true,
+        "captured": true,
+        "status": "succeeded",
+        "disputed": false,
+        "created_at": "2026-03-01T00:00:00+00:00"
+      }
+    ],
+    "linear.issues": [
+      {
+        "issue_id": "00000001-0000-4000-8001-000000000001",
+        "identifier": "ENG-1",
+        "account_id": "customer_001",
+        "title": "Synthetic customer_001 investigation 1",
+        "priority": 1,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000001",
+        "owner_name": "Mira Okafor",
+        "updated_at": "2026-02-02T00:00:00.001Z"
+      },
+      {
+        "issue_id": "00000002-0000-4000-8002-000000000002",
+        "identifier": "ENG-2",
+        "account_id": "customer_001",
+        "title": "Synthetic customer_001 investigation 2",
+        "priority": 2,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000002",
+        "owner_name": "Tomas Reyes",
+        "updated_at": "2026-02-02T00:00:00.002Z"
+      },
+      {
+        "issue_id": "00000003-0000-4000-8003-000000000003",
+        "identifier": "ENG-3",
+        "account_id": "customer_002",
+        "title": "Synthetic customer_002 investigation 1",
+        "priority": 2,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000002",
+        "owner_name": "Tomas Reyes",
+        "updated_at": "2026-02-02T00:00:00.003Z"
+      },
+      {
+        "issue_id": "00000004-0000-4000-8004-000000000004",
+        "identifier": "ENG-4",
+        "account_id": "customer_003",
+        "title": "Synthetic customer_003 investigation 1",
+        "priority": 2,
+        "state_type": "completed",
+        "state_name": "Done",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000003",
+        "owner_name": "Hana Lindqvist",
+        "updated_at": "2026-02-02T00:00:00.004Z"
+      },
+      {
+        "issue_id": "00000005-0000-4000-8005-000000000005",
+        "identifier": "ENG-5",
+        "account_id": "customer_004",
+        "title": "Synthetic customer_004 investigation 1",
+        "priority": 2,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000004",
+        "owner_name": "Dev Patel",
+        "updated_at": "2026-02-02T00:00:00.005Z"
+      },
+      {
+        "issue_id": "00000006-0000-4000-8006-000000000006",
+        "identifier": "ENG-6",
+        "account_id": "customer_005",
+        "title": "Synthetic customer_005 investigation 1",
+        "priority": 3,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000005",
+        "owner_name": "Yuki Sato",
+        "updated_at": "2026-02-02T00:00:00.006Z"
+      },
+      {
+        "issue_id": "00000007-0000-4000-8007-000000000007",
+        "identifier": "ENG-7",
+        "account_id": "customer_005",
+        "title": "Synthetic customer_005 investigation 2",
+        "priority": 4,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000006",
+        "owner_name": "Deploy Bot",
+        "updated_at": "2026-02-02T00:00:00.007Z"
+      },
+      {
+        "issue_id": "00000008-0000-4000-8008-000000000008",
+        "identifier": "ENG-8",
+        "account_id": "customer_006",
+        "title": "Synthetic customer_006 investigation 1",
+        "priority": 2,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000006",
+        "owner_name": "Deploy Bot",
+        "updated_at": "2026-02-02T00:00:00.008Z"
+      },
+      {
+        "issue_id": "00000009-0000-4000-8009-000000000009",
+        "identifier": "ENG-9",
+        "account_id": "customer_007",
+        "title": "Synthetic customer_007 investigation 1",
+        "priority": 2,
+        "state_type": "canceled",
+        "state_name": "Canceled",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000001",
+        "owner_name": "Mira Okafor",
+        "updated_at": "2026-02-02T00:00:00.009Z"
+      },
+      {
+        "issue_id": "0000000a-0000-4000-800a-00000000000a",
+        "identifier": "ENG-10",
+        "account_id": "customer_008",
+        "title": "Synthetic customer_008 investigation 1",
+        "priority": 2,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": null,
+        "owner_name": null,
+        "updated_at": "2026-02-02T00:00:00.010Z"
+      },
+      {
+        "issue_id": "0000000b-0000-4000-800b-00000000000b",
+        "identifier": "ENG-11",
+        "account_id": "customer_008",
+        "title": "Synthetic customer_008 investigation 2",
+        "priority": 3,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": null,
+        "owner_name": null,
+        "updated_at": "2026-02-02T00:00:00.011Z"
+      },
+      {
+        "issue_id": "0000000c-0000-4000-800c-00000000000c",
+        "identifier": "ENG-12",
+        "account_id": "customer_009",
+        "title": "Synthetic customer_009 investigation 1",
+        "priority": 2,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000003",
+        "owner_name": "Hana Lindqvist",
+        "updated_at": "2026-02-02T00:00:00.012Z"
+      },
+      {
+        "issue_id": "0000000d-0000-4000-800d-00000000000d",
+        "identifier": "ENG-13",
+        "account_id": "customer_010",
+        "title": "Synthetic customer_010 investigation 1",
+        "priority": 2,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000004",
+        "owner_name": "Dev Patel",
+        "updated_at": "2026-02-02T00:00:00.013Z"
+      },
+      {
+        "issue_id": "0000000e-0000-4000-800e-00000000000e",
+        "identifier": "ENG-14",
+        "account_id": "customer_010",
+        "title": "Synthetic customer_010 investigation 2",
+        "priority": 1,
+        "state_type": "completed",
+        "state_name": "Done",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000005",
+        "owner_name": "Yuki Sato",
+        "updated_at": "2026-02-02T00:00:00.014Z"
+      },
+      {
+        "issue_id": "0000000f-0000-4000-800f-00000000000f",
+        "identifier": "ENG-15",
+        "account_id": "customer_011",
+        "title": "Synthetic customer_011 investigation 1",
+        "priority": 0,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000005",
+        "owner_name": "Yuki Sato",
+        "updated_at": "2026-02-02T00:00:00.015Z"
+      },
+      {
+        "issue_id": "00000010-0000-4000-8010-000000000010",
+        "identifier": "ENG-16",
+        "account_id": "customer_012",
+        "title": "Synthetic customer_012 investigation 1",
+        "priority": 1,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000006",
+        "owner_name": "Deploy Bot",
+        "updated_at": "2026-02-02T00:00:00.016Z"
+      },
+      {
+        "issue_id": "00000011-0000-4000-8011-000000000011",
+        "identifier": "ENG-17",
+        "account_id": "customer_012",
+        "title": "Synthetic customer_012 investigation 2",
+        "priority": 2,
+        "state_type": "started",
+        "state_name": "In Progress",
+        "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000001",
+        "owner_name": "Mira Okafor",
+        "updated_at": "2026-02-02T00:00:00.017Z"
+      }
+    ]
+  },
+  "source": {
+    "namespace": "contextbase_stripe_linear_v1",
+    "simulators": {
+      "stripe": {
+        "product": "stripe-twin",
+        "version": "0.0.8",
+        "model_hash": "sha256:cfeb0ea0dc5d6ae503c8533bbaec3f9da92c62cca8bb1d29fc5ffa757f1924d7",
+        "initial_clock": "2026-01-01T00:00:00Z",
+        "edition": "metered"
+      },
+      "linear": {
+        "product": "linear-twin",
+        "version": "0.0.1",
+        "model_hash": "sha256:17bb74ad2c0165052bfd14b0ce485a453fdbe884d0118a5eed59fd8e8c2d1ce0",
+        "initial_clock": "2026-01-01T00:00:00Z",
+        "edition": "metered"
+      }
+    },
+    "source_read_seconds": 0.01188,
+    "observed_at": "2026-10-08T23:57:34.494816+00:00",
+    "consistency": "sequential API reads; run with quiescent simulators for a consistent snapshot",
+    "synthetic": true,
+    "scope": "Only the explicitly marked recipe cohort",
+    "refresh_mode": "full_cohort_replace"
+  }
+}

@@ -1,0 +1,11 @@
+mapping_id,workspace_ref,customer_key,enabled
+map_01,ws_alpha,org_001,True
+map_02,ws_beta,org_002,True
+map_03,ws_gamma,org_003,True
+map_04,ws_delta,org_004,True
+map_05,ws_internal,org_005,True
+map_06,ws_zeta,org_006,True
+map_07,ws_eta,org_007,True
+map_08,ws_theta,org_008,True
+map_09,ws_extra,org_001,True
+map_10,ws_alpha,org_002,False

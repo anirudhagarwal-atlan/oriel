@@ -1,0 +1,160 @@
+{
+  "spec": "contextbase.native-connector-evidence/v1",
+  "evidence_kind": "synthetic_local_integration",
+  "observed_on": "2026-10-09",
+  "runtime_versions": {
+    "dlt": "1.24.0",
+    "PyYAML": "6.0.3",
+    "duckdb": "1.4.5",
+    "SQLAlchemy": "2.1.1",
+    "requests": "2.34.2"
+  },
+  "runtime_version_evidence": "Approved installed environment metadata; API receipt independently records dlt, PyYAML, DuckDB and requests. SQLite harness checks the pinned dlt, PyYAML and DuckDB versions before running.",
+  "scope": "Selected source/resource paths executed with actual dlt against synthetic local SQLite and loopback HTTP fixtures. These results do not validate other catalog resources, cloud authentication or vendor API compatibility.",
+  "actual_dlt_executed": true,
+  "authenticated_live": "not_performed",
+  "live_vendor_calls": 0,
+  "model_calls": 0,
+  "performance_claim": false,
+  "checks": [
+    {
+      "id": "sqlite_snapshot_lifecycle",
+      "result": "passed",
+      "source_resources": {
+        "sqlite": [
+          "accounts",
+          "events"
+        ]
+      },
+      "execution_families": [
+        "dlt_sql"
+      ],
+      "fixture_kind": "synthetic_local_sqlite",
+      "harness_paths": [
+        "examples/connectors/verify_sqlite.py"
+      ],
+      "receipt_reference": {
+        "path": "benchmark-runs/native-sqlite-20261009T1320/receipt.json",
+        "sha256": "0dae5fb1650e8192492b264025459ae76a785a4c036d49e650f8279e6a4916f1",
+        "availability": "repository run artifact; full receipt is not required to use the installed catalog"
+      },
+      "outcomes": {
+        "configuration_to_duckdb": true,
+        "context_draft_generated": true,
+        "metric": "active_seats",
+        "initial_metric_value": 10,
+        "refreshed_metric_value": 4,
+        "approved_context_bytes_preserved": true,
+        "approved_metric_version_before": 1,
+        "approved_metric_version_after": 1,
+        "failure_retention": "not_exercised"
+      },
+      "limits": [
+        "Synthetic local SQLite tables only; other SQL engines and driver versions were not exercised.",
+        "Nondefault SQL adapter parameters are covered by controlled tests, not this native fixture."
+      ]
+    },
+    {
+      "id": "rest_graphql_snapshot_lifecycle",
+      "result": "passed",
+      "source_resources": {
+        "intercom": [
+          "contacts"
+        ],
+        "linear": [
+          "issues"
+        ]
+      },
+      "execution_families": [
+        "dlt_rest",
+        "dlt_graphql"
+      ],
+      "fixture_kind": "synthetic_loopback_rest_graphql",
+      "harness_paths": [
+        "examples/connectors/verify_apis.py",
+        "examples/connectors/api_fixture_worker.py"
+      ],
+      "receipt_reference": {
+        "path": "benchmark-runs/native-api-20261009-b/receipt.json",
+        "sha256": "8a3363a4def56c8e3fe4e978e6c6531a311aa809e6792b01b1acf078ce29e5ed",
+        "availability": "repository run artifact; full receipt is not required to use the installed catalog"
+      },
+      "outcomes": {
+        "configuration_to_duckdb": true,
+        "context_draft_generated": true,
+        "metric": "active_seats_at_risk",
+        "metric_scope": "Joint query across Intercom contacts and Linear issues",
+        "initial_metric_value": 10,
+        "refreshed_metric_value": 15,
+        "approved_context_bytes_preserved": true,
+        "approved_metric_version_before": 1,
+        "approved_metric_version_after": 1,
+        "pagination_observed": [
+          "Intercom contacts cursor pagination",
+          "Linear issues Relay pagination"
+        ],
+        "partial_extraction_failure_retains_prior_snapshot": true
+      },
+      "limits": [
+        "Authored loopback responses with synthetic authentication; no live vendor requests.",
+        "Partial-page HTTP failures were tested; other error/pagination branches retain their controlled-test status.",
+        "Linear nested labels remain finite projections, not exhaustive nested pagination.",
+        "Python request/audit guards constrain the fixture harness; they are not an OS sandbox."
+      ]
+    }
+  ],
+  "unverified": [
+    "All other connector names/resources",
+    "Vendor credential scopes and authentication",
+    "Cloud filesystem services",
+    "Comparative accuracy, latency and cost"
+  ],
+  "composition_checks": [
+    {
+      "id": "filesystem_reader_pipeline",
+      "result": "passed",
+      "actual_dlt_executed": true,
+      "fixture_kind": "synthetic_in_memory_listing_and_client_doubles",
+      "configuration_shape": "s3 with synthetic listing and filesystem client doubles",
+      "cloud_connector_validation": "not_performed",
+      "authenticated_live": "not_performed",
+      "runtime_versions": {
+        "dlt": "1.24.0",
+        "PyYAML": "6.0.3",
+        "duckdb": "1.4.5"
+      },
+      "scope": "Production worker isolation/extraction, actual dlt source/resource/normalization/load and local publication; cloud listing/client auth not exercised",
+      "harness_paths": [
+        "benchmark-runs/native-filesystem-20261009-local-02/run.py"
+      ],
+      "harness_availability": "Repository run artifact; not a packaged connector harness",
+      "receipt_reference": {
+        "path": "benchmark-runs/native-filesystem-20261009-local-02/receipt.json",
+        "sha256": "e17792ab8f23aa61b22c8de799c086df9de5751725c279c65dae38eec454facd",
+        "availability": "repository run artifact; full receipt is not required to use the installed catalog"
+      },
+      "outcomes": {
+        "initial_rows": {
+          "csv": 3,
+          "jsonl": 2
+        },
+        "refreshed_rows": {
+          "csv": 2,
+          "jsonl": 2
+        },
+        "exact_rows_and_file_provenance_checked": true,
+        "native_naming_collision_refused": true,
+        "failed_refresh_retains_prior_snapshot": true,
+        "network_attempts": 0,
+        "live_cloud_calls": 0,
+        "model_calls": 0
+      },
+      "limits": [
+        "The real dlt source/resource, normalization and DuckDB pipeline were composed with listing/client doubles.",
+        "Cloud listing, SDK credentials and cloud network behavior were not exercised.",
+        "This does not upgrade native connector status for S3, GCS, Azure or SFTP.",
+        "Native Parquet extraction was not exercised by this CSV/JSONL composition check."
+      ]
+    }
+  ]
+}

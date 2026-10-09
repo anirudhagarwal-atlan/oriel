@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "kind": "live_rystic_source_tools_functional_smoke",
+  "recorded_at": "2026-10-08T23:57:18.165330+00:00",
+  "synthetic_only": true,
+  "model_calls": 0,
+  "benchmark": false,
+  "performance_claims": false,
+  "simulators": {
+    "stripe": {
+      "product": "stripe-twin",
+      "version": "0.0.8",
+      "model_hash": "sha256:cfeb0ea0dc5d6ae503c8533bbaec3f9da92c62cca8bb1d29fc5ffa757f1924d7"
+    },
+    "linear": {
+      "product": "linear-twin",
+      "version": "0.0.1",
+      "model_hash": "sha256:17bb74ad2c0165052bfd14b0ce485a453fdbe884d0118a5eed59fd8e8c2d1ce0"
+    }
+  },
+  "tools": [
+    "sources",
+    "context",
+    "stripe_list",
+    "stripe_get",
+    "linear_query"
+  ],
+  "checks": [
+    {
+      "check": "stripe_customers_pagination",
+      "passed": true,
+      "pages": 6,
+      "unique_objects": 42
+    },
+    {
+      "check": "stripe_customers_get",
+      "passed": true
+    },
+    {
+      "check": "stripe_charges_pagination",
+      "passed": true,
+      "pages": 42,
+      "unique_objects": 293
+    },
+    {
+      "check": "stripe_charges_get",
+      "passed": true
+    },
+    {
+      "check": "stripe_refunds_pagination",
+      "passed": true,
+      "pages": 1,
+      "unique_objects": 5
+    },
+    {
+      "check": "stripe_refunds_get",
+      "passed": true
+    },
+    {
+      "check": "stripe_payment_intents_pagination",
+      "passed": true,
+      "pages": 40,
+      "unique_objects": 276
+    },
+    {
+      "check": "stripe_payment_intents_get",
+      "passed": true
+    },
+    {
+      "check": "linear_alias_fragment_projection_variable_cursor_pagination",
+      "passed": true,
+      "pages": 9,
+      "unique_objects": 25
+    },
+    {
+      "check": "source_snapshot_identity_parity_stripe.customers",
+      "passed": true,
+      "fixture_objects": 12
+    },
+    {
+      "check": "source_snapshot_identity_parity_stripe.charges",
+      "passed": true,
+      "fixture_objects": 24
+    },
+    {
+      "check": "source_snapshot_identity_parity_linear.issues",
+      "passed": true,
+      "fixture_objects": 17
+    },
+    {
+      "check": "shared_context_parity",
+      "passed": true,
+      "context_status": "approved"
+    },
+    {
+      "check": "mcp_initialize",
+      "passed": true
+    },
+    {
+      "check": "mcp_tool_list_readonly_annotations",
+      "passed": true
+    },
+    {
+      "check": "mcp_source_tool_execution",
+      "passed": true
+    },
+    {
+      "check": "local_denial_without_source_call_16",
+      "passed": true
+    },
+    {
+      "check": "local_denial_without_source_call_17",
+      "passed": true
+    },
+    {
+      "check": "local_denial_without_source_call_18",
+      "passed": true
+    },
+    {
+      "check": "documented_linear_filter_limitation_reproduced",
+      "passed": true
+    },
+    {
+      "check": "stripe_trace_has_no_writes",
+      "passed": true
+    },
+    {
+      "check": "linear_trace_only_version_reads_and_graphql",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Functional read-only integration evidence, not model accuracy, cost, speed, or production API fidelity.",
+    "Linear 0.0.1 issues.filter was observed to ignore the priority predicate; consumers must evaluate returned rows.",
+    "Initial simulator records coexist with the seeded fixture; explicit fixture namespace and account identity selection are required.",
+    "Source availability is tied to the Rystic runtime trial or license."
+  ]
+}

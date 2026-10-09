@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Talk to data across your existing tools. Bring exports and supported adapters into DuckDB, query with your agent, and reuse reviewed business context.">
+  <meta name="color-scheme" content="light">
+  <title>Oriel · Talk to data across your tools</title>
+  <style>
+    :root {
+      --paper: oklch(97.6% .012 97); --surface: oklch(99% .007 97);
+      --ink: oklch(25.5% .024 153); --muted: oklch(46% .024 153);
+      --line: oklch(84% .018 120); --accent: oklch(40% .07 151);
+      --soft: oklch(91% .033 139); --panel: oklch(94% .018 120);
+      --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+      --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
+      --space-3xl: 64px; --space-4xl: 96px;
+      --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      --display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-underline-offset: 4px; }
+    a:hover { text-decoration-thickness: 2px; }
+    button { cursor: pointer; color: inherit; }
+    button:active, .button:active { transform: translateY(1px); }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    ::selection { background: var(--soft); }
+    [hidden] { display: none !important; }
+    .wrap { width: min(1240px, calc(100% - 80px)); margin-inline: auto; }
+    .skip { position: absolute; top: -100px; left: 16px; padding: 12px 20px; background: var(--ink); color: var(--paper); z-index: 3; }
+    .skip:focus { top: 12px; }
+    .site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 104px; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-size: 21px; font-weight: 650; letter-spacing: -.7px; }
+    .brand svg { width: 31px; height: 34px; }
+    .nav { display: flex; align-items: center; gap: 28px; font-size: 13px; font-weight: 550; }
+    .nav a { text-decoration: none; }
+    .nav .nav-docs { display: inline-flex; align-items: center; gap: 16px; border: 1px solid var(--line); padding: 8px 13px; }
+    .label { font-size: 11px; font-weight: 650; letter-spacing: 1.6px; text-transform: uppercase; }
+    .eyebrow { display: flex; align-items: center; gap: 11px; color: var(--accent); margin: 0 0 24px; }
+    .eyebrow::before { content: ""; width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
+    .hero { display: grid; grid-template-columns: 1.14fr .86fr; gap: clamp(40px, 7vw, 96px); padding: 80px 0 78px; align-items: center; }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: -.055em; text-wrap: balance; }
+    h1 { font-size: clamp(48px, 5.3vw, 74px); line-height: 1.045; max-width: 10.5ch; }
+    .hero-lead { font-size: 19px; line-height: 1.5; margin-top: 25px; max-width: 38ch; }
+    .hero-note { margin-top: 11px; max-width: 45ch; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 25px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 24px; min-height: 46px; padding: 11px 19px; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 13px; font-weight: 600; border: 1px solid var(--ink); transition: background 160ms ease, transform 160ms ease; }
+    .button:hover { background: var(--accent); }
+    .text-link { font-size: 13px; font-weight: 550; text-decoration: none; border-bottom: 1px solid var(--ink); padding-block: 5px; }
+    .tiny { font-size: 11px; line-height: 1.6; color: var(--muted); }
+    .hero-caption { margin-top: 16px; }
+    .notebook { position: relative; padding: 25px 26px 21px; background: var(--surface); border: 1px solid var(--line); box-shadow: 8px 8px 0 var(--panel); transform: rotate(1deg); }
+    .notebook-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-bottom: 18px; border-bottom: 1px solid var(--line); color: var(--muted); }
+    .notebook-question { margin: 23px 0 17px; max-width: 24ch; font-family: var(--display); font-size: 28px; line-height: 1.15; letter-spacing: -.7px; }
+    .source-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .source-tag { font-size: 10px; line-height: 1.6; padding: 4px 7px; border: 1px solid var(--line); color: var(--muted); background: var(--paper); }
+    .receipt-line { display: grid; grid-template-columns: 18px 1fr; gap: 9px; margin-top: 22px; font-size: 12px; line-height: 1.5; }
+    .receipt-check { width: 16px; height: 16px; border-radius: 50%; background: var(--soft); color: var(--accent); text-align: center; font-size: 10px; line-height: 16px; }
+    .receipt-code { margin-top: 12px; font: 10px/1.7 var(--mono); color: var(--muted); padding-bottom: 23px; border-bottom: 1px dashed var(--line); overflow-wrap: anywhere; }
+    .receipt-bottom { margin-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .receipt-bottom strong { display: block; font-size: 13px; font-weight: 600; }
+    .file-icon { width: 34px; height: 40px; flex: 0 0 auto; }
+    .rail { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 19px 0; border-block: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .rail-items { display: flex; gap: 26px; flex-wrap: wrap; }
+    .rail-items span::before { content: "+"; margin-right: 7px; color: var(--accent); }
+    .section { padding-top: 89px; }
+    .section-head { display: grid; grid-template-columns: .7fr 1.3fr; gap: 48px; margin-bottom: 34px; align-items: start; }
+    .section-number { display: flex; align-items: baseline; gap: 17px; color: var(--muted); padding-top: 10px; }
+    .section-number span:first-child { font: 12px var(--mono); }
+    h2 { font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1; }
+    .section-description { margin-top: 15px; max-width: 58ch; color: var(--muted); font-size: 14px; }
+    .demo-shell { border: 1px solid var(--line); background: var(--surface); }
+    .demo-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 15px 24px; border-bottom: 1px solid var(--line); }
+    .demo-top .label { font-size: 10px; letter-spacing: 1.3px; }
+    .demo-tabs { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); overflow-x: auto; }
+    .demo-tabs button { flex: 1; min-width: 130px; min-height: 52px; background: transparent; border: 0; border-right: 1px solid var(--line); padding: 14px 16px; font-size: 12px; font-weight: 550; }
+    .demo-tabs button:last-child { border-right: 0; }
+    .demo-tabs button[aria-selected="true"] { background: var(--soft); color: var(--accent); box-shadow: inset 0 -2px var(--accent); }
+    .demo-tabs button:hover { background: var(--panel); }
+    .demo-body { display: grid; grid-template-columns: 1.3fr 1fr; }
+    .answer-pane { padding: 31px 32px 25px; }
+    .prompt { display: flex; gap: 10px; font-size: 16px; font-weight: 550; line-height: 1.45; min-height: 47px; }
+    .prompt-symbol { color: var(--accent); font-weight: 400; }
+    .answer-label { margin-top: 27px; color: var(--muted); font-size: 10px; }
+    .answer-value { display: flex; align-items: baseline; flex-wrap: wrap; gap: 13px; margin-top: 5px; }
+    .answer-value strong { font-size: clamp(34px, 4vw, 48px); line-height: 1.2; font-weight: 500; letter-spacing: -2px; font-variant-numeric: tabular-nums; }
+    .answer-value span { color: var(--muted); font-size: 12px; }
+    .answer-description { font-size: 13px; line-height: 1.65; margin-top: 15px; min-height: 64px; max-width: 49ch; }
+    .answer-footnote { font-size: 10px; color: var(--muted); margin-top: 20px; }
+    .context-pane { padding: 27px 26px; background: var(--panel); border-left: 1px solid var(--line); }
+    .context-toggle { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; font-weight: 650; }
+    .context-toggle input { accent-color: var(--accent); width: 19px; height: 19px; cursor: pointer; }
+    .context-help { margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .definition { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .definition .label { font-size: 9px; letter-spacing: 1.2px; color: var(--muted); }
+    .definition-title { margin-top: 9px; font-size: 13px; font-weight: 600; }
+    .definition-body { font-size: 12px; line-height: 1.7; margin-top: 6px; }
+    .definition-proof { margin-top: 18px; font: 10px/1.8 var(--mono); color: var(--muted); overflow-wrap: anywhere; white-space: pre-line; }
+    details { border-top: 1px solid var(--line); }
+    summary { cursor: pointer; padding: 13px 24px; font-size: 11px; font-weight: 550; }
+    summary:hover { background: var(--panel); }
+    .inspection { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; padding: 12px 24px 24px; }
+    .inspection h3 { font-size: 11px; margin-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 11px; text-align: left; font-variant-numeric: tabular-nums; }
+    th, td { border-bottom: 1px solid var(--line); padding: 8px 8px 8px 0; white-space: nowrap; }
+    th { font-size: 10px; font-weight: 550; color: var(--muted); }
+    .table-scroll { overflow-x: auto; }
+    .readiness-table { font-size: 12px; table-layout: fixed; }
+    .readiness-table th, .readiness-table td { white-space: normal; vertical-align: top; padding: 15px 18px 15px 0; }
+    .readiness-table th { font-size: 11px; }
+    .readiness-table th:first-child { width: 23%; }
+    .readiness-table td { color: var(--muted); }
+    pre { margin: 0; font: 11px/1.8 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; }
+    .under-demo { display: flex; justify-content: space-between; gap: 22px; margin-top: 13px; font-size: 11px; color: var(--muted); }
+    .under-demo p { max-width: 74ch; }
+    .under-demo a { white-space: nowrap; }
+    .architecture { border-block: 1px solid var(--line); padding: 34px 0 27px; }
+    .architecture svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .architecture-mobile { display: none; }
+    .architecture-caption { display: flex; justify-content: space-between; gap: 30px; font-size: 11px; color: var(--muted); margin-top: 27px; }
+    .architecture-caption p { max-width: 73ch; }
+    .context-story { display: grid; grid-template-columns: .7fr 1.3fr; gap: 48px; margin-top: 39px; }
+    .context-story h3 { max-width: 20ch; font-size: 21px; font-weight: 500; line-height: 1.3; letter-spacing: -.5px; }
+    .context-story p { font-size: 13px; color: var(--muted); max-width: 66ch; }
+    .lifecycle { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 18px; font-size: 10px; font-weight: 550; }
+    .lifecycle span:not(:last-child)::after { content: "→"; color: var(--muted); margin-left: 12px; }
+    .benchmark-block { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+    .benchmark-copy { padding: 28px 44px 30px 0; }
+    .benchmark-copy h3 { font-size: 21px; font-weight: 500; line-height: 1.35; max-width: 26ch; letter-spacing: -.6px; }
+    .benchmark-copy p { font-size: 13px; color: var(--muted); max-width: 50ch; margin-top: 14px; }
+    .benchmark-copy .text-link { display: inline-block; margin-top: 22px; font-size: 12px; }
+    .benchmark-types { padding-left: 31px; border-left: 1px solid var(--line); }
+    .benchmark-type { display: grid; grid-template-columns: 78px 1fr; gap: 24px; padding: 26px 0; }
+    .benchmark-type + .benchmark-type { border-top: 1px solid var(--line); }
+    .benchmark-type .label { font-size: 10px; padding-top: 3px; }
+    .benchmark-type h4 { margin: 0; font-size: 13px; font-weight: 600; }
+    .benchmark-type p { font-size: 12px; color: var(--muted); line-height: 1.7; margin-top: 6px; }
+    .findings { border-top: 1px solid var(--line); }
+    .finding { display: grid; grid-template-columns: 150px 1fr auto; gap: 26px; align-items: start; padding: 23px 0; border-bottom: 1px solid var(--line); }
+    .finding .label { font-size: 9px; letter-spacing: 1.2px; padding-top: 3px; }
+    .finding strong { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .finding p { margin-top: 6px; font-size: 11px; line-height: 1.7; color: var(--muted); max-width: 90ch; }
+    .finding a { font-size: 10px; white-space: nowrap; padding-top: 3px; }
+    .start { margin-top: 84px; display: grid; grid-template-columns: 1fr 1fr; gap: 54px; padding: 43px 44px; background: var(--soft); }
+    .start h2 { font-size: 38px; max-width: 15ch; }
+    .start p { font-size: 13px; max-width: 45ch; margin-top: 14px; }
+    .terminal { background: var(--ink); color: var(--paper); padding: 18px 20px; min-width: 0; }
+    .terminal-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; border-bottom: 1px solid oklch(44% .02 151); padding-bottom: 12px; margin-bottom: 17px; font-size: 10px; }
+    .copy { font-size: 10px; border: 1px solid oklch(56% .02 151); background: transparent; color: var(--paper); padding: 4px 10px; min-height: 30px; }
+    .copy:hover { background: oklch(36% .03 151); }
+    .terminal pre { font-size: 11px; line-height: 1.95; }
+    .terminal .dollar { color: oklch(76% .05 140); user-select: none; }
+    .start .terminal-note { font-size: 10px; color: oklch(80% .02 140); margin-top: 14px; line-height: 1.7; }
+    #copy-status { min-height: 17px; margin-top: 5px; font-size: 10px; color: var(--accent); }
+    .start-links { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 24px; font-size: 12px; }
+    .site-footer { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; margin-top: 66px; padding: 27px 0 38px; border-top: 1px solid var(--line); }
+    .footer-note { font-size: 11px; color: var(--muted); margin-top: 8px; max-width: 57ch; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 11px; padding-top: 8px; }
+    @media (min-width: 1500px) { .hero { padding-top: 96px; padding-bottom: 90px; } }
+    @media (max-width: 980px) {
+      .wrap { width: calc(100% - 48px); }
+      .hero { gap: 38px; padding-top: 60px; }
+      h1 { font-size: 57px; }
+      .notebook { padding: 21px; }
+      .notebook-question { font-size: 25px; }
+      .nav { gap: 20px; }
+      .rail { align-items: flex-start; }
+      .rail-items { gap: 10px 18px; justify-content: flex-end; }
+      .section-head, .context-story { grid-template-columns: .55fr 1.45fr; gap: 30px; }
+      .answer-pane { padding: 25px 23px; }
+      .context-pane { padding: 24px 20px; }
+      .start { gap: 30px; padding: 33px 28px; }
+    }
+    @media (max-width: 720px) {
+      .wrap { width: calc(100% - 36px); }
+      .site-header { min-height: 78px; }
+      .brand { font-size: 19px; }
+      .nav a:not(.nav-docs) { display: none; }
+      .nav .nav-docs { font-size: 11px; gap: 11px; }
+      .hero { grid-template-columns: 1fr; padding-top: 42px; padding-bottom: 45px; gap: 38px; }
+      h1 { max-width: 11ch; font-size: clamp(48px, 10vw, 66px); }
+      .hero-lead { font-size: 18px; }
+      .notebook { transform: none; margin-right: 6px; padding: 22px; }
+      .notebook-question { max-width: none; font-size: 27px; }
+      .receipt-line { margin-top: 18px; }
+      .rail { display: block; padding: 16px 0; }
+      .rail-items { justify-content: flex-start; gap: 7px 16px; margin-top: 9px; font-size: 11px; }
+      .section { padding-top: 55px; }
+      .section-head { display: block; margin-bottom: 25px; }
+      .section-number { padding: 0; margin-bottom: 17px; }
+      h2 { font-size: 37px; }
+      .section-description { margin-top: 12px; font-size: 13px; }
+      .demo-top { padding: 12px 15px; align-items: flex-start; }
+      .demo-top .tiny { max-width: 18ch; text-align: right; font-size: 9px; }
+      .demo-tabs button { min-width: 106px; font-size: 11px; padding: 12px 8px; }
+      .demo-body { grid-template-columns: 1fr; }
+      .answer-pane { padding: 25px 20px; }
+      .answer-description { min-height: 0; }
+      .answer-label { margin-top: 18px; }
+      .context-pane { border-left: 0; border-top: 1px solid var(--line); padding: 21px 20px; }
+      .definition { margin-top: 18px; padding-top: 15px; }
+      .definition-proof { margin-top: 12px; }
+      .inspection { grid-template-columns: 1fr; padding: 10px 18px 20px; }
+      .under-demo { display: block; }
+      .under-demo a { display: inline-block; margin-top: 9px; }
+      .architecture { padding-top: 24px; }
+      .architecture-desktop { display: none !important; }
+      .architecture-mobile { display: grid; gap: 0; list-style: none; margin: 0; padding: 0; }
+      .architecture-mobile li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; padding: 13px 0; border-bottom: 1px solid var(--line); }
+      .architecture-mobile li:last-child { border: 0; }
+      .architecture-mobile span { color: var(--muted); font: 11px var(--mono); padding-top: 4px; }
+      .architecture-mobile strong { font-size: 13px; font-weight: 600; }
+      .architecture-mobile p { font-size: 11px; color: var(--muted); }
+      .architecture-caption { display: block; margin-top: 15px; }
+      .architecture-caption a { display: inline-block; margin-top: 12px; }
+      .context-story { display: block; margin-top: 26px; }
+      .context-story h3 { max-width: 26ch; margin-bottom: 14px; }
+      .benchmark-block { display: block; }
+      .benchmark-copy { padding: 23px 0; }
+      .benchmark-types { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+      .benchmark-type { grid-template-columns: 65px 1fr; gap: 20px; padding: 21px 0; }
+      .finding { grid-template-columns: 1fr; gap: 9px; padding: 20px 0; }
+      .finding a { justify-self: start; padding-top: 0; }
+      .start { grid-template-columns: 1fr; gap: 25px; margin-top: 48px; padding: 27px 20px; }
+      .start h2 { max-width: 18ch; font-size: 34px; }
+      .terminal { padding: 16px; }
+      .terminal pre { font-size: 10px; }
+      .site-footer { display: block; margin-top: 42px; }
+      .footer-links { margin-top: 22px; gap: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="#" aria-label="Oriel home">
+      <svg aria-hidden="true" viewBox="0 0 31 34" fill="none"><path d="M2 8 15.5 1 29 8v17L15.5 33 2 25V8Z" stroke="currentColor" stroke-width="1.5"/><path d="m2 8 13.5 8L29 8M15.5 16v17M2 16l13.5 8L29 16" stroke="currentColor" stroke-width="1.5"/></svg>
+      Oriel
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#how-it-works">How it works</a><a href="#readiness">Readiness</a><a href="faq.html">FAQ</a><a class="nav-docs" href="README.html">Read the docs <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow label">An open-source local workspace</p>
+        <h1 id="hero-title">Talk to data.<br>Across your tools.</h1>
+        <p class="hero-lead">Your agent. Your data. Reusable context.</p>
+        <p class="hero-note">Bring data from your existing tools into DuckDB through exports and adapters. Query across it with your agent, review the business rules, and keep definitions you can use again.</p>
+        <div class="hero-actions"><a class="button" href="quickstart.html">Try the quickstart <span aria-hidden="true">→</span></a><a class="text-link" href="connectors.html">Connect your tools</a></div>
+        <p class="tiny hero-caption">Start locally with bundled sample data. No account or model required.</p>
+      </div>
+      <aside class="notebook" aria-label="From a cross-tool question to reusable context">
+        <div class="notebook-top"><span class="label" style="font-size:9px">A question becomes an asset</span><span class="tiny">Your workspace</span></div>
+        <p class="notebook-question">One question.<br>Evidence across your tools.</p>
+        <div class="source-row"><span class="source-tag">CRM exports</span><span class="source-tag">Product data</span><span class="source-tag">Finance records</span></div>
+        <div class="receipt-line"><span class="receipt-check" aria-hidden="true">✓</span><div>Query, join, and transform in DuckDB.<br><span style="color:var(--muted)">Keep the SQL and evidence behind the answer.</span></div></div>
+        <div class="receipt-line"><span class="receipt-check" aria-hidden="true">✓</span><div>Review the business definition.<br><span style="color:var(--muted)">Reuse its context in another question or agent.</span></div></div>
+        <div class="receipt-code">candidate → review → version → reuse</div>
+        <div class="receipt-bottom"><div><strong>A definition you can reuse.</strong><span class="tiny">Export context + metrics + evidence</span></div><svg class="file-icon" aria-hidden="true" viewBox="0 0 34 40" fill="none"><path d="M5 1h16l8 8v29H5V1Z" stroke="currentColor"/><path d="M21 1v9h8M11 18h12M11 23h12M11 28h7" stroke="currentColor"/></svg></div>
+      </aside>
+    </section>
+
+    <div class="rail"><span class="label" style="font-size:9px">Small enough to inspect. Useful enough to keep.</span><div class="rail-items"><span>Local DuckDB</span><span>Tool exports + adapters</span><span>MCP stdio</span><span>Registry bundles</span></div></div>
+
+    <section class="section" id="demo" aria-labelledby="demo-heading">
+      <div class="section-head"><div class="section-number"><span>01</span><span class="label">A worked example</span></div><div><h2 id="demo-heading">See the answer.<br>Inspect what counts.</h2><p class="section-description">See how one question becomes a reusable definition. This recorded synthetic Stripe + Linear example has 12 customers, 24 payments, and 17 issues from Rystic simulator APIs. Inspect the rules and the changed answer after refresh.</p></div></div>
+      <div class="demo-shell">
+        <div class="demo-top"><span class="label">Worked example · Stripe + Linear</span><span class="tiny">Synthetic capture · no browser model calls</span></div>
+        <div class="demo-tabs" role="tablist" aria-label="Recorded workflow stages"><button id="tab-initial" role="tab" aria-selected="true" aria-controls="demo-panel" tabindex="0" data-case="initial">Initial snapshot</button><button id="tab-refreshed" role="tab" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-case="refreshed">After source refresh</button><button id="tab-rules" role="tab" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-case="rules">Rules &amp; exclusions</button></div>
+        <div id="demo-panel" role="tabpanel" aria-labelledby="tab-initial" tabindex="0">
+          <div class="demo-body">
+            <div class="answer-pane"><p class="prompt"><span class="prompt-symbol" aria-hidden="true">↳</span><span id="question">Which paying accounts have unresolved urgent or high-priority issues?</span></p><div aria-live="polite" aria-atomic="true"><p class="answer-label label" id="answer-label">Recorded initial result</p><div class="answer-value"><strong id="answer-value">$1,857.69</strong><span id="answer-unit">net collected USD · 5 accounts</span></div><p class="answer-description" id="answer-description">Payment and issue totals are grouped by account before joining. Each account’s net payments count once, even when it has several qualifying issues.</p></div><div class="source-row"><span class="source-tag">stripe.customers</span><span class="source-tag">stripe.charges</span><span class="source-tag">linear.issues</span></div><p class="answer-footnote">Associated net collections in this captured cohort. Not ARR, a churn forecast, or a measured agent answer.</p></div>
+            <div class="context-pane"><p class="context-toggle">A definition you can inspect</p><p class="context-help">The recorded verification used this recipe policy. A fresh local preview is provisional until you review and approve its metric candidate.</p><div class="definition"><p class="label" id="definition-status">Recipe policy · explicit business rules</p><p class="definition-title" id="definition-title">Net USD payments + unresolved urgent/high issues</p><p class="definition-body" id="definition-body">Exclude internal accounts and non-USD payments. Subtract refunds. Keep successful, paid, captured, undisputed charges and issues at priority 1 or 2 in an unresolved state.</p><p class="definition-proof" id="definition-proof">scope: captured synthetic cohort<br>group each source before joining accounts</p></div></div>
+          </div>
+          <details open><summary>Inspect the account result and executed SQL</summary><div class="inspection"><div class="table-scroll"><h3 id="table-title">Qualifying accounts · initial snapshot</h3><table id="source-table"><thead></thead><tbody></tbody></table></div><div><h3>Recipe SQL executed by the CLI</h3><pre id="demo-sql"></pre></div></div></details>
+        </div>
+      </div>
+      <div class="under-demo"><p>This browser replays the captured data and verified source change; it does not call an agent or a live simulator. The CLI runs the local DuckDB workflow. Native Rystic execution requires a trial or license; the captured example runs without an account.</p><a href="../examples/rystic/functional-proof.json">Inspect the recorded proof ↗</a></div>
+    </section>
+
+    <section class="section" id="how-it-works" aria-labelledby="architecture-heading">
+      <div class="section-head"><div class="section-number"><span>02</span><span class="label">A local path to reuse</span></div><div><h2 id="architecture-heading">One useful answer.<br>A better starting point next time.</h2><p class="section-description">Import, compute, review, and package. The useful context lives beyond the conversation that produced it.</p></div></div>
+      <div class="architecture">
+        <svg class="architecture-desktop" viewBox="0 0 1160 151" role="img" aria-labelledby="flow-title flow-desc">
+          <title id="flow-title">From existing tool data to a reusable registry bundle</title><desc id="flow-desc">Exports and supported source adapters bring existing tool data into local DuckDB. Context and metrics are reviewed and evaluated before bundle export. Each additional source can use the same analysis and context workflow.</desc>
+          <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="m0 1 8 4-8 4" fill="none" stroke="currentColor"/></marker></defs>
+          <g fill="none" stroke="currentColor" stroke-width="1"><rect x="1" y="1" width="176" height="92"/><rect x="247" y="1" width="176" height="92"/><rect x="493" y="1" width="176" height="92"/><rect x="739" y="1" width="176" height="92"/><rect x="985" y="1" width="174" height="92"/><path d="M186 47h50M432 47h50M678 47h50M924 47h50" marker-end="url(#arrow)"/></g>
+          <g fill="currentColor" font-family="Avenir Next, Avenir, sans-serif" text-anchor="middle"><g font-size="13" font-weight="600"><text x="89" y="36">Your existing tools</text><text x="335" y="36">Local DuckDB</text><text x="581" y="36">Context + metrics</text><text x="827" y="36">Review + evaluate</text><text x="1072" y="36">Registry bundle</text></g><g font-size="10" opacity=".72"><text x="89" y="58">Exports + source adapters</text><text x="335" y="58">Join · query · transform</text><text x="581" y="58">Candidates with evidence</text><text x="827" y="58">Resolve · approve · version</text><text x="1072" y="58">Keep it. Reuse it.</text><text x="335" y="137">Changes stay in the local workspace</text></g></g><path d="M335 99v18" stroke="currentColor" stroke-dasharray="3 3"/>
+        </svg>
+        <ol class="architecture-mobile"><li><span>01</span><div><strong>Your existing tools</strong><p>Exports and supported source adapters</p></div></li><li><span>02</span><div><strong>Local DuckDB</strong><p>Join, query, and transform in the local workspace</p></div></li><li><span>03</span><div><strong>Context + metrics</strong><p>Candidate definitions with their evidence</p></div></li><li><span>04</span><div><strong>Review + evaluate</strong><p>Resolve meaning, approve, version, and test</p></div></li><li><span>05</span><div><strong>Registry bundle</strong><p>Keep the definition for another person or agent</p></div></li></ol>
+        <div class="architecture-caption"><p>Use exports or one of 101 source definitions to bring existing-tool data into the same workspace. Local file workflows and selected native dlt fixtures are verified; authenticated vendor compatibility remains unverified. Agent tools read and query data. Transformations and reviewed row changes use the local CLI.</p><a href="architecture.html">Explore the architecture ↗</a></div>
+      </div>
+      <div class="context-story"><h3>The most valuable output may be the definition.</h3><div><p>“Active,” “qualified,” and “revenue” carry decisions that a schema cannot settle. Keep the business rules, identity mapping, SQL, and evidence together. Reuse approved definitions across questions and agents, then export them for another consumer’s registry workflow.</p><div class="lifecycle" aria-label="Context lifecycle"><span>Candidate</span><span>Evidence</span><span>Resolve</span><span>Approve</span><span>Version</span><span>Evaluate</span></div></div></div>
+    </section>
+
+    <section class="section" id="readiness" aria-labelledby="readiness-heading">
+      <div class="section-head"><div class="section-number"><span>03</span><span class="label">What works today</span></div><div><h2 id="readiness-heading">Start with what is tested.</h2><p class="section-description">The catalog contains 101 source definitions. Verification is recorded for each adapter and resource; a catalog entry alone does not establish a working connection.</p></div></div>
+      <div class="table-scroll">
+        <table class="readiness-table"><thead><tr><th scope="col">Workflow</th><th scope="col">Tested today</th><th scope="col">Current boundary</th></tr></thead><tbody>
+          <tr><th scope="row">Local analytics</th><td>Import files, query across tables, bootstrap context, review metrics, refresh data, and export definitions.</td><td>Local snapshots. Business rules and account mappings need your review.</td></tr>
+          <tr><th scope="row">API and database extraction</th><td>Actual dlt with SQLite accounts/events, plus Intercom contacts and Linear issues against local HTTP fixtures.</td><td>Other resources and authenticated vendor connections remain unverified.</td></tr>
+          <tr><th scope="row">Filesystem content</th><td>CSV/JSONL content, provenance and refresh through real dlt with controlled listing and client inputs.</td><td>Cloud listing, authentication and vendor compatibility remain unverified.</td></tr>
+          <tr><th scope="row">Agents and reusable context</th><td>Read-only MCP over stdio, a configured Claude CLI loop, and versioned local definitions.</td><td>Individual agent-client setup requires configuration. Model use can send context and query results to its provider.</td></tr>
+          <tr><th scope="row">Registry handoff</th><td>Local bundles, separate-process reuse, and native metric structural validation.</td><td>Remote Registry creation, version updates and access controls remain unverified.</td></tr>
+        </tbody></table>
+      </div>
+      <div class="under-demo"><p>Comparative evaluations are deferred. No accuracy, cost or speed advantage is established for this build.</p><a href="build-status.html">Read the verification evidence ↗</a></div>
+      <div class="start-links"><a href="connectors.html#what-has-been-verified">Connector readiness ↗</a><a href="rystic-benchmark.html">Deferred evaluation plan ↗</a></div>
+    </section>
+
+    <section class="start" id="start" aria-labelledby="start-heading"><div><p class="eyebrow label" style="font-size:10px;margin-bottom:18px">A first answer in your terminal</p><h2 id="start-heading">Start with eight rows.<br>Then bring your tools.</h2><p>From the repository root, configure the bundled synthetic CRM export in a new local workspace. Sync loads its contents into DuckDB and creates a context draft.</p><p>The query returns <strong>8 accounts</strong>. No credentials, network source or model are needed after installation.</p><div class="start-links"><a href="quickstart.html">Follow the quickstart ↗</a><a href="connectors.html">Choose a connector ↗</a><a href="tool-exports.html">Join CRM and product exports ↗</a></div></div><div><div class="terminal"><div class="terminal-head"><span>YOUR TERMINAL · REPOSITORY ROOT</span><button class="copy" id="copy-command" type="button" aria-label="Copy quickstart commands">Copy</button></div><pre id="quickstart-commands"><span class="dollar">$ </span>uv sync --frozen
+<span class="dollar">$ </span>.venv/bin/oriel --workspace .oriel-quickstart \
+    source add csv --name crm \
+    --path examples/tool-exports/fixtures/crm-seats.csv
+<span class="dollar">$ </span>.venv/bin/oriel --workspace .oriel-quickstart \
+    source sync crm
+<span class="dollar">$ </span>.venv/bin/oriel --workspace .oriel-quickstart \
+    query 'SELECT COUNT(*) AS accounts FROM crm.records'</pre><p class="terminal-note">Use a new .oriel-quickstart directory for this example.<br>Requires Python 3.10–3.14, uv, and a local checkout. Dependencies use the committed public lockfile.</p></div><p id="copy-status" role="status" aria-live="polite"></p></div></section>
+  </main>
+
+  <footer class="site-footer wrap"><div><a class="brand" href="#" style="font-size:18px">Oriel</a><p class="footer-note">Local data, reviewed definitions, and reusable context. No tracking on this page.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="README.html">Documentation</a><a href="faq.html">FAQ</a><a href="connectors.html">Connectors</a><a href="build-status.html">Build evidence</a><a href="rystic.html">Worked example</a><a href="upstream.html">Third-party notices</a><a href="../LICENSE">License</a></nav></footer>
+
+  <script>
+    (() => {
+      'use strict';
+      // Embedded from the bundled capture; no network or model calls in this page.
+      const fixture = {"stripe.customers": [{"customer_id": "cus_lllllllllllllc", "account_id": "customer_001", "name": "Example Company 001", "is_internal": false}, {"customer_id": "cus_llllllllllllld", "account_id": "customer_002", "name": "Example Company 002", "is_internal": false}, {"customer_id": "cus_llllllllllllle", "account_id": "customer_003", "name": "Example Company 003", "is_internal": false}, {"customer_id": "cus_lllllllllllllf", "account_id": "customer_004", "name": "Example Company 004", "is_internal": true}, {"customer_id": "cus_lllllllllllllg", "account_id": "customer_005", "name": "Example Company 005", "is_internal": false}, {"customer_id": "cus_lllllllllllllh", "account_id": "customer_006", "name": "Example Company 006", "is_internal": false}, {"customer_id": "cus_llllllllllllli", "account_id": "customer_007", "name": "Example Company 007", "is_internal": false}, {"customer_id": "cus_lllllllllllllj", "account_id": "customer_008", "name": "Example Company 008", "is_internal": false}, {"customer_id": "cus_lllllllllllllk", "account_id": "customer_009", "name": "Example Company 009", "is_internal": false}, {"customer_id": "cus_llllllllllllll", "account_id": "customer_010", "name": "Example Company 010", "is_internal": false}, {"customer_id": "cus_lllllllllllllm", "account_id": "customer_011", "name": "Example Company 011", "is_internal": false}, {"customer_id": "cus_llllllllllllln", "account_id": "customer_012", "name": "Example Company 012", "is_internal": false}], "stripe.charges": [{"charge_id": "ch_000000000000000000000001", "customer_id": "cus_lllllllllllllc", "amount_cents": 20519, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000002", "customer_id": "cus_lllllllllllllc", "amount_cents": 24283, "amount_refunded_cents": 8094, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000003", "customer_id": "cus_llllllllllllld", "amount_cents": 6409, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000004", "customer_id": "cus_llllllllllllld", "amount_cents": 46068, "amount_refunded_cents": 0, "currency": "eur", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000005", "customer_id": "cus_llllllllllllle", "amount_cents": 8846, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000006", "customer_id": "cus_llllllllllllle", "amount_cents": 33807, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000007", "customer_id": "cus_lllllllllllllf", "amount_cents": 29927, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000008", "customer_id": "cus_lllllllllllllf", "amount_cents": 5911, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000009", "customer_id": "cus_lllllllllllllg", "amount_cents": 26253, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000010", "customer_id": "cus_lllllllllllllg", "amount_cents": 7530, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000011", "customer_id": "cus_lllllllllllllh", "amount_cents": 8670, "amount_refunded_cents": 8670, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000012", "customer_id": "cus_lllllllllllllh", "amount_cents": 25707, "amount_refunded_cents": 25707, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000013", "customer_id": "cus_llllllllllllli", "amount_cents": 46372, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000014", "customer_id": "cus_llllllllllllli", "amount_cents": 10328, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000015", "customer_id": "cus_lllllllllllllj", "amount_cents": 36280, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000016", "customer_id": "cus_lllllllllllllj", "amount_cents": 33807, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000017", "customer_id": "cus_lllllllllllllk", "amount_cents": 33574, "amount_refunded_cents": 0, "currency": "eur", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000018", "customer_id": "cus_lllllllllllllk", "amount_cents": 24306, "amount_refunded_cents": 0, "currency": "eur", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000019", "customer_id": "cus_llllllllllllll", "amount_cents": 15305, "amount_refunded_cents": 5101, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000020", "customer_id": "cus_llllllllllllll", "amount_cents": 32517, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000021", "customer_id": "cus_lllllllllllllm", "amount_cents": 18853, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000022", "customer_id": "cus_lllllllllllllm", "amount_cents": 11369, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000023", "customer_id": "cus_llllllllllllln", "amount_cents": 10073, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}, {"charge_id": "ch_000000000000000000000024", "customer_id": "cus_llllllllllllln", "amount_cents": 19771, "amount_refunded_cents": 0, "currency": "usd", "paid": true, "captured": true, "status": "succeeded", "disputed": false, "created_at": "2026-03-01T00:00:00+00:00"}], "linear.issues": [{"issue_id": "00000001-0000-4000-8001-000000000001", "identifier": "ENG-1", "account_id": "customer_001", "title": "Synthetic customer_001 investigation 1", "priority": 1, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000001", "owner_name": "Mira Okafor", "updated_at": "2026-02-02T00:00:00.001Z"}, {"issue_id": "00000002-0000-4000-8002-000000000002", "identifier": "ENG-2", "account_id": "customer_001", "title": "Synthetic customer_001 investigation 2", "priority": 2, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000002", "owner_name": "Tomas Reyes", "updated_at": "2026-02-02T00:00:00.002Z"}, {"issue_id": "00000003-0000-4000-8003-000000000003", "identifier": "ENG-3", "account_id": "customer_002", "title": "Synthetic customer_002 investigation 1", "priority": 2, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000002", "owner_name": "Tomas Reyes", "updated_at": "2026-02-02T00:00:00.003Z"}, {"issue_id": "00000004-0000-4000-8004-000000000004", "identifier": "ENG-4", "account_id": "customer_003", "title": "Synthetic customer_003 investigation 1", "priority": 2, "state_type": "completed", "state_name": "Done", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000003", "owner_name": "Hana Lindqvist", "updated_at": "2026-02-02T00:00:00.004Z"}, {"issue_id": "00000005-0000-4000-8005-000000000005", "identifier": "ENG-5", "account_id": "customer_004", "title": "Synthetic customer_004 investigation 1", "priority": 2, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000004", "owner_name": "Dev Patel", "updated_at": "2026-02-02T00:00:00.005Z"}, {"issue_id": "00000006-0000-4000-8006-000000000006", "identifier": "ENG-6", "account_id": "customer_005", "title": "Synthetic customer_005 investigation 1", "priority": 3, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000005", "owner_name": "Yuki Sato", "updated_at": "2026-02-02T00:00:00.006Z"}, {"issue_id": "00000007-0000-4000-8007-000000000007", "identifier": "ENG-7", "account_id": "customer_005", "title": "Synthetic customer_005 investigation 2", "priority": 4, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000006", "owner_name": "Deploy Bot", "updated_at": "2026-02-02T00:00:00.007Z"}, {"issue_id": "00000008-0000-4000-8008-000000000008", "identifier": "ENG-8", "account_id": "customer_006", "title": "Synthetic customer_006 investigation 1", "priority": 2, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000006", "owner_name": "Deploy Bot", "updated_at": "2026-02-02T00:00:00.008Z"}, {"issue_id": "00000009-0000-4000-8009-000000000009", "identifier": "ENG-9", "account_id": "customer_007", "title": "Synthetic customer_007 investigation 1", "priority": 2, "state_type": "canceled", "state_name": "Canceled", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000001", "owner_name": "Mira Okafor", "updated_at": "2026-02-02T00:00:00.009Z"}, {"issue_id": "0000000a-0000-4000-800a-00000000000a", "identifier": "ENG-10", "account_id": "customer_008", "title": "Synthetic customer_008 investigation 1", "priority": 2, "state_type": "started", "state_name": "In Progress", "owner_id": null, "owner_name": null, "updated_at": "2026-02-02T00:00:00.010Z"}, {"issue_id": "0000000b-0000-4000-800b-00000000000b", "identifier": "ENG-11", "account_id": "customer_008", "title": "Synthetic customer_008 investigation 2", "priority": 3, "state_type": "started", "state_name": "In Progress", "owner_id": null, "owner_name": null, "updated_at": "2026-02-02T00:00:00.011Z"}, {"issue_id": "0000000c-0000-4000-800c-00000000000c", "identifier": "ENG-12", "account_id": "customer_009", "title": "Synthetic customer_009 investigation 1", "priority": 2, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000003", "owner_name": "Hana Lindqvist", "updated_at": "2026-02-02T00:00:00.012Z"}, {"issue_id": "0000000d-0000-4000-800d-00000000000d", "identifier": "ENG-13", "account_id": "customer_010", "title": "Synthetic customer_010 investigation 1", "priority": 2, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000004", "owner_name": "Dev Patel", "updated_at": "2026-02-02T00:00:00.013Z"}, {"issue_id": "0000000e-0000-4000-800e-00000000000e", "identifier": "ENG-14", "account_id": "customer_010", "title": "Synthetic customer_010 investigation 2", "priority": 1, "state_type": "completed", "state_name": "Done", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000005", "owner_name": "Yuki Sato", "updated_at": "2026-02-02T00:00:00.014Z"}, {"issue_id": "0000000f-0000-4000-800f-00000000000f", "identifier": "ENG-15", "account_id": "customer_011", "title": "Synthetic customer_011 investigation 1", "priority": 0, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000005", "owner_name": "Yuki Sato", "updated_at": "2026-02-02T00:00:00.015Z"}, {"issue_id": "00000010-0000-4000-8010-000000000010", "identifier": "ENG-16", "account_id": "customer_012", "title": "Synthetic customer_012 investigation 1", "priority": 1, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000006", "owner_name": "Deploy Bot", "updated_at": "2026-02-02T00:00:00.016Z"}, {"issue_id": "00000011-0000-4000-8011-000000000011", "identifier": "ENG-17", "account_id": "customer_012", "title": "Synthetic customer_012 investigation 2", "priority": 2, "state_type": "started", "state_name": "In Progress", "owner_id": "5b0a4d00-05e2-4a00-8b00-000000000001", "owner_name": "Mira Okafor", "updated_at": "2026-02-02T00:00:00.017Z"}]};
+      const proof = {"kind": "functional_integration_verification", "benchmark_status": "deferred", "model_calls": 0, "simulators": {"stripe": {"product": "stripe-twin", "version": "0.0.8", "model_hash": "sha256:cfeb0ea0dc5d6ae503c8533bbaec3f9da92c62cca8bb1d29fc5ffa757f1924d7", "initial_clock": "2026-01-01T00:00:00Z", "edition": "metered"}, "linear": {"product": "linear-twin", "version": "0.0.1", "model_hash": "sha256:17bb74ad2c0165052bfd14b0ce485a453fdbe884d0118a5eed59fd8e8c2d1ce0", "initial_clock": "2026-01-01T00:00:00Z", "edition": "metered"}}, "initial_account_count": 5, "initial_net_collected_usd": "1857.69", "independent_oracle_matches": true, "unchanged_refresh_preserves_data_hash": true, "source_change": "Resolved both urgent/high synthetic issues for customer_001 through the Linear simulator API.", "changed_issue_ids": ["00000001-0000-4000-8001-000000000001", "00000002-0000-4000-8002-000000000002"], "pre_refresh_snapshot_remains_explicitly_stale": true, "refreshed_account_count": 4, "refreshed_net_collected_usd": "1490.61", "context_version_preserved": true, "initial_snapshot": "rystic-947c5a5838b3fec8", "refreshed_snapshot": "rystic-5efa03bbc12e80a6"};
+      const reportSQL = "WITH collected AS (\n  SELECT c.account_id, c.name,\n    SUM(ch.amount_cents - ch.amount_refunded_cents) AS net_collected_usd_cents\n  FROM stripe.customers c\n  JOIN stripe.charges ch ON ch.customer_id = c.customer_id\n  WHERE c.is_internal = FALSE\n    AND ch.currency = 'usd'\n    AND ch.paid = TRUE AND ch.captured = TRUE\n    AND ch.status = 'succeeded' AND ch.disputed = FALSE\n  GROUP BY c.account_id, c.name\n), unresolved AS (\n  SELECT account_id, COUNT(*) AS open_high_priority_issue_count,\n    list_sort(list(DISTINCT COALESCE(NULLIF(owner_name, ''), 'Unassigned'))) AS owners\n  FROM linear.issues\n  WHERE priority IN (1, 2)\n    AND state_type IN ('backlog', 'unstarted', 'started')\n  GROUP BY account_id\n)\nSELECT c.account_id, c.name, c.net_collected_usd_cents,\n  u.open_high_priority_issue_count, u.owners\nFROM collected c\nJOIN unresolved u ON u.account_id = c.account_id\nWHERE c.net_collected_usd_cents > 0\nORDER BY c.account_id";
+      const currency = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(cents / 100);
+      const customers = fixture['stripe.customers'];
+      const charges = fixture['stripe.charges'];
+      const initialIssues = fixture['linear.issues'];
+      const changedIssueIds = new Set(proof.changed_issue_ids);
+      const refreshedIssues = initialIssues.map(issue => changedIssueIds.has(issue.issue_id) ? { ...issue, state_type: 'completed', state_name: 'Done' } : issue);
+      const unresolved = new Set(['backlog', 'unstarted', 'started']);
+      function accountRows(issues) {
+        return customers.map(customer => {
+          const payments = charges.filter(charge => charge.customer_id === customer.customer_id && charge.currency === 'usd' && charge.paid && charge.captured && charge.status === 'succeeded' && !charge.disputed);
+          const net = payments.reduce((total, charge) => total + charge.amount_cents - charge.amount_refunded_cents, 0);
+          const open = issues.filter(issue => issue.account_id === customer.account_id && [1, 2].includes(issue.priority) && unresolved.has(issue.state_type));
+          const owners = [...new Set(open.map(issue => issue.owner_name || 'Unassigned'))].sort();
+          const reason = customer.is_internal ? 'Internal account' : net <= 0 ? 'No positive net USD payments' : !open.length ? 'No unresolved priority 1–2 issue' : 'Included';
+          return { account: customer.account_id, net, issueCount: open.length, owners, reason, included: reason === 'Included' };
+        });
+      }
+      const initial = accountRows(initialIssues), refreshed = accountRows(refreshedIssues);
+      const qualifying = rows => rows.filter(row => row.included);
+      const total = rows => qualifying(rows).reduce((sum, row) => sum + row.net, 0);
+      const verified = qualifying(initial).length === proof.initial_account_count && (total(initial) / 100).toFixed(2) === proof.initial_net_collected_usd && qualifying(refreshed).length === proof.refreshed_account_count && (total(refreshed) / 100).toFixed(2) === proof.refreshed_net_collected_usd;
+      let selected = 'initial';
+      const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+      const setText = (id, text) => { document.getElementById(id).textContent = text; };
+      function render() {
+        const afterRefresh = selected === 'refreshed', showRules = selected === 'rules';
+        const rows = afterRefresh ? refreshed : initial;
+        const included = qualifying(rows);
+        setText('question', showRules ? 'Why do only 5 of these 12 synthetic accounts qualify?' : 'Which paying accounts have unresolved urgent or high-priority issues?');
+        setText('answer-label', afterRefresh ? 'Recorded result after source refresh' : showRules ? 'Same initial result · every account explained' : 'Recorded initial result');
+        setText('answer-value', verified ? currency(total(rows)) : 'Verification failed');
+        setText('answer-unit', verified ? 'net collected USD · ' + included.length + ' accounts' : 'Capture and proof do not match');
+        setText('answer-description', afterRefresh ? 'Both qualifying issues for customer_001 were resolved through the Linear simulator API. After refreshing, its $367.08 no longer qualifies. The metric definition is unchanged.' : showRules ? 'Seven accounts are excluded by the explicit policy. Currency and refund rules are applied to payments; priority and state rules are applied to issues. Each source is grouped before the account join.' : 'Payment and issue totals are grouped by account before joining. Each account’s net payments count once, even when it has several qualifying issues.');
+        setText('definition-title', afterRefresh ? 'Same definition. Updated source evidence.' : 'Net USD payments + unresolved urgent/high issues');
+        setText('definition-body', afterRefresh ? 'The old snapshot stays unchanged until refresh. Replacing the source snapshot updates the answer while preserving the approved context version, as recorded in the functional verification.' : 'Exclude internal accounts and non-USD payments. Subtract refunds. Keep successful, paid, captured, undisputed charges. Include priority 1 or 2 issues only in backlog, unstarted, or started states; completed, canceled, and lower-priority issues do not qualify.');
+        setText('definition-proof', 'snapshot: ' + (afterRefresh ? proof.refreshed_snapshot : proof.initial_snapshot) + '\nsource: pinned Rystic Stripe + Linear simulators\nverification: ' + (verified ? 'capture matches recorded totals' : 'FAILED') + '\nscope: captured synthetic cohort; not annualized');
+        setText('demo-sql', reportSQL);
+        setText('table-title', showRules ? 'All 12 accounts · initial snapshot' : 'Qualifying accounts · ' + (afterRefresh ? 'after refresh' : 'initial snapshot'));
+        const headers = showRules ? ['Account', 'Net USD', 'Open P1–2', 'Decision'] : ['Account', 'Net USD', 'Open P1–2', 'Issue owners'];
+        const tableRows = (showRules ? rows : included).map(row => [row.account, currency(row.net), row.issueCount, showRules ? row.reason : row.owners.join(', ')]);
+        const head = document.querySelector('#source-table thead'), body = document.querySelector('#source-table tbody'); head.replaceChildren(); body.replaceChildren();
+        const headerRow = document.createElement('tr');
+        headers.forEach(header => { const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = header; headerRow.appendChild(cell); }); head.appendChild(headerRow);
+        tableRows.forEach(row => { const tr = document.createElement('tr'); row.forEach(value => { const td = document.createElement('td'); td.textContent = String(value); tr.appendChild(td); }); body.appendChild(tr); });
+        tabs.forEach(tab => { const active = tab.dataset.case === selected; tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1; });
+        document.getElementById('demo-panel').setAttribute('aria-labelledby', 'tab-' + selected);
+      }
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => { selected = tab.dataset.case; render(); });
+        tab.addEventListener('keydown', event => {
+          let next;
+          if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+          else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+          else if (event.key === 'Home') next = 0;
+          else if (event.key === 'End') next = tabs.length - 1;
+          else return;
+          event.preventDefault(); selected = tabs[next].dataset.case; render(); tabs[next].focus();
+        });
+      });
+      document.getElementById('copy-command').addEventListener('click', async () => {
+        const commands = document.getElementById('quickstart-commands').textContent.replace(/^\$ /gm, '');
+        try {
+          if (!navigator.clipboard) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(commands); setText('copy-status', 'Quickstart commands copied. Run from the repository root with a new workspace.');
+          setText('copy-command', 'Copied');
+        } catch (_) { setText('copy-status', 'Clipboard unavailable here. Select and copy the commands above.'); }
+      });
+      render();
+    })();
+  </script>
+</body>
+</html>
