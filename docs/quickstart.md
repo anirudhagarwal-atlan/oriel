@@ -6,7 +6,7 @@ Oriel is a local developer preview for one trusted operator. Its path is: **conn
 
 ## Install from your checkout
 
-Use Python 3.10–3.14, an existing installation of [uv](https://docs.astral.sh/uv/), and a POSIX environment. Fresh isolated installation from an allowlisted working-tree copy has been checked on macOS ARM64 with Python 3.12; other platform combinations need their own verification. A clean committed Git checkout and reproduction from the public repository remain pending. The commands below target the Customer 360 candidate. The app requires POSIX workspace locking.
+Use Python 3.10–3.14, an existing installation of [uv](https://docs.astral.sh/uv/), and a POSIX environment. Fresh isolated installation from clean local commit `d8836a6` has been checked on macOS ARM64 with Python 3.12; other platform combinations need their own verification. Publication and reproduction from the public repository remain pending. The commands below target the Customer 360 candidate. The app requires POSIX workspace locking.
 
 ```sh
 git clone https://github.com/anirudhagarwal-atlan/oriel.git

@@ -8,7 +8,7 @@ Prepare a customer review from the data in your existing tools. Connect supporte
 
 Oriel is an open-source Customer 360 agent for technical customer-success and revenue-operations teams. CRM, conversations, support, product usage, billing and internal customer sources are peer inputs. The same customer workflow adapts to the evidence you have; no particular CRM or conversation platform is required.
 
-**Developer preview for one local operator.** The latest tested revision passes 52 local and four configured-model acceptance cases across both synthetic customer stacks, including answers before and after refresh. Authenticated vendor compatibility and clean Git/public-checkout proof remain pending. [Evidence and limitations](docs/build-status.md).
+**Developer preview for one local operator.** The latest model-tested revision passes 52 local and four configured-model acceptance cases across both synthetic customer stacks, including answers before and after refresh. Installation also passes from a clean local Git commit with the same runtime. Authenticated vendor compatibility and public-checkout reproduction remain pending. [Evidence and limitations](docs/build-status.md).
 
 ## Start with the next customer review
 
@@ -22,7 +22,7 @@ An invoice balance does not establish recurring revenue. An absent conversation 
 
 Use Python 3.10–3.14, [uv](https://docs.astral.sh/uv/) and a POSIX environment. Install from this repository; no separate package release is required.
 
-These commands target the Customer 360 candidate. Current installation evidence uses an allowlisted copy of the local working tree and an isolated installed wheel. It does not yet prove that cloning the public repository reproduces this candidate; that publication and checkout check remains pending.
+These commands target the Customer 360 candidate. Installation has been verified from local commit `d8836a6`, including an isolated installed wheel. Publication and reproduction by cloning the public repository remain pending.
 
 ```sh
 git clone https://github.com/anirudhagarwal-atlan/oriel.git
@@ -87,7 +87,7 @@ Existing file-based analytics, read-only MCP tools and local transformations rem
 | Two different customer stacks | Shared identity, context and answer contracts, including a stack without CRM or transcripts |
 | Browser workflow with a labeled scripted model | Real interface interactions, separate approvals, evidence drill-down and refresh comparison |
 | Configured-model browser smoke | Both profiles completed independently reviewed bootstrap and correct answers before and after refresh, reusing the same context: six jobs, twelve Claude Opus 5.5 calls, $1.4556692 in provider-reported list-price estimates, with no retries or unknown spend. This is a bounded synthetic workflow, not a general accuracy claim. See the dated [verification record](docs/customer-360-goal.md) |
-| Isolated installation | The current working-tree package builds and runs outside its source directory. A clean committed Git checkout and public-clone reproduction still need their own proof |
+| Committed-source installation | Local commit `d8836a6` passes clean Git/blob verification and both installed sample workflows outside the source directory. Public-clone reproduction remains pending |
 | Live vendor checks | Still required for the integrations and resources we will advertise as verified |
 
 Run the [acceptance runner](docs/customer-360-goal.md#how-verification-runs) to inspect your revision. Missing, skipped and unrun gates cannot produce an overall pass. Clean installation, actual model execution and authenticated vendor access are separate evidence requirements.
