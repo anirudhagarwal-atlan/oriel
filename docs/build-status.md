@@ -41,6 +41,8 @@ The default install helper records an isolated working-tree snapshot. A separate
 
 The command intentionally returns an incomplete overall result while required model or live gates remain unrun. Model and live flags select separately authorized checks; they do not grant access or provision credentials. See [verification instructions](customer-360-goal.md#how-verification-runs).
 
+The newer connector candidate also passed strict clean-Git installation at **23:48 UTC on 9 October 2026**, from commit `6f4b0c664b00b57c59dd6494581c3cd7cbbf10c2` (tree `8fc2e13a35a16967e858c6a71dc8f1dabcfe6048`). The checker reconciled 316 committed inputs, verified all 309 package files, three UI assets and 25 sample JSON files, then ran both installed profiles before and after refresh. It used no model calls, vendor calls or dependency downloads. The private receipt is `clean-git-install-6f4b0c6/receipt.json`, SHA256 `470ac2ed4de133dd529ce009f2de2e72a78dc616f290b61904fe9f72bd3f3be7`, under `.oriel/verification/customer360/`. This proves installation of the changed connector runtime from that local commit; it does not extend the earlier model result or prove public publication.
+
 ## Existing advanced workflows
 
 Local CSV/JSON/JSONL/Parquet imports, SQL, reviewed metric versions, read-only MCP stdio, local transformations and portable context bundles remain available. The [CRM/product recipe](tool-exports.md) demonstrates a separate consumer reusing a definition on changed data. These are useful independent features, not evidence of authenticated vendor compatibility or managed registry distribution.

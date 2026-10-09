@@ -22,6 +22,8 @@ Installation also passed from a clean detached checkout of local commit `d8836a6
 
 Subsequent implementation adds an opt-in [REST fetch guard](connectors.md#restrict-a-rest-fetch-graph): before-credential graph compilation, prepared-request checks, parent-inclusive page/row accounting and incomplete-extraction refusal. Its controlled-source tests are separate evidence. Run g and commit `d8836a6` remain unchanged historical results; new connector code does not inherit their complete runtime fingerprint. Vendor semantic restrictions and resolved-destination enforcement are still outstanding parts of the live collector.
 
+Strict clean-Git installation of the newer guard candidate, commit `6f4b0c6`, passed at **23:48 UTC on 9 October 2026**. Both installed profiles completed initial and refreshed workflows, with zero model/vendor calls or dependency downloads. The [build status](build-status.md#reproduce-the-checks) records its exact commit, tree, package inventory and receipt hash. Public-checkout reproduction remains pending.
+
 ## Definition of done
 
 The goal is complete only when all ten gates below pass for the tested revision, their evidence has been inspected, and the public-facing capability descriptions match the demonstrated scope. A green foundation test suite, a screenshot, a fixed SQL recipe or a plausible agent answer is insufficient.
