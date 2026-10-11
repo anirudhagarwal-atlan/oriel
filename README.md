@@ -1,28 +1,18 @@
-# Oriel
+![Oriel — Your customers, in context.](docs/assets/oriel-banner.png)
 
-## Customer 360 for the tools you already use.
+# The open-source Customer 360 agent
 
-Prepare a customer review from the data in your existing tools. Connect supported sources, bring their output into DuckDB, and let a context agent propose the business definitions behind your customer briefs. Review those definitions, ask a question, and inspect the numbers and source passages behind the answer.
+Get the customer story from the tools you already use. Oriel brings customer data into **DuckDB**, helps you define what it means, and builds customer briefs and answers with evidence you can inspect.
 
-**[Try a customer review](docs/quickstart.md)** · [Connect your tools](docs/connectors.md) · [How the app works](docs/customer-360-app.md) · [Build goal and verification](docs/customer-360-goal.md)
+**[Get started](#quickstart)** · [Documentation](docs/README.md) · [Connect your tools](docs/connectors.md) · [Contribute](CONTRIBUTING.md)
 
-Oriel is an open-source Customer 360 agent for technical customer-success and revenue-operations teams. CRM, conversations, support, product usage, billing and internal customer sources are peer inputs. The same customer workflow adapts to the evidence you have; no particular CRM or conversation platform is required.
+Built for customer success, account teams, and the technical teams supporting them. Bring CRM, conversations, support, billing, product usage, or internal data. Start with the sources you have.
 
-**Developer preview for one local operator.** The latest model-tested revision passes 52 local and four configured-model acceptance cases across both synthetic customer stacks, including answers before and after refresh. Installation also passes from a clean local Git commit with the same runtime. Authenticated vendor compatibility and public-checkout reproduction remain pending. [Evidence and limitations](docs/build-status.md).
+> **Developer preview.** Run locally for one operator. Try both sample workflows without vendor credentials or model calls. [What works today →](docs/build-status.md)
 
-## Start with the next customer review
+## Quickstart
 
-> What is happening with this customer, what changed, and what evidence should I look at?
-
-Open a customer brief with the available commercial, billing, support or conversation evidence. Inspect a calculation, follow a quoted passage to its source record, and save the review. Refresh the connected data to see what changed under the same reviewed definitions.
-
-An invoice balance does not establish recurring revenue. An absent conversation source does not establish that a customer said nothing. Oriel retains these gaps alongside the answer.
-
-## Try the local application
-
-Use Python 3.10–3.14, [uv](https://docs.astral.sh/uv/) and a POSIX environment. Install from this repository; no separate package release is required.
-
-These commands target the Customer 360 candidate. Installation has been verified from local commit `d8836a6`, including an isolated installed wheel. Publication and reproduction by cloning the public repository remain pending.
+You'll need Python 3.10–3.14, [uv](https://docs.astral.sh/uv/), and macOS or Linux.
 
 ```sh
 git clone https://github.com/anirudhagarwal-atlan/oriel.git
@@ -31,73 +21,54 @@ uv sync --frozen --extra connectors
 uv run --no-sync oriel --workspace .oriel-customer customer app --port 8787
 ```
 
-Open **http://127.0.0.1:8787**. Use a new private workspace. The app keeps source configuration, DuckDB data, reviewed context and job receipts there.
+Open **http://127.0.0.1:8787**, then:
 
-1. Choose **Billing + support** or **CRM + conversations**, then load the sample sources.
-2. Prepare the review and approve explicit customer links and observed field mappings.
-3. Materialize the reviewed customer data. Bootstrap context with your configured model, then review its proposed definitions before approval.
-4. Open a customer, inspect its brief and evidence, ask a question, and save the review.
-5. Load the refreshed sample, review any new source aliases, and compare the next brief using the same business definitions.
+1. **Connect a sample.** Choose **Billing + support** or **CRM + conversations**.
+2. **Review the context.** Follow the identity and field-mapping reviews, then use the authored sample definitions. No model needed for this route.
+3. **Open a customer brief.** Inspect a calculation or source passage, save the review, and load the sample refresh to see what changed.
 
-To explore without a model or source credentials, choose the clearly labeled **authored sample definitions** at step 3 and inspect the deterministic brief. Asking the model requires a separately configured Claude CLI, explicit data-access consent and a spending limit. Source records and context supplied to a model can leave your machine.
+[Follow the walkthrough](docs/quickstart.md) for the exact review steps. To bootstrap definitions with a context agent and ask questions, use a separately installed, authenticated [`claude` CLI on your `PATH`](docs/agents.md#ask-through-an-authenticated-claude-cli), enable model access, and set a spending limit. Selected data is sent to the model only with your consent.
 
-The samples execute the actual dlt SQLite extractor on synthetic source databases. They do not contact Salesforce, Gong, Stripe or Intercom. The billing/support sample works without CRM or transcript tables. [Complete walkthrough and troubleshooting](docs/quickstart.md).
+## Walk into the next customer conversation prepared
 
-## The required path
+![Oriel's local customer review application, using synthetic sample data.](docs/assets/customer-review.png)
 
-```mermaid
-flowchart LR
-    A[Existing customer tools] --> B[Off-the-shelf connectors]
-    B --> C[Staged DuckDB data]
-    C --> D[Context agents and reviewed definitions]
-    D --> E[Grounded customer briefs and answers]
-    E --> F[Inspect evidence and save review]
-    F --> G[Refresh and reuse context]
-    G --> C
-```
+*The working application with synthetic sample data. [Reproduce this workflow](docs/quickstart.md).*
 
-- **Connect once, analyze the captured data.** Context and answer tools read committed DuckDB snapshots. They do not fall back to querying source tools directly.
-- **Review meaning before reuse.** Customer identity, field mappings, units, filters and gaps are explicit artifacts. A proposal is not an approval.
-- **Keep answers inspectable.** DuckDB computes the numbers. Answers select validated metric results and exact attributed passages, with source, snapshot and context identities.
-- **Preserve the next review.** Saved briefs retain historical evidence. New facts can change the answer without rewriting the definition; changed mappings or meaning require review.
+- **Put the account in context.** Bring commercial records, billing, support, and conversations into a customer view, with explicit links between source records.
+- **Follow the answer to its evidence.** Inspect the metric definition, the DuckDB calculation, and the attributed source passage. Missing information stays visible.
+- **See what changed.** Save a brief, refresh the source data, and compare the next review using the same approved definitions.
 
-The current context agent proposes definitions after explicit identity and mapping review. Generic direct-key source mappings are supported; complex relationship chains may need an adapter. Arbitrary prose, inferred health scores and autonomous customer actions are outside the initial answer contract.
+Start with a concrete question: “What is outstanding on this account?” or “What does the latest support update say?” The available sources and reviewed definitions determine what Oriel can answer.
 
-## Bring your customer tools
+## From your tools to an answer you can inspect
 
-The connector catalog spans APIs, SQL databases, object stores and files. Inspect the selected adapter's requirements and resources before configuring it:
+![Customer tools flow through off-the-shelf connectors into DuckDB snapshots, then context agents and human review, then customer briefs and answers. Refresh the data and reuse approved context.](docs/assets/how-oriel-works.svg)
+
+1. **Connect.** Use off-the-shelf connectors to extract selected resources from your tools.
+2. **Load into DuckDB.** Keep queryable snapshots in your own local workspace.
+3. **Bootstrap context.** Review customer links and field mappings. A context agent proposes business definitions; you inspect and approve them.
+4. **Ask and inspect.** Compute answers against the captured data, follow the evidence, and reuse the context after refresh.
+
+Definitions include the details that change an answer: what “open” means, which records belong to a customer, and whether an amount is in dollars or cents. The agent works from this reviewed context and the DuckDB snapshot.
+
+## Bring your customer stack
+
+Oriel's connector catalog covers customer APIs, SQL databases, object stores, and files. Explore an adapter before configuring it:
 
 ```sh
-.venv/bin/oriel source list --available
-.venv/bin/oriel source describe salesforce
-.venv/bin/oriel source doctor sqlite
+uv run --no-sync oriel source list --available
+uv run --no-sync oriel source describe salesforce
 ```
 
-The application accepts environment-variable names for credentials, never credential values. Configure and sync selected resources, capture a snapshot, map the observed fields to customer capabilities, and review the resulting context. Adding a source enriches the customer view; missing capabilities stay visible.
+The customer workflow is independent of any one vendor. The included examples pair billing with support and CRM with conversations; neither pair is required. Add sources and map their fields to the customer information you need.
 
-The catalog contains 101 source definitions, not 101 validated live integrations. Some adapters need extra drivers or SDKs. Gong-shaped sample data does not imply a packaged live Gong connector. [Connector readiness](docs/connectors.md) · [Application setup](docs/customer-360-app.md).
+**A catalog entry is not a verified live integration.** Adapter requirements and resource coverage vary. Both included samples use real SQLite/dlt extraction on synthetic data; they do not connect to vendor accounts. See [connector readiness](docs/connectors.md#what-has-been-verified) and [the own-data setup guide](docs/customer-360-app.md).
 
-Existing file-based analytics, read-only MCP tools and local transformations remain available as advanced workflows. [CRM/product export recipe](docs/tool-exports.md) · [Agent setup](docs/agents.md).
+## Build with us
 
-## Evidence before claims
+Try a customer review and [tell us where you got stuck](https://github.com/anirudhagarwal-atlan/oriel/issues). Useful contributions include source mappings, reviewed definitions, connector validation, and clearer onboarding.
 
-| Check | What it establishes |
-| --- | --- |
-| Real extraction on controlled sources | Off-the-shelf runtime → staged DuckDB, including failed extraction behavior |
-| Two different customer stacks | Shared identity, context and answer contracts, including a stack without CRM or transcripts |
-| Browser workflow with a labeled scripted model | Real interface interactions, separate approvals, evidence drill-down and refresh comparison |
-| Configured-model browser smoke | Both profiles completed independently reviewed bootstrap and correct answers before and after refresh, reusing the same context: six jobs, twelve Claude Opus 5.5 calls, $1.4556692 in provider-reported list-price estimates, with no retries or unknown spend. This is a bounded synthetic workflow, not a general accuracy claim. See the dated [verification record](docs/customer-360-goal.md) |
-| Committed-source installation | Local commit `d8836a6` passes clean Git/blob verification and both installed sample workflows outside the source directory. Public-clone reproduction remains pending |
-| Live vendor checks | Still required for the integrations and resources we will advertise as verified |
+[Contributing](CONTRIBUTING.md) · [Roadmap](docs/roadmap.md) · [Architecture](docs/architecture.md) · [CLI and MCP](docs/agents.md) · [FAQ](docs/faq.md)
 
-Run the [acceptance runner](docs/customer-360-goal.md#how-verification-runs) to inspect your revision. Missing, skipped and unrun gates cannot produce an overall pass. Clean installation, actual model execution and authenticated vendor access are separate evidence requirements.
-
-Comparative MCP/Rystic evaluations are deferred. No accuracy, cost or speed advantage is claimed. MCP remains an interface for compatible agent clients; the product's required data path stays the same.
-
-## Help make the next customer review useful
-
-Try both samples, then connect a source you are authorized to use. A useful issue describes the customer question, source types, setup step, expected behavior and a small synthetic reproduction. Keep private customer data and credentials out of public issues.
-
-Contribute a source mapping, a reviewed definition, a connector verification or a reproducible onboarding failure. [Contributing](CONTRIBUTING.md) · [Product plan](docs/customer-360-plan.md).
-
-MIT for Oriel. Bundled third-party code retains its own licenses and notices. See [LICENSE](LICENSE) and [attribution](docs/upstream.md).
+Oriel is MIT licensed. Bundled third-party components retain their licenses and notices. [License](LICENSE) · [Attribution](docs/upstream.md)

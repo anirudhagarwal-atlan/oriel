@@ -4,7 +4,7 @@ Oriel's source workflow is **configure → sync into DuckDB → bootstrap draft 
 
 For Customer 360, use the [application](customer-360-app.md) to configure and sync these adapters, capture committed snapshots, review customer links and field mappings, then bootstrap and approve business definitions. Source setup is shared; the customer workflow adds its own identity, freshness, context and evidence boundaries. The low-level generic source commands below remain available independently.
 
-Start from a [local checkout](quickstart.md#install-from-your-checkout). The committed lockfile uses public PyPI artifacts and preserves reviewed dependency versions and hashes.
+Start from a [local checkout](quickstart.md#1-start-oriel). The committed lockfile uses public PyPI artifacts and preserves reviewed dependency versions and hashes.
 
 Python 3.10–3.14 is supported. Install the base package for local CSV/Parquet, or include the connector runtime for APIs, databases and filesystem sources:
 

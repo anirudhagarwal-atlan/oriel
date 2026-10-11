@@ -3,7 +3,7 @@ include README.html CONTRIBUTING.html
 include tests/run_controller_rehearsal.py
 recursive-include contextbase/data *.json
 recursive-include contextbase/connectors *.json *.yaml *.yml *.txt *.md LICENSE NOTICE
-recursive-include docs *.md *.html
+recursive-include docs *.md *.html *.png *.svg
 recursive-include examples *.md *.json *.sql *.py *.csv *.jsonl
 recursive-include benchmarks *.md *.json
 include scripts/render_docs.py

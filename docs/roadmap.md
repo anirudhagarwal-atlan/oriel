@@ -1,38 +1,28 @@
 # Roadmap
 
-Oriel's first product is a Customer 360 agent for the customer tools a user already has. The required path stays **off-the-shelf connectors → DuckDB → context agents and reviewed definitions → grounded customer briefs and answers**. The [build goal](customer-360-goal.md) defines completion; the [product plan](customer-360-plan.md) describes the wider experience.
+Oriel brings customer data through **off-the-shelf connectors → DuckDB → context agents and reviewed definitions → customer briefs and answers**. That path stays the same as we add sources and workflows.
 
-This is a priority sequence, not a dated delivery commitment. [Current evidence](build-status.md) distinguishes implementation, model execution and live integrations.
+These are priorities, not dated delivery commitments. See [current status](build-status.md) for what has been verified.
 
-## Local implementation
+## Available in the preview
 
-- Customer identities, explicit reviewed source links, capability mappings and committed snapshots.
-- Context proposals and approvals, exact metrics, attributed passages, scoped questions and fixed abstentions.
-- A local application with connections, setup review, briefs, evidence, saved reviews and refreshed comparisons.
-- Billing/support and CRM/conversation samples using actual dlt extraction and shared contracts.
-- Fresh browser verification with a labeled scripted model; a smaller real-model probe is recorded separately.
-- Existing file analytics, read-only MCP tools, local transformations and context export.
+- Local customer reviews with explicit source links, field mappings and approved definitions.
+- Customer briefs, source evidence, model-assisted questions and saved reviews.
+- Refresh comparisons that reuse reviewed context and reveal changes in meaning.
+- Two synthetic customer stacks, with public-clone installation and configured-model checks.
+- CLI, read-only MCP access and portable context artifacts for advanced workflows.
 
-These are developer-preview capabilities. Sample extraction does not establish authenticated vendor support, and scripted orchestration does not complete the real-model gate.
+## Next
 
-## Next: complete the release evidence
+1. **Validate real customer stacks.** Check authentication, selected resources, coverage and refresh for authorized live sources, including an additional connector.
+2. **Make the first own-data review easier.** Learn where users get stuck in setup and mapping; improve relationship support where direct keys are insufficient.
+3. **Make the next review worth returning for.** Help users reuse definitions and compare changing customer facts.
 
-1. Reproduce the current candidate from a clean checkout with packaged application assets and sample data.
-2. Complete the bounded configured-model product check on both profiles and refreshed facts.
-3. Validate selected live source resources and an additional connector using separately authorized accounts.
-4. Observe users completing an own-data review and returning with the same definitions.
+## Later
 
-Keep exact resource coverage, permissions, gaps and assistance visible. Improve relationship mapping where the generic direct-key flow cannot express a user's source schema.
+- Scheduled refresh and recurring review workflows.
+- Portfolio questions and narrative summaries, with correctness and attribution checks.
+- Context sharing through a verified registry and a second consumer.
+- Team access with authentication and source-derived visibility.
 
-## Then: recurring reviews and shared context
-
-- Make recurring refresh and review easier while preserving context versions and historical evidence.
-- Add portfolio questions and narrative interpretation only with independent correctness and attribution checks.
-- Verify a receiving registry and a second consumer when users need shared ownership and updates.
-- Design authentication and source-derived visibility before any hosted or team service.
-
-The local product remains useful without managed distribution. Scheduling, broad OAuth, source writeback and autonomous customer actions are separate additions.
-
-## Deferred: comparative evaluation
-
-The repository retains the MCP/Rystic study design. Comparative runs remain deferred. Before publishing accuracy, cost or latency advantages, measure the actual customer workflow against capable baselines, including setup, refresh, failures and uncertainty. [Evidence policy](gtm.md#scorecard-and-evidence-policy).
+Comparative MCP benchmarks remain deferred. We will publish performance claims only with reproducible evidence. Planning details and earlier experiments live in the [maintainer reference](maintainers.md).

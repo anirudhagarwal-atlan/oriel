@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">From customer tools to grounded answers</title>
+  <desc id="desc">Customer tools feed off-the-shelf connectors, then local DuckDB snapshots, then context agents with human review, then customer briefs and answers. Refresh source data and reuse approved definitions.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#56786b" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1200" height="430" rx="20" fill="#f8f6ef"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" fill="#203e36">
+    <text x="44" y="44" font-size="13" font-weight="600" letter-spacing="2">YOUR CUSTOMER TOOLS</text>
+    <g font-size="17" text-anchor="middle">
+      <rect x="44" y="64" width="134" height="40" rx="20" fill="#e8ece3"/><text x="111" y="90">CRM</text>
+      <rect x="188" y="64" width="184" height="40" rx="20" fill="#e8ece3"/><text x="280" y="90">Conversations</text>
+      <rect x="382" y="64" width="144" height="40" rx="20" fill="#e8ece3"/><text x="454" y="90">Support</text>
+      <rect x="536" y="64" width="144" height="40" rx="20" fill="#e8ece3"/><text x="608" y="90">Billing</text>
+      <rect x="690" y="64" width="194" height="40" rx="20" fill="#e8ece3"/><text x="787" y="90">Product usage</text>
+      <rect x="894" y="64" width="262" height="40" rx="20" fill="#e8ece3"/><text x="1025" y="90">Internal tools + files</text>
+    </g>
+    <g fill="none" stroke="#56786b" stroke-width="1.5">
+      <path d="M111 104v20h103v36" marker-end="url(#arrow)"/>
+      <path d="M280 104v20H214M454 104v20H280M608 104v20H454M787 104v20H608M1025 104v20H787"/>
+    </g>
+    <g>
+      <rect x="44" y="170" width="246" height="152" rx="12" fill="#fffef9" stroke="#d3dbd1"/>
+      <rect x="332" y="170" width="246" height="152" rx="12" fill="#fffef9" stroke="#d3dbd1"/>
+      <rect x="620" y="170" width="246" height="152" rx="12" fill="#fffef9" stroke="#d3dbd1"/>
+      <rect x="908" y="170" width="248" height="152" rx="12" fill="#203e36"/>
+    </g>
+    <g font-size="13" font-weight="600" letter-spacing="1.5" fill="#957053">
+      <text x="68" y="202">01 / CONNECT</text><text x="356" y="202">02 / CAPTURE</text><text x="644" y="202">03 / UNDERSTAND</text><text x="932" y="202" fill="#d8b699">04 / ANSWER</text>
+    </g>
+    <g font-size="23" font-weight="600">
+      <text x="68" y="240">Connectors</text><text x="356" y="240">DuckDB</text><text x="644" y="240">Context agents</text><text x="932" y="240" fill="#f8f6ef">Customer 360</text>
+    </g>
+    <g font-size="16" fill="#53695e">
+      <text x="68" y="273">Off-the-shelf extraction</text><text x="68" y="296">Selected source records</text>
+      <text x="356" y="273">Local, queryable data</text><text x="356" y="296">Snapshots you can inspect</text>
+      <text x="644" y="273">Propose definitions</text><text x="644" y="296">Review and approve</text>
+      <text x="932" y="273" fill="#d9e3d5">Briefs and answers</text><text x="932" y="296" fill="#d9e3d5">With source evidence</text>
+    </g>
+    <g fill="none" stroke="#56786b" stroke-width="1.5" marker-end="url(#arrow)">
+      <path d="M292 246h30"/><path d="M580 246h30"/><path d="M868 246h30"/>
+      <path d="M1032 323v54H168v-44" stroke-dasharray="5 5"/>
+    </g>
+    <rect x="365" y="358" width="469" height="38" rx="19" fill="#f8f6ef"/>
+    <text x="600" y="383" text-anchor="middle" font-size="17" fill="#53695e">Refresh the facts. Reuse the approved context.</text>
+  </g>
+</svg>

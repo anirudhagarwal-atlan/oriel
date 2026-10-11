@@ -1,12 +1,12 @@
-# Your first Customer 360 review
+# Your first customer review
 
-Start Oriel locally, connect synthetic customer records, and build a brief whose numbers and source passages you can inspect. The same flow works with **Billing + support** or **CRM + conversations**. You can complete this walkthrough with authored sample definitions and **no model calls or vendor credentials**.
+Connect sample customer data, review its meaning, and open a brief with numbers and source passages you can inspect. Then refresh the data and see what changed.
 
-Oriel is a local developer preview for one trusted operator. Its path is: **connectors → DuckDB snapshots → reviewed customer identity and context → answers**. Context agents can propose definitions when you choose to use a model; approval remains yours.
+This walkthrough uses **Billing + support**. **CRM + conversations** follows the same steps. Both are synthetic samples extracted through the real SQLite/dlt pipeline into DuckDB. You need no vendor credentials or model calls to try them.
 
-## Install from your checkout
+## 1. Start Oriel
 
-Use Python 3.10–3.14, an existing installation of [uv](https://docs.astral.sh/uv/), and a POSIX environment. Fresh isolated installation from clean local commit `d8836a6` has been checked on macOS ARM64 with Python 3.12; other platform combinations need their own verification. Publication and reproduction from the public repository remain pending. The commands below target the Customer 360 candidate. The app requires POSIX workspace locking.
+You need Python 3.10–3.14, [uv](https://docs.astral.sh/uv/), and a POSIX environment. Installation from a fresh public clone has been verified on macOS ARM64 with Python 3.12; other platform combinations need verification.
 
 ```sh
 git clone https://github.com/anirudhagarwal-atlan/oriel.git
@@ -15,59 +15,61 @@ uv sync --frozen --extra connectors
 uv run --no-sync oriel --workspace .oriel-customer customer app --port 8787
 ```
 
-Open **http://127.0.0.1:8787** directly in your browser. Keep the terminal running; Ctrl-C stops the application. The locked connector runtime is needed even for the sample: extraction uses the real SQLite/dlt pipeline.
+Open **http://127.0.0.1:8787**. Keep the terminal running; Ctrl-C stops the app. The connector extra is required for sample extraction too.
 
-Choose a new workspace directory. Oriel creates it privately and keeps the database and job receipts there across restarts. Existing shared directories or databases and symbolic-link workspace paths are refused. Only one app process can own a workspace. This preview is for local use; do not expose or proxy it to a network.
+Use a new workspace directory. Oriel keeps your DuckDB database, reviewed context and saved briefs there between sessions. This preview serves one trusted local operator; keep it on loopback rather than exposing it to a network. See the [application guide](customer-360-app.md) for workspace requirements.
 
-## Connect the sample
+## 2. Connect the sample
 
-In **Sources**, leave **Billing + support** selected and click **Connect sample data**. Wait for the extraction job to finish, then click **Prepare sample review**.
+In **Sources**, select **Billing + support** and click **Connect sample data**. When extraction finishes, click **Prepare sample review**.
 
-This loads synthetic invoices and support threads from local source databases through SQLite/dlt into DuckDB. It does not call a billing or support vendor. Preparing the review creates proposals and a snapshot; it approves nothing.
+You now have a DuckDB snapshot and proposals ready for review. Nothing has been approved yet.
 
-## Review identity, mapping, and definitions
+## 3. Review customer identity and context
 
-In **Review**, enter a local reviewer label. For each approval, inspect the proposal and its source scope, select **I reviewed this exact proposal and its source scope**, then use the approval button. The displayed hash identifies the exact proposal you are approving; the reviewer label is not an authenticated organizational sign-off.
+In **Review**, enter a local reviewer label. Before each approval, inspect the proposal and select **I reviewed this exact proposal and its source scope**. The displayed hash identifies exactly what you are approving.
 
-1. **Identity:** inspect each source record's proposed customer assignment and its basis. Approve the unambiguous proposal with **Approve identity links**. Leave conflicting proposals unresolved; they cannot be approved. A matching name or domain is not enough to link records.
-2. **Field mapping:** inspect the authored source-to-business mapping, click **Propose sample field mapping**, review it, then **Approve field mapping**. Click **Materialize approved mapping** to build customer records from this snapshot.
-3. **Definitions:** leave model permission off and click **Propose sample definitions**. Inspect the filters, units, currencies and gaps, then **Approve definitions**. These are authored examples, not output from a model.
+| Review | What to do |
+| --- | --- |
+| **Identity** | Inspect the proposed customer assignments and their basis, then **Approve identity links**. Conflicting links remain unresolved. |
+| **Field mapping** | Click **Propose sample field mapping**. Inspect and **Approve field mapping**, then **Materialize approved mapping**. |
+| **Definitions** | Keep model permission off. Click **Propose sample definitions**, inspect the filters, units, currencies and gaps, then **Approve definitions**. |
 
-Missing or conflicting relationships remain visible as gaps and are excluded from attributed customer answers. They are not silently merged or filled in.
+The sample definitions are authored examples. A context agent can propose definitions when you enable the model in step 6; both routes require your review. Missing or conflicting identity links stay visible as gaps and are excluded from attributed answers.
 
-## Open a brief and follow its evidence
+## 4. Open a brief and inspect its evidence
 
-Open **Customers**, select a customer, and click **Open current brief**. For Billing + support, inspect outstanding invoice amounts by currency and open support case counts alongside attributed source passages.
+In **Customers**, select a customer and click **Open current brief**. You will see outstanding invoice amounts by currency, open support cases and attributed source passages.
 
-Use **Inspect calculation** to see a metric's reviewed definition and result. Use **Open evidence** to inspect an exact source passage. Currency groups stay separate, and amounts retain their declared unit, including minor currency units where applicable. The brief uses deterministic calculations and attributed evidence; opening it does not invoke a model.
+- **Inspect calculation** shows a metric's reviewed definition and result.
+- **Open evidence** shows the exact source passage behind a fact.
+- **Save brief** retains this review before you refresh the data.
 
-Click **Save brief** to retain this review before changing the sample data.
+Currencies remain separate, and amounts retain their declared units, including minor currency units where applicable. Opening a brief uses deterministic calculations and does not call a model.
 
-## Refresh and compare
+## 5. Refresh and compare
 
-1. Click **Load sample refresh**, wait for extraction, and click **Prepare sample review** again.
-2. Inspect and approve any new unambiguous identity links. Reuse the approved field mapping and click **Materialize approved mapping** for the new snapshot.
-3. Use **Show approved context** to inspect the existing definitions. Reuse them when their meaning is unchanged.
-4. Return to the same customer, open the current brief, then choose **Saved reviews → Compare with current**.
+1. Click **Load sample refresh**. When extraction finishes, click **Prepare sample review** again.
+2. Review any new identity links. Reuse the approved field mapping and click **Materialize approved mapping** for the new snapshot.
+3. Click **Show approved context**. Keep the existing definitions when their meaning is unchanged.
+4. Open the same customer's current brief, then choose **Saved reviews → Compare with current**.
 
-The saved brief retains its original evidence. The comparison shows current and previous facts, with changes in records and reviewed basis. If identity, mapping or definitions changed, it reports that change and suppresses numeric deltas that would imply an unchanged basis. Failed or stale current data cannot be presented as fresh merely because an earlier brief is still readable.
+The comparison shows previous and current facts while preserving the saved brief's original evidence. A change to identity, mapping or definitions is called out; Oriel withholds numeric deltas when the basis is no longer comparable.
 
-To try **CRM + conversations**, stop the app and start it with a different new workspace, such as `.oriel-customer-crm`. Choose that sample and follow the same review stages. These are local Salesforce- and Gong-shaped fixtures, not authenticated vendor connections. Neither sample requires the other tool categories.
+To try **CRM + conversations**, stop the app and restart it with a new workspace, such as `.oriel-customer-crm`. Choose that sample and repeat the same workflow. Its local Salesforce- and Gong-shaped records are fixtures, not authenticated vendor connections.
 
-## Optional: use the configured model
+## 6. Let a context agent propose and answer
 
-The authored route above needs no inference. To use a context agent, configure the supported Claude CLI first, then review **Model permission** and the budget in **Definitions**. The checkbox explicitly allows selected customer schema, context and evidence to be sent to the configured model. Consent starts off.
+For this optional step, use a separately installed, authenticated [`claude` executable on your `PATH`](agents.md#ask-through-an-authenticated-claude-cli). In **Definitions**, review **Model permission** and the per-run budget before opting in: selected customer schema, context and evidence will be sent to your configured model.
 
-Choose **Propose with model** to generate a candidate, then inspect and approve it separately. Once context is approved, **Ask with evidence** can answer a customer question through the configured model. The current answer contract validates recomputed metrics and exact quotations; it does not accept arbitrary model-written factual prose.
+Click **Propose with model**, then inspect and approve the resulting definitions. With approved context, use **Ask with evidence** to ask a customer question. Answers validate recomputed metrics and exact quotations; arbitrary model-written factual prose is outside the current answer contract.
 
-The application's per-run limit is at most USD 1. Runs stop on unknown costs, failures or exhausted limits; interrupted inference is not silently retried. See the [application guide](customer-360-app.md#model-calls-and-retained-data) for the data boundary and [customer CLI guide](customer-360-cli.md) for configuration and command equivalents.
+The app permits a budget of at most USD 1 per run and stops on unknown costs or exhausted limits. Read [model calls and retained data](customer-360-app.md#model-calls-and-retained-data) for the full boundary.
 
-Both sample flows have browser verification with a **scripted test transport**, recorded separately from the configured-model check. The latest configured-model run passed independent checks of proposed definitions, exact amounts, substantive source passages and source times before and after refresh for both profiles, reusing the same reviewed context. Its six jobs used twelve calls reporting $1.4556692 in list-price estimates, with no retries or unknown spend. The full run passed 52 local and four model cases. These use synthetic data and real local extraction; the live-vendor gate remains open and overall completion remains false. See [build status](build-status.md) for the dated evidence and scope.
+## Connect your own customer tools
 
-## Bring your own customer tools
+Use **Sources → Connect a tool** to select a connector, connection name and resources. Supply credentials through your existing local environment before starting Oriel; enter **environment-variable names only** in the interface.
 
-Use **Sources → Connect a tool** to choose an available connector, explicit connection name and resources. Enter credential **environment-variable names only**, with values supplied through your existing local credential workflow before starting the app. Never paste secret values into the interface. Readiness checks report prerequisites and adapter limitations; they do not establish live compatibility.
+After sync, inspect the selected sources and create explicit customer links, field mappings and reviewed context. CRM, billing, support, product usage and conversation sources can participate; the workflow does not require one vendor pair. Connector readiness and authenticated compatibility are separate checks, and some source relationships need an adapter.
 
-After sync, capture selected committed sources, inspect their fields, and create explicit customer links and mappings. The model uses customer, commercial, billing, support, usage and conversation capabilities rather than a fixed vendor pair. Complex source relationships may need an adapter before their links can be reviewed.
-
-Continue with the [application guide](customer-360-app.md) and [connector setup](connectors.md). For the advanced generic SQL workflow, the [tool-export walkthrough](tool-exports.md) covers CSV/JSONL joins, transformations, metric review and local bundle reuse.
+Continue with [connector setup](connectors.md) and the [application guide](customer-360-app.md). [Build status](build-status.md) records what has been verified, including the remaining live-vendor limitations.

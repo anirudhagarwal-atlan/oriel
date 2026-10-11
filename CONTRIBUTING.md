@@ -1,78 +1,76 @@
 # Contributing to Oriel
 
-Help someone get a useful answer across their tools and keep the definition behind it. A clearer tutorial, a reproducible connector fix or a well-specified recipe can be as valuable as a new feature.
+Help people understand their customers across the tools they already use. A clearer tutorial, a reproducible connector fix or a useful customer recipe is a welcome contribution.
 
-## Try the user journey first
+Try the [quickstart](docs/quickstart.md) first. For a broad change or new dependency, open an issue describing the user problem and proposed scope before starting work.
 
-Follow the [quickstart](docs/quickstart.md). Then choose a focused contribution:
+## Develop locally
 
-- **Improve first use:** remove a confusing setup step or explain an error with a tested example.
-- **Contribute a recipe:** add synthetic inputs, an explicit identity mapping, SQL, an independent expected answer and a changed-data case.
-- **Validate a connector:** name the exact source, resources, runtime and environment tested. Separate fixture checks from authenticated vendor checks.
-- **Improve context:** make an ambiguous business rule, join or time boundary easier to inspect and review.
-
-For a broad change or a new dependency, start with an issue describing the question, current limitation and proposed scope. Use the repository's bug report, use case or connector validation template. Do not include private exports or credentials.
-
-## Run locally
-
-Use Python 3.10–3.14 and the committed lockfile, which references public PyPI artifacts. Clone the repository and install the connector environment:
+Use Python 3.10–3.14, uv and a POSIX environment:
 
 ```sh
 git clone https://github.com/anirudhagarwal-atlan/oriel.git
 cd oriel
 uv sync --frozen --extra connectors
-.venv/bin/python examples/tool-exports/verify.py --output benchmark-runs/contributor-example
-.venv/bin/python examples/connectors/verify_sqlite.py --output benchmark-runs/contributor-sqlite
-.venv/bin/python examples/connectors/verify_apis.py --output benchmark-runs/contributor-apis
+uv run --no-sync oriel --workspace .oriel-customer-dev customer app --port 8787
 ```
 
-Use new output directories. The export and SQLite checks are local; the API check uses a synthetic loopback server. None needs a model or live vendor account. Some vendor adapters need additional drivers or SDKs beyond the declared extra; do not add or install them implicitly.
+Open `http://127.0.0.1:8787` and use a sample profile. Keep the committed lockfile; some vendor adapters need additional drivers or SDKs beyond the connector extra.
 
-Run tests relevant to your change. The complete standard-library suite is available with:
+## Verify your change
+
+Run the tests relevant to your change. The test suite uses Python's standard test runner:
 
 ```sh
-.venv/bin/python -m unittest discover -s tests -v
+uv run --no-sync python -m unittest discover -s tests -v
 ```
 
-For documentation-only changes, verify commands and links affected by the change. Markdown is the source of truth. Rebuild its static HTML mirrors with the Markdown renderer already present in the locked connectors environment:
+For a connector or data-path change, these independent examples need no model or vendor account:
 
 ```sh
-.venv/bin/python scripts/render_docs.py
+uv run --no-sync python examples/tool-exports/verify.py --output benchmark-runs/contributor-example
+uv run --no-sync python examples/connectors/verify_sqlite.py --output benchmark-runs/contributor-sqlite
+uv run --no-sync python examples/connectors/verify_apis.py --output benchmark-runs/contributor-apis
 ```
 
-Commit the changed Markdown and generated HTML together. The guides need no browser JavaScript or external assets; the landing page's local example uses its bundled script. Serve the repository locally:
+Use new output directories. The API example uses a synthetic loopback server. Full Customer 360 acceptance has additional browser and installation prerequisites; follow [build status](docs/build-status.md#reproduce-the-checks) when your change needs those checks. Model and live-vendor runs require separate setup and authorization.
+
+For documentation, verify the affected commands and links, then regenerate the HTML mirrors:
 
 ```sh
-.venv/bin/python -m http.server 8879 --bind 127.0.0.1
+uv run --no-sync python scripts/render_docs.py
+uv run --no-sync python scripts/render_docs.py --check
+uv run --no-sync python -m http.server 8879 --bind 127.0.0.1
 ```
 
-Visit `http://127.0.0.1:8879/docs/index.html`. The landing page links to the generated HTML guides. GitHub readers can use the original Markdown files directly. No hosted build service or browser Markdown library is required.
+Preview `http://127.0.0.1:8879/docs/index.html`. Markdown is the source of truth; commit the changed Markdown and generated HTML together.
 
-## Keep examples reproducible
+## Useful contributions
 
-Use synthetic identities such as `customer_001` and `example-tenant`. Include fixture provenance, assumptions, expected outputs and a failure case where relevant. Keep imported text inert; it must never become executable instructions.
+| Area | What makes a strong contribution |
+| --- | --- |
+| First use | A clearer setup step, actionable error message or tested walkthrough |
+| Customer recipes | Synthetic inputs, explicit identity mappings, reviewed definitions, independently checked answers and a refresh case |
+| Connectors | Exact resources and runtime tested, with fixture checks distinguished from authenticated vendor checks |
+| Context | A business rule, join, unit or time boundary that is easier to inspect and review |
 
-Never commit credentials, private databases, customer exports, production traces, internal conversation text or screenshots of internal tools. Configuration examples use environment-variable names, not secret values. A scrubbed error is useful; a full data-bearing workspace is not an appropriate public attachment.
+## Preserve the contract
 
-## Preserve the boundaries
+The core path is **connectors → DuckDB → context proposals and review → grounded answers**. Keep these properties intact:
 
-- Bootstrap produces draft observations. Schema alone does not certify a business rule.
-- A working query does not approve its metric. Preserve exact-preview and stale-proposal checks.
-- Sync failures must retain the last good snapshot and report freshness honestly.
-- Agent-facing tools stay read-only. A local transformation must not become an upstream action.
-- Catalog presence, controlled tests, native fixture execution and live verification are separate evidence levels.
-- New dependencies need an explicit reason, package provenance review and a lockfile update consistent with the project's release-age cutoff.
+- Context proposals and metric definitions need explicit review; a successful query does not approve a business rule.
+- Identity conflicts stay visible. Names or domains alone do not silently merge customers.
+- Failed syncs preserve the last good snapshot and report freshness honestly.
+- Answers retain their source evidence, units and reviewed definitions.
+- Agent-facing tools stay read-only. Local transformations do not imply upstream actions.
+- Catalog availability, fixture execution and live compatibility remain separate claims.
 
-Changes to credential handling, SQL restrictions, local writes, dependencies or publication workflows need explicit reviewer attention. Do not weaken checks to make a fixture pass.
+Use synthetic data in examples and public attachments. Never commit credentials, customer exports, private databases, production traces or internal screenshots. Configuration examples use environment-variable names, never secret values.
 
-## Review a pull request
+## Submit a pull request
 
-Explain the user problem, changed behavior, verification and remaining limits. Keep the change focused. For documentation, state which commands you ran. For a connector, identify the exact resources and failure behavior covered; a live claim needs appropriately scoped, sanitized evidence.
+Explain the user problem, resulting behavior, verification and remaining limits. Keep the change focused and call out changes to credential handling, SQL restrictions, local writes or dependencies for reviewer attention.
 
-If you adapt upstream code, preserve its license and notices and update [the provenance record](docs/upstream.md). Oriel's MIT license does not replace bundled third-party licenses.
+New dependencies need a clear reason, provenance review and a lockfile update consistent with the project's release-age cutoff. If you adapt upstream code, preserve its license and notices and update [source provenance](docs/upstream.md).
 
-## Evaluation contributions
-
-Comparative evaluations are currently deferred and are not required to try or contribute to the core workflow. Research changes should retain the task, fixture, expected result, fair baseline, measurement boundary and failures. Separate deterministic replay from actual model runs, and source retrieval from the MCP transport.
-
-We welcome evidence that favors another approach. [Claim standards](docs/gtm.md#scorecard-and-evidence-policy) explain what supports a public claim. Do not launch paid model runs, contact source accounts or publish results as part of an unrelated contribution.
+Comparative evaluations are deferred and are not required for core contributions. Research plans, evidence standards and historical results live in the [maintainer reference](docs/maintainers.md).

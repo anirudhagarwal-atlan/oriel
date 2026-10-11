@@ -191,7 +191,7 @@ def prepare(root):
 </head>
 <body>
 <a class="skip" href="#doc-content">Skip to content</a>
-<header class="site-header"><a class="brand" href="{relative(root / 'README.html', source.parent)}">Oriel</a><span>Talk to your tools. Keep the definitions.</span></header>
+<header class="site-header"><a class="brand" href="{relative(root / 'README.html', source.parent)}">Oriel</a><span>Your customers, in context.</span></header>
 <div class="layout">
 <aside><nav id="docs-navigation" aria-label="Documentation">{nav}</nav>
 <div class="toc"><h2>On this page</h2><nav aria-label="Page sections">{toc}</nav></div></aside>

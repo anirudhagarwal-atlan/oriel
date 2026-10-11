@@ -1,6 +1,6 @@
 # Customer 360: build goal and self-verification
 
-Status: active build goal, 10 October 2026. The [build plan](customer-360-plan.md) explains product direction and sequencing. The [acceptance contract](../verification/customer360/acceptance.json) defines the required verification suites and named cases. This document defines what their evidence must establish.
+Status: build goal with live-source validation outstanding, 11 October 2026. The [build plan](customer-360-plan.md) explains product direction and sequencing. The [acceptance contract](../verification/customer360/acceptance.json) defines the required verification suites and named cases. This document defines what their evidence must establish.
 
 ## Goal
 
@@ -18,7 +18,7 @@ The latest acceptance run tested clean candidate **`eaec13244d0d4167f5507f1aa73d
 
 Both synthetic profiles completed task-guided model bootstrap, independent definition review and correct answers before and after refresh, using unchanged reviewed context with new snapshots. Six reviewed jobs used **12 Claude Opus 5.5 calls**, reporting **$1.4307704** in provider list-price estimates under the predeclared $3 cap, with zero retries or unknown spend. These are bounded synthetic product checks; they do not establish general accuracy, comparative performance or live-vendor compatibility.
 
-Strict clean-Git installation passed at **23:48 UTC on 9 October 2026** from local commit `6f4b0c6`. All **316 installation inputs** match candidate `eaec132`; both installed profiles completed initial and refreshed workflows, with zero model/vendor calls or dependency downloads. The [build status](build-status.md#reproduce-the-checks) records the exact commit, tree, package inventory and receipt hash. Publication approval and public-checkout reproduction remain pending.
+Strict clean-Git installation passed at **23:48 UTC on 9 October 2026** from local commit `6f4b0c6`. All **316 installation inputs** match candidate `eaec132`; both installed profiles completed initial and refreshed workflows, with zero model/vendor calls or dependency downloads. The [build status](build-status.md#reproduce-the-checks) records the exact commit, tree, package inventory and receipt hash. Publication and public-checkout reproduction passed on 11 October 2026 at public commit `38dc254`. A fresh anonymous clone passed strict installation and both installed sample workflows with no model or vendor calls. See the [current verification summary](build-status.md#verified-so-far).
 
 The opt-in [REST fetch guard](connectors.md#restrict-a-rest-fetch-graph) compiles the fetch graph before credentials are read, checks prepared requests, counts pages/rows including unselected parents and refuses incomplete extraction. Its focused connector/translation/provenance command passed 118 tests, and its six native scope cases also pass in the latest acceptance run. Vendor semantic restrictions and resolved-destination enforcement remain outstanding parts of the live collector.
 

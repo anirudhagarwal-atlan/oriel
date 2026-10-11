@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Customer 360 across the tools you already use. Connect customer data to local DuckDB, review identity and business context, and inspect the evidence behind every brief.">
   <meta name="color-scheme" content="light">
-  <title>Oriel · Your customer, in context</title>
+  <title>Oriel · Your customers, in context</title>
   <style>
     :root {
       --paper: oklch(97.6% .012 97); --surface: oklch(99% .007 97);
@@ -43,7 +43,7 @@
     .label { font-size: 11px; font-weight: 650; letter-spacing: 1.6px; text-transform: uppercase; }
     .eyebrow { display: flex; align-items: center; gap: 11px; color: var(--accent); margin: 0 0 24px; }
     .eyebrow::before { content: ""; width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
-    .hero { display: grid; grid-template-columns: 1.14fr .86fr; gap: clamp(40px, 7vw, 96px); padding: 80px 0 78px; align-items: center; }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 96px); padding: 80px 0 78px; align-items: center; }
     h1, h2, h3, p { margin: 0; }
     h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: -.055em; text-wrap: balance; }
     h1 { font-size: clamp(48px, 5.3vw, 74px); line-height: 1.045; max-width: 10.5ch; }
@@ -253,24 +253,18 @@
     <section class="hero" aria-labelledby="hero-title">
       <div>
         <p class="eyebrow label">Open-source Customer 360 · Local preview</p>
-        <h1 id="hero-title">Your customer.<br>In context.</h1>
+        <h1 id="hero-title">Your customers,<br>in context.</h1>
         <p class="hero-lead">Across the tools you already use.</p>
         <p class="hero-note">Bring customer data into DuckDB through supported connectors. Review which records belong together and what the numbers mean. Get customer briefs and answers with evidence you can inspect.</p>
         <div class="hero-actions"><a class="button" href="quickstart.html">Try the local app <span aria-hidden="true">→</span></a><a class="text-link" href="#demo">Explore the workflow</a></div>
         <p class="tiny hero-caption">Start with synthetic samples and authored definitions. No model or vendor account required for that route.</p>
       </div>
-      <aside class="notebook" aria-label="The parts of a reviewed customer brief">
-        <div class="notebook-top"><span class="label" style="font-size:9px">A brief you can inspect</span><span class="tiny">Your workspace</span></div>
-        <p class="notebook-question">A customer view.<br>With its evidence attached.</p>
-        <div class="source-row"><span class="source-tag">Billing &amp; support</span><span class="source-tag">CRM &amp; conversations</span><span class="source-tag">Usage data</span></div>
-        <div class="receipt-line"><span class="receipt-check" aria-hidden="true">✓</span><div>Explicit customer links.<br><span style="color:var(--muted)">Keep ambiguous records visible as gaps.</span></div></div>
-        <div class="receipt-line"><span class="receipt-check" aria-hidden="true">✓</span><div>Reviewed business definitions.<br><span style="color:var(--muted)">Follow each calculation and attributed passage.</span></div></div>
-        <div class="receipt-code">connect → review → brief → refresh</div>
-        <div class="receipt-bottom"><div><strong>Keep the meaning. Refresh the facts.</strong><span class="tiny">Save a review and compare it with current evidence.</span></div><svg class="file-icon" aria-hidden="true" viewBox="0 0 34 40" fill="none"><path d="M5 1h16l8 8v29H5V1Z" stroke="currentColor"/><path d="M21 1v9h8M11 18h12M11 23h12M11 28h7" stroke="currentColor"/></svg></div>
-      </aside>
+      <div class="brand-art"><img src="assets/oriel-banner.png" width="2172" height="724" alt="Oriel: Your customers, in context. An architectural window illustration." style="display:block;width:100%;height:auto;border-radius:12px"></div>
     </section>
 
     <div class="rail"><span class="label" style="font-size:9px">Know the account. Show the evidence.</span><div class="rail-items"><span>Local DuckDB</span><span>Reviewed identity</span><span>Reusable definitions</span><span>Saved reviews</span></div></div>
+
+    <figure style="margin:48px 0 0"><img src="assets/customer-review.png" width="1600" height="1220" alt="The Oriel application showing a customer brief with commercial totals and source passages from synthetic data." style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px" loading="lazy"><figcaption class="tiny" style="margin-top:12px">The working local application with synthetic CRM and conversation data. <a href="quickstart.html">Try the sample workflow →</a></figcaption></figure>
 
     <section class="section" id="demo" aria-labelledby="demo-heading">
       <div class="section-head"><div class="section-number"><span>01</span><span class="label">The first review</span></div><div><h2 id="demo-heading">Start with a customer.<br>Follow the facts.</h2><p class="section-description">Try Billing + support or CRM + conversations in the local app. Both samples take the same path from source records to reviewed context, a customer brief, and a comparison after refresh.</p></div></div>
@@ -306,16 +300,15 @@
     <section class="section" id="readiness" aria-labelledby="readiness-heading">
       <div class="section-head"><div class="section-number"><span>03</span><span class="label">What works today</span></div><div><h2 id="readiness-heading">A local preview.<br>With visible boundaries.</h2><p class="section-description">Start with the tested sample flow. Readiness is tracked separately for local implementation, configured-model behavior and live-vendor access.</p></div></div>
       <div class="table-scroll">
-        <table class="readiness-table"><thead><tr><th scope="col">Workflow</th><th scope="col">Available today</th><th scope="col">Verification boundary</th></tr></thead><tbody>
-          <tr><th scope="row">Two customer samples</th><td>Actual SQLite/dlt extraction into DuckDB, explicit identity and mapping reviews, definitions, briefs, evidence and refresh comparisons.</td><td>Synthetic local sources. Both browser flows are checked with scripted test transport.</td></tr>
-          <tr><th scope="row">Context and answer agents</th><td>A configured Claude CLI path with explicit data consent, bounded runs and separate proposal approval. Both synthetic profiles passed reviewed bootstrap and independently checked answers before and after refresh on clean candidate <code>eaec132</code> at 23:57 UTC on 9 October 2026, reusing the same context with new snapshots.</td><td>Actual-model and scripted browser receipts are separate. The candidate passed 58 local and four configured-model cases; live validation remains unrun. This bounded synthetic check does not establish general accuracy or live-vendor compatibility.</td></tr>
-          <tr><th scope="row">Your customer tools</th><td>Connector setup, resource selection, sync, schema inspection and direct-key customer mappings.</td><td>Catalog entries and local adapter fixtures do not certify authenticated vendor compatibility. The live-vendor gate remains open.</td></tr>
-          <tr><th scope="row">Saved reviews</th><td>Retained briefs with evidence; compare with a current snapshot and expose changes in reviewed meaning.</td><td>Current answers require readable, fresh data. Historical evidence is labeled as historical.</td></tr>
-          <tr><th scope="row">Local application</th><td>Private workspace, serialized jobs and distinct review actions for one trusted operator. Clean local Git commit <code>6f4b0c6</code> passed isolated installation and both sample workflows at 23:48 UTC on 9 October 2026, without model or vendor calls. All 316 installation inputs match candidate <code>eaec132</code>.</td><td>POSIX locking required. Local committed-source verification and public-clone reproduction are separate; public-clone proof remains pending. This is not a hosted or multi-user service.</td></tr>
+        <table class="readiness-table"><thead><tr><th scope="col">Try today</th><th scope="col">What you get</th></tr></thead><tbody>
+          <tr><th scope="row">Two sample stacks</th><td>Billing + support or CRM + conversations. Real local extraction, reviewed context, customer briefs and refresh comparisons.</td></tr>
+          <tr><th scope="row">Context and answer agents</th><td>Propose definitions and ask supported questions with a configured Claude CLI. Review definitions separately; model calls require consent and a budget.</td></tr>
+          <tr><th scope="row">Customer evidence</th><td>Inspect calculations and attributed source passages. Save a review and compare it after refresh.</td></tr>
+          <tr><th scope="row">Your own sources</th><td>Configure supported connectors and selected resources. Check the adapter's requirements; authenticated vendor compatibility remains to be verified.</td></tr>
         </tbody></table>
       </div>
-      <div class="under-demo"><p>Comparative evaluations remain deferred. No accuracy, cost or speed advantage over raw source MCP is established.</p><a href="build-status.html">Read the verification evidence ↗</a></div>
-      <div class="start-links"><a href="customer-360-goal.html">Customer 360 acceptance gates ↗</a><a href="connectors.html#what-has-been-verified">Connector readiness ↗</a></div>
+      <div class="under-demo"><p>A developer preview for one local operator. Both sample workflows pass installation checks from a fresh public clone. Live vendor validation remains open.</p><a href="build-status.html">Read the current status ↗</a></div>
+      <div class="start-links"><a href="connectors.html">Explore connectors ↗</a><a href="roadmap.html">See the roadmap ↗</a></div>
     </section>
 
     <section class="start" id="start" aria-labelledby="start-heading"><div><p class="eyebrow label" style="font-size:10px;margin-bottom:18px">Your first customer review</p><h2 id="start-heading">Open the app.<br>Follow the evidence.</h2><p>From a local checkout, install the locked connector runtime and start a new private workspace. Open <strong>http://127.0.0.1:8787</strong>, then choose a sample.</p><p>Use authored definitions for a complete review without model calls. Nothing is approved until you inspect the proposal and approve it.</p><div class="start-links"><a href="quickstart.html">Follow the quickstart ↗</a><a href="customer-360-app.html">Application guide ↗</a><a href="tool-exports.html">Advanced: SQL over exports ↗</a></div></div><div><div class="terminal"><div class="terminal-head"><span>YOUR TERMINAL · REPOSITORY ROOT</span><button class="copy" id="copy-command" type="button" aria-label="Copy application startup commands">Copy</button></div><pre id="quickstart-commands"><span class="dollar">$ </span>uv sync --frozen --extra connectors
