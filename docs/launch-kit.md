@@ -1,8 +1,8 @@
 # Oriel launch kit
 
-Draft assets for the Customer 360 developer preview. The selected repository is [anirudhagarwal-atlan/oriel](https://github.com/anirudhagarwal-atlan/oriel). These drafts have not been posted. Local implementation changes are not automatically present on GitHub; inspect and publish the exact release candidate separately. [GTM strategy](gtm.md) · [Release evidence](customer-360-goal.md).
+Draft assets for the Customer 360 developer preview at [anirudhagarwal-atlan/oriel](https://github.com/anirudhagarwal-atlan/oriel). **These announcement and social drafts have not been posted.** [GTM strategy](gtm.md) · [Release evidence](customer-360-goal.md).
 
-## Before publication
+## Before posting
 
 - Reproduce the [quickstart](quickstart.md) and complete the current candidate's required acceptance gates. Keep scripted orchestration, configured inference and authenticated vendor evidence separate.
 - Verify the exact documented source installation, UI assets, links, package contents and third-party licenses. Do not advertise a PyPI package or hosted documentation until separately published and checked.
@@ -20,27 +20,54 @@ Draft assets for the Customer 360 developer preview. The selected repository is 
 
 **One-sentence description:** Oriel brings supported customer data into DuckDB, bootstraps reviewed business context, and helps account owners inspect what is happening and what changed.
 
+## The story to tell
+
+An account owner has a customer call in 20 minutes. Their last review says the customer's SSO rollout is blocked. They need to know what changed before they choose what to discuss.
+
+The synthetic CRM + conversations sample supplies the discovery: a newer call says the rollout is unblocked and procurement approval is now pending. Both passages remain inspectable. The older note was true at the time; its continued presence does not make it the latest update.
+
+The payoff is a customer review with evidence the account owner can inspect. The next question is already useful: what will change before the next call? Save this review, refresh the sources, and compare again with the same reviewed context.
+
+| Story beat | What earns attention |
+| --- | --- |
+| Stakes | A person preparing for an imminent customer call could walk in with an outdated account of the problem. The 20-minute deadline is the scenario, not a product speed claim. |
+| Question | “What changed since the last review?” |
+| Discovery | The sample's newer source passage changes the discussion from a blocked SSO rollout to pending procurement approval. Show the old and new evidence together. |
+| Return | Save the review now. Reuse the context after the next refresh and inspect what changed. |
+
+Use this specific discovery to introduce the broader Customer 360 workflow. CRM and conversations are one sample; billing, support, product usage and other supported customer sources belong in the same story.
+
 ## Repository announcement draft
 
-Your customer story lives across billing, support, product usage, CRM and conversations. Preparing the next account review means joining those records and agreeing on what they mean.
+Your customer call starts in 20 minutes. The last review says their SSO rollout is blocked.
 
-Oriel is an open-source Customer 360 agent for that work. Off-the-shelf connectors load data into DuckDB. Context agents propose business definitions for review. Customer briefs and answers retain the calculations, source passages and context version behind each fact.
+What changed since then?
 
-The local preview includes two synthetic stacks—billing plus support, and CRM plus conversations—in the same interface. Review the customer links, inspect a brief, save it, refresh the data, and compare what changed. No particular CRM or conversation tool is required.
+In Oriel's synthetic sample, the next call record contains the update: “SSO rollout is unblocked; procurement approval is now pending.” You can inspect that passage alongside the earlier blocked-rollout note before deciding what to discuss.
 
-Source coverage and missing evidence stay visible. This is a developer preview for one local operator; authenticated source coverage and configured-model evidence must be described using the release candidate's [current status](build-status.md). No comparative accuracy, cost or speed claim is part of this launch.
+Oriel is an open-source Customer 360 agent for preparing that review across the tools you already use. The workflow is off-the-shelf connectors → DuckDB → context agents and reviewed definitions → briefs and answers with evidence. Customer links, business meaning and source coverage are explicit, so you can inspect how an answer was assembled.
 
-[Try a customer review](quickstart.md), then connect sources you are authorized to use. Tell us which review step was useful and where setup or business meaning needed help, using a synthetic reproduction in an issue.
+Start with the synthetic CRM + conversations sample. Review the proposed customer links and authored definitions, inspect the initial brief, save it, and load the sample refresh. Compare the new evidence using the same reviewed context. The sample runs without vendor credentials or model calls; configured context agents and questions are a separate opt-in step.
+
+Then try billing + support in the same interface, or connect supported sources you are authorized to use. The workflow is independent of a particular CRM or conversation vendor. [Current status](build-status.md) records this local developer preview's model verification and remaining authenticated-vendor limitations.
+
+Before the next call, refresh again. Your saved review gives you a point of comparison; your reviewed definitions give you a consistent way to read the new facts.
+
+[Run your first customer review](quickstart.md). Start with **Sources → CRM + conversations → Connect sample data** and follow the review steps. Which piece of evidence changed the question you would ask the customer?
 
 ## Short social post draft
 
-A useful customer brief should survive the next data refresh.
+Your customer call is in 20 minutes. Your last review says SSO is blocked.
 
-Oriel connects supported customer tools to DuckDB, bootstraps business context for review, and keeps the evidence behind the account brief. Save a review, refresh, and see what changed using the same definitions.
+The newer call says SSO is unblocked. Procurement approval is pending.
 
-Try the local Customer 360 preview with either billing/support or CRM/conversation samples, then bring a customer-review workflow from your own stack.
+That's the discovery in Oriel's synthetic Customer 360 sample. Inspect both passages, save the review, and compare again after a refresh.
 
-Attach the actual repository link and a verified recording. Label synthetic data and any scripted or authored steps. The recording must not imply a model or vendor connection that did not run.
+Off-the-shelf connectors → DuckDB → context agents and reviewed definitions → answers with evidence. Bring supported customer tools; start with the credential-free sample and authored context.
+
+[Try Oriel](https://github.com/anirudhagarwal-atlan/oriel#readme). What changed since your last review?
+
+**Posting note:** If attaching a recording, label synthetic data and authored, scripted or model steps. Show only the vendor connections and model calls that actually ran.
 
 ## Technical community post draft
 
@@ -56,15 +83,33 @@ Feedback sought: a synthetic identity edge case, a business definition that need
 
 ## Ninety-second demo talk track
 
-Use the [application walkthrough](quickstart.md). Keep “Synthetic data” visible. For an authored definition demo, say so. Include model bootstrap/questions only when an actual consented model run is recorded and its claims have been independently checked. If edited for time, label the cuts.
+Use the [application walkthrough](quickstart.md), selecting **CRM + conversations** in a fresh workspace. Keep **“Synthetic sample · authored context · no model calls”** visible throughout this version. Record preparation and refresh before editing; label time cuts so the 90-second story does not imply a 90-second setup. This is a talk track, not an existing recording.
+
+The sample uses real SQLite/dlt extraction into DuckDB and authored definition proposals. The context-agent workflow adds model-generated proposals followed by review. Demonstrate that optional model path only in a separately labeled, consented recording with checked outputs; do not narrate authored proposals as model reasoning.
 
 | Time | Show | Say |
 | --- | --- | --- |
-| 0–15 seconds | A customer brief and one amount/source passage | “What is happening with this customer, and what evidence should I inspect?” |
-| 15–35 seconds | Sources, customer links and mapping review | “These sources reach DuckDB through an existing extractor. Customer identity is explicit, and ambiguous links stay unresolved.” |
-| 35–55 seconds | Definition filters, units, approval and evidence | “The amount uses this reviewed rule. The passage comes from this attributed record. Missing source capabilities stay visible.” |
-| 55–75 seconds | Saved brief, refreshed facts and comparison | “The source facts changed. The definition remains the same. Any changed identity or mapping basis is shown separately.” |
-| 75–90 seconds | The second source profile in the same interface | “Use your existing customer stack. Start with the sample, then connect an authorized source and prepare your next review.” |
+| 0–12 seconds | Initial Account A brief; open the earlier SSO passage | “Your customer call starts in 20 minutes. The last review says SSO is blocked. What changed since then?” |
+| 12–30 seconds | Sources, DuckDB snapshot, then identity and mapping review; mark cuts | “Oriel brings customer records through off-the-shelf connectors into DuckDB. You review which records belong to this customer and what the fields mean.” |
+| 30–43 seconds | Approved sample definitions, calculation and saved initial brief | “Context agents can propose definitions for review. This sample uses authored proposals. Inspect the rules and evidence, then save the brief before refreshing.” |
+| 43–59 seconds | Load sample refresh, prepare and materialize it using the reviewed context; show the newer passage | “Now the newer call says: ‘SSO rollout is unblocked; procurement approval is now pending.’ That's the update to bring into the conversation.” |
+| 59–74 seconds | Saved reviews → Compare with current; open both attributed passages | “The earlier note is still here. The new evidence is alongside it. The definitions stayed the same, so you can inspect what changed.” |
+| 74–90 seconds | Repository quickstart commands and CRM + conversations selector; end on saved reviews | “Try this review locally without credentials or model calls. Then bring supported sources from your customer stack. Save the review, refresh before the next call, and ask what changed.” |
+
+## Runnable final frame
+
+**Prepare for the next customer conversation.** Run the sample, inspect the two SSO passages, and save your first review.
+
+With Python 3.10–3.14, uv and a POSIX environment installed:
+
+```sh
+git clone https://github.com/anirudhagarwal-atlan/oriel.git
+cd oriel
+uv sync --frozen --extra connectors
+uv run --no-sync oriel --workspace .oriel-customer-crm customer app --port 8787
+```
+
+Open **http://127.0.0.1:8787**, choose **Sources → CRM + conversations → Connect sample data**, then follow the [review, save and refresh steps](quickstart.md#3-review-customer-identity-and-context). Use a fresh workspace if you have already tried another source profile. This sample is synthetic; its vendor-shaped records are not live Salesforce or Gong connections.
 
 ## Issue feedback CTA
 

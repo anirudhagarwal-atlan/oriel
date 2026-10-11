@@ -2,13 +2,35 @@
 
 # The open-source Customer 360 agent
 
-Get the customer story from the tools you already use. Oriel brings customer data into **DuckDB**, helps you define what it means, and builds customer briefs and answers with evidence you can inspect.
+Your customer call starts in 20 minutes. You're piecing together CRM updates, support history, and call notes. Ask about an issue that was fixed last week, and the customer has to catch you up.
+
+**What changed since the last time you spoke?**
+
+Oriel brings your customer data into **DuckDB**, helps you review its business context, and builds briefs and answers with evidence you can inspect before the conversation.
 
 **[Get started](#quickstart)** · [Documentation](docs/README.md) · [Connect your tools](docs/connectors.md) · [Contribute](CONTRIBUTING.md)
 
-Built for customer success, account teams, and the technical teams supporting them. Bring CRM, conversations, support, billing, product usage, or internal data. Start with the sources you have.
+For customer success and account teams, with the technical teams supporting them. Bring the sources you have: CRM, conversations, support, billing, product usage, or internal data.
 
 > **Developer preview.** Run locally for one operator. Try both sample workflows without vendor credentials or model calls. [What works today →](docs/build-status.md)
+
+## The issue you were going to raise is already fixed
+
+In the included **synthetic CRM + conversations sample**, the first review contains this call passage:
+
+> “SSO rollout is blocked by an identity-provider configuration issue.”
+
+Save the brief and load the sample refresh. The newer call says:
+
+> “SSO rollout is unblocked; procurement approval is now pending.”
+
+That changes the next conversation. You can ask about procurement instead of reopening the implementation issue. Oriel keeps both passages tied to their source records; you decide what they mean for the account.
+
+![Oriel's local customer review application, using synthetic sample data.](docs/assets/customer-review.png)
+
+*The working application showing the refreshed synthetic sample. [Follow the walkthrough](docs/quickstart.md).*
+
+The next review brings a new question: **what changed again?** Refresh the data, reuse the definitions you approved, and compare the current brief with the one you saved. Changes to identity or business meaning stay visible too.
 
 ## Quickstart
 
@@ -29,18 +51,6 @@ Open **http://127.0.0.1:8787**, then:
 
 [Follow the walkthrough](docs/quickstart.md) for the exact review steps. To bootstrap definitions with a context agent and ask questions, use a separately installed, authenticated [`claude` CLI on your `PATH`](docs/agents.md#ask-through-an-authenticated-claude-cli), enable model access, and set a spending limit. Selected data is sent to the model only with your consent.
 
-## Walk into the next customer conversation prepared
-
-![Oriel's local customer review application, using synthetic sample data.](docs/assets/customer-review.png)
-
-*The working application with synthetic sample data. [Reproduce this workflow](docs/quickstart.md).*
-
-- **Put the account in context.** Bring commercial records, billing, support, and conversations into a customer view, with explicit links between source records.
-- **Follow the answer to its evidence.** Inspect the metric definition, the DuckDB calculation, and the attributed source passage. Missing information stays visible.
-- **See what changed.** Save a brief, refresh the source data, and compare the next review using the same approved definitions.
-
-Start with a concrete question: “What is outstanding on this account?” or “What does the latest support update say?” The available sources and reviewed definitions determine what Oriel can answer.
-
 ## From your tools to an answer you can inspect
 
 ![Customer tools flow through off-the-shelf connectors into DuckDB snapshots, then context agents and human review, then customer briefs and answers. Refresh the data and reuse approved context.](docs/assets/how-oriel-works.svg)
@@ -50,7 +60,7 @@ Start with a concrete question: “What is outstanding on this account?” or �
 3. **Bootstrap context.** Review customer links and field mappings. A context agent proposes business definitions; you inspect and approve them.
 4. **Ask and inspect.** Compute answers against the captured data, follow the evidence, and reuse the context after refresh.
 
-Definitions include the details that change an answer: what “open” means, which records belong to a customer, and whether an amount is in dollars or cents. The agent works from this reviewed context and the DuckDB snapshot.
+A new record can change the story. A different definition can change the number. Review what “open” means, which records belong to the customer, and whether amounts are in dollars or cents. Then use that same context on the next snapshot.
 
 ## Bring your customer stack
 
@@ -67,7 +77,7 @@ The customer workflow is independent of any one vendor. The included examples pa
 
 ## Build with us
 
-Try a customer review and [tell us where you got stuck](https://github.com/anirudhagarwal-atlan/oriel/issues). Useful contributions include source mappings, reviewed definitions, connector validation, and clearer onboarding.
+Run the sample, save the first brief, and refresh it. Then [tell us where you got stuck](https://github.com/anirudhagarwal-atlan/oriel/issues). Useful contributions include source mappings, reviewed definitions, connector validation, and clearer onboarding.
 
 [Contributing](CONTRIBUTING.md) · [Roadmap](docs/roadmap.md) · [Architecture](docs/architecture.md) · [CLI and MCP](docs/agents.md) · [FAQ](docs/faq.md)
 

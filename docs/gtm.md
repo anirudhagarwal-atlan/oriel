@@ -1,6 +1,6 @@
 # GTM plan: Customer 360 for the tools you already use
 
-Strategy proposal, updated 9 October 2026. Oriel's first useful job is a customer review: understand what is happening with an account, inspect the evidence, and return after refresh using the same reviewed context. The [product plan](customer-360-plan.md) and [active goal](customer-360-goal.md) define implementation and verification. Comparative evaluations remain deferred.
+Strategy proposal, updated 11 October 2026. Oriel's first useful job is a customer review: understand what is happening with an account, inspect the evidence, and return after refresh using the same reviewed context. The [product plan](customer-360-plan.md) and [active goal](customer-360-goal.md) define implementation and verification. Comparative evaluations remain deferred.
 
 ## Positioning
 
@@ -12,10 +12,23 @@ Strategy proposal, updated 9 October 2026. Oriel's first useful job is a custome
 
 The required execution path is off-the-shelf connectors → staged DuckDB → context agents and reviewed definitions → grounded briefs and answers. CRM, billing, support, product usage, conversations and internal customer data are interchangeable source categories. The first connected stack should come from a user's customer-review workflow and authorized access, not a mandatory vendor pair.
 
+## The story that earns the next review
+
+Use a customer meeting as the opening scene. The account owner is preparing in 20 minutes, with source updates spread across tools. The personal stake is arriving with an outdated account story and making the customer explain it again. This is a relatable scenario, not a measured time-saving claim.
+
+| Story beat | What the audience sees | Product connection |
+| --- | --- | --- |
+| Stakes | The account owner has an upcoming customer call and last review's understanding. | Prepare a customer brief from the sources already used by the team. |
+| Big question | “What changed since the last time we spoke?” | Bring source output into DuckDB, then review customer identity and business context. |
+| Reveal | In the synthetic sample, the old SSO blocker is resolved; the newer call says procurement approval is pending. | Inspect the actual source passage and compare saved and current reviews. The operator interprets the implication. |
+| Return | “What changes before the next call?” | Refresh source data and reuse approved definitions. Show changes in facts or reviewed meaning. |
+
+The reveal must come from visible evidence. Keep the saved brief and newer source passage on screen; do not suggest automatic churn prediction, a rescued deal, or an inferred causal explanation. The recurring reason to use Oriel is another useful review as customer facts change. No notification loop or artificial urgency is required.
+
 Keep three messages consistent:
 
-- **Start:** Prepare a customer review from the tools you already use.
-- **Return:** See what changed using the definitions you reviewed last time.
+- **Start:** Walk into the next customer conversation knowing what changed in the available evidence.
+- **Return:** Refresh the facts and compare them using the definitions you reviewed last time.
 - **Share:** Give another authorized consumer the same version and source requirements.
 
 ## Audience and first useful job
@@ -59,10 +72,10 @@ Record how volunteers found the project only with consent. No hidden tracking is
 
 | Area | Available evidence | Remaining requirement |
 | --- | --- | --- |
-| Customer workflow | Local app and two sample profiles; actual browser flows with scripted model transport | Reproduce the candidate from a clean checkout and inspect the complete current gate report |
+| Customer workflow | Local app and two sample profiles; actual browser flows with scripted model transport | Public-clone installation is verified; keep each release tied to its current gate report |
 | Extraction | Real off-the-shelf runtimes on controlled sources | Authorized vendor authentication, selected resource reconciliation, refresh and extension proof |
-| Context and answers | Explicit reviews, versioned meaning, exact calculations, evidence and historical comparison | Full configured-model product smoke across both profiles and changed data |
-| Public repository | Source install, packaged assets, documentation and third-party notices | Review and publish the exact candidate; do not imply unpushed local work is already public |
+| Context and answers | Explicit reviews, versioned meaning, exact calculations, evidence and historical comparison | Both synthetic profiles have configured-model checks; authorized live-data validation remains |
+| Public repository | Source install, packaged assets, documentation and third-party notices | Public repository is available; keep published copy aligned with the exact tested scope |
 | Reuse and registry | Local retained context and structural export | Real receiving registry, access and consumer lifecycle checks when a use case requires them |
 | Adoption | No own-data retention or commercial conversion evidence | Observe the pilot cohort and report denominators and assistance |
 | Comparative performance | Deferred | No accuracy, cost or speed advantage claim |
@@ -71,7 +84,7 @@ The [build evidence](build-status.md) and [goal](customer-360-goal.md) are the s
 
 ## Execution sequence
 
-1. Finish the release candidate's clean installation, real-model smoke and authorized connector evidence. Keep unsupported claims out of preview copy.
+1. Complete authorized live-connector validation while retaining the verified public-installation and synthetic-model checks. Keep unsupported claims out of preview copy.
 2. Recruit five opt-in pilot workspaces across more than one customer stack. Observe connection, identity review and first useful brief separately.
 3. Ask activated users to return within two weeks for another customer review using the same definitions.
 4. Where a second consumer exists, observe context reuse and a requested definition change before building registry distribution.
